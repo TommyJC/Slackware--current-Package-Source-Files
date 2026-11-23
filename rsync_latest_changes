@@ -1,0 +1,48 @@
+#!/bin/sh
+#    Download Slackware's -current Source Tree (Package only).
+#    Copyright (C) 2026  Thomas Choi
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+for program in curl rsync; do
+  if ! command -v >/dev/null 2>&1; then
+    printf "Missing necessary program: '%s'\n" "$program"
+    exit 1
+  fi
+done
+
+last_update_file="/tmp/last_update_file.txt"
+last_update=""
+latest_update="$(curl -r 0-28 -L 'http://ftp.slackware.com/pub/slackware/slackware64-current/ChangeLog.txt')"
+
+if [ -f "$last_update_file" ]; then
+  last_update="$(cat -- "$last_update_file")"
+else
+  printf "%s" "$latest_update" >"$last_update_file"
+fi
+
+if [ "$last_update" != "$latest_update" ]; then
+  printf "Last update differs from latest update. Updating '%s'." "$last_update_file"
+  printf "%s" "$latest_update" >"$last_update_file"
+
+  rsync \
+    -avzu \
+    --exclude='*.tar.?z*' \
+    --exclude='*.tar.zst' \
+    --exclude='*.zip' \
+    'rsync://ftp.slackware.com/slackware/slackware64-current/source/' \
+    "$(pwd -P)" &&
+
+  git commit -a -m "$last_update"
+fi
