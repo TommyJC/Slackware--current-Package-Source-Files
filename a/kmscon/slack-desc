@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+      |-----handy-ruler------------------------------------------------------|
+kmscon: kmscon (KMS/DRM based system console)
+kmscon:
+kmscon: Kmscon is a simple terminal emulator based on linux kernel mode
+kmscon: setting (KMS). It is an attempt to replace the in-kernel VT
+kmscon: implementation with a userspace console.
+kmscon:
+kmscon: See kmscon(1) man-page for usage information.
+kmscon:
+kmscon: Homepage: https://github.com/kmscon/kmscon
+kmscon:
+kmscon:

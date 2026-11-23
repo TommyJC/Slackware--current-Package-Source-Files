@@ -1,0 +1,12 @@
+# Install the GRUB theme:
+mkdir -p $PKG/boot/grub/themes
+  cp -r breeze $PKG/boot/grub/themes/
+# Add symlinks to the fonts in the usual GRUB font directory:
+mkdir -p $PKG/boot/grub/fonts
+( cd $PKG/boot/grub/fonts
+  for grubfont in ../themes/breeze/*.pf2 ; do
+    ln -sf $grubfont .
+  done
+  # Make this one a simple name GRUB already knows about:
+  ln -sf unifont-regular-16.pf2 unifont.pf2
+)

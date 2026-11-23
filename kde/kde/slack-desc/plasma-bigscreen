@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                |-----handy-ruler------------------------------------------------------|
+plasma-bigscreen: plasma-bigscreen (Plasma for the big screen)
+plasma-bigscreen:
+plasma-bigscreen: Plasma Bigscreen is a user-friendly, open-source, Wayland desktop
+plasma-bigscreen: environment designed for devices like HTPCs and SBCs connected to TVs
+plasma-bigscreen: and projectors. It provides an intuitive experience that allows for
+plasma-bigscreen: easy navigation from a distance using remote controls. Discover an
+plasma-bigscreen: engaging environment that adapts to your preferences, offering the
+plasma-bigscreen: safety and privacy protection that come with free and open source
+plasma-bigscreen: software!
+plasma-bigscreen:
+plasma-bigscreen:

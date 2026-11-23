@@ -1,0 +1,29 @@
+From 889949a0c2b0b3d36f13fab5887e943ad842fcf3 Mon Sep 17 00:00:00 2001
+From: User8395 <therealuser8395@proton.me>
+Date: Fri, 9 Oct 2026 12:17:41 -0400
+Subject: [PATCH] webapp-viewer/main: remove KLocalizedQmlContext include
+
+This does nothing but causes CI to fail unless `KF6::KI18nQml` is targeted in CMake.
+
+This should also be cherry picked into the Plasma/6.8 branch.
+
+~Bugfix
+---
+ webapp-viewer/main.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/webapp-viewer/main.cpp b/webapp-viewer/main.cpp
+index 53ce8776..ff523534 100644
+--- a/webapp-viewer/main.cpp
++++ b/webapp-viewer/main.cpp
+@@ -16,7 +16,6 @@
+ #include <KAboutData>
+ #include <KDBusService>
+ #include <KLocalizedContext>
+-#include <KLocalizedQmlContext>
+ #include <KLocalizedString>
+ 
+ #include "browsermanager.h"
+-- 
+GitLab
+

@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+            |-----handy-ruler------------------------------------------------------|
+cups-browsed: cups-browsed (CUPS printer queue browser)
+cups-browsed:
+cups-browsed: The cups-browsed daemon is used to browse the network for remote CUPS
+cups-browsed: queues and IPP network printers and automatically create local queues
+cups-browsed: pointing to them.
+cups-browsed:
+cups-browsed: Homepage: http://www.openprinting.org
+cups-browsed:
+cups-browsed:
+cups-browsed:
+cups-browsed:

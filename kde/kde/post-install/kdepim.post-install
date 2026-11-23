@@ -1,0 +1,7 @@
+# Kalarm should not start in XFCE:
+if ! grep -q "OnlyShowIn=KDE;" \
+  $PKG/etc/xdg/autostart/kalarm.autostart.desktop ; then
+  echo "OnlyShowIn=KDE;" \
+    >> $PKG/etc/xdg/autostart/kalarm.autostart.desktop
+fi
+

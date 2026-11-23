@@ -1,0 +1,310 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix building with GCC 15
+
+--- a/cut-paste.c
++++ b/cut-paste.c
+@@ -218,7 +218,6 @@ void vt_initsel()
+ static char selbuf[BUFSIZ];
+ char *vt_getselbuf()
+ {
+-	FILE *safe_popen();		/* From misc.c */
+ 	FILE *xcb;
+ 	char buffer[BUFSIZ];
+ 	int len;
+@@ -239,7 +238,6 @@ char *vt_getselbuf()
+ char *vt_setselbuf(buffer)
+ char *buffer;
+ {
+-	FILE *safe_popen();		/* From misc.c */
+ 	FILE *xcb;
+ 	
+ 	strncpy(selbuf, buffer, BUFSIZ-1);
+--- a/lock.c
++++ b/lock.c
+@@ -24,7 +24,7 @@ static char *nextbuf=entered1;
+ static struct passwd *pw=NULL;
+ 
+ /* Used to release our input when the screen is unlocked */
+-extern void (*do_input)(), normal_input();
++extern void (*do_input)(char), normal_input(char);
+ 
+ /* Since this function is called as an input function, we need to handle
+    all state here. 
+--- a/misc.c
++++ b/misc.c
+@@ -43,6 +43,8 @@
+ # define OLCUC 0	/* Missing in FreeBSD, GNU/kFreeBSD */
+ #endif /* !OLCUC */
+ 
++#include "splitvt.h"
++
+ int tty_reset(int fd);
+ 
+ /*
+@@ -61,9 +63,9 @@ int *childpid;
+ int win;		/* 0 for upper, 1 for lower */
+ {
+ 
+-	void dropctty(), pty_setwin();
++	void dropctty();
+ 	int get_master_pty(), get_slave_pty();
+-	char *get_ttyname(), *myputenv();
++	char *get_ttyname();
+ 
+ #ifndef TIOCGWINSZ
+ 	char LINES[12], COLUMNS[12];
+@@ -223,8 +225,6 @@ int get_slave_pty()
+ 
+ #endif
+ 
+-extern char *ptsname();
+-
+ int get_master_pty()
+ {
+ 
+--- a/parserc.c
++++ b/parserc.c
+@@ -16,8 +16,6 @@
+ 
+ #define SPLITVTRC "/.splitvtrc"
+ 
+-extern char *myputenv();  /* Portable setenv() function in misc.c */
+-
+ /* These are used only here in this file. */
+ char *startupfile=NULL;
+ char *rcfile_buf;
+--- a/splitvt.c
++++ b/splitvt.c
+@@ -58,15 +58,15 @@ static char upper_tty[64]={'\0'};	/* tty
+ static char lower_tty[64]={'\0'};	/* tty_name of the lower window */	
+ static struct passwd *pw=NULL;		/* Our passwd entry pointer */
+ 
+-static void finish(), move_bar(), winch();
+-extern void lock_screen();		/* From lock.c */
+-void normal_input();
+-static int  insert_dash();
++static void finish(int);
++static void move_bar(int);
++static void winch(int);
++static int  insert_dash(char **);
+ static int  isalive();
+ char extract();
+ void splitvtrc();
+ 
+-void (*do_input)() = normal_input;
++void (*do_input)(char) = normal_input;
+ 
+ static char selection[BUFSIZ];		/* Screen selection buffer */
+ 
+--- a/splitvt.h
++++ b/splitvt.h
+@@ -36,7 +36,7 @@ extern int UU_lines;
+ extern int stbottom;
+ 
+ /* Functions exported from splitvt.c */
+-extern void reset_bar();
++extern void reset_bar(int);
+ 
+ /* If set, allow resizing to less than 3 lines */
+ extern int force_height;
+@@ -58,3 +58,7 @@ void d_zero(register char *dst, register
+ void vt_initsel(void);
+ int vttest(void);
+ int safe_pclose(FILE *pipefp);
++char *myputenv(char *);
++FILE *safe_popen(char *, char *);
++void normal_input(char);
++void lock_screen(char);
+--- a/terminal.c
++++ b/terminal.c
+@@ -8,6 +8,7 @@
+ #include	<term.h>
+ #include	<stdio.h>
+ #include	<string.h>
++#include	<stdlib.h>
+ #include	"splitvt.h"
+ #include	"video.h"
+ #include	"terminal.h"
+@@ -91,9 +92,6 @@ static capability capabilities[] = {
+ 
+ /* areas and variables used to get termcap information */
+ 
+-extern int tgetent();
+-extern char *tgetstr();
+-
+ static char termcap_entry[2048];        /* termcap entry for the terminal */
+ static char termcap_area[2048];		/* Static buffer for capabilities */
+ static char *tp=termcap_area;		/* Used in tgetent() calls */
+@@ -270,7 +268,6 @@ char *terminal_type;
+ int *rows;
+ int *cols;
+ {
+-	extern char *getenv();
+ 	static char *termtype=NULL, *error=NULL;
+ 
+ 	if ( (termtype=getenv("TERM")) == NULL )
+--- a/terminal.h
++++ b/terminal.h
+@@ -3,37 +3,37 @@
+    exported for use in vt100.c
+ */
+ 
+-extern char *vt_initterm();	/* Initialize the termcap, return NULL if successful */
++extern char *vt_initterm(char *, int *, int *);	/* Initialize the termcap, return NULL if successful */
+ extern void vt_bell();		/* Sound the terminal bell */
+-extern void vt_goto();		/* Goto a specific x y coordinate */
+-extern void vt_up();		/* Move cursor up */
+-extern void vt_down();		/* Move cursor down */
+-extern void vt_right();		/* Move cursor right */
+-extern void vt_left();		/* Move cursor left */
++extern void vt_goto(int, int);		/* Goto a specific x y coordinate */
++extern void vt_up(int);		/* Move cursor up */
++extern void vt_down(int);		/* Move cursor down */
++extern void vt_right(int);		/* Move cursor right */
++extern void vt_left(int);		/* Move cursor left */
+ extern void vt_clrscr();	/* Clear whole screen */
+ extern void vt_clreos();	/* Clear to end of screen, include currline */
+ extern void vt_clrbgs();	/* Clear to beginning of screen, include currline */
+ extern void vt_clrline();	/* Clear line under cursor */
+ extern void vt_clreol();	/* Clear to the end of line */
+ extern void vt_clrbgl();	/* Clear to the beginning of line, including cursor */
+-extern void vt_delline();	/* Delete line under cursor */
+-extern void vt_delunder();	/* Delete character under cursor */
+-extern void vt_insline();	/* Insert open line under cursor */
+-extern void vt_bold();		/* Toggle bold display */
+-extern void vt_underline();	/* Toggle underlined display */
+-extern void vt_blink();		/* Toggle blinking display */
+-extern void vt_reverse();	/* Toggle reversed display */
+-extern void vt_setattr();	/* Set display attributes */
+-extern void vt_setfg();		/* Set foreground color */
+-extern void vt_setbg();		/* Set background color */
++extern void vt_delline(int);	/* Delete line under cursor */
++extern void vt_delunder(int);	/* Delete character under cursor */
++extern void vt_insline(int);	/* Insert open line under cursor */
++extern void vt_bold(int);		/* Toggle bold display */
++extern void vt_underline(int);	/* Toggle underlined display */
++extern void vt_blink(int);		/* Toggle blinking display */
++extern void vt_reverse(int);	/* Toggle reversed display */
++extern void vt_setattr(int);	/* Set display attributes */
++extern void vt_setfg(int);		/* Set foreground color */
++extern void vt_setbg(int);		/* Set background color */
+ extern void vt_resetattr();	/* Reset display attributes */
+-extern void vt_setscroll();	/* Set scrolling region */
++extern void vt_setscroll(int, int);	/* Set scrolling region */
+ extern void vt_revscroll();	/* Reverse scroll */
+-extern void vt_altcharset();	/* Toggle alternate character set (graphics) */
++extern void vt_altcharset(int, int);	/* Toggle alternate character set (graphics) */
+ extern void vt_savecursor();	/* Save current hardware cursor position */
+ extern void vt_restcursor();	/* Restore saved hardware cursor position */
+-extern void vt_keystate();	/* Set and reset application mode keys */
+-extern void vt_widemode();	/* Set and reset 132 column mode */
+-extern void vt_rows_cols();	/* Return the rows and cols from termcap */
+-extern void vt_insertchar();	/* Insert character in line */
++extern void vt_keystate(int);	/* Set and reset application mode keys */
++extern void vt_widemode(int);	/* Set and reset 132 column mode */
++extern void vt_rows_cols(char *, int *, int *);	/* Return the rows and cols from termcap */
++extern void vt_insertchar(int);	/* Insert character in line */
+ extern void vt_update();	/* Flush any pending output */
+--- a/video.h
++++ b/video.h
+@@ -24,7 +24,7 @@ typedef struct {
+ 	int row_offset;			/* The physical offset of upper edge */
+ 	int scr_upper;			/* Upper limit of scroll region */
+ 	int scr_lower;			/* Lower limit of scroll region */
+-	void (*process_char)();		/* Next output processing function */
++	void (*process_char)(int, int *);	/* Next output processing function */
+ 	enum keystate key_state;		/* For vt100 keypad */
+ 	unsigned char charset[NCHARSETS];	/* Current character set */
+ 	unsigned char textattr;			/* Current text attributes */
+@@ -52,17 +52,17 @@ extern int TABSTOP;			/* Default value f
+ #define REVERSE		0x08
+ #define SELECTED	0xF0
+ 
+-int **alloc_video();		/* Allocate a video memory buffer */
+-void copy_video();		/* Copy a video buffer to an empty one */
+-void add_video();		/* Add a character to a video buffer */
+-void erase_video();		/* Erase a two-dimensional section */
+-void scroll_video();		/* Scroll a section of the buffer */
+-void revscroll_video();		/* Reverse-scroll a section of the buffer */
+-void rshift_video();		/* Shift part of a line right */
+-void paint_video();		/* Repaint the video buffer onto the screen */
+-void getsel_video();		/* Get a selection from the video buffer */
+-void clrsel_video();		/* Clear a selection from the video buffer */
+-void put_video();		/* Set a character in the video buffer */
+-int  get_video();		/* Get a character from the video buffer */
++int **alloc_video(int, int);			/* Allocate a video memory buffer */
++void copy_video(window *, int **, int, int, position *);		/* Copy a video buffer to an empty one */
++void add_video(window *, char);			/* Add a character to a video buffer */
++void erase_video(window *, int, int, int, int);	/* Erase a two-dimensional section */
++void scroll_video(window *, int);		/* Scroll a section of the buffer */
++void revscroll_video(window *, int);		/* Reverse-scroll a section of the buffer */
++void rshift_video(window *, int);		/* Shift part of a line right */
++void paint_video(window *);			/* Repaint the video buffer onto the screen */
++void getsel_video(window *, char *, int, int, int, int, int);		/* Get a selection from the video buffer */
++void clrsel_video(window *);			/* Clear a selection from the video buffer */
++void put_video(int, window *, int, int);	/* Set a character in the video buffer */
++int  get_video(window *, int, int);		/* Get a character from the video buffer */
+ 
+ int check_attr(int pixel, int lastattr, unsigned char *currattr);
+--- a/vt100.c
++++ b/vt100.c
+@@ -44,8 +44,8 @@ static char terminal_type[BUFSIZ];	/* Ou
+ static char *sep;	        	/* The window separator string */
+ 
+ /* The various output processing functions, based on state */
+-void scan_for_esc();
+-void E_(), E_brac(), E_brac_Q(), E_lparen(), E_rparen(), E_pound();
++void scan_for_esc(int, int *);
++void E_(int, int *), E_brac(int, int *), E_brac_Q(int, int *), E_lparen(int, int *), E_rparen(int, int *), E_pound(int, int *);
+ 
+ /* Make these four variables accessable to the calling program */
+ int UU_lines=0;         /* The user requested lines for the upper window */
+--- a/vt100.h
++++ b/vt100.h
+@@ -1,16 +1,16 @@
+ 
+ /* Global functions exported by vt100.c */
+ 
+-extern char *init_vt100();		/* Initialize the window */
+-extern void  set_win();			/* Move the cursor to current window */
+-extern int   vt_write();		/* Write a buffer to a window */
+-extern char  vt_prompt();		/* Prompt the user and return a char */
+-extern void  vt_info();			/* Print out an info message */
+-extern char *vt_getsel();		/* Get a selection on the window */
+-extern char *vt_setselbuf();		/* Set the selection buffer */
++extern char *init_vt100(int);			/* Initialize the window */
++extern void  set_win(int);			/* Move the cursor to current window */
++extern int   vt_write(int, char *, int, int *);	/* Write a buffer to a window */
++extern char  vt_prompt(char *);			/* Prompt the user and return a char */
++extern void  vt_info(char *);			/* Print out an info message */
++extern char *vt_getsel(int, char *, int);	/* Get a selection on the window */
++extern char *vt_setselbuf(char *);		/* Set the selection buffer */
+ extern char *vt_getselbuf();		/* Get the selection buffer */
+ extern void  vt_redraw();		/* Repaint a window from RAM */
+-extern void  vt_showscreen();		/* Show a (help) screen */
++extern void  vt_showscreen(char *, char**);	/* Show a (help) screen */
+ extern void  end_vt100();		/* End the vt100 scrolling and such */
+ 
+ /* Handy definitions, sometimes passed to vt100.c functions */
+--- a/vtmouse.c
++++ b/vtmouse.c
+@@ -15,8 +15,6 @@
+ #include "vtmouse.h"
+ #include "splitvt.h"
+ 
+-extern FILE *safe_popen();		/* From misc.c */
+-
+ #ifdef MAIN
+ void event_loop()
+ {
+--- a/vtmouse.h
++++ b/vtmouse.h
+@@ -35,6 +35,6 @@ struct event {
+    
+ extern int terminal_input;	/* Set true if event_getc() can read input */
+ 
+-extern int  event_init();
+-extern int  event_getc();
++extern int  event_init(FILE *, FILE *, char *);
++extern int  event_getc(struct event *);
+ extern void event_quit();

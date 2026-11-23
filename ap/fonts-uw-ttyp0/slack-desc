@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|' on
+# the right side marks the last column you can put a character in. You must make
+# exactly 11 lines for the formatting to be correct. It's also customary to
+# leave one space after the ':'.
+
+              |-----handy-ruler------------------------------------------------------|
+fonts-uw-ttyp0: fonts-uw-ttyp0 (monospaced bitmap screen fonts)
+fonts-uw-ttyp0:
+fonts-uw-ttyp0: UW ttyp0 is a family of monospaced bitmap fonts. It supports Latin,
+fonts-uw-ttyp0: Cyrillic, Greek, Armenian, Georgian, Hebrew, Tifinagh, Thai, Braille,
+fonts-uw-ttyp0: most IPA, Powerline, box drawing, standard punctuation, mathematics,
+fonts-uw-ttyp0: and various technical symbols. It includes about 3800 Unicode
+fonts-uw-ttyp0: characters and supports X11 and Linux, FreeBSD, NetBSD, and OpenBSD
+fonts-uw-ttyp0: consoles.
+fonts-uw-ttyp0:
+fonts-uw-ttyp0: Homepage: https://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0/
+fonts-uw-ttyp0:

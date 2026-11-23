@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+                  |-----handy-ruler------------------------------------------------------|
+cxx-rust-cssparser: cxx-rust-cssparser (A C++ library for parsing CSS)
+cxx-rust-cssparser:
+cxx-rust-cssparser: cxx-rust-cssparser is a C++ library for parsing CSS that uses the Rust
+cxx-rust-cssparser: cssparser crate internally. The goal of this library is not
+cxx-rust-cssparser: necessarily to implement a full-fledged web-compatible CSS parser.
+cxx-rust-cssparser: Instead, it intends to give enough building blocks to be able to
+cxx-rust-cssparser: implement such a parser, but also allows you to deviate from the
+cxx-rust-cssparser: specification if needed.
+cxx-rust-cssparser:
+cxx-rust-cssparser: Homepage: https://invent.kde.org/libraries/cxx-rust-cssparser
+cxx-rust-cssparser:

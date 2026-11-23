@@ -1,0 +1,89 @@
+--- ./doc/man/man1/mwm.1.orig	2026-04-16 23:32:16.000000000 -0500
++++ ./doc/man/man1/mwm.1	2026-05-31 14:48:43.646179492 -0500
+@@ -678,8 +678,8 @@
+ \fB$HOME\fP/\fBconfigFile\fP\&. If the \fIconfigFile\fP pathname does not begin with "~/" or "/", \fBmwm\fP considers it to be relative to the current working directory\&. If
+ the \fIconfigFile\fP resource is not specified
+ or if that file does not exist, \fBmwm\fP uses several default
+-paths to find a configuration file\&. The order of the search is shown below: \fB/usr/X11R6/lib/X11/$LANG/system\&.mwmrc\fP\(dg
+-\fB/usr/X11R6/lib/X11/system\&.mwmrc\fP\(dg Paths marked with \&'\(dg\&' are
++paths to find a configuration file\&. The order of the search is shown below: \fB/etc/X11/mwm/$LANG/system\&.mwmrc\fP\(dg
++\fB/etc/X11/mwm/system\&.mwmrc\fP\(dg Paths marked with \&'\(dg\&' are
+ implementation dependent\&.
+ .IP "\fIdeiconifyKeyFocus\fP\ (class\  \fIDeiconifyKeyFocus\fP)" 10
+ This resource applies only when the keyboard input focus policy is explicit\&.
+@@ -1344,9 +1344,9 @@
+ function\&.
+ .SS "Files"
+ .PP
+-\fB/usr/X11R6/lib/X11/$LANG/system\&.mwmrc\fP
++\fB/etc/X11/mwm/$LANG/system\&.mwmrc\fP
+ .PP
+-\fB/usr/X11R6/lib/X11/system\&.mwmrc\fP
++\fB/etc/X11/mwm/system\&.mwmrc\fP
+ .PP
+ \fB/usr/X11R6/lib/X11/app-defaults/Mwm\fP
+ .PP
+--- ./doc/man/man4/mwmrc.4.orig	2026-04-16 23:32:16.000000000 -0500
++++ ./doc/man/man4/mwmrc.4	2026-05-31 14:51:18.432170152 -0500
+@@ -57,7 +57,7 @@
+ It contains descriptions of resources that cannot easily be
+ written using standard X Window System, Version 11 resource syntax\&. The resource
+ description file contains entries that are referred to by X resources in
+-defaults files (for example, \fB/usr/X11R6/lib/X11/app-defaults/Mwm\fP)
++defaults files (for example, \fB/usr/share/X11/app-defaults/Mwm\fP)
+ or in the \fBRESOURCE_MANAGER\fP property on the
+ root window\&. For example, the resource description file enables you to specify
+ different types of window menus; however, an X resource is used to specify
+@@ -72,8 +72,8 @@
+ .nf
+ \f(CW$HOME/$LANG/\&.mwmrc
+ $HOME/\&.mwmrc
+-/usr/X11R6/lib/X11/$LANG/system\&.mwmrc
+-/usr/X11R6/lib/X11/system\&.mwmrc\fR
++/etc/X11/mwm/$LANG/system\&.mwmrc
++/etc/X11/mwm/system\&.mwmrc\fR
+ .fi
+ .PP
+ .PP
+@@ -84,7 +84,7 @@
+ be specified from the command line:
+ .PP
+ .nf
+-\f(CW/usr/X11R6/bin/X11/mwm \-xrm "mwm*configFile: mymwmrc"\fR
++\f(CW/usr/bin/mwm \-xrm "mwm*configFile: mymwmrc"\fR
+ .fi
+ .PP
+ .SS "Resource Types"
+@@ -626,8 +626,8 @@
+ .nf
+ \fB$HOME/$LANG/\&.mwmrc
+ $HOME/\&.mwmrc
+-/usr/X11R6/lib/X11/$LANG/system\&.mwmrc
+-/usr/X11R6/lib/X11/system\&.mwmrc\fP
++/etc/X11/mwm/$LANG/system\&.mwmrc
++/etc/X11/mwm/system\&.mwmrc\fP
+ .fi
+ .SH "RELATED INFORMATION"
+ .PP
+--- ./configure.ac.orig	2026-04-16 23:32:16.000000000 -0500
++++ ./configure.ac	2026-05-31 14:49:51.091175212 -0500
+@@ -175,7 +175,7 @@
+ 
+ AC_ARG_WITH([mwmrcdir],
+ 	[AS_HELP_STRING([--with-mwmrcdir], [mwm resources are located in DIR])],
+-	[MWMRCDIR=$withval], [MWMRCDIR="${sysconfdir}/X11"])
++	[MWMRCDIR=$withval], [MWMRCDIR="/etc/X11/mwm"])
+ AC_SUBST(MWMRCDIR)
+ 
+ dnl lib/Xm/VirtKeys.c
+--- ./clients/mwm/WmResParse.c.orig	2026-04-16 23:32:16.000000000 -0500
++++ ./clients/mwm/WmResParse.c	2026-05-31 14:48:43.645390335 -0500
+@@ -2350,7 +2350,7 @@
+ #endif /* PANELIST */
+ 
+ #ifndef MWMRCDIR
+-#define MWMRCDIR "/usr/lib/X11"
++#define MWMRCDIR "/etc/X11/mwm"
+ #endif
+     if (LANG != NULL)
+     {

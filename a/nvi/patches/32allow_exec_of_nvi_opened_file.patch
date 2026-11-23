@@ -1,0 +1,36 @@
+From: Jim Lebeau <jiml@ladsnet.com>
+Date: Fri, 20 May 2016 20:35:51 -0500
+Subject: Allow exec of nvi-opened file
+
+This patch allows the files that are being edited by nvi to be
+executed by others. Otherwise a ETXTBSY will occur.
+
+Fix proposed in https://bugs.debian.org/891174 . The original
+bug report also listed the fix.
+
+Explanation from  Bug#891174:
+
+Opening the file read-only is enough for flock() -- please notice that
+ep->fd is only used to keep the lock hot, that's not the descriptor that
+is used for reading or writing data to the file.
+
+Forwarded: no
+Bug-Debian: https://bugs.debian.org/497342
+Signed-off-by: Boyuan Yang <byang@debian.org>
+---
+ common/exf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/common/exf.c b/common/exf.c
+index 33c6af5..11c1017 100644
+--- a/common/exf.c
++++ b/common/exf.c
+@@ -408,7 +408,7 @@ postinit:
+ 	 * an error.
+ 	 */
+ 	if (rcv_name == NULL && ep->refcnt == 0) {
+-		if ((ep->fd = open(oname, O_RDWR)) == -1)
++		if ((ep->fd = open(oname, O_RDONLY)) == -1)
+ 		    goto no_lock;
+ 
+ 		switch (file_lock(sp, oname, &ep->fcntl_fd, ep->fd, 1)) {

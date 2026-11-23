@@ -1,0 +1,17 @@
+--- ./src/update-desktop-database.c.orig	2026-11-08 14:09:07.000000000 -0600
++++ ./src/update-desktop-database.c	2026-11-09 14:18:08.664637625 -0600
+@@ -154,14 +154,8 @@
+         case MU_VALID:
+           break;
+         case MU_DISCOURAGED:
+-          udd_print (_("Warning in file \"%s\": usage of MIME type \"%s\" is "
+-                       "discouraged (%s)\n"),
+-                     desktop_file, mime_types[i], valid_error);
+           break;
+         case MU_INVALID:
+-          udd_print (_("Error in file \"%s\": \"%s\" is an invalid MIME type "
+-                       "(%s)\n"),
+-                     desktop_file, mime_types[i], valid_error);
+           /* not a break: we continue to the next mime type */
+           continue;
+         default:

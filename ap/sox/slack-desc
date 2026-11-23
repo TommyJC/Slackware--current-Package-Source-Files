@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+   |-----handy-ruler------------------------------------------------------|
+sox: sox (universal sound sample translator)
+sox:
+sox: SoX (Sound eXchange) is another Swiss Army knife of sound processing
+sox: tools: it can convert sound files between many different file formats
+sox: and audio devices, and can apply many sound effects & transformations.
+sox: This version comes from the SoX_ng project which imports, compares,
+sox: and refines bug fixes and new work from the many software
+sox: distributions that package SoX and from the forks on github and
+sox: elsewhere.
+sox:
+sox: Homepage: https://codeberg.org/sox_ng/sox_ng

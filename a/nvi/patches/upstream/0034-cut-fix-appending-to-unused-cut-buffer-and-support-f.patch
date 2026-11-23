@@ -1,0 +1,151 @@
+From: Wolfgang Jenkner <wjenkner@inode.at>
+Date: Wed, 9 Apr 2008 16:43:41 +0200
+Subject: cut: fix appending to unused cut buffer and support for wide
+ characters
+Origin: upstream, https://repo.or.cz/nvi.git/commit/53b5b0c8e89673871f4d89702ecb2e22ca61c8e8
+
+Fix an if clause whose test assumes that a successful isupper test
+returns 1 (grepping through the nvi sources, I haven't found other cases
+where a character classification function is used with this assumption).
+
+This fixes the following problem (on my i686 glibc based Gnu/Linux
+system): Take an unused cut buffer, say a, and append something to
+it, like "Ayy.  Now, :di b shows a cut buffer named (uppercase!) A.
+Repeating "Ayy shows this bogus buffer twice instead of appending to it.
+This affects both the 8-bit and wchar version.
+---
+ common/cut.c       | 42 +++++++++++++++++++++---------------------
+ common/cut.h       |  2 +-
+ common/multibyte.h |  4 ++++
+ 3 files changed, 26 insertions(+), 22 deletions(-)
+
+diff --git a/common/cut.c b/common/cut.c
+index 8ad1405..3603bb9 100644
+--- a/common/cut.c
++++ b/common/cut.c
+@@ -101,15 +101,15 @@ cut(SCR *sp, CHAR_T *namep, MARK *fm, MARK *tm, int flags)
+ 			copy_one = 1;
+ 			cb_rotate(sp);
+ 		}
+-		if ((append = isupper(name)) == 1) {
++		if ((append = isupper(name))) {
+ 			if (!copy_one)
+ 				copy_def = 1;
+-			name = tolower(name);
++			name = TOLOWER(name);
+ 		}
+ namecb:		CBNAME(sp, cbp, name);
+ 	} else if (LF_ISSET(CUT_NUMREQ) || LF_ISSET(CUT_NUMOPT) &&
+ 	    (LF_ISSET(CUT_LINEMODE) || fm->lno != tm->lno)) {
+-		name = '1';
++		name = L('1');
+ 		cb_rotate(sp);
+ 		goto namecb;
+ 	} else
+@@ -163,7 +163,7 @@ copyloop:
+ 	sp->wp->dcbp = cbp;	/* Repoint the default buffer on each pass. */
+ 
+ 	if (copy_one) {		/* Copy into numeric buffer 1. */
+-		name = '1';
++		name = L('1');
+ 		CBNAME(sp, cbp, name);
+ 		copy_one = 0;
+ 		goto copyloop;
+@@ -194,31 +194,31 @@ cb_rotate(SCR *sp)
+ 	del_cbp = NULL;
+ 	for (cbp = sp->wp->cutq.lh_first; cbp != NULL; cbp = cbp->q.le_next)
+ 		switch(cbp->name) {
+-		case '1':
+-			cbp->name = '2';
++		case L('1'):
++			cbp->name = L('2');
+ 			break;
+-		case '2':
+-			cbp->name = '3';
++		case L('2'):
++			cbp->name = L('3');
+ 			break;
+-		case '3':
+-			cbp->name = '4';
++		case L('3'):
++			cbp->name = L('4');
+ 			break;
+-		case '4':
+-			cbp->name = '5';
++		case L('4'):
++			cbp->name = L('5');
+ 			break;
+-		case '5':
+-			cbp->name = '6';
++		case L('5'):
++			cbp->name = L('6');
+ 			break;
+-		case '6':
+-			cbp->name = '7';
++		case L('6'):
++			cbp->name = L('7');
+ 			break;
+-		case '7':
+-			cbp->name = '8';
++		case L('7'):
++			cbp->name = L('8');
+ 			break;
+-		case '8':
+-			cbp->name = '9';
++		case L('8'):
++			cbp->name = L('9');
+ 			break;
+-		case '9':
++		case L('9'):
+ 			del_cbp = cbp;
+ 			break;
+ 		}
+diff --git a/common/cut.h b/common/cut.h
+index 4e07fd4..a2494d7 100644
+--- a/common/cut.h
++++ b/common/cut.h
+@@ -65,7 +65,7 @@ struct _text {				/* Text: a linked list of lines. */
+  */
+ #define	CBNAME(sp, cbp, nch) {						\
+ 	CHAR_T L__name;							\
+-	L__name = isupper(nch) ? tolower(nch) : (nch);			\
++	L__name = ISUPPER(nch) ? TOLOWER(nch) : (nch);			\
+ 	for (cbp = sp->wp->cutq.lh_first;				\
+ 	    cbp != NULL; cbp = cbp->q.le_next)				\
+ 		if (cbp->name == L__name)				\
+diff --git a/common/multibyte.h b/common/multibyte.h
+index 245edce..92b6512 100644
+--- a/common/multibyte.h
++++ b/common/multibyte.h
+@@ -12,6 +12,7 @@ typedef	wchar_t		CHAR_T;
+ typedef	u_int		UCHAR_T;
+ #define RCHAR_BIT	24
+ 
++#define ISUPPER		iswupper
+ #define STRLEN		wcslen
+ #define STRTOL		wcstol
+ #define STRTOUL		wcstoul
+@@ -19,6 +20,7 @@ typedef	u_int		UCHAR_T;
+ #define STRCHR		wcschr
+ #define STRCMP		wcscmp
+ #define STRPBRK		wcspbrk
++#define TOLOWER		towlower
+ #define TOUPPER		towupper
+ #define STRSET		wmemset
+ 
+@@ -32,6 +34,7 @@ typedef	u_char		CHAR_T;
+ typedef	u_char		UCHAR_T;
+ #define RCHAR_BIT	CHAR_BIT
+ 
++#define ISUPPER		isupper
+ #define STRLEN		strlen
+ #define STRTOL		strtol
+ #define STRTOUL		strtoul
+@@ -39,6 +42,7 @@ typedef	u_char		UCHAR_T;
+ #define STRCHR		strchr
+ #define STRCMP		strcmp
+ #define STRPBRK		strpbrk
++#define TOLOWER		tolower
+ #define TOUPPER		toupper
+ #define STRSET		memset
+ 

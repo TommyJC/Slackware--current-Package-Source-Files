@@ -1,0 +1,5 @@
+# Make kdiagram 2.8 compile with cmake4 and newer ECM.
+# Thanks to Gentoo for these patches:
+cat $CWD/patch/kdiagram5/kdiagram-2.8.0-ecm-warning.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+cat $CWD/patch/kdiagram5/kdiagram-2.8.0-cmake4.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+

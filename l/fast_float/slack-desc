@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+          |-----handy-ruler------------------------------------------------------|
+fast_float: fast_float (fast_float number parsing library)
+fast_float:
+fast_float: The fast_float library provides fast header-only implementations for
+fast_float: the C++ from_chars functions for float and double types as well as
+fast_float: integer types. These functions convert ASCII strings representing
+fast_float: decimal values (e.g., 1.3e10) into binary types.
+fast_float:
+fast_float: Homepage: https://github.com/fastfloat/fast_float
+fast_float:
+fast_float:
+fast_float:

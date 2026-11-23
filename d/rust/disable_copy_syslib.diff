@@ -1,0 +1,13 @@
+--- ./src/bootstrap/src/core/build_steps/compile.rs.orig	2025-08-04 07:20:29.000000000 -0500
++++ ./src/bootstrap/src/core/build_steps/compile.rs	2025-08-10 20:41:11.948379439 -0500
+@@ -807,7 +807,9 @@
+                 let _ = fs::remove_dir_all(sysroot.join("lib/rustlib/src/rust"));
+             }
+ 
+-            builder.cp_link_r(&builder.initial_sysroot.join("lib"), &sysroot.join("lib"));
++            // Do not try to make a copy of /usr/lib.
++            // We'll make a symlink to the proper libraries from the build script.
++            // builder.cp_link_r(&builder.initial_sysroot.join("lib"), &sysroot.join("lib"));
+         } else {
+             if builder.download_rustc() {
+                 // Ensure there are no CI-rustc std artifacts.

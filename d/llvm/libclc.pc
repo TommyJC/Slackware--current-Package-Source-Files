@@ -1,0 +1,5 @@
+libexecdir=/usr/share/clc
+
+Name: libclc
+Description: Library requirements of the OpenCL C programming language
+Version: @@VERSION@@

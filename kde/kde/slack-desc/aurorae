@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+       |-----handy-ruler------------------------------------------------------|
+aurorae: aurorae (theme engine for KWin window decorations)
+aurorae:
+aurorae: Aurorae is a theme engine for KWin window decorations, i.e. the frames
+aurorae: around windows that typically contain the window title and buttons for
+aurorae: closing, minimizing, etc. the window. Aurorae uses either SVG or QML
+aurorae: to render the decoration and buttons, and there is a simple config
+aurorae: file for configuring the theme details.
+aurorae:
+aurorae:
+aurorae:
+aurorae:

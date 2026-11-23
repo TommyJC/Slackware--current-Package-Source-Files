@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+             |-----handy-ruler------------------------------------------------------|
+kquickcharts5: kquickcharts5 (QtQuick chart module)
+kquickcharts5:
+kquickcharts5: The Quick Charts module provides a set of charts that can be used
+kquickcharts5: from QtQuick applications. They are intended to be used for both
+kquickcharts5: simple display of data as well as continuous display of high-volume
+kquickcharts5: data (often referred to as plotters). The charts use a system called
+kquickcharts5: distance fields for their accelerated rendering, which provides ways
+kquickcharts5: of using the GPU for rendering 2D shapes without loss of quality.
+kquickcharts5:
+kquickcharts5: Homepage: https://api.kde.org/frameworks/kquickcharts5/html/index.html
+kquickcharts5:

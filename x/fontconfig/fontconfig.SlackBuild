@@ -1,0 +1,175 @@
+#!/bin/bash
+
+# Copyright 2024, 2025, 2026  Patrick J. Volkerding, Sebeka, Minnesota, USA
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PKGNAM=fontconfig
+VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
+BUILD=${BUILD:-1}
+
+# Automatically determine the architecture we're building on:
+if [ -z "$ARCH" ]; then
+  case "$(uname -m)" in
+    i?86) ARCH=i686 ;;
+    arm*) readelf /usr/bin/file -A | egrep -q "Tag_CPU.*[4,5]" && ARCH=arm || ARCH=armv7hl ;;
+    # Unless $ARCH is already set, use uname -m for all other archs:
+    *) ARCH=$(uname -m) ;;
+  esac
+  export ARCH
+fi
+
+# If the variable PRINT_PACKAGE_NAME is set, then this script will report what
+# the name of the created package would be, and then exit. This information
+# could be useful to other scripts.
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PKGNAM-$VERSION-$ARCH-$BUILD.txz"
+  exit 0
+fi
+
+NUMJOBS=${NUMJOBS:-" -j $(expr $(nproc) + 1) "}
+
+if [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-O2 -march=pentium4 -mtune=generic"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-O2 -march=x86-64 -mtune=generic -fPIC"
+  LIBDIRSUFFIX="64"
+else
+  SLKCFLAGS="-O2"
+  LIBDIRSUFFIX=""
+fi
+
+# Fail on undeclared variables and broken pipes:
+set -u -o pipefail
+
+TMP=${TMP:-/tmp}
+PKG=$TMP/package-$PKGNAM
+
+rm -rf $PKG
+mkdir -p $TMP $PKG
+
+cd $TMP
+rm -rf $PKGNAM-$VERSION
+tar xvf $CWD/$PKGNAM-$VERSION.tar.?z || exit 1
+cd $PKGNAM-$VERSION || exit 1
+
+chown -R root:root .
+find . \
+  \( -perm 777 -o -perm 775 -o -perm 711 -o -perm 555 -o -perm 511 \) \
+  -exec chmod 755 {} \+ -o \
+  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
+  -exec chmod 644 {} \+
+
+# Patches from Fedora and Debian:
+cat $CWD/patches/02_indic_names.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/04_mgopen_fonts.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/fontconfig-sleep-less.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/fontconfig-drop-lang-from-pkgkit-format.patch | patch -p1 --verbose || exit 1
+
+# Prefer Liberation for sans, serif, and monospace, as we have for many years:
+cat $CWD/fontconfig.liberation.diff | patch -p1 --verbose || exit 1
+
+# Do not include the "xdg" element in fonts.conf, as it uses all of the fonts
+# under /usr/share/fonts, including the 75dpi and 100dpi bitmap fonts, unlike
+# earlier versions of fontconfig. However, then we need to add the directory
+# ~/.local/share/fonts which was previously scanned.
+cat $CWD/fonts.conf.in.no.usr.share.fonts.add.local.share.fonts.patch | patch -p1 --verbose || exit 1
+
+# Do not emit a warning if FcInit() is not called. Not calling it can cause
+# a small memory leak, but the warning causes various programs to fail.
+cat $CWD/no.fcinit.warning.patch | patch -p1 --verbose || exit 1
+
+export CFLAGS="$SLKCFLAGS"
+export CXXFLAGS="$SLKCFLAGS"
+mkdir meson-build
+cd meson-build
+  meson setup \
+    --prefix=/usr \
+    --libdir=/usr/lib${LIBDIRSUFFIX} \
+    --mandir=/usr/man \
+    --datadir=/usr/share \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --buildtype=release \
+    -D cache-build=disabled \
+    -D default-hinting=medium \
+    -D default-sub-pixel-rendering=none \
+    -D doc-html=disabled \
+    -D doc-pdf=disabled \
+    -D doc-txt=disabled \
+    -D bitmap-conf=noinstall \
+    -D default-fonts-dirs=/usr/share/fonts/OTF,/usr/share/fonts/TTF,/usr/share/fonts/Type1,/usr/share/fonts/Speedo,/usr/share/fonts/cyrillic,/usr/share/fonts/misc \
+  .. || exit 1
+  "${NINJA:=ninja}" $NUMJOBS || exit 1
+  DESTDIR=$PKG $NINJA install || exit 1
+cd ..
+
+# Don't ship static library:
+rm -f $PKG/usr/lib${LIBDIRSUFFIX}/libfontconfig.a
+
+# Strip binaries:
+find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null
+
+mkdir -p $PKG/var/log/setup
+cat $CWD/setup.05.fontconfig > $PKG/var/log/setup/setup.05.fontconfig
+chmod 755 $PKG/var/log/setup/setup.05.fontconfig
+
+# Compress manual pages:
+find $PKG/usr/man -type f -exec gzip -9 {} \+
+for i in $( find $PKG/usr/man -type l ) ; do
+  ln -s $( readlink $i ).gz $i.gz
+  rm $i
+done
+
+# Not convinced.
+#( cd $PKG/etc/fonts/conf.d ; ln -sf ../../../usr/share/fontconfig/conf.avail/70-no-bitmaps-except-emoji.conf . )
+
+# We did not previously link a hinting, subpixel, or lcdfilter conf file.
+# Let's not do that here, either. Let the user choose to link that themselves
+# without every fontconfig update stomping on it:
+rm -f $PKG/etc/fonts/conf.d/10-hinting-*
+rm -f $PKG/etc/fonts/conf.d/10-sub-pixel-*
+rm -f $PKG/etc/fonts/conf.d/11-lcdfilter-*
+
+# You can shop for this kind of stuff in the source tarball.
+rm -rf $PKG/usr/share/doc
+
+# Add a documentation directory:
+mkdir -p $PKG/usr/doc/${PKGNAM}-$VERSION
+cp -a \
+  AUTHORS* COPYING* ChangeLog INSTALL* NEWS* README* \
+  $PKG/usr/doc/${PKGNAM}-$VERSION
+
+# If there's a ChangeLog, installing at least part of the recent history
+# is useful, but don't let it get totally out of control:
+if [ -r ChangeLog ]; then
+  DOCSDIR=$(echo $PKG/usr/doc/${PKGNAM}-$VERSION)
+  cat ChangeLog | head -n 1000 > $DOCSDIR/ChangeLog
+  touch -r ChangeLog $DOCSDIR/ChangeLog
+fi
+
+mkdir -p $PKG/install
+zcat $CWD/doinst.sh.gz > $PKG/install/doinst.sh
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+cd $PKG
+/sbin/makepkg -l y -c n $TMP/$PKGNAM-$VERSION-$ARCH-$BUILD.txz

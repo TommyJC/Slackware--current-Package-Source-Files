@@ -1,0 +1,10 @@
+--- ./include/woff2/output.h.orig	2023-11-15 15:14:00.000000000 -0600
++++ ./include/woff2/output.h	2025-06-12 19:03:44.008433755 -0500
+@@ -13,6 +13,7 @@
+ #include <cstring>
+ #include <memory>
+ #include <string>
++#include <cstdint>
+ 
+ namespace woff2 {
+ 

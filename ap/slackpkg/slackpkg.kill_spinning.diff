@@ -1,0 +1,29 @@
+--- ./core-functions.sh.orig	2026-09-24 16:58:55.000000000 -0500
++++ ./core-functions.sh	2026-09-29 16:37:03.708217886 -0500
+@@ -868,7 +868,7 @@
+ 			;;
+ 	esac
+ 
+-	kill_spinning
++	[ "$SPINNING" = "off" ] || kill_spinning
+ 
+ 	echo -e "DONE\n"
+ }
+@@ -1321,7 +1321,7 @@
+ 		".*/{}-[^-]+-($ARCH|noarch|fw)-[^-]+" | awk -F/ '{print $NF}' |
+ 		applyblacklist )
+ 
+-	kill_spinning
++	[ "$SPINNING" = "off" ] || kill_spinning
+ 	echo -e "DONE"
+ 
+ 	if [ "$DOUBLEFILES" != "" ]; then
+@@ -1475,7 +1475,7 @@
+ 		grep -q " $PKGNAME " ${WORKDIR}/pkglist && \
+ 			echo $PKGNAME >> $TMPDIR/$TEMPLATE.work
+ 	done
+-	kill_spinning
++	[ "$SPINNING" = "off" ] || kill_spinning
+ 	echo " "
+ 
+ 	echo -e "\tGenerating $TEMPLATE "

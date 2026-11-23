@@ -1,0 +1,32 @@
+# See https://github.com/KDE/kdesrc-build/blob/master/kf6-applications-build-include for Plasma6 build instructions;
+#
+# applications-extra
+kColorPicker
+kImageAnnotator
+kquickimageeditor
+qml-box2d
+gcompris-qt
+calligraplan
+digikam
+kseexpr
+krita
+kdiagram
+kstars
+#kuser
+krusader
+kile
+alkimia
+kmymoney
+okteta
+krename
+ktimetracker
+labplot
+kid3
+kdevelop-pg-qt
+kdsoap-ws-discovery-client
+klevernotes
+subtitlecomposer
+haruna
+amarok
+marknote
+kio-snapshot

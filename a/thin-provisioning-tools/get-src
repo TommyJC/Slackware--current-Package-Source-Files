@@ -1,0 +1,55 @@
+#!/bin/bash
+set -e
+
+REPO=https://github.com/jthornber/thin-provisioning-tools.git
+
+# Grab the latest available:
+VERSION=$(git ls-remote --tags ${REPO} | grep -v '\^{}' | sort -k 2 -V | tail -n1 | sed 's#.*refs/tags/v##')
+SRC=thin-provisioning-tools-${VERSION}
+echo "Downloading version: ${VERSION}"
+
+# Remove the existing sources:
+rm -fv thin-provisioning-tools-*tar*
+
+wget https://github.com/jthornber/thin-provisioning-tools/archive/refs/tags/v${VERSION}.tar.gz \
+     -O ${SRC}.tar.gz
+gunzip ${SRC}.tar.gz
+
+# --- vendor the rust crates so the build can happen without Internet access ---
+WORK=$(mktemp -d)
+tar -xf ${SRC}.tar -C ${WORK}
+TOPDIR=$(tar -tf ${SRC}.tar | head -n1 | cut -f1 -d/)
+
+# Only vendor crates for the Linux targets we actually build for.
+TARGETS=(
+  aarch64-unknown-linux-gnu
+  x86_64-unknown-linux-gnu
+  i686-unknown-linux-gnu
+  s390x-unknown-linux-gnu
+)
+
+(
+  cd ${WORK}/${TOPDIR}
+  mkdir -p .cargo
+  PLATFORM_ARGS=()
+  for t in "${TARGETS[@]}"; do
+    PLATFORM_ARGS+=(--platform "$t")
+  done
+  if ! command -v cargo-vendor-filterer >/dev/null 2>&1; then
+    echo "WARNING: cargo-vendor-filterer not found, creating unfiltered vendor tarball"
+    cargo vendor vendor > .cargo/config.toml
+  else
+    cargo vendor-filterer "${PLATFORM_ARGS[@]}" vendor > .cargo/config.toml
+  fi
+)
+
+# Pack:
+tar -cf ${SRC}-vendor.tar -C ${WORK}/${TOPDIR} vendor .cargo
+rm -rf ${WORK}
+
+xz -ze9 ${SRC}.tar
+xz -ze9 ${SRC}-vendor.tar
+
+echo "Done:"
+echo "  ${SRC}.tar.xz         (source)"
+echo "  ${SRC}-vendor.tar.xz  (vendored crates, for offline cargo build)"

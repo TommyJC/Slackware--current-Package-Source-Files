@@ -1,0 +1,11 @@
+--- ./doc/man/man3/XmColorSelector.3.orig	2026-04-16 23:32:16.000000000 -0500
++++ ./doc/man/man3/XmColorSelector.3	2026-05-31 14:54:50.732128268 -0500
+@@ -34,7 +34,7 @@
+ noCellError%NoCellError%XmString%"No Color Cell
+ %%% Available"
+ redSliderLabel%SliderLabel%XmString%"Red"
+-rgbFile%String%String%/usr/lib/X11/rgb.txt
++rgbFile%String%String%/usr/share/X11/rgb.txt
+ sliderTogLabel%TogLabel%XmString%"Color Sliders"
+ .TE
+ .PP

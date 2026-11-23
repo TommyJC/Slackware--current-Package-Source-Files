@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+             |-----handy-ruler------------------------------------------------------|
+virglrenderer: virglrenderer (GL renderer library based on virtio)
+virglrenderer:
+virglrenderer: The project enables a virtual 3D capable graphics card for virtual
+virglrenderer: machines running inside qemu. The implementation of rendering for the
+virglrenderer: card is done in the host system as part of qemu and is implemented
+virglrenderer: purely on OpenGL, so rendering can be accelerated on any sufficiently
+virglrenderer: capable card/driver combination. The project also consists of a
+virglrenderer: complete Linux guest stack.
+virglrenderer:
+virglrenderer: Homepage: https://docs.mesa3d.org/drivers/virgl/
+virglrenderer:

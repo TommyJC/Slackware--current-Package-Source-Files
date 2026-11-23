@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+         |-----handy-ruler------------------------------------------------------|
+appstream: appstream (AppStream metadata library)
+appstream:
+appstream: AppStream makes machine-readable software metadata easily accessible.
+appstream: It is a foundational block for modern Linux software centers, offering
+appstream: a seamless way to retrieve information about available software, no
+appstream: matter the repository it is contained in. It can provide data about
+appstream: available applications as well as available firmware, drivers, fonts,
+appstream: and other components.
+appstream:
+appstream: Homepage: https://github.com/ximion/appstream
+appstream:

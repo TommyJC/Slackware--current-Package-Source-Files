@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+         |-----handy-ruler------------------------------------------------------|
+ristretto: ristretto (Xfce image viewer)
+ristretto:
+ristretto: The Ristretto Image Viewer is an application that can be used to view
+ristretto: and scroll through images, run a slideshow of images, open images with
+ristretto: other applications like an image-editor or configure an image as the
+ristretto: desktop wallpaper.
+ristretto:
+ristretto: Homepage: https://gitlab.xfce.org/apps/ristretto
+ristretto:
+ristretto:
+ristretto:

@@ -1,0 +1,2 @@
+# Package with --xattrs to preserve capabilities:
+/sbin/makepkg -l y -c n --xattrs ${SLACK_KDE_BUILD_DIR}/${kde_module}/${PKGNAME}-${MODULAR_PACKAGE_VERSION}-${PKGARCH}-${MODBUILD}${TAG}.txz

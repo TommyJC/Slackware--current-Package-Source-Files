@@ -1,0 +1,20 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+       |-----handy-ruler------------------------------------------------------|
+potrace: potrace (convert bitmaps into vector graphics)
+potrace:
+potrace: Potrace is a tool for transforming a bitmap into a smooth, scalable
+potrace: image. The input is a bitmap (PBM, PGM, PPM, or BMP), and the output
+potrace: is one of several vector file formats. The resulting image is not
+potrace: "jaggy" like a bitmap, but smooth. It can then be rendered at any
+potrace: resolution.
+potrace:
+potrace: Homepage: https://potrace.sourceforge.net/
+potrace:
+potrace:
+potrace:

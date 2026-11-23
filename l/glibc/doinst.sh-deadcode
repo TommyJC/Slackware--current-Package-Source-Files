@@ -1,0 +1,45 @@
+
+# At some point I put this "dead code" inside a conditional, but the package
+# system recognized these links as installed and owned by the package.
+# This painted me into a corner -- if this block is dropped then removepkg
+# removes the links and crashes the system. So we'll keep it around to protect
+# these locations from removal.
+if false ; then
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf libm.so.6 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf libm-2.42.so libm.so.6 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf libnss_files.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf libnss_files-2.42.so libnss_files.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf libresolv.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf libresolv-2.42.so libresolv.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf libutil.so.1 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf libutil-2.42.so libutil.so.1 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf libnss_compat.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf libnss_compat-2.42.so libnss_compat.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf libthread_db.so.1 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf libthread_db-2.42.so libthread_db.so.1 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf libnss_hesiod.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf libnss_hesiod-2.42.so libnss_hesiod.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf libanl.so.1 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf libanl-2.42.so libanl.so.1 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf libcrypt.so.1 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf libcrypt1-2.42.so libcrypt.so.1 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf libcrypt.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf libcrypt2-2.42.so libcrypt.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf libBrokenLocale.so.1 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf libBrokenLocale-2.42.so libBrokenLocale.so.1 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf ld-linux.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf ld-linux-2.42.so ld-linux.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf ld-linux-x86-64.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf ld-linux-x86-64-2.42.so ld-linux-x86-64.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf libdl.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf libdl-2.42.so libdl.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf libnss_dns.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf libnss_dns-2.42.so libnss_dns.so.2 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf libpthread.so.0 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf libpthread-2.42.so libpthread.so.0 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf libc.so.6 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf libc-2.42.so libc.so.6 )
+( cd lib@@LIBDIRSUFFIX@@ ; rm -rf librt.so.1 )
+( cd lib@@LIBDIRSUFFIX@@ ; ln -sf librt-2.42.so librt.so.1 )
+fi
+

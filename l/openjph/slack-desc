@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+       |-----handy-ruler------------------------------------------------------|
+openjph: openjph (JPEG2000 library)
+openjph:
+openjph: Open source implementation of High-throughput JPEG2000 (HTJ2K), also
+openjph: known as JPH, JPEG2000 Part 15, ISO/IEC 15444-15, and ITU-T T.814.
+openjph: Here, we are interested in implementing the HTJ2K only, supporting
+openjph: features that are defined in JPEG2000 Part 1 (for example, for wavelet
+openjph: transform, only reversible 5/3 and irreversible 9/7 are supported).
+openjph:
+openjph: Homepage: https://github.com/aous72/OpenJPH
+openjph:
+openjph:

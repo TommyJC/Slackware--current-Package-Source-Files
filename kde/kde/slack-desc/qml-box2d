@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+         |-----handy-ruler------------------------------------------------------|
+qml-box2d: qml-box2d (QML Box2D plugin)
+qml-box2d:
+qml-box2d: The goal of the qml-box2d plugin is to expose the functionality of
+qml-box2d: Box2D (C++) as a QML plugin in order to make it easier to write
+qml-box2d: physics based software in QML.
+qml-box2d:
+qml-box2d:
+qml-box2d:
+qml-box2d:
+qml-box2d:
+qml-box2d:

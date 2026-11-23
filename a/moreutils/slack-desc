@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+         |-----handy-ruler------------------------------------------------------|
+moreutils: moreutils (more UNIX-style utilities)
+moreutils:
+moreutils: moreutils is a collection of the UNIX tools that nobody thought to
+moreutils: write long ago when UNIX was young.
+moreutils:
+moreutils: Homepage: https://joeyh.name/code/moreutils/
+moreutils:
+moreutils:
+moreutils:
+moreutils:
+moreutils:

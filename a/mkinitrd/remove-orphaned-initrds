@@ -1,0 +1,86 @@
+#!/bin/bash
+
+# Copyright 2024  Patrick J. Volkerding, Sebeka, Minnesota, USA
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# This script removes initrds in the /boot directory if there's no kernel
+# in /boot with the same version. This keeps unused initrds from accumulating
+# and filling up the filesystem.
+
+# Usage: Run without any options to clean up initrd orphans:
+#
+# ./remove-orphaned-initrds
+#
+# To see what would be removed without actually removing anything:
+#
+# ./remove-orphaned-initrds --dry-run
+#
+# This script is suitable to run as a periodic cron job (perhaps weekly).
+
+ORPHANS_FOUND=false
+
+# --dry-run is the only supported option here:
+if [ ! -z "$1" -a ! "$1" = "--dry-run" ]; then
+  echo "Usage: $(basename $0) [--dry-run]"
+  exit 1
+fi
+
+cd /boot
+for initrd in initrd-*.img ; do
+  if [ ! -r $initrd ]; then
+    continue
+  fi
+  # We are not removing symlinks here. We'll remove dangling ones later on.
+  if [ -L $initrd ]; then
+    continue
+  fi
+  # Find the identifying portion of the initrd's filename:
+  IDENTIFIER="$(basename $(echo $initrd | cut -f 2- -d -) .img)"
+  if [ ! -r vmlinuz-${IDENTIFIER} ]; then
+    ORPHANS_FOUND=true
+    if [ "$1" = "--dry-run" ]; then
+      echo "Would remove orphaned initrd: /boot/${initrd}"
+    else
+      echo "Removing orphaned initrd: /boot/${initrd}"
+      rm -f $initrd
+    fi
+  fi
+done
+if [ "$ORPHANS_FOUND" = "false" ]; then
+  echo "No orphaned initrds found in /boot."
+fi
+# Also handle initrd symlinks:
+if [ "$1" = "--dry-run" ]; then
+  for dangling_symlink in $(find . -name "initrd-*.img" -type l -printf '%P\n') $(find . -name "initrd.gz" -type l -printf '%P\n') ; do
+    if [ ! -r "$(readlink $dangling_symlink)" ]; then
+      echo "Would remove dangling initrd symlink: /boot/${dangling_symlink}"
+    else
+      IDENTIFIER="$(basename $(echo $(readlink $dangling_symlink) | cut -f 2- -d -) .img)"
+      if [ ! -r vmlinuz-${IDENTIFIER} ]; then
+        echo "Would remove dangling initrd symlink: /boot/${dangling_symlink}"
+      fi
+    fi
+  done
+else
+  for dangling_symlink in $(find . -name "initrd-*.img" -xtype l -printf '%P\n') $(find . -name "initrd.gz" -xtype l -printf '%P\n') ; do
+    echo "Removing dangling initrd symlink: /boot/${dangling_symlink}"
+    rm -f $dangling_symlink
+  done
+fi

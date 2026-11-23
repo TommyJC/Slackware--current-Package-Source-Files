@@ -1,0 +1,28 @@
+From f2c490cc233d2d55cd7c1eade9431d9711de375d Mon Sep 17 00:00:00 2001
+From: Tim Hentenaar <tim@hentenaar.com>
+Date: Mon, 4 May 2026 07:29:32 +0000
+Subject: [PATCH] XmString: DrawLine: If there's only a single segment, don't
+ deref
+
+Even in an unoptimized string, if there's only a single segment, the
+line itself will be that segment, so dereferencing line here is broken
+for that case.
+---
+ lib/Xm/XmString.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/lib/Xm/XmString.c b/lib/Xm/XmString.c
+index 3e4410a7..aed38e37 100644
+--- a/lib/Xm/XmString.c
++++ b/lib/Xm/XmString.c
+@@ -3735,7 +3735,9 @@ DrawLine(
+     Boolean             set_direction = False;
+     XmDirection         lay_dir = prim_dir; /* layout direction of this line */
+ 
+-    seg = _XmEntrySegmentGet(line)[seg_index];
++    if (_XmEntryMultiple(line))
++        seg = _XmEntrySegment(line)[seg_index];
++    else seg = (_XmStringNREntry)line;
+ 
+     if (_XmEntryType(seg) != XmSTRING_ENTRY_OPTIMIZED) {
+       lay_dir = _XmEntryLayoutGet(seg, prim_dir);

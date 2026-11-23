@@ -1,0 +1,4 @@
+# Fix DATA_INSTALL_DIR instances:
+sed -e 's|DATA_INSTALL_DIR|CMAKE_INSTALL_DATADIR|g' \
+  -i kstars/data/*/CMakeLists.txt
+

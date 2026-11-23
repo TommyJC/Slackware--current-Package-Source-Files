@@ -1,0 +1,33 @@
+From af4076e8145d51436225e85c1583e5f3603c0ffb Mon Sep 17 00:00:00 2001
+From: Gary Langshaw <gary.langshaw@gmail.com>
+Date: Sat, 6 Jun 2026 15:19:21 +0100
+Subject: [PATCH] Restore month check
+
+The fix to issue #3 (commit c12dea81441e75c955098666919e75db6d0dd31e)
+incorrectly removed the check for month of year when scheduling jobs
+
+Restore it.
+---
+ database.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/database.c b/database.c
+index c8a0688..df79910 100644
+--- a/database.c
++++ b/database.c
+@@ -1033,6 +1033,7 @@ TestJobs(time_t t1, time_t t2)
+ 						/* (re)schedule job? */
+ 						if (line->cl_Mins[tp->tm_min] &&
+ 								line->cl_Hrs[tp->tm_hour] &&
++								line->cl_Mons[tp->tm_mon] &&
+ 								(line->cl_Days[tp->tm_mday] && n_wday & line->cl_Dow[tp->tm_wday])
+ 						   ) {
+ 							if (line->cl_NotUntil)
+@@ -1106,6 +1107,7 @@ ArmJob(CronFile *file, CronLine *line, time_t t1, time_t t2)
+ 							}
+ 							if (line->cl_Mins[tp->tm_min] &&
+ 									line->cl_Hrs[tp->tm_hour] &&
++									line->cl_Mons[tp->tm_mon] &&
+ 									(line->cl_Days[tp->tm_mday] && n_wday & line->cl_Dow[tp->tm_wday])
+ 							   ) {
+ 								/* notifier will run soon enough, we wait for it */

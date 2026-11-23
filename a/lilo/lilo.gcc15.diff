@@ -1,0 +1,11 @@
+--- ./make.vars.orig	2013-06-07 02:50:30.000000000 -0500
++++ ./make.vars	2025-06-12 15:13:44.303660182 -0500
+@@ -80,7 +80,7 @@
+ MAN_DIR=/usr/share/man
+ 
+ # set the compiler optimization level
+-OPT=-Os
++OPT=-Os -Wno-error=incompatible-pointer-types -std=gnu17
+ 
+ ### End of configuration variables for makefiles ###
+ 

@@ -1,0 +1,62 @@
+diff -urN kfilemetadata-5.116.0.orig/src/extractors/mobiextractor.cpp kfilemetadata-5.116.0/src/extractors/mobiextractor.cpp
+--- kfilemetadata-5.116.0.orig/src/extractors/mobiextractor.cpp	2024-05-04 14:39:33.000000000 +0300
++++ kfilemetadata-5.116.0/src/extractors/mobiextractor.cpp	2025-08-16 01:40:03.459570822 +0300
+@@ -10,6 +10,7 @@
+ 
+ #include "mobiextractor.h"
+ 
++#include <qmobipocket_version.h>
+ #include <qmobipocket/mobipocket.h>
+ 
+ #include <QFile>
+@@ -17,6 +18,7 @@
+ 
+ using namespace KFileMetaData;
+ 
++#if QMOBIPOCKET_VERSION_MAJOR < 3
+ class QFileStream : public Mobipocket::Stream
+ {
+ public:
+@@ -32,11 +34,11 @@
+ private:
+     QFile d;
+ };
++#endif
+ 
+ MobiExtractor::MobiExtractor(QObject* parent)
+     : ExtractorPlugin(parent)
+ {
+-
+ }
+ 
+ static const QStringList supportedMimeTypes =
+@@ -51,10 +53,20 @@
+ 
+ void MobiExtractor::extract(ExtractionResult* result)
+ {
++#if QMOBIPOCKET_VERSION_MAJOR < 3
+     QFileStream stream(result->inputUrl());
+     Mobipocket::Document doc(&stream);
+-    if (!doc.isValid())
++#else
++    QFile file(result->inputUrl());
++    if (!file.open(QIODevice::ReadOnly)) {
++        return;
++    }
++    Mobipocket::Document doc(&file);
++#endif
++
++    if (!doc.isValid()) {
+         return;
++    }
+ 
+     result->addType(Type::Document);
+ 
+@@ -97,7 +109,6 @@
+ 
+         result->append(document.toPlainText());
+     }
+-
+ }
+ 
+ #include "moc_mobiextractor.cpp"

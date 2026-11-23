@@ -1,0 +1,227 @@
+#!/bin/bash
+
+# Slackware build script for llvm
+
+# Copyright 2008-2016 Heinz Wiesinger, Amsterdam, The Netherlands
+# Copyright 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2026  Patrick J. Volkerding, Sebeka, MN, USA
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR ''AS IS'' AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+# EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PKGNAM=llvm
+VERSION=${VERSION:-$(echo llvmorg-*.tar.?z | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
+BUILD=${BUILD:-1}
+
+NUMJOBS=${NUMJOBS:-" -j$(expr $(nproc) + 1) "}
+
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) ARCH=i686 ;;
+    arm*) ARCH=arm ;;
+       *) ARCH=$( uname -m ) ;;
+  esac
+fi
+
+# Select projects to build:
+if [ "$ARCH" = "i586" -o "$ARCH" = "i686" ]; then
+  # bolt and flang are not available on 32-bit
+  LLVM_ENABLE_PROJECTS=${LLVM_ENABLE_PROJECTS:-"clang;clang-tools-extra;lld;lldb;llvm;mlir;polly"}
+else
+  LLVM_ENABLE_PROJECTS=${LLVM_ENABLE_PROJECTS:-"bolt;clang;clang-tools-extra;flang;lld;lldb;llvm;mlir;polly"}
+fi
+
+# Select runtimes to build:
+LLVM_ENABLE_RUNTIMES=${LLVM_ENABLE_RUNTIMES:-"compiler-rt;openmp;libcxx;libcxxabi"}
+
+# If the variable PRINT_PACKAGE_NAME is set, then this script will report what
+# the name of the created package would be, and then exit. This information
+# could be useful to other scripts.
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PKGNAM-$VERSION-$ARCH-$BUILD.txz"
+  exit 0
+fi
+
+TMP=${TMP:-/tmp}
+PKG=$TMP/package-$PKGNAM
+BUILDDIR=${TMP}/llvm-build-${VERSION}
+
+# Ignore that which should be ignored to avoid long build times and
+# massive warning spew:
+IGNORE_GNU_EXTENSIONS=${IGNORE_GNU_EXTENSIONS:--Wno-unknown-warning-option -Wno-gnu-line-marker -Wno-gnu-anonymous-struct -Wno-gnu-include-next}
+
+if [ "$ARCH" = "i586" ]; then
+  SLKCFLAGS="-O2 -march=i586 -mtune=i686 $IGNORE_GNU_EXTENSIONS"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-O2 -march=pentium4 -mtune=generic $IGNORE_GNU_EXTENSIONS"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-O2 -march=x86-64 -mtune=generic -fPIC $IGNORE_GNU_EXTENSIONS"
+  LIBDIRSUFFIX="64"
+else
+  SLKCFLAGS="-O2 $IGNORE_GNU_EXTENSIONS"
+  LIBDIRSUFFIX=""
+fi
+
+# Python3 short version:
+PY3=$(python3 -c 'from distutils.sysconfig import get_python_lib; print(get_python_lib())' | cut -f 2 -d n | cut -f 1 -d /)
+
+rm -rf $PKG $BUILDDIR
+mkdir -p $TMP $PKG $BUILDDIR
+cd $BUILDDIR
+
+# Add a fake configure script so the cleanup script used here at Slackware
+# knows to delete this stuff later. Other folks can just ignore this... it
+# doesn't have any other purpose.
+touch configure
+chmod 755 configure
+
+echo "Extracting $CWD/llvmorg-$VERSION.tar.?z..."
+tar xf $CWD/llvmorg-$VERSION.tar.?z || exit 1
+cd llvm-project-llvmorg-$VERSION || cd llvmorg-$VERSION || exit 1
+
+# Support GCC built for i?86-slackware-linux:
+zcat $CWD/clang.toolchains.32-bit.triple.diff.gz | patch -p2 --verbose || exit 1
+
+chown -R root:root .
+find . \
+  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 -o -perm 511 \) \
+  -exec chmod 755 {} \+ -o \
+  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
+  -exec chmod 644 {} \+
+
+# As of 23.1.2 PCH is broken...
+PCH_OPT="-DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON"
+
+mkdir build
+cd build
+  cmake -GNinja \
+    -DCMAKE_C_COMPILER="clang" \
+    -DCMAKE_CXX_COMPILER="clang++" \
+    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLLVM_LIBDIR_SUFFIX=${LIBDIRSUFFIX} \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DLLVM_BUILD_LLVM_DYLIB=ON \
+    -DLLVM_LINK_LLVM_DYLIB=ON \
+    -DCLANG_LINK_CLANG_DYLIB=ON \
+    -DLLVM_USE_LINKER=lld \
+    -DLLVM_ENABLE_PROJECTS="$LLVM_ENABLE_PROJECTS" \
+    -DLLVM_ENABLE_RUNTIMES="$LLVM_ENABLE_RUNTIMES" \
+    -DLLVM_ENABLE_RTTI=ON \
+    -DLLVM_ENABLE_FFI=ON \
+    -DLLVM_ENABLE_ZLIB=ON \
+    -DLLVM_ENABLE_ZSTD=ON \
+    -DLLVM_USE_STATIC_ZSTD=ON \
+    $PCH_OPT \
+    -DLLVM_ENABLE_ASSERTIONS=OFF \
+    -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=OFF \
+    -DLLVM_INSTALL_UTILS=ON \
+    -DLLVM_BINUTILS_INCDIR=/usr/include \
+    -DCLANG_RESOURCE_DIR="../lib${LIBDIRSUFFIX}/clang/$(echo $VERSION | cut -f 1 -d .)" \
+    -DLLVM_TARGETS_TO_BUILD="host;AMDGPU;BPF;WebAssembly;NVPTX" \
+    -DLLVM_INCLUDE_BENCHMARKS=OFF \
+    -DCOMPILER_RT_BUILD_LIBFUZZER=OFF \
+    -DCLANG_DEFAULT_PIE_ON_LINUX=ON \
+    -DLIBCXX_LIBDIR_SUFFIX=${LIBDIRSUFFIX} \
+    -DLIBCXXABI_LIBDIR_SUFFIX=${LIBDIRSUFFIX} \
+    -DLIBCXX_INCLUDE_BENCHMARKS=OFF \
+    -DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=ON \
+    -DLIBCXXABI_USE_LLVM_UNWINDER=OFF \
+    ../llvm  || exit 1
+  "${NINJA:=ninja}" $NUMJOBS || exit 1
+  DESTDIR=$PKG "$NINJA" install || exit 1
+cd ..
+
+# Add symlinks for $ARCH-slackware-linux-{clang,clang++}:
+( cd $PKG/usr/bin
+  ln -sf clang $ARCH-slackware-linux-clang
+  ln -sf clang++ $ARCH-slackware-linux-clang++
+)
+
+# Install clang-static-analyzer:
+for i in ccc c++; do
+  ln -s /usr/libexec/$i-analyzer \
+    $PKG/usr/bin/$i-analyzer || exit 1
+done
+
+# Ensure lit-cpuid is installed:
+if [ ! -r $PKG/usr/bin/lit-cpuid ]; then
+  cp -a build/bin/lit-cpuid $PKG/usr/bin/lit-cpuid
+  chown root:root $PKG/usr/bin/lit-cpuid
+  chmod 755 $PKG/usr/bin/lit-cpuid
+fi
+
+# Remove symlink to libgomp, which is already provided by gcc:
+rm -f $PKG/usr/lib$LIBDIRSUFFIX/libgomp.so
+
+# Install Python bindings:
+for pyver in ${PY3}; do
+  mkdir -p "$PKG/usr/lib$LIBDIRSUFFIX/python$pyver/site-packages"
+  cp -a clang/bindings/python/clang "$PKG/usr/lib$LIBDIRSUFFIX/python$pyver/site-packages/"
+done
+
+# Remove bundled python-six:
+rm -f "$PKG/usr/lib$LIBDIRSUFFIX/python2*/site-packages/six.py"
+
+# Compile Python scripts:
+python3 -m compileall "$PKG/usr/lib$LIBDIRSUFFIX/python${PY3}/site-packages/clang"
+python3 -O -m compileall "$PKG/usr/lib$LIBDIRSUFFIX/python${PY3}/site-packages/clang"
+python3 -m compileall "$PKG/usr/share/scan-view"
+python3 -O -m compileall "$PKG/usr/share/scan-view"
+python3 -m compileall "$PKG/usr/share/clang"
+python3 -O -m compileall "$PKG/usr/share/clang"
+python3 -m compileall "$PKG/usr/share/opt-viewer"
+python3 -O -m compileall "$PKG/usr/share/opt-viewer"
+
+# Nevermind, we're not shipping this python2 crap:
+rm -rf $PKG/usr/lib$LIBDIRSUFFIX/python2*
+
+# Move man page directory:
+mv $PKG/usr/share/man $PKG/usr/
+
+# Strip binaries:
+( cd $PKG
+  find . | xargs file | grep "executable" | grep ELF | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null
+  find . | xargs file | grep "shared object" | grep ELF | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null
+)
+
+# Compress manual pages:
+find $PKG/usr/man -type f -exec gzip -9 {} \+
+for i in $( find $PKG/usr/man -type l ) ; do
+  ln -s $( readlink $i ).gz $i.gz
+  rm $i
+done
+
+# Just copy anything top or next level that looks like it might be docs.
+# Maybe we'll include it someday. ;-)
+mkdir -p $PKG/usr/doc/$PKGNAM-$VERSION
+cp -a *.{txt,md,TXT,rst} $PKG/usr/doc/$PKGNAM-$VERSION
+cp -a --parents */*.{txt,md,TXT,rst} $PKG/usr/doc/$PKGNAM-$VERSION
+cp -a --parents */README* $PKG/usr/doc/$PKGNAM-$VERSION
+find $PKG/usr/doc/$PKGNAM-$VERSION -name CMakeLists.txt -exec rm -f "{}" \;
+rmdir $PKG/usr/doc/$PKGNAM-$VERSION/* 2> /dev/null
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+cd $PKG
+/sbin/makepkg -l y -c n --remove-rpaths $TMP/$PKGNAM-$VERSION-$ARCH-$BUILD.txz

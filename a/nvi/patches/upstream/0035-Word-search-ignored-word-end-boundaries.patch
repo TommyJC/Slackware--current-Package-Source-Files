@@ -1,0 +1,29 @@
+From: Wolfgang Jenkner <wjenkner@inode.at>
+Date: Thu, 22 May 2008 16:33:53 +0200
+Subject: Word search ignored word end boundaries.
+Origin: upstream, https://repo.or.cz/nvi.git/commit/bfbd19beadea6ba5db63a3789d18928f16cade6a
+
+Put the cursor at the beginning of: a ab abc, then type ^A twice; this
+would move the cursor to ab and then to abc.
+---
+ vi/vi.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/vi/vi.c b/vi/vi.c
+index 777b97f..a464304 100644
+--- a/vi/vi.c
++++ b/vi/vi.c
+@@ -1104,10 +1104,10 @@ v_curword(SCR *sp)
+ 	    end = beg; ++end < len && state == inword(p[end]););
+ 
+ 	vip = VIP(sp);
+-	len = (end - beg);
+-	BINC_RETW(sp, vip->keyw, vip->klen, len+1);
++	vip->klen = len = end - beg;
++	BINC_RETW(sp, vip->keyw, vip->keywlen, len+1);
+ 	MEMMOVEW(vip->keyw, p + beg, len);
+-	vip->keyw[len] = '\0';				/* XXX */
++	vip->keyw[len] = L('\0');				/* XXX */
+ 	return (0);
+ }
+ 

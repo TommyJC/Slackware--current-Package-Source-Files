@@ -1,0 +1,23 @@
+--- ./src/xsnow-constants.h.orig	2025-12-14 14:07:50.000000000 +0300
++++ ./src/xsnow-constants.h	2025-12-26 21:36:09.359357102 +0300
+@@ -28,6 +28,9 @@
+ #define MAXBLOWOFFFACTOR 100
+ #define MAXSANTA	4    // santa types 0..4
+ #define MAXTANNENPLACES 10   // number of trees
++
++
++/* Please do not bring politics to software! */
+ #define MAXTREETYPE 8        // treetypes: 0..MAXTREETYPE Note that the last one is for extratree ;-)
+ #define MAXWSENS 0.4        // sensibility of flakes for wind
+ #define MAXXSTEP 2             /* drift speed max */
+@@ -44,5 +47,9 @@
+ #define SNOWSPEED 0.7    // the higher, the speedier the snow
+ #define WHIRL 150
+ #define MAXVISWORKSPACES 100   // should be enough...
++
++/* Please do not bring politics to software! 
+ #define USE_EXTRATREE
++*/
++
+ #define ignore_atom                "IGNORE_ME"
+

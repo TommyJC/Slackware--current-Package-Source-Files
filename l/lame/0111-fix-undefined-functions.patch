@@ -1,0 +1,140 @@
+
+Re: [Lame-dev] lame 4.0 released
+From: Fabian G. <fa...@gr...> - 2026-07-14 08:58:40
+
+Also, lame 4.0 still fails to build on Debian/unstable:
+
+Makefile:639: warning: ignoring prerequisites on suffix rule definition
+Makefile:636: warning: ignoring prerequisites on suffix rule definition
+parse.c: In function 'set_id3v2tag':
+parse.c:413:72: error: passing argument 3 of 'id3tag_set_textinfo_utf8' from incompatible pointer type [-Wincompatible-pointer-types]
+  413 |                 case 'a': return id3tag_set_textinfo_utf8(gfp, "TPE1", str);
+      |                                                                        ^~~
+      |                                                                        |
+      |                                                                        const short unsigned int *
+In file included from parse.c:54:
+../include/lame.h:1306:76: note: expected 'const char *' but argument is of type 'const short unsigned int *'
+ 1306 | int CDECL id3tag_set_textinfo_utf8(lame_t gfp, char const *id, char const *text);
+      |                                                                ~~~~~~~~~~~~^~~~
+parse.c:414:72: error: passing argument 3 of 'id3tag_set_textinfo_utf8' from incompatible pointer type [-Wincompatible-pointer-types]
+  414 |                 case 't': return id3tag_set_textinfo_utf8(gfp, "TIT2", str);
+      |                                                                        ^~~
+      |                                                                        |
+      |                                                                        const short unsigned int *
+../include/lame.h:1306:76: note: expected 'const char *' but argument is of type 'const short unsigned int *'
+ 1306 | int CDECL id3tag_set_textinfo_utf8(lame_t gfp, char const *id, char const *text);
+      |                                                                ~~~~~~~~~~~~^~~~
+parse.c:415:72: error: passing argument 3 of 'id3tag_set_textinfo_utf8' from incompatible pointer type [-Wincompatible-pointer-types]
+  415 |                 case 'l': return id3tag_set_textinfo_utf8(gfp, "TALB", str);
+      |                                                                        ^~~
+      |                                                                        |
+      |                                                                        const short unsigned int *
+../include/lame.h:1306:76: note: expected 'const char *' but argument is of type 'const short unsigned int *'
+ 1306 | int CDECL id3tag_set_textinfo_utf8(lame_t gfp, char const *id, char const *text);
+      |                                                                ~~~~~~~~~~~~^~~~
+parse.c:416:72: error: passing argument 3 of 'id3tag_set_textinfo_utf8' from incompatible pointer type [-Wincompatible-pointer-types]
+  416 |                 case 'g': return id3tag_set_textinfo_utf8(gfp, "TCON", str);
+      |                                                                        ^~~
+      |                                                                        |
+      |                                                                        const short unsigned int *
+../include/lame.h:1306:76: note: expected 'const char *' but argument is of type 'const short unsigned int *'
+ 1306 | int CDECL id3tag_set_textinfo_utf8(lame_t gfp, char const *id, char const *text);
+      |                                                                ~~~~~~~~~~~~^~~~
+parse.c:417:34: error: implicit declaration of function 'id3tag_set_comment_ucs2'; did you mean 'id3tag_set_comment_utf8'? [-Wimplicit-function-declaration]
+  417 |                 case 'c': return id3tag_set_comment_ucs2(gfp, 0, 0, str);
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~~
+      |                                  id3tag_set_comment_utf8
+parse.c:418:72: error: passing argument 3 of 'id3tag_set_textinfo_utf8' from incompatible pointer type [-Wincompatible-pointer-types]
+  418 |                 case 'n': return id3tag_set_textinfo_utf8(gfp, "TRCK", str);
+      |                                                                        ^~~
+      |                                                                        |
+      |                                                                        const short unsigned int *
+../include/lame.h:1306:76: note: expected 'const char *' but argument is of type 'const short unsigned int *'
+ 1306 | int CDECL id3tag_set_textinfo_utf8(lame_t gfp, char const *id, char const *text);
+      |                                                                ~~~~~~~~~~~~^~~~
+parse.c:419:72: error: passing argument 3 of 'id3tag_set_textinfo_utf8' from incompatible pointer type [-Wincompatible-pointer-types]
+  419 |                 case 'y': return id3tag_set_textinfo_utf8(gfp, "TYER", str);
+      |                                                                        ^~~
+      |                                                                        |
+      |                                                                        const short unsigned int *
+../include/lame.h:1306:76: note: expected 'const char *' but argument is of type 'const short unsigned int *'
+ 1306 | int CDECL id3tag_set_textinfo_utf8(lame_t gfp, char const *id, char const *text);
+      |                                                                ~~~~~~~~~~~~^~~~
+parse.c:420:34: error: implicit declaration of function 'id3tag_set_fieldvalue_ucs2'; did you mean 'id3tag_set_fieldvalue_utf16'? [-Wimplicit-function-declaration]
+  420 |                 case 'v': return id3tag_set_fieldvalue_ucs2(gfp, str);
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                  id3tag_set_fieldvalue_utf16
+make[2]: *** [Makefile:529: parse.o] Error 1
+make[1]: *** [Makefile:473: all-recursive] Error 1
+make: *** [Makefile:402: all] Error 2
+
+
+Re: [Lame-dev] lame 4.0 released
+From: Fabian G. <fa...@gr...> - 2026-07-14 11:14:09
+
+Am Dienstag, dem 14.07.2026 um 10:58 +0200 schrieb Fabian Greffrath via
+Lame-dev:
+> Also, lame 4.0 still fails to build on Debian/unstable:
+
+The attached ad-hoc patch fixes the build for me.
+
+ - Fabian
+
+Re: [Lame-dev] lame 4.0 released
+From: Fabian G. <fa...@gr...> - 2026-07-14 11:31:55
+
+Am Dienstag, dem 14.07.2026 um 13:13 +0200 schrieb Fabian Greffrath via Lame-dev:
+> The attached ad-hoc patch fixes the build for me.
+
+Apparently, the mailing list ate my attachment. Thus inlined:
+
+diff --git a/frontend/parse.c b/frontend/parse.c
+index 4a6b660..2ae7eb2 100644
+--- a/frontend/parse.c
++++ b/frontend/parse.c
+@@ -402,6 +402,10 @@ static int getIntValue(char const* token, char const* arg, int* ptr)
+ }
+ 
+ #ifdef ID3TAGS_EXTENDED
++extern int
++id3tag_set_comment_ucs2(lame_t gfp, char const *lang, unsigned short const *desc, unsigned short const *text);
++extern int
++id3tag_set_fieldvalue_ucs2(lame_t gfp, const unsigned short *fieldvalue);
+ static int
+ set_id3v2tag(lame_global_flags* gfp, TextEncoding enc, int type, unsigned short const* str)
+ {
+@@ -410,13 +414,13 @@ set_id3v2tag(lame_global_flags* gfp, TextEncoding enc, int type, unsigned short
+         case TENC_UTF8:
+             switch (type)
+             {
+-                case 'a': return id3tag_set_textinfo_utf8(gfp, "TPE1", str);
+-                case 't': return id3tag_set_textinfo_utf8(gfp, "TIT2", str);
+-                case 'l': return id3tag_set_textinfo_utf8(gfp, "TALB", str);
+-                case 'g': return id3tag_set_textinfo_utf8(gfp, "TCON", str);
++                case 'a': return id3tag_set_textinfo_utf8(gfp, "TPE1", (const char *)str);
++                case 't': return id3tag_set_textinfo_utf8(gfp, "TIT2", (const char *)str);
++                case 'l': return id3tag_set_textinfo_utf8(gfp, "TALB", (const char *)str);
++                case 'g': return id3tag_set_textinfo_utf8(gfp, "TCON", (const char *)str);
+                 case 'c': return id3tag_set_comment_ucs2(gfp, 0, 0, str);
+-                case 'n': return id3tag_set_textinfo_utf8(gfp, "TRCK", str);
+-                case 'y': return id3tag_set_textinfo_utf8(gfp, "TYER", str);
++                case 'n': return id3tag_set_textinfo_utf8(gfp, "TRCK", (const char *)str);
++                case 'y': return id3tag_set_textinfo_utf8(gfp, "TYER", (const char *)str);
+                 case 'v': return id3tag_set_fieldvalue_ucs2(gfp, str);
+             }
+             ;;
+diff --git a/include/libmp3lame.sym b/include/libmp3lame.sym
+index 7651fb3..77657ab 100644
+--- a/include/libmp3lame.sym
++++ b/include/libmp3lame.sym
+@@ -193,6 +193,7 @@ hip_decode_headers
+ hip_decode1
+ hip_decode1_headers
+ hip_decode1_headersB
++hip_finish_pinfo
+ lame_decode_init
+ lame_decode
+ lame_decode_headers
+
+
+

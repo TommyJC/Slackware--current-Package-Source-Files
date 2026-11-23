@@ -1,0 +1,11 @@
+--- ./include/manconfig.h.orig	2025-05-02 07:49:29.000000000 -0500
++++ ./include/manconfig.h	2025-09-24 17:54:28.761854373 -0500
+@@ -111,7 +111,7 @@
+  * man.c:make_display_command().
+  */
+ 
+-#define LESS_OPTS "-ix8RmPm%s$PM%s$"
++#define LESS_OPTS "-x8RmPm%s$PM%s$"
+ 
+ /* This is a minimal latin1 special characters to ascii translation table */
+ #if !defined(TR_SET1) || !defined(TR_SET2)

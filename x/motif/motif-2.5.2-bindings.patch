@@ -1,0 +1,22 @@
+--- ./lib/Xm/XmosP.h.orig	2026-04-16 23:32:16.000000000 -0500
++++ ./lib/Xm/XmosP.h	2026-05-31 14:43:18.986735299 -0500
+@@ -153,7 +153,7 @@
+ 
+ #define XMBINDDIR "XMBINDDIR"
+ #ifndef XMBINDDIR_FALLBACK
+-#define XMBINDDIR_FALLBACK "/usr/lib/Xm/bindings"
++#define XMBINDDIR_FALLBACK "/usr/share/X11/bindings"
+ #endif
+ #define XMBINDFILE "xmbind.alias"
+ #define MOTIFBIND ".motifbind"
+--- ./doc/man/man3/VirtualBindings.3.orig	2026-04-16 23:32:16.000000000 -0500
++++ ./doc/man/man3/VirtualBindings.3	2026-05-31 14:43:18.986620574 -0500
+@@ -90,7 +90,7 @@
+ If it has found no bindings, Motif next looks for the file
+ \fBxmbind\&.alias\fP in the directory specified by the environment
+ variable \fBXMBINDDIR\fP, if \fBXMBINDDIR\fP is set, or in the directory
+-\fB/usr/lib/Xm/bindings\fP if \fBXMBINDDIR\fP is not set\&.
++\fB/usr/share/X11/bindings\fP if \fBXMBINDDIR\fP is not set\&.
+ If this file exists Motif searches it for a pathname associated with the
+ vendor string or with the vendor string and vendor release\&.
+ If it finds such a pathname and if that file exists, Motif loads the

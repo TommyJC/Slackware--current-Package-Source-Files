@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                          |-----handy-ruler------------------------------------------------------|
+python-accessible-pygments: python-accessible-pygments (accessible themes for pygments)
+python-accessible-pygments:
+python-accessible-pygments: This package includes a collection of accessible themes for pygments
+python-accessible-pygments: based on multiple open-source syntax highlighting themes. What do we
+python-accessible-pygments: mean by accessible? In this context we are specifically referring to
+python-accessible-pygments: themes which meet the WCAG 2.1 criteria for color contrast.
+python-accessible-pygments: Some themes included are also color-blind friendly.
+python-accessible-pygments:
+python-accessible-pygments: Homepage: https://pypi.python.org/project/accessible-pygments/
+python-accessible-pygments:
+python-accessible-pygments:

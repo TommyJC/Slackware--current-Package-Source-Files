@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.  Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':'.
+
+                  |-----handy-ruler------------------------------------------------------|
+noto-cjk-fonts-ttf: noto-cjk-fonts-ttf (Google's Noto CJK fonts)
+noto-cjk-fonts-ttf:
+noto-cjk-fonts-ttf: Google's Noto Sans CJK and Noto Serif CJK comprehensively cover
+noto-cjk-fonts-ttf: Simplified Chinese, Traditional Chinese, Japanese, and Korean. The
+noto-cjk-fonts-ttf: supported scripts are Han, Hiragana, Katakana, Hangul, and Bopomofo.
+noto-cjk-fonts-ttf: Latin, Greek, Cyrllic, and various symbols are also supported for
+noto-cjk-fonts-ttf: compatibility with CJK standards.
+noto-cjk-fonts-ttf:
+noto-cjk-fonts-ttf: Homepage: https://github.com/googlefonts/noto-cjk
+noto-cjk-fonts-ttf:
+noto-cjk-fonts-ttf:

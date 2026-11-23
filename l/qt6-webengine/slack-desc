@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+             |-----handy-ruler------------------------------------------------------|
+qt6-webengine: qt6-webengine (Qt WebEngine and Qt Pdf)
+qt6-webengine:
+qt6-webengine: Qt WebEngine provides functionality for rendering regions of dynamic
+qt6-webengine: web content.
+qt6-webengine:
+qt6-webengine: The Qt PDF module contains classes and functions for rendering PDF
+qt6-webengine: documents in a Qt application. Qt PDF uses PDFium to parse and render
+qt6-webengine: PDF documents.
+qt6-webengine:
+qt6-webengine:
+qt6-webengine:

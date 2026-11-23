@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# /etc/rc.d/rc.modules
+
+# Determine the version of the running kernel:
+RELEASE=$(uname -r)
+
+# Update kernel module dependencies:
+if [ -e "/lib/modules/$RELEASE/modules.dep" ]; then 
+  echo "Updating module dependency list for $RELEASE:  /sbin/depmod --quick"
+  /sbin/depmod --quick
+else 
+  echo "Creating module dependency list for $RELEASE:  /sbin/depmod --all"
+  /sbin/depmod --all
+fi
+
+# Load any modules listed in modules-load.d config files. A file in
+# /etc/modules-load.d overrides one with the same name in the other
+# directories.
+MODLOAD_DIRS="/etc/modules-load.d /run/modules-load.d /usr/local/lib/modules-load.d /usr/lib/modules-load.d"
+for dir in $MODLOAD_DIRS ; do
+  /bin/ls -d $dir/*.conf 2> /dev/null
+done | sed 's,.*/,,' | LC_ALL=C sort -u | while read conf ; do
+  for dir in $MODLOAD_DIRS ; do
+    if [ -e "$dir/$conf" ]; then
+      if [ -f "$dir/$conf" ]; then
+        echo "Loading kernel modules listed in $dir/$conf"
+        sed -e '/^\s*#.*$/d' -e '/^\s*$/d' -e 's@\(.*\)[[:blank:]]\{1,\}#.*@\1@' "$dir/$conf" | while read module ; do
+          if [ -n "$module" ]; then
+            /sbin/modprobe -b -v "$module"
+          fi
+        done
+      fi
+      break
+    fi
+  done
+done
+unset MODLOAD_DIRS
+
+# Run any rc.modules-$(uname -r) file that exists (this is used
+# if you have specific modules which should only be loaded for
+# specific kernel versions):
+if [ -x "/etc/rc.d/rc.modules-$RELEASE" ]; then
+  /etc/rc.d/rc.modules-$RELEASE
+fi
+
+# Run a local (sysadmin-version) of rc.modules if it exists:
+if [ -x "/etc/rc.d/rc.modules.local" ]; then
+  /etc/rc.d/rc.modules.local
+fi
+

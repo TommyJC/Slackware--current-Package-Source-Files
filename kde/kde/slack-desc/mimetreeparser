@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+              |-----handy-ruler------------------------------------------------------|
+mimetreeparser: mimetreeparser (parser for MIME trees)
+mimetreeparser:
+mimetreeparser: This parser for a MIME tree is based on KMime. The goal is given a
+mimetreeparser: MIME tree to extract a list of parts (e.g. text, html) and a list of
+mimetreeparser: attachments, check the validity of the signatures and decrypt any
+mimetreeparser: encrypted part.
+mimetreeparser:
+mimetreeparser: Homepage: https://invent.kde.org/pim/mimetreeparser
+mimetreeparser:
+mimetreeparser:
+mimetreeparser:

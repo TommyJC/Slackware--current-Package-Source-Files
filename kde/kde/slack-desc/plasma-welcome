@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+              |-----handy-ruler------------------------------------------------------|
+plasma-welcome: plasma-welcome (Plasma Welcome Center)
+plasma-welcome:
+plasma-welcome: Plasma Welcome (or Welcome Center) is a friendly onboarding wizard for
+plasma-welcome: the KDE Plasma desktop environment. It helps new users set up their
+plasma-welcome: environment by providing guidance on connecting to the internet,
+plasma-welcome: installing applications, customizing system settings, and managing
+plasma-welcome: user accounts.
+plasma-welcome:
+plasma-welcome: Homepage: https://www.kde.org/
+plasma-welcome:
+plasma-welcome:

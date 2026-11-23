@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+            |-----handy-ruler------------------------------------------------------|
+kio-snapshot: kio-snapshot (Btrfs filesystem snapshots for KDE)
+kio-snapshot:
+kio-snapshot: Integration of Btrfs filesystem snapshots for KDE apps. Includes:
+kio-snapshot: - a KIO worker for browsing snapshots of a subvolume, and for browsing
+kio-snapshot:   previous versions of a file.
+kio-snapshot: - a KFileItemActions plugin for exposing these as menu items in
+kio-snapshot:   Dolphin, etc.
+kio-snapshot:
+kio-snapshot:
+kio-snapshot:
+kio-snapshot:

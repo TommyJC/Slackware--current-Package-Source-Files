@@ -1,0 +1,33 @@
+--- ./contrib/mod_ldap.c.orig	2025-03-14 13:28:11.000000000 -0500
++++ ./contrib/mod_ldap.c	2025-12-20 15:44:35.515659400 -0600
+@@ -3530,10 +3530,10 @@
+     c = find_config_next(c, c->next, CONF_PARAM, "LDAPServer", FALSE);
+   }
+ 
+-  if (ldap_servers == NULL) {
++  /* if (ldap_servers == NULL) {
+     pr_log_pri(PR_LOG_NOTICE, MOD_LDAP_VERSION
+       ": no LDAPServer configured, using LDAP library defaults");
+-  }
++  } */
+ 
+   c = find_config(main_server->conf, CONF_PARAM, "LDAPBindDN", FALSE);
+   if (c != NULL) {
+@@ -3781,7 +3781,7 @@
+   }
+ #endif /* LBER_OPT_LOG_PRINT_FN */
+ 
+-  if (ldap_do_users == FALSE) {
++  /* if (ldap_do_users == FALSE) {
+     pr_log_pri(PR_LOG_WARNING, MOD_LDAP_VERSION
+       ": LDAPUsers not configured, skipping LDAP-based user authentication");
+   }
+@@ -3789,7 +3789,7 @@
+   if (ldap_do_groups == FALSE) {
+     pr_log_pri(PR_LOG_NOTICE, MOD_LDAP_VERSION
+       ": LDAPGroups not configured, skipping LDAP-based group memberships");
+-  }
++  } */
+ 
+   return 0;
+ }

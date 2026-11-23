@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+                       |-----handy-ruler------------------------------------------------------|
+libqaccessibilityclient: libqaccessibilityclient (accessibility helper)
+libqaccessibilityclient:
+libqaccessibilityclient: Accessibility tools helper library. This library is used when writing
+libqaccessibilityclient: accessibility clients such as screen readers. It comes with some
+libqaccessibilityclient: examples demonstrating the API. 
+libqaccessibilityclient:
+libqaccessibilityclient: Homepage: https://invent.kde.org/libraries/libqaccessibilityclient
+libqaccessibilityclient:
+libqaccessibilityclient:
+libqaccessibilityclient:
+libqaccessibilityclient:

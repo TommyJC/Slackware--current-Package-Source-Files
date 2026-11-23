@@ -1,0 +1,11 @@
+--- ./Makefile.orig	2025-06-11 21:14:16.839065161 -0500
++++ ./Makefile	2025-06-11 21:15:22.116951849 -0500
+@@ -144,7 +144,7 @@
+ 
+ # CFLAGS (i.e compile flags for the target compiler) are OPTFLAGS and SYSDEFS,
+ # DO NOT OVERRIDE
+-CFLAGS = $(OPTFLAGS) $(SYSDEFS)
++CFLAGS = $(OPTFLAGS) $(SYSDEFS) -std=gnu17
+ 
+ # For making dependencies under BSD systems
+ DEPENDFLAG = -M

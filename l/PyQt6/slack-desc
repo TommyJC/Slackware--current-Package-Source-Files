@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+     |-----handy-ruler-----------------------------------------------------|
+PyQt6: PyQt6 (Python Bindings for Qt6)
+PyQt6:
+PyQt6: PyQt6 is a comprehensive set of Python bindings for Qt6. It is
+PyQt6: implemented as more than 35 extension modules and enables Python to
+PyQt6: be used as an alternative application development language to C++
+PyQt6: on all supported platforms including iOS and Android.
+PyQt6:
+PyQt6: Homepage: https://www.riverbankcomputing.com/software/pyqt/
+PyQt6:
+PyQt6:
+PyQt6:

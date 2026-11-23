@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+    |-----handy-ruler------------------------------------------------------|
+vde2: vde2 (virtual distributed ethernet)
+vde2:
+vde2: VDE is a virtual network that can be spawned over a set of physical
+vde2: computer over the Internet. VDE connects together: (1) real Linux
+vde2: boxes (tuntap) (2) virtual machines: UML-User Mode Linux, qemu, bochs,
+vde2: MPS.
+vde2:
+vde2: Homepage: https://github.com/virtualsquare/vde-2
+vde2:
+vde2:
+vde2:

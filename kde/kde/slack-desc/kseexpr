@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+       |-----handy-ruler------------------------------------------------------|
+kseexpr: kseexpr (embeddable expression evaluation engine)
+kseexpr:
+kseexpr: SeExpr for Krita is the fork of Disney Animation's SeExpr expression
+kseexpr: library that is used in Krita. This fork was created as part of the
+kseexpr: GSoC 2020 project "Dynamic Fill Layers in Krita using SeExpr" to
+kseexpr: enable the provision of fixes and translations needed to embed SeExpr
+kseexpr: into the Krita painting suite.
+kseexpr: WARNING: This version is not ABI-compatible with projects using
+kseexpr: upstream SeExpr. Use it at your own discretion.
+kseexpr:
+kseexpr: Homepage: https://www.kde.org/

@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+  |-----handy-ruler------------------------------------------------------|
+f3: f3 (Fight Fake Flash)
+f3:
+f3: f3 is a simple tool that tests flash cards capacity and performance to
+f3: see if they live up to claimed specifications. It fills the device
+f3: with pseudorandom data and then checks if it returns the same on
+f3: reading.
+f3:
+f3: F3 stands for Fight Flash Fraud, or Fight Fake Flash.
+f3:
+f3: Homepage: https://github.com/AltraMayor/f3
+f3:

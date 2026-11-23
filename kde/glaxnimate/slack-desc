@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+          |-----handy-ruler------------------------------------------------------|
+glaxnimate: glaxnimate (vector animation and motion design)
+glaxnimate:
+glaxnimate: Glaxnimate is a desktop application for creating and editing vector
+glaxnimate: graphics and animations. It supports Lottie, Animated GIF, WebP, and
+glaxnimate: SVG formats, and has a customizable interface and Python scripting.
+glaxnimate:
+glaxnimate: Homepage: https://glaxnimate.org/
+glaxnimate:
+glaxnimate:
+glaxnimate:
+glaxnimate:

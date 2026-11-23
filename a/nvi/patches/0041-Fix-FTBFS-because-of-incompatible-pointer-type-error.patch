@@ -1,0 +1,27 @@
+From: Tobias Heider <me@tobhe.de>
+Date: Thu, 1 Aug 2024 12:50:45 +0200
+Subject: Fix FTBFS because of incompatible-pointer-type error with gcc14
+
+iconv expects "size_t * restrict" so we can't pass an "int *".
+
+Bug-Debian: https://bugs.debian.org/1075326
+---
+ common/conv.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/common/conv.c b/common/conv.c
+index b252ff6..eec3427 100644
+--- a/common/conv.c
++++ b/common/conv.c
+@@ -210,9 +210,9 @@ int
+ default_int2char(SCR *sp, const CHAR_T * str, ssize_t len, CONVWIN *cw, 
+ 		size_t *tolen, char **pdst, char *enc)
+ {
+-    int i, j, offset = 0;
++    int i, offset = 0;
+     char **tostr = (char **)&cw->bp1;
+-    size_t  *blen = &cw->blen1;
++    size_t  j, *blen = &cw->blen1;
+     mbstate_t mbs;
+     size_t n;
+     ssize_t  nlen = len + MB_CUR_MAX;

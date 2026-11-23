@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+      |-----handy-ruler------------------------------------------------------|
+qgpgme: qgpgme (Qt API bindings for GPGME)
+qgpgme:
+qgpgme: QGpgME (Qt GnuPG Made Easy) is a high-level C++ library that provides
+qgpgme: Qt bindings for GPGME (GnuPG Made Easy). It was originally developed
+qgpgme: as part of libkleo (used by the KDE certificate manager Kleopatra)
+qgpgme: before being merged into the official GPGME package.
+qgpgme:
+qgpgme: Homepage: https://gnupg.org/software/gpgme/index.html
+qgpgme:
+qgpgme:
+qgpgme:

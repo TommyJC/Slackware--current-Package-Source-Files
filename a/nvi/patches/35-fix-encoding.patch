@@ -1,0 +1,2540 @@
+Description: converting the file to UTF-8 using iconv.
+             Example: iconv -f ISO-8859-15 -t UTF-8 < french.
+Author: Hugo Torres de Lima <hugotorres@protonmail.com>
+Last-Update: 2021-12-01
+Index: nvi-1.81.6/catalog/french
+===================================================================
+--- nvi-1.81.6.orig/catalog/french
++++ nvi-1.81.6/catalog/french
+@@ -1,317 +1,317 @@
+ VI_MESSAGE_CATALOG
+-Dépassement de longueur de ligneX
++DÃ©passement de longueur de ligneX
+ impossible de supprimer la ligne %luX
+-impossible d'ajouter à la ligne %luX
+-impossible d'insérer devant la ligne %luX
++impossible d'ajouter Ã  la ligne %luX
++impossible d'insÃ©rer devant la ligne %luX
+ impossible de stocker la ligne %luX
+-impossible d'obtenir la dernière ligneX
+-Erreur : impossible de récupérer la ligne %luX
++impossible d'obtenir la derniÃ¨re ligneX
++Erreur : impossible de rÃ©cupÃ©rer la ligne %luX
+ Fichier journalX
+-Aucune journalisation n'étant effectuée, impossible d'annulerX
+-Aucune action à annulerX
+-Aucune journalisation n'étant effectuée, impossible d'annulerX
+-Aucune journalisation n'étant effectuée, reprise actualisée impossibleX
+-Aucune action à refaireX
+-%s/%d : Erreur d'écriture de journalX
+-L'entrée et la sortie Vi standards doivent être un terminalX
+-Marque %s : non définieX
+-Marque %s : la ligne a été suppriméeX
++Aucune journalisation n'Ã©tant effectuÃ©e, impossible d'annulerX
++Aucune action Ã  annulerX
++Aucune journalisation n'Ã©tant effectuÃ©e, impossible d'annulerX
++Aucune journalisation n'Ã©tant effectuÃ©e, reprise actualisÃ©e impossibleX
++Aucune action Ã  refaireX
++%s/%d : Erreur d'Ã©criture de journalX
++L'entrÃ©e et la sortie Vi standards doivent Ãªtre un terminalX
++Marque %s : non dÃ©finieX
++Marque %s : la ligne a Ã©tÃ© supprimÃ©eX
+ Marque %s : la position du curseur n'existe plusX
+ Erreur : X
+ nouveau fichierX
+-le nom a changéX
+-modifiéX
+-non modifiéX
+-DÉVERROUILLÉX
++le nom a changÃ©X
++modifiÃ©X
++non modifiÃ©X
++DÃ‰VERROUILLÃ‰X
+ lecture seuleX
+ ligne %lu de %lu [%ld%%]X
+ fichier videX
+ ligne %luX
+ Ce fichier %s n'est pas un catalogue de messagesX
+-Impossible de configurer option %s par défautX
++Impossible de configurer option %s par dÃ©fautX
+ Utilisation : %sX
+-Définition : pas d'option %s : 'set all' donne toutes les valeurs optionnellesX
+-Définition : option [no]%s ne prend pas de valeurX
+-Définition : l'option %s n'est pas booléenneX
+-Définition : option %s : %sX
+-Définition : option %s : %s : Dépassement de valeurX
+-Définition : option %s : %s n'est pas un nombre valideX
+-Définition : l'option %s n'est pas booléenneX
+-Les colonnes de l'écran sont trop petites, inférieures à %dX
+-Les colonnes de l'écran sont trop grandes, supérieures à %dX
+-Les lignes de l'écran sont trop courtes, inférieures à %dX
+-Les lignes de l'écran sont trop longues, supérieures à %dX
+-L'option lisp n'est pas implémentéeX
+-Les messages ne sont pas désactivés : %sX
+-Les messages ne sont pas activés : %sX
++DÃ©finition : pas d'option %s : 'set all' donne toutes les valeurs optionnellesX
++DÃ©finition : option [no]%s ne prend pas de valeurX
++DÃ©finition : l'option %s n'est pas boolÃ©enneX
++DÃ©finition : option %s : %sX
++DÃ©finition : option %s : %s : DÃ©passement de valeurX
++DÃ©finition : option %s : %s n'est pas un nombre valideX
++DÃ©finition : l'option %s n'est pas boolÃ©enneX
++Les colonnes de l'Ã©cran sont trop petites, infÃ©rieures Ã  %dX
++Les colonnes de l'Ã©cran sont trop grandes, supÃ©rieures Ã  %dX
++Les lignes de l'Ã©cran sont trop courtes, infÃ©rieures Ã  %dX
++Les lignes de l'Ã©cran sont trop longues, supÃ©rieures Ã  %dX
++L'option lisp n'est pas implÃ©mentÃ©eX
++Les messages ne sont pas dÃ©sactivÃ©s : %sX
++Les messages ne sont pas activÃ©s : %sX
+ 
+-L'option de paragraphe doit être en groupe de deux caractèresX
+-L'option de section doit être en groupe de deux caractèresX
++L'option de paragraphe doit Ãªtre en groupe de deux caractÃ¨resX
++L'option de section doit Ãªtre en groupe de deux caractÃ¨resX
+ 
+ 
+ 
+-Le tampon par défaut est videX
++Le tampon par dÃ©faut est videX
+ Le tampon %s est videX
+-Les fichiers dont le nom contient des caractères de saut de ligne sont irrécupérablesX
+-Impossible de récupérer les modifications si la session échoueX
+-Copie en cours du fichier pour récupération...X
+-La préservation a échoué : %sX
+-Impossible de récupérer les modifications si la session échoueX
+-La sauvegarde du fichier a échoué : %sX
+-Copie en cours du fichier pour récupération...X
+-Les renseignements sur l'identité %u de l'utilisateur sont introuvablesX
+-Impossible de verrouiller le fichier de récupérationX
+-Débordement de tampon du fichier de récupérationX
+-Fichier de récupérationX
+-%s : Fichier de récupération malforméX
+-%s : Fichier de récupération malforméX
+-Aucun fichier nommé %s à récupérer, que vous puissiez lireX
+-Il existe des versions récupérables antérieures à ce fichierX
+-Vous avez d'autres fichiers à récupérerX
++Les fichiers dont le nom contient des caractÃ¨res de saut de ligne sont irrÃ©cupÃ©rablesX
++Impossible de rÃ©cupÃ©rer les modifications si la session Ã©choueX
++Copie en cours du fichier pour rÃ©cupÃ©ration...X
++La prÃ©servation a Ã©chouÃ© : %sX
++Impossible de rÃ©cupÃ©rer les modifications si la session Ã©choueX
++La sauvegarde du fichier a Ã©chouÃ© : %sX
++Copie en cours du fichier pour rÃ©cupÃ©ration...X
++Les renseignements sur l'identitÃ© %u de l'utilisateur sont introuvablesX
++Impossible de verrouiller le fichier de rÃ©cupÃ©rationX
++DÃ©bordement de tampon du fichier de rÃ©cupÃ©rationX
++Fichier de rÃ©cupÃ©rationX
++%s : Fichier de rÃ©cupÃ©ration malformÃ©X
++%s : Fichier de rÃ©cupÃ©ration malformÃ©X
++Aucun fichier nommÃ© %s Ã  rÃ©cupÃ©rer, que vous puissiez lireX
++Il existe des versions rÃ©cupÃ©rables antÃ©rieures Ã  ce fichierX
++Vous avez d'autres fichiers Ã  rÃ©cupÃ©rerX
+ pas d'envoi d'email : %sX
+-Fichier vide, rien à rechercherX
++Fichier vide, rien Ã  rechercherX
+ Fin de fichier atteinte sans trouver le motifX
+-Pas de motif de recherche précédentX
++Pas de motif de recherche prÃ©cÃ©dentX
+ Motif introuvableX
+-Début du fichier atteint sans trouver le motifX
+-La recherche est revenue à son point de départX
++DÃ©but du fichier atteint sans trouver le motifX
++La recherche est revenue Ã  son point de dÃ©partX
+ Recherche en cours...X
+-Caractère non-imprimable introuvableX
++CaractÃ¨re non-imprimable introuvableX
+ Nom de commande inconnuX
+ 
+ %s : Commande non disponible en ex modeX
+-Le compteur ne peut être zéroX
+-%s : mauvaise spécification de ligneX
++Le compteur ne peut Ãªtre zÃ©roX
++%s : mauvaise spÃ©cification de ligneX
+ Erreur de tableau de syntaxe interne (%s: %s)X
+ Utilisation : %sX
+-%s : tampon temporaire non libéréX
+-Décalage de drapeau hors de la ligne 1X
+-Décalage de drapeau hors de la fin du fichierX
+-@ avec plage, en cours d'exécution quand le fichier/l'écran a changéX
+-Commande Global/v en cours d'exécution quand le fichier/l'écran a changéX
+-La commande ex a échoué : commandes en attente abandonnéesX
+-La commande ex a échoué : les touches affectées sont abandonnéesX
+-La deuxième adresse est plus petite que la premièreX
++%s : tampon temporaire non libÃ©rÃ©X
++DÃ©calage de drapeau hors de la ligne 1X
++DÃ©calage de drapeau hors de la fin du fichierX
++@ avec plage, en cours d'exÃ©cution quand le fichier/l'Ã©cran a changÃ©X
++Commande Global/v en cours d'exÃ©cution quand le fichier/l'Ã©cran a changÃ©X
++La commande ex a Ã©chouÃ© : commandes en attente abandonnÃ©esX
++La commande ex a Ã©chouÃ© : les touches affectÃ©es sont abandonnÃ©esX
++La deuxiÃ¨me adresse est plus petite que la premiÃ¨reX
+ Aucun nom de marque fourniX
+ \\ non suivi par / ou ?X
+-Référence à un numéro de ligne inférieure à 0X
++RÃ©fÃ©rence Ã  un numÃ©ro de ligne infÃ©rieure Ã  0X
+ La commande %s est inconnueX
+-Dépassement de la valeur adresseX
+-Dépassement négatif de la valeur adresseX
++DÃ©passement de la valeur adresseX
++DÃ©passement nÃ©gatif de la valeur adresseX
+ Combinaison d'adresse non valideX
+ Adresse non valide : il n'y a que %lu lignes dans ce fichierX
+ Adresse non valide : le fichier est videX
+ La commande %s ne permet pas une adresse de 0X
+-Pas d'abréviations à afficherX
+-Les abréviations doivent finir par un caractère"motX
+-Les abréviations ne peuvent pas contenir de tabulations ni d'espacesX
+-Les abréviations ne peuvent pas contenir un mélange de caractères mot/non-mot, sauf à la finX
+-"%s" n'est pas une abréviationX
+-La commande Vi a échoué : Les touches affectées ont été abandonnéesX
+-Plus de fichiers à éditerX
+-Pas de fichiers précédents à éditerX
+-Pas de fichiers précédents à rembobinerX
+-Pas de liste de fichiers à afficherX
+-Pas de commande précédente à remplacer"!"X
+-Pas de nom de fichier à substituer à %%X
+-Pas de nom de fichier à substituer à #X
++Pas d'abrÃ©viations Ã  afficherX
++Les abrÃ©viations doivent finir par un caractÃ¨re"motX
++Les abrÃ©viations ne peuvent pas contenir de tabulations ni d'espacesX
++Les abrÃ©viations ne peuvent pas contenir un mÃ©lange de caractÃ¨res mot/non-mot, sauf Ã  la finX
++"%s" n'est pas une abrÃ©viationX
++La commande Vi a Ã©chouÃ© : Les touches affectÃ©es ont Ã©tÃ© abandonnÃ©esX
++Plus de fichiers Ã  Ã©diterX
++Pas de fichiers prÃ©cÃ©dents Ã  Ã©diterX
++Pas de fichiers prÃ©cÃ©dents Ã  rembobinerX
++Pas de liste de fichiers Ã  afficherX
++Pas de commande prÃ©cÃ©dente Ã  remplacer"!"X
++Pas de nom de fichier Ã  substituer Ã  %%X
++Pas de nom de fichier Ã  substituer Ã  #X
+ Erreur : execl : %sX
+ Erreur E/S : %sX
+-Fichier modifié depuis la dernière écriture complète ; écrire ou utiliser ! pour outrepasserX
+-Impossible de trouver l'emplacement du répertoire d'origineX
+-Nouveau répertoire en cours : %sX
+-Pas de tampon de coupure à afficherX
+-La commande %s ne peut pas être utilisée à l'intérieur d'une commande globale ou commande vX
+-%s/%s : échec de source : ni vous ni le super-utilisateur n'êtes les propriétaires X
+-%s/%s : échec de source : vous n'êtes pas le propriétaireX
+-%s/%s : échec de source : peut être écrit par un utilisateur autre que le propriétaireX
+-%s : échec de source : ni vous ni le super-utilisateur n'êtes les propriétairesX
+-%s : échec de source : vous n'êtes pas le propriétaireX
+-%s : échec de source : peut être écrit par un utilisateur autre que le propriétaireX
+-Pas de lignes suivantes à joindreX
+-Pas d'entrées de mappage d'entréeX
+-Pas d'entrées de mappage de commandesX
+-Le caractère %s ne peut pas être remappéX
+-"%s" n'est pas actuellement mappéX
+-Les noms de marque ne doivent avoir qu'un caractèreX
+-%s existe, non enregistré; utiliser ! pour outrepasserX
++Fichier modifiÃ© depuis la derniÃ¨re Ã©criture complÃ¨te ; Ã©crire ou utiliser ! pour outrepasserX
++Impossible de trouver l'emplacement du rÃ©pertoire d'origineX
++Nouveau rÃ©pertoire en cours : %sX
++Pas de tampon de coupure Ã  afficherX
++La commande %s ne peut pas Ãªtre utilisÃ©e Ã  l'intÃ©rieur d'une commande globale ou commande vX
++%s/%s : Ã©chec de source : ni vous ni le super-utilisateur n'Ãªtes les propriÃ©taires X
++%s/%s : Ã©chec de source : vous n'Ãªtes pas le propriÃ©taireX
++%s/%s : Ã©chec de source : peut Ãªtre Ã©crit par un utilisateur autre que le propriÃ©taireX
++%s : Ã©chec de source : ni vous ni le super-utilisateur n'Ãªtes les propriÃ©tairesX
++%s : Ã©chec de source : vous n'Ãªtes pas le propriÃ©taireX
++%s : Ã©chec de source : peut Ãªtre Ã©crit par un utilisateur autre que le propriÃ©taireX
++Pas de lignes suivantes Ã  joindreX
++Pas d'entrÃ©es de mappage d'entrÃ©eX
++Pas d'entrÃ©es de mappage de commandesX
++Le caractÃ¨re %s ne peut pas Ãªtre remappÃ©X
++"%s" n'est pas actuellement mappÃ©X
++Les noms de marque ne doivent avoir qu'un caractÃ¨reX
++%s existe, non enregistrÃ©; utiliser ! pour outrepasserX
+ Nouveau fichier exrc : %sX
+-La ligne de destination est à l'intérieur de la plage à déplacerX
+-La commande ouverte nécessite que l'option ouverte soit définieX
+-La commande ouverte n'est pas encore implémentéeX
+-La préservation de ce fichier est impossibleX
+-Fichier préservéX
+-%s: étendu dans trop de noms de fichiersX
+-Vous ne pouvez lire que les fichiers standards et les canaux de transmission nommésX
++La ligne de destination est Ã  l'intÃ©rieur de la plage Ã  dÃ©placerX
++La commande ouverte nÃ©cessite que l'option ouverte soit dÃ©finieX
++La commande ouverte n'est pas encore implÃ©mentÃ©eX
++La prÃ©servation de ce fichier est impossibleX
++Fichier prÃ©servÃ©X
++%s: Ã©tendu dans trop de noms de fichiersX
++Vous ne pouvez lire que les fichiers standards et les canaux de transmission nommÃ©sX
+ %s: Interdiction de lecture non disponibleX
+ Lecture en cours...X
+-%s: %lu lignes, %lu caractèresX
+-Pas d'écrans d'arrière-plan à afficherX
++%s: %lu lignes, %lu caractÃ¨resX
++Pas d'Ã©crans d'arriÃ¨re-plan Ã  afficherX
+ La commande script n'est disponible qu'en mode viX
+-Pas de commande à exécuterX
+-Option de largeur de décalage définie sur 0X
+-Compter dépassementX
+-Compter dépassement négatifX
+-Expression standard spécifiée; drapeau r superfluX
++Pas de commande Ã  exÃ©cuterX
++Option de largeur de dÃ©calage dÃ©finie sur 0X
++Compter dÃ©passementX
++Compter dÃ©passement nÃ©gatifX
++Expression standard spÃ©cifiÃ©e; drapeau r superfluX
+ Vous ne pouvez pas en mode vi, combiner les drapeaux #, l et p avec le drapeau cX
+-Aucune correspondance trouvéeX
+-Aucune marque précédente entréeX
+-Moins de %s entrées dans la pile de marques ; utilisez t[ags]X
++Aucune correspondance trouvÃ©eX
++Aucune marque prÃ©cÃ©dente entrÃ©eX
++Moins de %s entrÃ©es dans la pile de marques ; utilisez t[ags]X
+ Pas de fichier %s vers lequel retourner dans la pile de marques ; utiliser : affichage t[ags]X
+-Appuyez sur Entrée pour continuer :X
++Appuyez sur EntrÃ©e pour continuer :X
+ %s : marque introuvableX
+ %s : marque corrompue en %sX
+-%s : le numéro de ligne de la marque dépasse la fin du fichierX
++%s : le numÃ©ro de ligne de la marque dÃ©passe la fin du fichierX
+ La pile de marques est videX
+ %s : motif de recherche introuvableX
+-%d fichiers supplémentaires à éditerX
++%d fichiers supplÃ©mentaires Ã  Ã©diterX
+ Le tampon %s est vide
+ Confirmer les changements ? [n]X
+ InterrompuX
+-Pas de tampon précédent à exécuterX
+-Pas d'expression standard précédenteX
+-La commande %s nécessite qu'un fichier ait déjà été lu en mémoireX
++Pas de tampon prÃ©cÃ©dent Ã  exÃ©cuterX
++Pas d'expression standard prÃ©cÃ©denteX
++La commande %s nÃ©cessite qu'un fichier ait dÃ©jÃ  Ã©tÃ© lu en mÃ©moireX
+ Utilisation : %sX
+-La commande visual nécessite que l'option open soit définieX
++La commande visual nÃ©cessite que l'option open soit dÃ©finieX
+ 
+ Fichier videX
+-Pas de recherche précédente F, f, T ou tX
++Pas de recherche prÃ©cÃ©dente F, f, T ou tX
+ %s introuvableX
+-Pas de fichier précédent à éditerX
++Pas de fichier prÃ©cÃ©dent Ã  Ã©diterX
+ Le curseur n'est pas dans un nombreX
+ Le nombre obtenu est trop grandX
+ Le nombre obtenu est trop petitX
+-Pas de correspondance de caractère sur cette ligneX
+-Caractère correspondant introuvableX
+-Pas de caractères à remplacerX
+-Pas d'autre écran vers lequel basculerX
+-Caractères après la chaîne de recherche, décalage de ligne et/ou commande zX
+-Pas de motif de recherche précédentX
+-La recherche est revenue à son point de départX
+-L'abréviation a dépassé la limite de l'expansion : caractères abandonnésX
+-Caractère non valide ; guillemet pour saisirX
+-Déjà au début de l'insertionX
+-Plus de caractères à effacerX
+-Déplacement hors de fin de fichierX
+-Déplacement hors de fin de ligneX
+-Aucun mouvement de curseur n'a été effectuéX
+-Déjà au début du fichierX
+-Déplacement hors du début du fichierX
+-Déjà dans la première colonneX
+-Les tampons doivent être spécifiés avant la commandeX
+-Déjà à la fin du fichierX
+-Déjà à la fin de la ligneX
++Pas de correspondance de caractÃ¨re sur cette ligneX
++CaractÃ¨re correspondant introuvableX
++Pas de caractÃ¨res Ã  remplacerX
++Pas d'autre Ã©cran vers lequel basculerX
++CaractÃ¨res aprÃ¨s la chaÃ®ne de recherche, dÃ©calage de ligne et/ou commande zX
++Pas de motif de recherche prÃ©cÃ©dentX
++La recherche est revenue Ã  son point de dÃ©partX
++L'abrÃ©viation a dÃ©passÃ© la limite de l'expansion : caractÃ¨res abandonnÃ©sX
++CaractÃ¨re non valide ; guillemet pour saisirX
++DÃ©jÃ  au dÃ©but de l'insertionX
++Plus de caractÃ¨res Ã  effacerX
++DÃ©placement hors de fin de fichierX
++DÃ©placement hors de fin de ligneX
++Aucun mouvement de curseur n'a Ã©tÃ© effectuÃ©X
++DÃ©jÃ  au dÃ©but du fichierX
++DÃ©placement hors du dÃ©but du fichierX
++DÃ©jÃ  dans la premiÃ¨re colonneX
++Les tampons doivent Ãªtre spÃ©cifiÃ©s avant la commandeX
++DÃ©jÃ  Ã  la fin du fichierX
++DÃ©jÃ  Ã  la fin de la ligneX
+ %s n'est pas une commande viX
+ Utilisation : %sX
+-Pas de caractères à supprimerX
+-La commande Q nécessite une interface terminal exX
+-Pas de commande à répéterX
++Pas de caractÃ¨res Ã  supprimerX
++La commande Q nÃ©cessite une interface terminal exX
++Pas de commande Ã  rÃ©pÃ©terX
+ Le fichier est videX
+-Vous ne pouvez pas utiliser %s comme commande de déplacementX
+-Déjà en mode commandeX
++Vous ne pouvez pas utiliser %s comme commande de dÃ©placementX
++DÃ©jÃ  en mode commandeX
+ Le curseur n'est pas dans un motX
+ 
+-Valeur optionnelle de fenêtre trop grande, maximum est %uX
++Valeur optionnelle de fenÃªtre trop grande, maximum est %uX
+ AjouterX
+ ChangerX
+ CommandeX
+-InsérerX
++InsÃ©rerX
+ RemplacerX
+-Déplacement hors de la fin d'écranX
+-Déplacement hors du début d'écranX
+-L'écran doit être supérieur à %d lignes pour se fractionnerX
+-Il n'y a pas d'écran d'arrière-planX
+-Il n'y a pas d'écran d'arrière-plan qui édite un fichier nommé %sX
+-Vous ne pouvez pas mettre à l'arrière-plan votre seul écran affichéX
+-L'écran ne peut être réduit qu'à %d rangsX
+-L'écran n'est pas auto-réductibleX
+-L'écran n'est pas auto-extensibleX
++DÃ©placement hors de la fin d'Ã©cranX
++DÃ©placement hors du dÃ©but d'Ã©cranX
++L'Ã©cran doit Ãªtre supÃ©rieur Ã  %d lignes pour se fractionnerX
++Il n'y a pas d'Ã©cran d'arriÃ¨re-planX
++Il n'y a pas d'Ã©cran d'arriÃ¨re-plan qui Ã©dite un fichier nommÃ© %sX
++Vous ne pouvez pas mettre Ã  l'arriÃ¨re-plan votre seul Ã©cran affichÃ©X
++L'Ã©cran ne peut Ãªtre rÃ©duit qu'Ã  %d rangsX
++L'Ã©cran n'est pas auto-rÃ©ductibleX
++L'Ã©cran n'est pas auto-extensibleX
+ 
+-Vous ne pouvez pas mettre cet écran en attenteX
+-Interrompu : les touches affectées ont été abandonnéesX
+-vi : le tampon temporaire n' a pas été libéréX
++Vous ne pouvez pas mettre cet Ã©cran en attenteX
++Interrompu : les touches affectÃ©es ont Ã©tÃ© abandonnÃ©esX
++vi : le tampon temporaire n' a pas Ã©tÃ© libÃ©rÃ©X
+ Ce terminal n'a pas de touche %sX
+-Vous ne pouvez spécifier qu'un seul tamponX
+-Nombre supérieur à %luX
++Vous ne pouvez spÃ©cifier qu'un seul tamponX
++Nombre supÃ©rieur Ã  %luX
+ InterrompuX
+-Impossible de créer un fichier temporaireX
++Impossible de crÃ©er un fichier temporaireX
+ Avertissement : %s n'est pas un fichier standardX
+-%s déjà verrouillé, session en lecture seuleX
++%s dÃ©jÃ  verrouillÃ©, session en lecture seuleX
+ %s: supprimerX
+ %s: fermerX
+ %s: supprimerX
+ %s: supprimerX
+-Fichier en lecture seule, non écrit, utiliser ! pour outrepasserX
+-Fichier en lecture seule, non écritX
+-%s existe, non écrit; utiliser ! pour outrepasserX
+-%s existe, non écritX
+-Fichier partiel, non écrit; utiliser ! pour outrepasserX
+-Fichier partiel, non écritX
+-%s: fichier modifié plus récemment que cet exemplaire; utiliser ! pour outrepasserX
+-%s: fichier modifié plus récemment que cet exemplaireX
+-%s: interdiction d'écriture non disponibleX
++Fichier en lecture seule, non Ã©crit, utiliser ! pour outrepasserX
++Fichier en lecture seule, non Ã©critX
++%s existe, non Ã©crit; utiliser ! pour outrepasserX
++%s existe, non Ã©critX
++Fichier partiel, non Ã©crit; utiliser ! pour outrepasserX
++Fichier partiel, non Ã©critX
++%s: fichier modifiÃ© plus rÃ©cemment que cet exemplaire; utiliser ! pour outrepasserX
++%s: fichier modifiÃ© plus rÃ©cemment que cet exemplaireX
++%s: interdiction d'Ã©criture non disponibleX
+ Ecriture en cours...X
+-%s: AVERTISSEMENT : FICHIER TRONQUÉX
+-Première marque de ce groupe déjà atteinteX
+-%s: nouveau fichier : %lu lignes, %lu caractèresX
+-%s: %lu lignes, %lu caractèresX
+-%s étendue à trop de noms de fichiersX
++%s: AVERTISSEMENT : FICHIER TRONQUÃ‰X
++PremiÃ¨re marque de ce groupe dÃ©jÃ  atteinteX
++%s: nouveau fichier : %lu lignes, %lu caractÃ¨resX
++%s: %lu lignes, %lu caractÃ¨resX
++%s Ã©tendue Ã  trop de noms de fichiersX
+ %s: pas un fichier standardX
+ %s: ne vous appartient pasX
+-%s: accessible par un utilisateur autre que son propriétaireX
+-Fichier modifé depuis la dernière écriture complète ; écrire ou utiliser ! pour outrepasser X
+-Fichier modifé depuis la dernière écriture complète ; écrire ou utiliser :edit! pour outrepasserX
+-Fichier modifé depuis la dernière écriture complète ; écrire ou utiliser ! pour outrepasserX
++%s: accessible par un utilisateur autre que son propriÃ©taireX
++Fichier modifÃ© depuis la derniÃ¨re Ã©criture complÃ¨te ; Ã©crire ou utiliser ! pour outrepasser X
++Fichier modifÃ© depuis la derniÃ¨re Ã©criture complÃ¨te ; Ã©crire ou utiliser :edit! pour outrepasserX
++Fichier modifÃ© depuis la derniÃ¨re Ã©criture complÃ¨te ; Ã©crire ou utiliser ! pour outrepasserX
+ Fichier temporaire ; quitter annulera les modificationsX
+-Fichier en lecture seule ; les modifications ne sont pas écrites automatiquementX
+-Journal redémarréX
++Fichier en lecture seule ; les modifications ne sont pas Ã©crites automatiquementX
++Journal redÃ©marrÃ©X
+ confirmer ? [ynq]X
+ Appuyez sur n'importe quelle touche pour continuer : X
+ Appuyez sur n'importe quelle touche pour continuer [: pour entrer plus de commandes ex] : X
+ Appuyez sur n'importe quelle touche pour continuer [q pour Quitter]: X
+-Cette forme de %s nécessite l'interface de terminal exX
+-Entrée de mode entrée ex.X
+-La commande a échoué, aucun fichier n'a encore été lu.X
++Cette forme de %s nÃ©cessite l'interface de terminal exX
++EntrÃ©e de mode entrÃ©e ex.X
++La commande a Ã©chouÃ©, aucun fichier n'a encore Ã©tÃ© lu.X
+ cont?X
+-Evénement imprévu de caractèreX
+-Evénement imprévu de fin-de-fichierX
+-Pas de correspondances pour cette requêteX
+-Evénement imprévu d'interruptionX
+-Evénement quitter imprévuX
+-Evénement imprévu de rafraîchissementX
+-La dernière marque de ce groupe a déjà été atteinteX
+-La commande %s nécessite l'interface de terminal exX
+-Cette forme de %s n'est pas reconnue quand l'option d'édition protégée est activéeX
+-Evénement imprévu de chaîneX
+-Evénement imprévu de délai impartiX
+-Evénement d'écriture imprévuX
++EvÃ©nement imprÃ©vu de caractÃ¨reX
++EvÃ©nement imprÃ©vu de fin-de-fichierX
++Pas de correspondances pour cette requÃªteX
++EvÃ©nement imprÃ©vu d'interruptionX
++EvÃ©nement quitter imprÃ©vuX
++EvÃ©nement imprÃ©vu de rafraÃ®chissementX
++La derniÃ¨re marque de ce groupe a dÃ©jÃ  Ã©tÃ© atteinteX
++La commande %s nÃ©cessite l'interface de terminal exX
++Cette forme de %s n'est pas reconnue quand l'option d'Ã©dition protÃ©gÃ©e est activÃ©eX
++EvÃ©nement imprÃ©vu de chaÃ®neX
++EvÃ©nement imprÃ©vu de dÃ©lai impartiX
++EvÃ©nement d'Ã©criture imprÃ©vuX
+ 
+-Les expansions du shell ne sont pas reconnues quand l'option d'édition protégée est activéeX
+-La commande %s n'est pas reconnue quand l'option d'édition protégée est activéeX
+-Définition : l'option %s ne peut pas être désactivéeX
++Les expansions du shell ne sont pas reconnues quand l'option d'Ã©dition protÃ©gÃ©e est activÃ©eX
++La commande %s n'est pas reconnue quand l'option d'Ã©dition protÃ©gÃ©e est activÃ©eX
++DÃ©finition : l'option %s ne peut pas Ãªtre dÃ©sactivÃ©eX
+ Affichage trop petit.X
+-ajoutéX
+-changéX
+-suppriméX
++ajoutÃ©X
++changÃ©X
++supprimÃ©X
+ jointX
+-déplacéX
+-décaléX
+-coupéX
++dÃ©placÃ©X
++dÃ©calÃ©X
++coupÃ©X
+ ligneX
+ lignesX
+-Vi n'a pas été chargé avec un interprétateur TclX
+-Ficher modifié depuis le dernier enregistrement.X
+-L'expansion du shell a échouéX
+-Pas d'option d'édition %s spécifiéeX
+-Vi n'a pas été chargé avec un interprétateur PerlX
+-Pas de commande ex à exécuterX
+-Entrez <CR> pour exécuter une commande, :q pour quitterX
++Vi n'a pas Ã©tÃ© chargÃ© avec un interprÃ©tateur TclX
++Ficher modifiÃ© depuis le dernier enregistrement.X
++L'expansion du shell a Ã©chouÃ©X
++Pas d'option d'Ã©dition %s spÃ©cifiÃ©eX
++Vi n'a pas Ã©tÃ© chargÃ© avec un interprÃ©tateur PerlX
++Pas de commande ex Ã  exÃ©cuterX
++Entrez <CR> pour exÃ©cuter une commande, :q pour quitterX
+ Utiliser "cscope help" pour obtenir de l'aideX
+-Aucune connexion cscope n'est lancéeX
++Aucune connexion cscope n'est lancÃ©eX
+ %s : type de recherche inconnu : utiliser un des %sX
+ %d : Il n'existe pas de telle session cscopeX
+-Définition : l'option %s ne peut jamais être activéeX
+-Définition : l'option %s ne peut jamais être définie sur 0X
+-%s: joints : %lu lignes, %lu caractèresX
+-événement imprévu de redimensionnementX
+-%d fichiers à éditerX
++DÃ©finition : l'option %s ne peut jamais Ãªtre activÃ©eX
++DÃ©finition : l'option %s ne peut jamais Ãªtre dÃ©finie sur 0X
++%s: joints : %lu lignes, %lu caractÃ¨resX
++Ã©vÃ©nement imprÃ©vu de redimensionnementX
++%d fichiers Ã  Ã©diterX
+Index: nvi-1.81.6/catalog/german
+===================================================================
+--- nvi-1.81.6.orig/catalog/german
++++ nvi-1.81.6/catalog/german
+@@ -1,41 +1,41 @@
+ VI_MESSAGE_CATALOG
+-Zeilenlängen-ÜberlaufX
+-kann Zeile %lu nicht löschenX
+-kann an Zeile %lu nicht anfügenX
+-kann in Zeile %lu nicht einfügenX
++ZeilenlÃ¤ngen-ÃœberlaufX
++kann Zeile %lu nicht lÃ¶schenX
++kann an Zeile %lu nicht anfÃ¼genX
++kann in Zeile %lu nicht einfÃ¼genX
+ kann Zeile %lu nicht speichernX
+ kann letzte Zeile nicht lesenX
+ Fehler: kann Zeile %lu nicht wiederherstellenX
+ ProtokolldateiX
+-Keine Protokollierung aktiv, Rückgängigmachen nicht möglichX
+-Keine Änderungen rückgängig zu machenX
+-Keine Protokollierung aktiv, Rückgängigmachen nicht möglichX
+-Keine Protokollierung aktiv, Wiederholung von Änderungen nicht möglichX
+-Keine Änderungen zu wiederholenX
++Keine Protokollierung aktiv, RÃ¼ckgÃ¤ngigmachen nicht mÃ¶glichX
++Keine Ã„nderungen rÃ¼ckgÃ¤ngig zu machenX
++Keine Protokollierung aktiv, RÃ¼ckgÃ¤ngigmachen nicht mÃ¶glichX
++Keine Protokollierung aktiv, Wiederholung von Ã„nderungen nicht mÃ¶glichX
++Keine Ã„nderungen zu wiederholenX
+ %s/%d: ProtokollschreibfehlerX
+-Vi's Standardein- und -ausgabe muß ein Terminal seinX
++Vi's Standardein- und -ausgabe muÃŸ ein Terminal seinX
+ Marke %s: nicht gesetztX
+-Marke %s: die Zeile wurde gelöschtX
++Marke %s: die Zeile wurde gelÃ¶schtX
+ Marke %s: Cursorposition existiert nicht mehrX
+ Fehler: X
+ neue DateiX
+-Name geändertX
+-geändertX
+-nicht geändertX
++Name geÃ¤ndertX
++geÃ¤ndertX
++nicht geÃ¤ndertX
+ NICHT GELOCKTX
+ nur zum LesenX
+ Zeile %lu von %lu [%ld%%]X
+ leere DateiX
+ Zeile %luX
+ Die Datei %s ist kein MeldungskatalogX
+-Setzen der Voreinstellung für %s Option nicht möglichX
++Setzen der Voreinstellung fÃ¼r %s Option nicht mÃ¶glichX
+ Benutzung: %sX
+ set: keine %s Option: 'set all' zeigt alle Optionen mit Werten anX
+ set: der [no]%s Option kann kein Wert zugewiesen werdenX
+ set: %s ist keine Boolsche OptionX
+ set: %s Option: %sX
+-set: %s Option: %s: Werte-ÜberlaufX
+-set: %s Option: %s ist eine ungültige ZahlX
++set: %s Option: %s: Werte-ÃœberlaufX
++set: %s Option: %s ist eine ungÃ¼ltige ZahlX
+ set: %s ist keine Boolsche OptionX
+ Bildschirm hat zu wenig Spalten, weniger als %dX
+ Bildschirm hat zu viele Spalten, mehr als %dX
+@@ -45,28 +45,28 @@ Die lisp-Option ist nicht implementiertX
+ Meldungen nicht abgeschaltet: %sX
+ Meldungen nicht eingeschaltet: %sX
+ 
+-Die paragraph-Option muß Gruppen zu zwei Zeichen enthaltenX
+-Die section-Option muß Gruppen zu zwei Zeichen enthaltenX
++Die paragraph-Option muÃŸ Gruppen zu zwei Zeichen enthaltenX
++Die section-Option muÃŸ Gruppen zu zwei Zeichen enthaltenX
+ 
+ 
+ 
+ Der Standardpuffer ist leerX
+ Puffer %s ist leerX
+ Dateien mit newlines im Namen sind nicht wiederherstellbarX
+-Änderungen nicht wiederherstellbar, falls die Editorsitzung schiefgehtX
+-kopiere Datei für Wiederherstellung ...X
++Ã„nderungen nicht wiederherstellbar, falls die Editorsitzung schiefgehtX
++kopiere Datei fÃ¼r Wiederherstellung ...X
+ Rettungsmechanismus funktioniert nicht: %sX
+-Änderungen nicht wiederherstellbar, falls die Editorsitzung schiefgehtX
++Ã„nderungen nicht wiederherstellbar, falls die Editorsitzung schiefgehtX
+ Sicherung der Datei gescheitert: %sX
+-kopiere Datei für Wiederherstellung ...X
+-Informationen über den Benutzer mit id %u nicht gefundenX
++kopiere Datei fÃ¼r Wiederherstellung ...X
++Informationen Ã¼ber den Benutzer mit id %u nicht gefundenX
+ Wiederherstellungsdatei kann nicht gelockt werdenX
+-Puffer der Wiederherstellungsdatei übergelaufenX
++Puffer der Wiederherstellungsdatei Ã¼bergelaufenX
+ WiederherstellungsdateiX
+ %s: Wiederherstellungsdatei hat falsches FormatX
+ %s: Wiederherstellungsdatei hat falsches FormatX
+ Keine von Ihnen lesbaren Dateien mit Namen %s zum WiederherstellenX
+-Es gibt ältere Versionen dieser Datei von Ihnen zum WiederherstellenX
++Es gibt Ã¤ltere Versionen dieser Datei von Ihnen zum WiederherstellenX
+ Sie haben noch andere Dateien zum WiederherstellenX
+ schicke keine email: %sX
+ Datei leer; nichts zu suchenX
+@@ -79,86 +79,86 @@ suche ...X
+ Keine nichtdruckbaren Zeichen gefundenX
+ Unbekannter KommandonameX
+ 
+-%s: Kommando im ex-Modus nicht verfügbarX
++%s: Kommando im ex-Modus nicht verfÃ¼gbarX
+ Anzahl darf nicht Null seinX
+ %s: falsche ZeilenangabeX
+ Interner Syntaxtabellenfehler (%s: %s)X
+ Benutzung: %sX
+-%s: temporärer Puffer nicht freigegebenX
++%s: temporÃ¤rer Puffer nicht freigegebenX
+ Flagoffset vor Zeile 1X
+ Flagoffset hinter dem DateiendeX
+-@ mit Bereich lief, als Datei/Anzeige geändert wurdeX
+-globales oder v-Kommando lief, als Datei/Anzeige geändert wurdeX
+-Ex-Kommando mißlungen: restliche Kommandoeingabe ignoriertX
+-Ex-Kommando mißlungen: umdefinierte Tasten ungültigX
++@ mit Bereich lief, als Datei/Anzeige geÃ¤ndert wurdeX
++globales oder v-Kommando lief, als Datei/Anzeige geÃ¤ndert wurdeX
++Ex-Kommando miÃŸlungen: restliche Kommandoeingabe ignoriertX
++Ex-Kommando miÃŸlungen: umdefinierte Tasten ungÃ¼ltigX
+ Die zweite Adresse ist kleiner als die ersteX
+ Kein Markenname angegebenX
+ \\ ohne folgenden / oder ?X
+ Referenz auf eine negative ZeilennummerX
+ Das Kommando %s ist unbekanntX
+-Adreßwert zu großX
+-Adreßwert zu kleinX
+-Ungültige AdreßkombinationX
+-Ungültige Adresse: nur %lu Zeilen in der DateiX
+-Ungültige Adresse: die Datei ist leerX
++AdreÃŸwert zu groÃŸX
++AdreÃŸwert zu kleinX
++UngÃ¼ltige AdreÃŸkombinationX
++UngÃ¼ltige Adresse: nur %lu Zeilen in der DateiX
++UngÃ¼ltige Adresse: die Datei ist leerX
+ Das Kommando %s erlaubt keine Adresse 0X
+-Keine Abkürzungen zum AnzeigenX
+-Abkürzungen müssen mit einem "Wort"-Zeichen endenX
+-Abkürzungen dürfen keine Tabulator- oder Leerzeichen enthaltenX
+-In Abkürzungen dürfen außer am Ende Wort- und Nicht-Wort-Zeichen nicht gemischt werdenX
+-"%s" ist keine AbkürzungX
+-Vi Kommando mißlungen: umdefinierte Tasten ungültigX
++Keine AbkÃ¼rzungen zum AnzeigenX
++AbkÃ¼rzungen mÃ¼ssen mit einem "Wort"-Zeichen endenX
++AbkÃ¼rzungen dÃ¼rfen keine Tabulator- oder Leerzeichen enthaltenX
++In AbkÃ¼rzungen dÃ¼rfen auÃŸer am Ende Wort- und Nicht-Wort-Zeichen nicht gemischt werdenX
++"%s" ist keine AbkÃ¼rzungX
++Vi Kommando miÃŸlungen: umdefinierte Tasten ungÃ¼ltigX
+ Keine weiteren Dateien zu editierenX
+ Keine vorhergehenden Dateien zu editierenX
+-Keine vorhergehenden Dateien für rewindX
++Keine vorhergehenden Dateien fÃ¼r rewindX
+ Keine Dateiliste zum AnzeigenX
+ Kein vorhergehendes Kommando, um "!" zu ersetzenX
+-Kein Dateiname für %%X
+-Kein Dateiname für #X
++Kein Dateiname fÃ¼r %%X
++Kein Dateiname fÃ¼r #X
+ Fehler: execl: %sX
+ E/A-Fehler: %sX
+-Datei wurde seit dem letzten vollständigen Schreiben geändert; schreibe oder verwende ! zum ignorierenX
++Datei wurde seit dem letzten vollstÃ¤ndigen Schreiben geÃ¤ndert; schreibe oder verwende ! zum ignorierenX
+ Kann Homedirectory nicht bestimmenX
+ Neues aktuelles Directory: %sX
+ Keine Puffer anzuzeigenX
+ Das Kommando %s kann nicht als Teil eines global oder v Kommandos verwendet werdenX
+-%s/%s: nicht gelesen: gehört weder Ihnen noch rootX
+-%s/%s: nicht gelesen: gehört nicht IhnenX
+-%s/%s: nicht gelesen: anderer Benutzer als Eigentümer hat SchreibrechtX
+-%s: nicht gelesen: gehört weder Ihnen noch rootX
+-%s: nicht gelesen: gehört nicht IhnenX
+-%s: nicht gelesen: anderer Benutzer als Eigentümer hat SchreibrechtX
++%s/%s: nicht gelesen: gehÃ¶rt weder Ihnen noch rootX
++%s/%s: nicht gelesen: gehÃ¶rt nicht IhnenX
++%s/%s: nicht gelesen: anderer Benutzer als EigentÃ¼mer hat SchreibrechtX
++%s: nicht gelesen: gehÃ¶rt weder Ihnen noch rootX
++%s: nicht gelesen: gehÃ¶rt nicht IhnenX
++%s: nicht gelesen: anderer Benutzer als EigentÃ¼mer hat SchreibrechtX
+ Keine folgenden Zeilen zum VerbindenX
+ Kein input-Map EintragX
+ Kein command-Map EintragX
+ Das %s Zeichen kann nicht umgemappt werdenX
+ "%s" ist momentan nicht gemapptX
+-Markennamen müssen einzelne Buchstaben seinX
+-%s existiert, nicht geschrieben; verwende ! zum ÜberschreibenX
++Markennamen mÃ¼ssen einzelne Buchstaben seinX
++%s existiert, nicht geschrieben; verwende ! zum ÃœberschreibenX
+ Neue .exrc Datei: %s. X
+ Zielzeile ist innerhalb des VerschiebebereichsX
+-Das open Kommando verlangt, daß die open Option gesetzt istX
++Das open Kommando verlangt, daÃŸ die open Option gesetzt istX
+ Das open Kommando ist nocht nicht implementiertX
+-Rettung dieser Datei nicht möglichX
++Rettung dieser Datei nicht mÃ¶glichX
+ Datei gerettetX
+ %s wurde in zu viele Dateinamen expandiertX
+-Nur reguläre Dateien und named pipes können gelesen werdenX
+-%s: Locken zum Lesen war nicht möglichX
++Nur regulÃ¤re Dateien und named pipes kÃ¶nnen gelesen werdenX
++%s: Locken zum Lesen war nicht mÃ¶glichX
+ lese ...X
+ %s: %lu Zeilen, %lu ZeichenX
+ Keine Hintergrundanzeigen vorhandenX
+-Das script Kommando ist nur im vi Modus verfügbarX
+-Kein Kommando auszuführenX
++Das script Kommando ist nur im vi Modus verfÃ¼gbarX
++Kein Kommando auszufÃ¼hrenX
+ shiftwidth Option auf 0 gesetztX
+-Anzahl-ÜberlaufX
++Anzahl-ÃœberlaufX
+ Anzahl-UnterlaufX
+-Regulärer Ausdruck angegeben; r Flag bedeutungslosX
+-Die #, l und p Flags können im vi Modus nicht mit dem c Flag kombiniert werdenX
+-Keine Übereinstimmung gefundenX
++RegulÃ¤rer Ausdruck angegeben; r Flag bedeutungslosX
++Die #, l und p Flags kÃ¶nnen im vi Modus nicht mit dem c Flag kombiniert werdenX
++Keine Ãœbereinstimmung gefundenX
+ Kein vorhergehender 'tag' angegebenX
+-Weniger als %s Einträge auf dem 'tag'-Stack; verwende :display t[ags]X
++Weniger als %s EintrÃ¤ge auf dem 'tag'-Stack; verwende :display t[ags]X
+ Keine Datei namens %s auf dem 'tag'-Stack; verwende :display t[ags]X
+-Drücke Enter um fortzufahren: X
++DrÃ¼cke Enter um fortzufahren: X
+ %s: 'tag' nicht gefundenX
+ %s: kaputter 'tag' in %sX
+ %s: die Zeilennummer des 'tag' ist hinter dem DateiendeX
+@@ -166,20 +166,20 @@ Der 'tag' Stack ist leerX
+ %s: Suchmuster nicht gefundenX
+ %d weitere Dateien zu editierenX
+ Puffer %s ist leerX
+-Bestätige Änderung [n]X
++BestÃ¤tige Ã„nderung [n]X
+ Unterbrochen.X
+-Kein vorhergehender Puffer zum AusführenX
+-Kein vorhergehender regulärer AusdruckX
+-Das Kommando %s verlangt, daß bereits eine Datei eingelesen wurdeX
++Kein vorhergehender Puffer zum AusfÃ¼hrenX
++Kein vorhergehender regulÃ¤rer AusdruckX
++Das Kommando %s verlangt, daÃŸ bereits eine Datei eingelesen wurdeX
+ Benutzung: %sX
+-Das visual Kommando verlangt daß die open Option gesetzt istX
++Das visual Kommando verlangt daÃŸ die open Option gesetzt istX
+ 
+ Leere DateiX
+ Keine vorhergehende F, f, T oder t SucheX
+ %s nicht gefundenX
+ Keine vorhergehende Datei zu editierenX
+ Cursor nicht auf einer ZahlX
+-Sich ergebende Zahl ist zu großX
++Sich ergebende Zahl ist zu groÃŸX
+ Sich ergebende Zahl ist zu kleinX
+ Kein korrespondierendes Zeichen in dieser ZeileX
+ Korrespondierendes Zeichen nicht gefundenX
+@@ -187,11 +187,11 @@ Keine Zeichen zu ersetzenX
+ Keine andere Anzeige zum HinschaltenX
+ Zeichen nach Suchmuster, Zeilenoffset und/oder z KommandoX
+ Kein altes SuchmusterX
+-Suche zur ursprünglichen Position zurückgekehrtX
+-Abkürzung überschreitet Expansionsgrenze: Zeichen weggelassenX
++Suche zur ursprÃ¼nglichen Position zurÃ¼ckgekehrtX
++AbkÃ¼rzung Ã¼berschreitet Expansionsgrenze: Zeichen weggelassenX
+ Nicht erlaubtes Zeichen; maskiere zum EingebenX
+ Bereits am Anfang der EingabeX
+-Keine weiteren Zeichen zu löschenX
++Keine weiteren Zeichen zu lÃ¶schenX
+ Bewegung hinter das DateiendeX
+ Bewegung hinter das ZeilenendeX
+ Keine Cursorbewegung gemachtX
+@@ -203,73 +203,73 @@ Bereits am DateiendeX
+ Bereits am ZeilenendeX
+ %s ist kein vi KommandoX
+ Benutzung: %sX
+-Keine Zeichen zu löschenX
+-Das Q Kommando benötigt das ex Terminal InterfaceX
++Keine Zeichen zu lÃ¶schenX
++Das Q Kommando benÃ¶tigt das ex Terminal InterfaceX
+ Kein Kommando zu wiederholenX
+ Die Datei ist leerX
+ %s kann nicht als Bewegungskommando verwendet werdenX
+ Bereits im Kommando-ModusX
+  Cursor nicht auf einem WortX
+ 
+-Wert der Window Option ist zu groß, max ist %uX
+-AnhängenX
+-ÄndernX
++Wert der Window Option ist zu groÃŸ, max ist %uX
++AnhÃ¤ngenX
++Ã„ndernX
+ KommandoX
+-EinfügenX
++EinfÃ¼genX
+ ErsetzenX
+ Bewegung hinter das AnzeigenendeX
+ Bewegung vor den AnzeigenanfangX
+-Anzeige muß für Bildschirmteilung größer als %d seinX
++Anzeige muÃŸ fÃ¼r Bildschirmteilung grÃ¶ÃŸer als %d seinX
+ Keine Hintergrundanzeigen vorhandenX
+ Es gibt keine Hintergrundanzeige, die eine Datei namens %s editiertX
+ Die einzige dargestellte Anzeige kann nicht in den Hintergrund gebracht werdenX
+ Die Anzeige kann nur auf %d Zeilen verkleinert werdenX
+ Die Anzeige kann nicht verkleinert werdenX
+-Die Anzeige kann nicht vergrößert werdenX
++Die Anzeige kann nicht vergrÃ¶ÃŸert werdenX
+ 
+ Diese Anzeige kann nicht gestopt werdenX
+-Unterbrochen: umdefinierte Tasten ungültigX
+-vi: temporärer Puffer nicht freigegebenX
++Unterbrochen: umdefinierte Tasten ungÃ¼ltigX
++vi: temporÃ¤rer Puffer nicht freigegebenX
+ Dieses Terminal hat keine %s TasteX
+ es kann nur ein Puffer angegeben werdenX
+-Zahl größer als %luX
++Zahl grÃ¶ÃŸer als %luX
+ UnterbrochenX
+-Nicht möglich, temporäre Datei anzulegenX
+-Warnung: %s ist keine reguläre DateiX
+-%s ist bereits gelockt, Editorsitzung schreibgeschütztX
+-%s: löschenX
+-%s: schließenX
+-%s: löschenX
+-%s: löschenX
+-Datei nicht schreibbar, nicht geschrieben; verwende ! zum ÜberschreibenX
++Nicht mÃ¶glich, temporÃ¤re Datei anzulegenX
++Warnung: %s ist keine regulÃ¤re DateiX
++%s ist bereits gelockt, Editorsitzung schreibgeschÃ¼tztX
++%s: lÃ¶schenX
++%s: schlieÃŸenX
++%s: lÃ¶schenX
++%s: lÃ¶schenX
++Datei nicht schreibbar, nicht geschrieben; verwende ! zum ÃœberschreibenX
+ Datei nicht schreibbar, nicht geschriebenX
+-%s existiert, nicht geschrieben; verwende ! zum ÜberschreibenX
++%s existiert, nicht geschrieben; verwende ! zum ÃœberschreibenX
+ %s existiert, nicht geschriebenX
+-Teil der Datei, nicht geschrieben; verwende ! zum ÜberschreibenX
++Teil der Datei, nicht geschrieben; verwende ! zum ÃœberschreibenX
+ Teil der Datei, nicht geschriebenX
+-%s: Datei wurde später als diese Kopie verändert; verwende ! zum ÜberschreibenX
+-%s: Datei wurde später als diese Kopie verändertX
+-%s: Locken zum Schreiben war nicht möglichX
++%s: Datei wurde spÃ¤ter als diese Kopie verÃ¤ndert; verwende ! zum ÃœberschreibenX
++%s: Datei wurde spÃ¤ter als diese Kopie verÃ¤ndertX
++%s: Locken zum Schreiben war nicht mÃ¶glichX
+ schreibe ...X
+ %s: WARNUNG: DATEI ABGESCHNITTENX
+ Bereits am ersten 'tag' dieser GruppeX
+ %s: neue Datei: %lu Zeilen, %lu ZeichenX
+ %s: %lu Zeilen, %lu ZeichenX
+ %s wurde in zu viele Dateinamen expandiertX
+-%s: keine reguläre DateiX
+-%s: gehört nicht IhnenX
+-%s: anderer Benutzer als Eigentümer hat ZugriffX
+-Datei wurde seit dem letzten vollständigen Schreiben geändert; schreibe oder verwende ! zum ignorierenX
+-Datei wurde seit dem letzten vollständigen Schreiben geändert; schreibe oder verwende :edit! zum ignorierenX
+-Datei wurde seit dem letzten vollständigen Schreiben geändert; schreibe oder verwende ! zum ignorierenX
+-Datei ist temporär; beim Verlassen gehen die Änderungen verlorenX
+-Datei ist schreibgeschützt, Änderungen werden nicht automatisch geschriebenX
++%s: keine regulÃ¤re DateiX
++%s: gehÃ¶rt nicht IhnenX
++%s: anderer Benutzer als EigentÃ¼mer hat ZugriffX
++Datei wurde seit dem letzten vollstÃ¤ndigen Schreiben geÃ¤ndert; schreibe oder verwende ! zum ignorierenX
++Datei wurde seit dem letzten vollstÃ¤ndigen Schreiben geÃ¤ndert; schreibe oder verwende :edit! zum ignorierenX
++Datei wurde seit dem letzten vollstÃ¤ndigen Schreiben geÃ¤ndert; schreibe oder verwende ! zum ignorierenX
++Datei ist temporÃ¤r; beim Verlassen gehen die Ã„nderungen verlorenX
++Datei ist schreibgeschÃ¼tzt, Ã„nderungen werden nicht automatisch geschriebenX
+ Portokollierung neu begonnenX
+-bestätigen [ynq]X
+-Drücke beliebige Taste um fortzufahrenX
+-Drücke beliebige Taste um fortzufahren [: um weitere Kommandos einzugeben]: X
+-Drücke beliebige Taste um fortzufahren [q zum Verlassen]: X
+-Diese Form von %s benötigt das ex Terminal-InterfaceX
++bestÃ¤tigen [ynq]X
++DrÃ¼cke beliebige Taste um fortzufahrenX
++DrÃ¼cke beliebige Taste um fortzufahren [: um weitere Kommandos einzugeben]: X
++DrÃ¼cke beliebige Taste um fortzufahren [q zum Verlassen]: X
++Diese Form von %s benÃ¶tigt das ex Terminal-InterfaceX
+ Gehe in ex Eingabe-Modus.\nX
+ Kommando schiefgelaufen, noch keine Datei eingelesenX
+  weiter?X
+@@ -280,19 +280,19 @@ unerwartetes Unterbrechungs - EreignisX
+ unerwartetes Verlassen - EreignisX
+ unerwartetes Wiederherstellungs - EreignisX
+ Bereits am letzten 'tag' dieser GruppeX
+-Das %s Kommando benötigt das ex Terminal-InterfaceX
+-Diese Form von %s wird nicht unterstützt wenn die 'secure edit' - Option gesetzt istX
++Das %s Kommando benÃ¶tigt das ex Terminal-InterfaceX
++Diese Form von %s wird nicht unterstÃ¼tzt wenn die 'secure edit' - Option gesetzt istX
+ unerwartetes Zeichenketten - EreignisX
+ unerwartetes timeout - EreignisX
+ unerwartetes Schreibe - EreignisX
+ 
+-Shell Expandierungen nicht unterstützt wenn die 'secure edit' - Option gesetzt istX
+-Das %s Kommando wird nicht unterstützt wenn die 'secure edit' - Option gesetzt istX
++Shell Expandierungen nicht unterstÃ¼tzt wenn die 'secure edit' - Option gesetzt istX
++Das %s Kommando wird nicht unterstÃ¼tzt wenn die 'secure edit' - Option gesetzt istX
+ set: %s kann nicht ausgeschaltet werdenX
+ Anzeige zu klein.X
+-angefügtX
+-geändertX
+-gelöschtX
++angefÃ¼gtX
++geÃ¤ndertX
++gelÃ¶schtX
+ verbundenX
+ verschobenX
+ geschobenX
+@@ -300,18 +300,18 @@ in Puffer geschriebenX
+ ZeileX
+ ZeilenX
+ Vi wurde nicht mit dem Tcl Interpreter gelinktX
+-Datei wurde seit dem letzten Schreiben verändert.X
++Datei wurde seit dem letzten Schreiben verÃ¤ndert.X
+ Shell Expansion hat nicht geklapptX
+ Es ist keine %s Editieroption angegebenX
+ Vi wurde nicht mit einem Perl Interpreter geladenX
+-Kein ex Kommando auszuführenX
+-Drücke <CR> um ein Kommando auszuführen, :q zum verlassenX
+-Verwende "cscope help" für HilestellungX
++Kein ex Kommando auszufÃ¼hrenX
++DrÃ¼cke <CR> um ein Kommando auszufÃ¼hren, :q zum verlassenX
++Verwende "cscope help" fÃ¼r HilestellungX
+ Keine cscope Verbindung aktivX
+ %s: unbekannter Suchtyp: verwende einen aus %sX
+ %d: keine solche cscope VerbindungX
+ set: die %s Option kann nicht eingeschaltet werdenX
+ set: die %s Option kann nicht auf 0 gesetzt werdenX
+-%s: angefügt: %lu Zeilen, %lu ZeichenX
+-unerwartetes Größenveränderungs - EreignisX
++%s: angefÃ¼gt: %lu Zeilen, %lu ZeichenX
++unerwartetes GrÃ¶ÃŸenverÃ¤nderungs - EreignisX
+ %d Dateien zu edierenX
+Index: nvi-1.81.6/catalog/ru_SU.KOI8-R
+===================================================================
+--- nvi-1.81.6.orig/catalog/ru_SU.KOI8-R
++++ nvi-1.81.6/catalog/ru_SU.KOI8-R
+@@ -1,23 +1,23 @@
+ VI_MESSAGE_CATALOG
+-ğÅÒÅĞÏÌÎÅÎÉÅ ÚÎÁŞÅÎÉÑ ÄÌÉÎÙ ÓÔÒÏËÉX
+-ÎÅ×ÏÚÍÏÖÎÏ ÕÄÁÌÉÔØ ÓÔÒÏËÕ %luX
+-ÎÅ×ÏÚÍÏÖÎÏ ÄÏÂÁ×ÉÔØ Ë ÓÔÒÏËÅ %luX
+-ÎÅ×ÏÚÍÏÖÎÏ ×ÓÔÁ×ÉÔØ × ÓÔÒÏËÕ %luX
+-ÎÅ×ÏÚÍÏÖÎÏ ÓÏÈÒÁÎÉÔØ ÓÔÒÏËÕ %luX
+-ÎÅ×ÏÚÍÏÖÎÏ ÄÏÓÔÁÔØ ĞÏÓÌÅÄÎÀÀ ÓÔÒÏËÕX
+-
+-æÁÊÌ ÚÁĞÉÓÅÊX
+-úÁĞÉÓÉ ÎÅ ×ÅÌÉÓØ, ÎÅ×ÏÚÍÏÖÎÏ ÏÔÍÅÎÉÔØ ĞÏÓÌÅÄÎÀÀ ËÏÍÁÎÄÕX
+-îÅÔ ÉÚÍÅÎÅÎÉÊ ÄÌÑ ÏÔÍÅÎÙX
+-úÁĞÉÓÉ ÎÅ ×ÅÌÉÓØ, ÎÅ×ÏÚÍÏÖÎÏ ÏÔÍÅÎÉÔØ ĞÏÓÌÅÄÎÀÀ ËÏÍÁÎÄÕX
+-úÁĞÉÓÉ ÎÅ ×ÅÌÉÓØ, ÎÅ×ÏÚÍÏÖÎÏ ĞÒÏÓÍÏÔÒÅÔØ ×ĞÅÒÅÄX
+-îÅÔ ÉÚÍÅÎÅÎÉÊ ÄÌÑ ĞÅÒÅÄÅÌËÉX
+-%s/%d: ÏÛÉÂËÁ ĞÒÉ ÚÁĞÉÓÉ ĞÒÏÔÏËÏÌÁX
+-óÔÁÎÄÁÒÔÎÙÊ ××ÏÄ/×Ù×ÏÄ ÄÌÑ VI ÄÏÌÖÅÎ ÂÙÔØ ÔÅÒÍÉÎÁÌX
+-ïÔÍÅÔËÁ %s: ÎÅ ÕÓÔÁÎÏ×ÌÅÎÁX
+-ïÔÍÅÔËÁ %s: ÓÔÒÏËÁ ÂÙÌÁ ÕÄÁÌÅÎÁX
+-ïÔÍÅÔËÁ %s: ĞÏÚÉÃÉÉ ËÕÒÓÏÒÁ ÂÏÌØÛÅ ÎÅ ÓÕİÅÓÔ×ÕÅÔX
+-ïÛÉÂËÁ: X
++Ã°Ã…Ã’Ã…ÃÃÃŒÃÃ…ÃÃ‰Ã… ÃšÃÃÃÃ…ÃÃ‰Ã‘ Ã„ÃŒÃ‰ÃÃ™ Ã“Ã”Ã’ÃÃ‹Ã‰X
++ÃÃ…Ã—ÃÃšÃÃÃ–ÃÃ Ã•Ã„ÃÃŒÃ‰Ã”Ã˜ Ã“Ã”Ã’ÃÃ‹Ã• %luX
++ÃÃ…Ã—ÃÃšÃÃÃ–ÃÃ Ã„ÃÃ‚ÃÃ—Ã‰Ã”Ã˜ Ã‹ Ã“Ã”Ã’ÃÃ‹Ã… %luX
++ÃÃ…Ã—ÃÃšÃÃÃ–ÃÃ Ã—Ã“Ã”ÃÃ—Ã‰Ã”Ã˜ Ã— Ã“Ã”Ã’ÃÃ‹Ã• %luX
++ÃÃ…Ã—ÃÃšÃÃÃ–ÃÃ Ã“ÃÃˆÃ’ÃÃÃ‰Ã”Ã˜ Ã“Ã”Ã’ÃÃ‹Ã• %luX
++ÃÃ…Ã—ÃÃšÃÃÃ–ÃÃ Ã„ÃÃ“Ã”ÃÃ”Ã˜ ÃÃÃ“ÃŒÃ…Ã„ÃÃ€Ã€ Ã“Ã”Ã’ÃÃ‹Ã•X
++
++Ã¦ÃÃŠÃŒ ÃšÃÃÃ‰Ã“Ã…ÃŠX
++ÃºÃÃÃ‰Ã“Ã‰ ÃÃ… Ã—Ã…ÃŒÃ‰Ã“Ã˜, ÃÃ…Ã—ÃÃšÃÃÃ–ÃÃ ÃÃ”ÃÃ…ÃÃ‰Ã”Ã˜ ÃÃÃ“ÃŒÃ…Ã„ÃÃ€Ã€ Ã‹ÃÃÃÃÃ„Ã•X
++Ã®Ã…Ã” Ã‰ÃšÃÃ…ÃÃ…ÃÃ‰ÃŠ Ã„ÃŒÃ‘ ÃÃ”ÃÃ…ÃÃ™X
++ÃºÃÃÃ‰Ã“Ã‰ ÃÃ… Ã—Ã…ÃŒÃ‰Ã“Ã˜, ÃÃ…Ã—ÃÃšÃÃÃ–ÃÃ ÃÃ”ÃÃ…ÃÃ‰Ã”Ã˜ ÃÃÃ“ÃŒÃ…Ã„ÃÃ€Ã€ Ã‹ÃÃÃÃÃ„Ã•X
++ÃºÃÃÃ‰Ã“Ã‰ ÃÃ… Ã—Ã…ÃŒÃ‰Ã“Ã˜, ÃÃ…Ã—ÃÃšÃÃÃ–ÃÃ ÃÃ’ÃÃ“ÃÃÃ”Ã’Ã…Ã”Ã˜ Ã—ÃÃ…Ã’Ã…Ã„X
++Ã®Ã…Ã” Ã‰ÃšÃÃ…ÃÃ…ÃÃ‰ÃŠ Ã„ÃŒÃ‘ ÃÃ…Ã’Ã…Ã„Ã…ÃŒÃ‹Ã‰X
++%s/%d: ÃÃ›Ã‰Ã‚Ã‹Ã ÃÃ’Ã‰ ÃšÃÃÃ‰Ã“Ã‰ ÃÃ’ÃÃ”ÃÃ‹ÃÃŒÃX
++Ã³Ã”ÃÃÃ„ÃÃ’Ã”ÃÃ™ÃŠ Ã—Ã—ÃÃ„/Ã—Ã™Ã—ÃÃ„ Ã„ÃŒÃ‘ VI Ã„ÃÃŒÃ–Ã…Ã Ã‚Ã™Ã”Ã˜ Ã”Ã…Ã’ÃÃ‰ÃÃÃŒX
++Ã¯Ã”ÃÃ…Ã”Ã‹Ã %s: ÃÃ… Ã•Ã“Ã”ÃÃÃÃ—ÃŒÃ…ÃÃX
++Ã¯Ã”ÃÃ…Ã”Ã‹Ã %s: Ã“Ã”Ã’ÃÃ‹Ã Ã‚Ã™ÃŒÃ Ã•Ã„ÃÃŒÃ…ÃÃX
++Ã¯Ã”ÃÃ…Ã”Ã‹Ã %s: ÃÃÃšÃ‰ÃƒÃ‰Ã‰ Ã‹Ã•Ã’Ã“ÃÃ’Ã Ã‚ÃÃŒÃ˜Ã›Ã… ÃÃ… Ã“Ã•ÃÃ…Ã“Ã”Ã—Ã•Ã…Ã”X
++Ã¯Ã›Ã‰Ã‚Ã‹Ã: X
+ 
+ 
+ 
+@@ -27,241 +27,241 @@ VI_MESSAGE_CATALOG
+ 
+ 
+ 
+-æÁÊÌ %s ÎÅ Ñ×ÌÑÅÔÓÑ ËÁÔÁÌÏÇÏÍ ÓÏÏÂİÅÎÉÊX
+-îÅ×ÏÚÍÏÖÎÏ ÕÓÔÁÎÏ×ÉÔØ ÏĞÃÉÀ %s ĞÏ ÕÍÏÌŞÁÎÉÀX
+-éÓĞÏÌØÚÏ×ÁÎÉÅ: %sX
+-ïĞÃÉÉ %s ÎÅÔ: 'set all' ĞÏËÁÚÙ×ÁÅÔ ×ÓÅ ×ÏÚÍÏÖÎÙÅ ÏĞÃÉÉX
+-set: [no]%s ÎÅ ĞÒÉÎÉÍÁÅÔ ÔÁËÏÇÏ ÚÎÁŞÅÎÉÑX
+-set: %s ÏĞÃÉÑ ÎÅ Ñ×ÌÑÅÔÓÑ ÌÏÇÉŞÅÓËÏÊX
+-
+-
+-set: ÎÅĞÒÁ×ÉÌØÎÏÅ ÚÎÁŞÅÎÉÅ %sX
+-set: %s ÏĞÃÉÑ ÎÅ Ñ×ÌÑÅÔÓÑ ÌÏÇÉŞÅÓËÏÊX
+-ëÏÌÉŞÅÓÔ×Ï ËÏÌÏÎÏË ÜËÒÁÎÁ ÓÌÉÛËÏÍ ÍÁÌÏ, ÍÅÎØÛÅ ŞÅÍ %dX
+-ëÏÌÉŞÅÓÔ×Ï ËÏÌÏÎÏË ÜËÒÁÎÁ ÓÌÉÛËÏÍ ×ÅÌÉËÏ, ÂÏÌØÛÅ ŞÅÍ %dX
+-ëÏÌÉŞÅÓÔ×Ï ÓÔÒÏË ÜËÒÁÎÁ ÓÌÉÛËÏÍ ÍÁÌÏ, ÍÅÎØÛÅ ŞÅÍ %dX
+-ëÏÌÉŞÅÓÔ×Ï ÓÔÒÏË ÜËÒÁÎÁ ÓÌÉÛËÏÍ ×ÅÌÉËÏ, ÂÏÌØÛÅ ŞÅÍ %dX
+-ïĞÃÉÑ lisp ÏÔÓÕÔÓÔ×ÕÅÔX
+-óÏÏÂİÅÎÉÑ ÎÅ ×ÙËÌÀŞÅÎÙ: %sX
+-óÏÏÂİÅÎÉÑ ÎÅ ×ËÌÀŞÅÎÙ: %sX
+-
+-ïĞÃÉÑ paragraph ÄÏÌÖÎÁ ÓÏÓÔÏÑÔØ ÉÚ ÇÒÕĞĞ Ó Ä×ÕÍÑ ÓÉÍ×ÏÌÁÍÉX
+-ïĞÃÉÑ section ÄÏÌÖÎÁ ÓÏÓÔÏÑÔØ ÉÚ ÇÒÕĞĞ Ó Ä×ÕÍÑ ÓÉÍ×ÏÌÁÍÉX
+-
+-
+-
+-óÔÁÒÔÏ×ÙÊ ÂÕÆÅÒ ĞÕÓÔX
+-âÕÆÅÒ %s ĞÕÓÔX
+-æÁÊÌÙ Ó ÓÉÍ×ÏÌÁÍÉ ĞÅÒÅ×ÏÄÁ ÓÔÒÏËÉ × ÉÍÅÎÉ ÎÅ ÍÏÇÕÔ ÂÙÔØ ×ÏÓÓÔÁÎÏ×ÌÅÎÙX
+-éÚÍÅÎÅÎÉÑ ÎÅ ÓÏÈÒÁÎÅÎÙ ĞÒÉ ËÒÁÈÅ ÓÅÓÓÉÉX
+-
+-óÏÈÒÁÎÅÎÉÅ ÎÅ ÕÄÁÌÏÓØ: %sX
+-éÚÍÅÎÅÎÉÑ ÎÅ ÓÏÈÒÁÎÑÀÔÓÑ ĞÒÉ ÏÂÒÙ×Å ÓÅÓÓÉÉX
+-óÏÈÒÁÎÅÎÉÅ ËÏĞÉÉ ÆÁÊÌÁ ÎÅ ÕÄÁÌÏÓØ: %sX
+-
+-éÎÆÏÒÍÁÃÉÉ ÎÁ ĞÏÌØÚÏ×ÁÔÅÌÑ %u ÎÅ ÎÁÊÄÅÎÏX
+-îÅ×ÏÚÍÏÖÎÏ ÚÁİÉÔÉÔØ ÓĞÁÓÅÎÎÙÊ ÆÁÊÌX
+-âÕÆÅÒ ×ÏÓÓÔÁÎÏ×ÌÅÎÎÏÇÏ ÆÁÊÌÁ ĞÅÒÅĞÏÌÎÅÎX
+-÷ÏÓÓÔÁÎÏ×ÌÅÎÎÙÊ ÆÁÊÌX
+-%s: ÎÅ ÄÏ ËÏÎÃÁ ×ÏÓÓÔÁÎÏ×ÌÅÎÎÙÊ ÆÁÊÌX
+-%s: ÎÅ ÄÏ ËÏÎÃÁ ×ÏÓÓÔÁÎÏ×ÌÅÎÎÙÊ ÆÁÊÌX
+-æÁÊÌÏ× Ó ÉÍÅÎÅÍ %s, ËÏÔÏÒÙÅ ÷Ù ÍÏÖÅÔÅ ŞÉÔÁÔØ, ÎÅ ÓÕİÅÓÔ×ÕÅÔX
+-åÓÔØ ÓÔÁÒÙÅ ×ÅÒÓÉÉ ÆÁÊÌÁ, ËÏÔÏÒÙÅ ÍÏÖÎÏ ×ÏÓÓÔÁÎÏ×ÉÔØX
+-óÕİÅÓÔ×ÕÀÔ ÄÒÕÇÉÅ ÆÁÊÌÙ, ËÏÔÏÒÙÅ ÍÏÖÎÏ ×ÏÓÓÔÁÎÏ×ÉÔØX
+-Å-mail ÎÅ ĞÏÓÌÁÎ: %sX
+-æÁÊÌ ĞÕÓÔ - ÉÓËÁÔØ ÎÅŞÅÇÏX
+-äÏÓÔÉÇÎÕÔ ËÏÎÅÃ ÆÁÊÌÁ ÂÅÚ ÎÁÈÏÖÄÅÎÉÑ ÏÂÒÁÚÃÁ ĞÏÉÓËÁX
+-îÅ ÚÁÄÁÎ ÏÂÒÁÚÅÃ ĞÏÉÓËÁX
+-ïÂÒÁÚÅÃ ĞÏÉÓËÁ ÎÅ ÎÁÊÄÅÎX
+-äÏÓÔÕĞÎÏ ÎÁŞÁÌÏ ÆÁÊÌÁ ÂÅÚ ÎÁÈÏÖÄÅÎÉÑ ÏÂÒÁÚÃÁ ĞÏÉÓËÁX
+-ğÏÉÓË ÚÁÃÉËÌÅÎX
+-
+-îÅĞÅŞÁÔÎÙÈ ÓÉÍ×ÏÌÏ× ÎÅ ÎÁÊÄÅÎÏX
+-îÅÉÚ×ÅÓÔÎÁÑ ËÏÍÁÎÄÁX
+-
+-%s: ËÏÍÁÎÄÁ ÎÅ ÄÏÓÔÕĞÎÁ × ÒÅÖÉÍÅ exX
+-óŞÅÔŞÉË ÎÅ ÍÏÖÅÔ ÂÙÔØ ÎÕÌÅÍX
+-%s: ÎÅĞÒÁ×ÉÌØÎÏÅ ÕËÁÚÁÎÉÅ ÓÔÒÏËÉX
+-÷ÎÕÔÒÅÎÎÑÑ ÏÛÉÂËÁ × ÓÉÎÔÁËÓÉÓÅ (%s: %s)X
+-éÓĞÏÌØÚÏ×ÁÎÉÅ: %sX
+-%s: ×ÒÅÍÅÎÎÙÊ ÂÕÆÅÒ ÎÅ ÉÓĞÏÌØÚÏ×ÁÎX
+-íÅÔËÁ ĞÏÓÔÁ×ÌÅÎÁ ĞÅÒÅÄ ÓÔÒÏËÏÊ 1X
+-íÅÔËÁ ĞÏÓÔÁ×ÌÅÎÁ ĞÏÓÌÅ ËÏÎÃÁ ÆÁÊÌÁX
+-
+-
+-ëÏÍÁÎÄÁ ex ÎÅ ÕÄÁÌÁÓØ: ĞÏÓÌÅÄÕÀİÉÅ ËÏÍÁÎÄÙ ÚÁÂÙÔÙX
+-
+-÷ÔÏÒÏÊ ÁÄÒÅÓ ÍÅÎØÛÅ ŞÅÍ ĞÅÒ×ÙÊX
+-îÅ ÕËÁÚÁÎÏ ÎÁÚ×ÁÎÉÅ ÏÔÍÅÔËÉX
+-\\ ÎÅ ÚÁ×ÅÒÛÁÅÔÓÑ / ÉÌÉ ?X
+-óÓÙÌËÁ Ë ÓÔÒÏËÅ Ó ÎÏÍÅÒÏÍ ÍÅÎØÛÅ 0X
+-ëÏÍÁÎÄÁ %s ÎÅÉÚ×ÅÓÔÎÁX
+-ğÅÒÅĞÏÌÎÅÎÉÅ ÚÎÁŞÅÎÉÑ ÁÄÒÅÓÁX
+-îÅÄÏÂÏÒ ÚÎÁŞÅÎÉÑ ÁÄÒÅÓÁX
+-îÅÄÏĞÕÓÔÉÍÁÑ ËÏÍÂÉÎÁÃÉÑ × ÁÄÒÅÓÅX
+-îÅĞÒÁ×ÉÌØÎÙÊ ÁÄÒÅÓ: ×ÓÅÇÏ %lu ÓÔÒÏË × ÆÁÊÌÅX
+-îÅĞÒÁ×ÉÌØÎÙÊ ÁÄÒÅÓ: ÆÁÊÌ ĞÕÓÔX
+-ëÏÍÍÁÎÄÁ %s ÎÅ ÍÏÖÅÔ ÉÓĞÏÌØÚÏ×ÁÔØ ÁÄÒÅÓ 0X
+-áÂÂÒÅ×ÉÁÔÕÒÙ ÏÔÓÕÔÓÔ×ÕÀÔX
+-áÂÂÒÅ×ÉÁÔÕÒÙ ÄÏÌÖÎÙ ÚÁËÁÎŞÉ×ÁÔØÓÑ ÓÉÍ×ÏÌÏÍ "word"X
+-áÂÂÒÅ×ÉÁÔÕÒÙ ÎÅ ÍÏÇÕÔ ÓÏÄÅÒÖÁÔØ ÓÉÍ×ÏÌÏÙ ÔÁÂÌÑÃÉÉ ÉÌÉ ĞÒÏÂÅÌÙX
+-áÂÂÒÅ×ÉÁÔÕÒÙ ÎÅ ÍÏÇÕÔ ÓÏŞÅÔÁÔØÓÑ Ó ÓÉÍ×ÏÌÁÍÉ ÓÌÏ×/ÎÅ-ÓÌÏ×, ÚÁ ÉÓËÌÀŞÅÎÉÅÍ ËÏÎÃÁ ÓÔÒÏËÉX
+-"%s" ÎÅ Ñ×ÌÑÅÔÓÑ ÁÂÂÒÅ×ÉÁÔÕÒÏÊX
+-
+-æÁÊÌÏ× ÄÌÑ ÒÅÄÁËÔÉÒÏ×ÁÎÉÑ ÂÏÌØÛÅ ÎÅÔX
+-ïÔÓÕÔÓÔ×ÉÅ ĞÒÅÄÙÄÕİÅÇÏ ÆÁÊÌÁ ÄÌÑ ÒÅÄÁËÔÉÒÏ×ÁÎÉÑX
+-ïÔÓÕÔÓÔ×ÉÅ ĞÒÅÄÙÄÕİÅÇÏ ÆÁÊÌÁ ÄÌÑ ĞÒÏÓÍÏÔÒÁ ÎÁÚÁÄX
+-îÅÔ ÆÁÊÌÏ×X
+-ïÔÓÕÔÓÔ×ÉÅ ĞÒÅÄÙÄÕİÅÊ ËÏÍÁÎÄÙ ÄÌÑ ÚÁÍÅÎÙ "!"X
+-ïÔÓÕÔÓÔ×ÉÅ ÚÁÍÅÎÙ ÄÌÑ %%X
+-ïÔÓÕÔÓÔ×ÉÅ ÚÁÍÅÎÙ ÄÌÑ #X
+-ïÛÉÂËÁ: execl: %sX
+-ïÛÉÂËÁ ××ÏÄÁ/×Ù×ÏÄÁ: %sX
+-æÁÊÌ ÉÚÍÅÎÅÎ Ó ÍÏÍÅÎÔÁ ĞÏÓÌÅÄÎÅÊ ĞÏÌÎÏÊ ÚÁĞÉÓÉ: ÉÓĞÏÌØÚÕÊÔÅ ! ÄÌÑ ÏÂÈÏÄÁX
+-îÅ×ÏÚÍÏÖÎÏ ÎÁÊÔÉ ÄÏÍÁÛÎÉÊ ËÁÔÁÌÏÇX
+-îÏ×ÙÊ ËÁÔÁÌÏÇ: %sX
+-îÅÔ ×ÙÒÅÚÁÎÙÈ ÂÕÆÅÒÏ×X
+-ëÏÍÁÎÄÁ %s ÎÅ ÍÏÖÅÔ ÂÙÔØ ÉÓĞÏÌØÚÏ×ÁÎÁ ×ÎÕÔÒÉ ÇÌÏÂÁÌØÎÏÊ ÉÌÉ v ËÏÍÁÎÄÙX
+-%s/%s: ÎÅ ÏÔËÒÙÔ: ÎÅ ĞÒÉÎÁÄÌÅÖÉÔ ÷ÁÍ ÉÌÉ root-ÕX
+-%s/%s: ÎÅ ÏÔËÒÙÔ: ÎÅ ĞÒÉÎÁÄÌÅÖÉÔ ÷ÁÍX
+-%s/%s: ÎÅ ÏÔËÒÙÔ: ×ÏÚÍÏÖÎÏÓÔØ ÚÁĞÉÓÉ Õ ĞÏÌØÚÏ×ÁÔÅÌÑ, ÎÅ Ñ×ÌÑÀİÅÇÏÓÑ ×ÌÁÄÅÌØÃÅÍX
+-%s: ÎÅ ÓŞÉÔÁÎ: ÎÅ ĞÒÉÎÁÄÌÅÖÉÔ ÷ÁÍ ÉÌÉ root-ÕX
+-%s: ÎÅ ÓŞÉÔÁÎ: ÎÅ ĞÒÉÎÁÄÌÅÖÉÔ ÷ÁÍX
+-%s: ÎÅ ÓŞÉÔÁÎ: ×ÏÚÍÏÖÎÏÓÔØ ÚÁĞÉÓÉ Õ ĞÏÌØÚÏ×ÁÔÅÌÑ, ÎÅ Ñ×ÌÑÀİÅÇÏÓÑ ×ÌÁÄÅÌØÃÅÍX
+-ğÏÓÌÅÄÕÀİÉÅ ÓÔÒÏËÉ ÏÔÓÕÔÓÔ×ÕÀÔX
+-ïÔÓÕÔÓÔ×ÉÅ ĞÁÒÁÍÅÔÒÏ× ××ÏÄÁX
+-ïÔÓÕÔÓÔ×ÉÅ ĞÁÒÁÍÅÔÒÏ× ËÏÍÁÎÄÙX
+-óÉÍ×ÏÌ %s ÎÅ ÍÏÖÅÔ ÂÙÔØ ĞÅÒÅÎÁÚÎÁŞÅÎX
+-"%s" ÎÁ ÄÁÎÎÙÊ ÍÏÍÅÎÔ ÎÅ ÎÁÚÎÁŞÅÎX
+-éÍÑ ÍÅÔËÉ ÄÏÌÖÎÏ ÂÙÔØ ÏÄÎÉÍ ÓÉÍ×ÏÌÏÍX
+-%s ÓÕİÅÓÔ×ÕÅÔ, ÎÅ ÚÁĞÉÓÁÎ; ÉÓĞÏÌØÚÕÊÔÅ ! ÄÌÑ ÏÂÈÏÄÁX
+-îÏ×ÙÊ ÆÁÊÌ exrc: %sX
+-óÔÒÏËÁ ĞÅÒÅÎÏÓÁ ÎÁÈÏÄÉÔÓÑ ×ÎÕÔÒÉ ĞÁÒÁÍÅÔÒÏ× ĞÅÒÅÎÏÓÁX
+-ëÏÍÁÎÄÁ open ĞÏÄÒÁÚÕÍÅ×ÁÅÔ ÕÓÔÁÎÏ×ËÕ ÏĞÃÉÉ openX
+-ëÏÍÁÎÄÁ open ÎÅ ÒÅÁÌÉÚÏ×ÁÎÁX
+-úÁİÉÔÁ ÆÁÊÌÁ ÎÅ×ÏÚÍÏÖÎÁX
+-æÁÊÌ ÚÁİÉİÅÎX
+-%s ÒÁÓÛÉÒÉÌÓÑ × ÓÌÉÛËÏÍ ÂÏÌØÛÏÅ ËÏÌÉŞÅÓÔ×Ï ÉÍÅÎ ÆÁÊÌÏ×X
+-
+-%s: ÚÁİÉÔÁ ÎÁ ŞÔÅÎÉÅ ÂÙÌÁ ÎÅÄÏÓÔÕĞÎÁX
+-
+-%s: %lu ÓÔÒÏË, %lu ÓÉÍ×ÏÌÏ×X
+-îÅÔ ÔÅÎÅ×ÙÈ ÏËÏÎX
+-ëÏÍÁÎÄÁ script ÉÓĞÏÌØÚÕÅÔÓÑ ÔÏÌØËÏ × ÒÅÖÉÍÅ viX
+-îÅÔ ËÏÍÁÎÄÙ ÄÌÑ ÉÓĞÏÌÎÅÎÉÑX
+-ïĞÃÉÑ shiftwidth ÕÓÔÁÎÏ×ÌÅÎÁ ÎÁ 0X
+-ğÅÒÅĞÏÌÎÅÎÉÅ ÓŞÅÔŞÉËÁX
+-ãÉËÌ ×ÙĞÏÌÎÅÎ ÎÅ ÄÏ ËÏÎÃÁX
+-õËÁÚÁÎÏ ÒÅÇÕÌÑÒÎÏÅ ×ÙÒÁÖÅÎÉÅ: ÆÌÁÇ r ÎÅ ÎÕÖÅÎX
+-æÌÁÇÉ #, l É p ÎÅ ÍÏÇÕÔ ÂÙÔØ ÏÂßÅÄÉÎÅÎÙ Ó ÆÌÁÇÏÍ c × ÒÅÖÉÍÅ viX
+-óÏ×ĞÁÄÅÎÉÊ ÎÅÔX
+-íÅÔËÁ ÏÔÓÕÔÓÔ×ÕÅÔX
+-÷ ÓÔÅËÅ ÍÅÔÏË ÚÁĞÉÓÅÊ ÍÅÎØÛÅ, ŞÅÍ %s, ÉÓĞÏÌØÚÕÊÔÅ :display t[ags]X
+-æÁÊÌÁ Ó ÉÍÅÎÅÍ %s × ÓÔÅËÅ ÍÅÔÏË ÎÅÔ; ÉÓĞÏÌØÚÕÊÔÅ :display t[ags]X
+-
+-%s: ÍÅÔËÁ ÎÅ ÎÁÊÄÅÎÁX
+-%s: ĞÌÏÈÁÑ ÍÅÔËÁ × %sX
+-
+-óÔÅË ÍÅÔÏË ĞÕÓÔX
+-%s: ÏÂÒÁÚÅÃ ĞÏÉÓËÁ ÎÅ ÎÁÊÄÅÎX
+-
+-âÕÆÅÒ %s ĞÕÓÔX
+-
+-ğÒÅÒ×ÁÎÏX
+-ïÔÓÕÔÓÔ×ÉÅ ÂÕÆÅÒÁ ÄÌÑ ÉÓĞÏÌØÚÏ×ÁÎÉÑX
+-îÅÔ ĞÒÅÄÉÄÕİÅÇÏ ÒÅÇÕÌÑÒÎÏÇÏ ×ÙÒÁÖÅÎÉÑX
+-ëÏÍÁÎÄÁ %s ĞÏÄÒÁÚÕÍÅ×ÁÅÔ ÎÁÌÉŞÉÅ ĞÒÏŞÔÅÎÎÏÇÏ ÆÁÊÌÁX
+-éÓĞÏÌØÚÏ×ÁÎÉÅ: %sX
+-ëÏÍÁÎÄÁ visual ĞÏÄÒÁÚÕÍÅ×ÁÅÔ ÏÂÑÚÁÔÅÌØÎÕÀ ÕÓÔÁÎÏ×ËÕ ÏĞÃÉÉ openX
+-
+-ğÕÓÔÏÊ ÆÁÊÌX
+-îÅÔ ĞÒÅÄÙÄÕİÅÇÏ ĞÏÉÓËÁ F, f, T, ÉÌÉ tX
+-%s ÎÅ ÎÁÊÄÅÎÏX
+-îÅÔ ĞÒÅÄÙÄÕİÅÇÏ ÆÁÊÌÁ ÄÌÑ ÒÅÄÁËÔÉÒÏ×ÁÎÉÑX
+-ëÕÒÓÏÒ ÓÔÏÉÔ ÎÅ ÎÁ ÃÉÆÒÅX
+-ğÏÌÕŞÅÎÎÏÅ ŞÉÓÌÏ ÓÌÉÛËÏÍ ×ÅÌÉËÏX
+-ğÏÌÕŞÅÎÎÏÅ ŞÉÓÌÏ ÓÌÉÛËÏÍ ÍÁÌÏX
+-ğÏÄÈÏÄÑİÅÇÏ ÓÉÍ×ÏÌÁ ÎÅÔ ÎÁ ÜÔÏÊ ÓÔÒÏËÅX
+-ğÏÄÈÏÄÑİÉÊ ÓÉÍ×ÏÌ ÎÅ ÎÁÊÄÅÎX
+-îÅÔ ÓÉÍ×ÏÌÏ× ÄÌÑ ÕÄÁÌÅÎÉÑX
+-äÒÕÇÏÇÏ ÜËÒÁÎÁ ÎÅ ÓÕİÅÓÔ×ÕÅÔX
+-óÉÍ×ÏÌÙ ĞÏÓÌÅ ÓÔÒÏËÉ ÄÌÑ ĞÏÉÓËÁ, ÓÍÅİÅÎÉÑ ÓÔÒÏËÉ É/ÉÌÉ ËÏÍÁÎÄÙ zX
+-ğÒÏÛÌÙÊ ÏÂÒÁÚÅÃ ĞÏÉÓËÁ ÏÔÓÕÔÓÔ×ÕÅÔX
+-ğÏÉÓË ÚÁ×ÅÒÛÉÌÓÑ ÎÁ ÎÁŞÁÌØÎÏÊ ĞÏÚÉÃÉÉX
+-
+-óÉÍ×ÏÌ ÎÅĞÒÁ×ÉÌÅÎ; Ë×ÏÔÉÒÕÊÔÅ ÄÌÑ ××ÏÄÁX
+-õÖÅ ÎÁ ÎÁŞÁÌÅ ×ÓÔÁ×ËÉX
+-îÅÔ ÓÉÍ×ÏÌÏ× ÄÌÑ ÕÄÁÌÅÎÉÑX
+-ğÅÒÅÄ×ÉÖÅÎÉÅ ÚÁ ËÏÎÅÃ ÆÁÊÌÁX
+-ğÅÒÅÄ×ÉÖÅÎÉÅ ÚÁ ËÏÎÅÃ ÓÔÒÏËÉX
+-ä×ÉÖÅÎÉÅ ÓÔÒÏËÉ ÎÅ ÓÄÅÌÁÎÏX
+-õÖÅ ÎÁ ÎÁŞÁÌÅ ÆÁÊÌÁX
+-ä×ÉÖÅÎÉÅ ËÕÒÓÏÒÁ ÚÁ ÎÁŞÁÌÏ ÆÁÊÌÁX
+-õÖÅ × ĞÅÒ×ÏÊ ËÏÌÏÎËÅX
+-âÕÆÅÒÙ ÄÏÌÖÎÙ ÂÙÔØ ÕËÁÚÁÎÙ ÄÏ ×ÙĞÏÌÎÅÎÉÑ ËÏÍÁÎÄÙX
+-õÖÅ ÎÁ ËÏÎÃÅ ÆÁÊÌÁX
+-õÖÅ ÎÁ ËÏÎÃÅ ÓÔÒÏËÉX
+-%s ÎÅ Ñ×ÌÑÅÔÓÑ ËÏÍÁÎÄÏÊ VIX
+-éÓĞÏÌØÚÏ×ÁÎÉÅ: %sX
+-îÅÔ ÓÉÍ×ÏÌÏ× ÄÌÑ ÕÄÁÌÅÎÉÑX
+-
+-îÅÔ ËÏÍÁÎÄÙ ÄÌÑ ĞÏ×ÔÏÒÁX
+-
+-ëÏÍÁÎÄÁ %s ÎÅ ÍÏÖÅÔ ÂÙÔØ ÉÓĞÏÌØÚÏ×ÁÎÁ ËÁË ËÏÍÁÎÄÁ ĞÅÒÅÍÅİÅÎÉÑX
+-õÖÅ × ËÏÍÁÎÄÎÏÍ ÒÅÖÉÍÅX
+-
+-
+-úÎÁŞÅÎÉÅ ÏĞÃÉÉ windows ÓÌÉÛËÏÍ ×ÅÌÉËÏ, ÍÁËÓÉÍÁÌØÎÏÅ ÚÎÁŞÅÎÉÅ = %uX
+-
+-
+-
+-
+-
+-ä×ÉÖÅÎÉÅ ËÕÒÓÏÒÁ ÚÁ ËÏÎÅÃ ÜËÒÁÎÁX
+-ä×ÉÖÅÎÉÅ ËÕÒÓÏÒÁ ÚÁ ÎÁŞÁÌÏ ÜËÒÁÎÁX
+-
+-ôÅÎÅ×ÙÈ ÏËÏÎ ÎÅÔX
+-îÅ ÓÕİÅÓÔ×ÕÅÔ ÔÅÎÅ×ÏÇÏ ÏËÎÁ Ó ÒÅÄÁËÔÉÒÏ×ÁÎÉÅÍ ÆÁÊÌÁ %sX
+-÷Ù ÎÅ ÍÏÖÅÔÅ ÓÄÅÌÁÔØ ÅÄÉÎÓÔ×ÅÎÎÏÅ ÏËÎÏ ÔÅÎÅ×ÙÍX
+-üËÒÁÎ ÍÏÖÅÔ ÂÙÔØ ÓÖÁÔX
+-üËÒÁÎ ÎÅ ÍÏÖÅÔ ÂÙÔØ ÓÖÁÔ ÔÏÌØËÏ ÄÏ %d ÓÔÒÏËX
+-üËÒÁÎ ÎÅ ÍÏÖÅÔ ÂÙÔØ ÒÁÓÛÉÒÅÎX
+-
+-
+-
+-
+-äÁÎÎÙÊ ÔÉĞ ÔÅÒÍÉÎÁÌÁ ÎÅ ÉÍÅÅÔ ËÌÁ×ÉÛÉ %sX
+-
+-
+-
+-îÅ×ÏÚÍÏÖÎÏ ÓÏÚÄÁÔØ ×ÒÅÍÅÎÎÙÊ ÆÁÊÌX
+-÷ÎÉÍÁÎÉÅ: %s ÓĞÅÃÉÁÌØÎÙÊ ÆÁÊÌX
+-%s ÕÖÅ ÚÁÂÌÏËÉÒÏ×ÁÎ, ÄÏÓÔÕĞÅÎ ÔÏÌØËÏ ÎÁ ŞÔÅÎÉÅX
+-%s: ÕÄÁÌÅÎX
+-%s: ÚÁËÒÙÔX
+-%s: ÕÄÁÌÅÎX
+-%s: ÕÄÁÌÅÎX
+-æÁÊÌ ÔÏÌØËÏ ÄÌÑ ŞÔÅÎÉÑ, ÎÅ ÚÁĞÉÓÁÎ: éÓĞÏÌØÚÕÊÔÅ ! ÄÌÑ ÏÂÈÏÄÁX
+-æÁÊÌ ÔÏÌØËÏ ÄÌÑ ŞÔÅÎÉÑ, ÎÅ ÚÁĞÉÓÁÎX
+-%s ÓÕİÅÓÔ×ÕÅÔ, ÎÅ ÚÁĞÉÓÁÎ; ÉÓĞÏÌØÚÕÊÔÅ ! ÄÌÑ ÏÂÈÏÄÁX
+-%s ÓÕİÅÓÔ×ÕÅÔ, ÎÅ ÚÁĞÉÓÁÎX
+-éÓĞÏÌØÚÕÊÔÅ ! ÄÌÑ ŞÁÓÔÉŞÎÏÊ ÚÁĞÉÓÉ ÆÁÊÌÁX
+-şÁÓÔØ ÆÁÊÌÁ, ÆÁÊÌ ÎÅ ÚÁĞÉÓÁÎX
+-%s: æÁÊÌ ÉÚÍÅÎÑÌÓÑ ĞÏÚÄÎÅÅ, ŞÅÍ ÄÁÎÎÁÑ ËÏĞÉÑ: ÉÓĞÏÌØÚÕÊÔÅ ! ÄÌÑ ÏÂÈÏÄÁX
+-%s: æÁÊÌ ÉÚÍÅÎÑÌÓÑ ĞÏÚÄÎÅÅ, ŞÅÍ ÄÁÎÎÁÑ ËÏĞÉÑX
+-%s: ÚÁİÉÔÁ ÎÁ ÚÁĞÉÓØ ÂÙÌÁ ÎÅÄÏÓÔÕĞÎÁX
+-
+-%s: ÷îéíáîéå: æáêì õóåşåîX
+-
+-%s: ÎÏ×ÙÊ ÆÁÊÌ: %lu ÓÔÒÏË, %lu ÓÉÍ×ÏÌÏ×X
+-%s: %lu ÓÔÒÏË, %lu ÓÉÍ×ÏÌÏ×X
+-%s ÒÁÓÛÉÒÉÌÓÑ × ÓÌÉÛËÏÍ ÂÏÌØÛÏÅ ËÏÌÉŞÅÓÔ×Ï ÉÍÅÎ ÆÁÊÌÏ×X
+-%s: ÓĞÅÃÉÁÌØÎÙÊ ÆÁÊÌX
+-%s: ÎÅ ĞÒÉÎÁÄÌÅÖÉÔ ÷ÁÍX
+-%s: ÄÏÓÔÕĞÅÎ ÎÅ ÔÏÌØËÏ ÷ÁÍX
+-æÁÊÌ ÉÚÍÅÎÅÎ ÓÏ ×ÒÅÍÅÎÉ ĞÏÓÌÅÄÎÅÊ ÚÁĞÉÓÉ: ÓÏÈÒÁÎÉÔÅ ÉÌÉ ÉÓĞÏÌØÚÕÊÔÅ ! ÄÌÑ ÏÂÈÏÄÁX
+-æÁÊÌ ÉÚÍÅÎÅÎ ÓÏ ×ÒÅÍÅÎÉ ĞÏÓÌÅÄÎÅÊ ÚÁĞÉÓÉ: ÓÏÈÒÁÎÉÔÅ ÉÌÉ ÉÓĞÏÌØÚÕÊÔÅ :edit ÄÌÑ ÏÂÈÏÄÁX
+-æÁÊÌ ÉÚÍÅÎÅÎ ÓÏ ×ÒÅÍÅÎÉ ĞÏÓÌÅÄÎÅÊ ÚÁĞÉÓÉ: ÓÏÈÒÁÎÉÔÅ ÉÌÉ ÉÓĞÏÌØÚÕÊÔÅ ! ÄÌÑ ÏÂÈÏÄÁX
+-æÁÊÌ ×ÒÅÍÅÎÎÙÊ: ×ÙÈÏÄ ÓÏÔÒÅÔ ÌÀÂÙÅ ÉÚÍÅÎÅÎÉÑX
++Ã¦ÃÃŠÃŒ %s ÃÃ… Ã‘Ã—ÃŒÃ‘Ã…Ã”Ã“Ã‘ Ã‹ÃÃ”ÃÃŒÃÃ‡ÃÃ Ã“ÃÃÃ‚ÃÃ…ÃÃ‰ÃŠX
++Ã®Ã…Ã—ÃÃšÃÃÃ–ÃÃ Ã•Ã“Ã”ÃÃÃÃ—Ã‰Ã”Ã˜ ÃÃÃƒÃ‰Ã€ %s ÃÃ Ã•ÃÃÃŒÃÃÃÃ‰Ã€X
++Ã©Ã“ÃÃÃŒÃ˜ÃšÃÃ—ÃÃÃ‰Ã…: %sX
++Ã¯ÃÃƒÃ‰Ã‰ %s ÃÃ…Ã”: 'set all' ÃÃÃ‹ÃÃšÃ™Ã—ÃÃ…Ã” Ã—Ã“Ã… Ã—ÃÃšÃÃÃ–ÃÃ™Ã… ÃÃÃƒÃ‰Ã‰X
++set: [no]%s ÃÃ… ÃÃ’Ã‰ÃÃ‰ÃÃÃ…Ã” Ã”ÃÃ‹ÃÃ‡Ã ÃšÃÃÃÃ…ÃÃ‰Ã‘X
++set: %s ÃÃÃƒÃ‰Ã‘ ÃÃ… Ã‘Ã—ÃŒÃ‘Ã…Ã”Ã“Ã‘ ÃŒÃÃ‡Ã‰ÃÃ…Ã“Ã‹ÃÃŠX
++
++
++set: ÃÃ…ÃÃ’ÃÃ—Ã‰ÃŒÃ˜ÃÃÃ… ÃšÃÃÃÃ…ÃÃ‰Ã… %sX
++set: %s ÃÃÃƒÃ‰Ã‘ ÃÃ… Ã‘Ã—ÃŒÃ‘Ã…Ã”Ã“Ã‘ ÃŒÃÃ‡Ã‰ÃÃ…Ã“Ã‹ÃÃŠX
++Ã«ÃÃŒÃ‰ÃÃ…Ã“Ã”Ã—Ã Ã‹ÃÃŒÃÃÃÃ‹ ÃœÃ‹Ã’ÃÃÃ Ã“ÃŒÃ‰Ã›Ã‹ÃÃ ÃÃÃŒÃ, ÃÃ…ÃÃ˜Ã›Ã… ÃÃ…Ã %dX
++Ã«ÃÃŒÃ‰ÃÃ…Ã“Ã”Ã—Ã Ã‹ÃÃŒÃÃÃÃ‹ ÃœÃ‹Ã’ÃÃÃ Ã“ÃŒÃ‰Ã›Ã‹ÃÃ Ã—Ã…ÃŒÃ‰Ã‹Ã, Ã‚ÃÃŒÃ˜Ã›Ã… ÃÃ…Ã %dX
++Ã«ÃÃŒÃ‰ÃÃ…Ã“Ã”Ã—Ã Ã“Ã”Ã’ÃÃ‹ ÃœÃ‹Ã’ÃÃÃ Ã“ÃŒÃ‰Ã›Ã‹ÃÃ ÃÃÃŒÃ, ÃÃ…ÃÃ˜Ã›Ã… ÃÃ…Ã %dX
++Ã«ÃÃŒÃ‰ÃÃ…Ã“Ã”Ã—Ã Ã“Ã”Ã’ÃÃ‹ ÃœÃ‹Ã’ÃÃÃ Ã“ÃŒÃ‰Ã›Ã‹ÃÃ Ã—Ã…ÃŒÃ‰Ã‹Ã, Ã‚ÃÃŒÃ˜Ã›Ã… ÃÃ…Ã %dX
++Ã¯ÃÃƒÃ‰Ã‘ lisp ÃÃ”Ã“Ã•Ã”Ã“Ã”Ã—Ã•Ã…Ã”X
++Ã³ÃÃÃ‚ÃÃ…ÃÃ‰Ã‘ ÃÃ… Ã—Ã™Ã‹ÃŒÃ€ÃÃ…ÃÃ™: %sX
++Ã³ÃÃÃ‚ÃÃ…ÃÃ‰Ã‘ ÃÃ… Ã—Ã‹ÃŒÃ€ÃÃ…ÃÃ™: %sX
++
++Ã¯ÃÃƒÃ‰Ã‘ paragraph Ã„ÃÃŒÃ–ÃÃ Ã“ÃÃ“Ã”ÃÃ‘Ã”Ã˜ Ã‰Ãš Ã‡Ã’Ã•ÃÃ Ã“ Ã„Ã—Ã•ÃÃ‘ Ã“Ã‰ÃÃ—ÃÃŒÃÃÃ‰X
++Ã¯ÃÃƒÃ‰Ã‘ section Ã„ÃÃŒÃ–ÃÃ Ã“ÃÃ“Ã”ÃÃ‘Ã”Ã˜ Ã‰Ãš Ã‡Ã’Ã•ÃÃ Ã“ Ã„Ã—Ã•ÃÃ‘ Ã“Ã‰ÃÃ—ÃÃŒÃÃÃ‰X
++
++
++
++Ã³Ã”ÃÃ’Ã”ÃÃ—Ã™ÃŠ Ã‚Ã•Ã†Ã…Ã’ ÃÃ•Ã“Ã”X
++Ã¢Ã•Ã†Ã…Ã’ %s ÃÃ•Ã“Ã”X
++Ã¦ÃÃŠÃŒÃ™ Ã“ Ã“Ã‰ÃÃ—ÃÃŒÃÃÃ‰ ÃÃ…Ã’Ã…Ã—ÃÃ„Ã Ã“Ã”Ã’ÃÃ‹Ã‰ Ã— Ã‰ÃÃ…ÃÃ‰ ÃÃ… ÃÃÃ‡Ã•Ã” Ã‚Ã™Ã”Ã˜ Ã—ÃÃ“Ã“Ã”ÃÃÃÃ—ÃŒÃ…ÃÃ™X
++Ã©ÃšÃÃ…ÃÃ…ÃÃ‰Ã‘ ÃÃ… Ã“ÃÃˆÃ’ÃÃÃ…ÃÃ™ ÃÃ’Ã‰ Ã‹Ã’ÃÃˆÃ… Ã“Ã…Ã“Ã“Ã‰Ã‰X
++
++Ã³ÃÃˆÃ’ÃÃÃ…ÃÃ‰Ã… ÃÃ… Ã•Ã„ÃÃŒÃÃ“Ã˜: %sX
++Ã©ÃšÃÃ…ÃÃ…ÃÃ‰Ã‘ ÃÃ… Ã“ÃÃˆÃ’ÃÃÃ‘Ã€Ã”Ã“Ã‘ ÃÃ’Ã‰ ÃÃ‚Ã’Ã™Ã—Ã… Ã“Ã…Ã“Ã“Ã‰Ã‰X
++Ã³ÃÃˆÃ’ÃÃÃ…ÃÃ‰Ã… Ã‹ÃÃÃ‰Ã‰ Ã†ÃÃŠÃŒÃ ÃÃ… Ã•Ã„ÃÃŒÃÃ“Ã˜: %sX
++
++Ã©ÃÃ†ÃÃ’ÃÃÃƒÃ‰Ã‰ ÃÃ ÃÃÃŒÃ˜ÃšÃÃ—ÃÃ”Ã…ÃŒÃ‘ %u ÃÃ… ÃÃÃŠÃ„Ã…ÃÃX
++Ã®Ã…Ã—ÃÃšÃÃÃ–ÃÃ ÃšÃÃÃ‰Ã”Ã‰Ã”Ã˜ Ã“ÃÃÃ“Ã…ÃÃÃ™ÃŠ Ã†ÃÃŠÃŒX
++Ã¢Ã•Ã†Ã…Ã’ Ã—ÃÃ“Ã“Ã”ÃÃÃÃ—ÃŒÃ…ÃÃÃÃ‡Ã Ã†ÃÃŠÃŒÃ ÃÃ…Ã’Ã…ÃÃÃŒÃÃ…ÃX
++Ã·ÃÃ“Ã“Ã”ÃÃÃÃ—ÃŒÃ…ÃÃÃ™ÃŠ Ã†ÃÃŠÃŒX
++%s: ÃÃ… Ã„Ã Ã‹ÃÃÃƒÃ Ã—ÃÃ“Ã“Ã”ÃÃÃÃ—ÃŒÃ…ÃÃÃ™ÃŠ Ã†ÃÃŠÃŒX
++%s: ÃÃ… Ã„Ã Ã‹ÃÃÃƒÃ Ã—ÃÃ“Ã“Ã”ÃÃÃÃ—ÃŒÃ…ÃÃÃ™ÃŠ Ã†ÃÃŠÃŒX
++Ã¦ÃÃŠÃŒÃÃ— Ã“ Ã‰ÃÃ…ÃÃ…Ã %s, Ã‹ÃÃ”ÃÃ’Ã™Ã… Ã·Ã™ ÃÃÃ–Ã…Ã”Ã… ÃÃ‰Ã”ÃÃ”Ã˜, ÃÃ… Ã“Ã•ÃÃ…Ã“Ã”Ã—Ã•Ã…Ã”X
++Ã¥Ã“Ã”Ã˜ Ã“Ã”ÃÃ’Ã™Ã… Ã—Ã…Ã’Ã“Ã‰Ã‰ Ã†ÃÃŠÃŒÃ, Ã‹ÃÃ”ÃÃ’Ã™Ã… ÃÃÃ–ÃÃ Ã—ÃÃ“Ã“Ã”ÃÃÃÃ—Ã‰Ã”Ã˜X
++Ã³Ã•ÃÃ…Ã“Ã”Ã—Ã•Ã€Ã” Ã„Ã’Ã•Ã‡Ã‰Ã… Ã†ÃÃŠÃŒÃ™, Ã‹ÃÃ”ÃÃ’Ã™Ã… ÃÃÃ–ÃÃ Ã—ÃÃ“Ã“Ã”ÃÃÃÃ—Ã‰Ã”Ã˜X
++Ã…-mail ÃÃ… ÃÃÃ“ÃŒÃÃ: %sX
++Ã¦ÃÃŠÃŒ ÃÃ•Ã“Ã” - Ã‰Ã“Ã‹ÃÃ”Ã˜ ÃÃ…ÃÃ…Ã‡ÃX
++Ã¤ÃÃ“Ã”Ã‰Ã‡ÃÃ•Ã” Ã‹ÃÃÃ…Ãƒ Ã†ÃÃŠÃŒÃ Ã‚Ã…Ãš ÃÃÃˆÃÃ–Ã„Ã…ÃÃ‰Ã‘ ÃÃ‚Ã’ÃÃšÃƒÃ ÃÃÃ‰Ã“Ã‹ÃX
++Ã®Ã… ÃšÃÃ„ÃÃ ÃÃ‚Ã’ÃÃšÃ…Ãƒ ÃÃÃ‰Ã“Ã‹ÃX
++Ã¯Ã‚Ã’ÃÃšÃ…Ãƒ ÃÃÃ‰Ã“Ã‹Ã ÃÃ… ÃÃÃŠÃ„Ã…ÃX
++Ã¤ÃÃ“Ã”Ã•ÃÃÃ ÃÃÃÃÃŒÃ Ã†ÃÃŠÃŒÃ Ã‚Ã…Ãš ÃÃÃˆÃÃ–Ã„Ã…ÃÃ‰Ã‘ ÃÃ‚Ã’ÃÃšÃƒÃ ÃÃÃ‰Ã“Ã‹ÃX
++Ã°ÃÃ‰Ã“Ã‹ ÃšÃÃƒÃ‰Ã‹ÃŒÃ…ÃX
++
++Ã®Ã…ÃÃ…ÃÃÃ”ÃÃ™Ãˆ Ã“Ã‰ÃÃ—ÃÃŒÃÃ— ÃÃ… ÃÃÃŠÃ„Ã…ÃÃX
++Ã®Ã…Ã‰ÃšÃ—Ã…Ã“Ã”ÃÃÃ‘ Ã‹ÃÃÃÃÃ„ÃX
++
++%s: Ã‹ÃÃÃÃÃ„Ã ÃÃ… Ã„ÃÃ“Ã”Ã•ÃÃÃ Ã— Ã’Ã…Ã–Ã‰ÃÃ… exX
++Ã³ÃÃ…Ã”ÃÃ‰Ã‹ ÃÃ… ÃÃÃ–Ã…Ã” Ã‚Ã™Ã”Ã˜ ÃÃ•ÃŒÃ…ÃX
++%s: ÃÃ…ÃÃ’ÃÃ—Ã‰ÃŒÃ˜ÃÃÃ… Ã•Ã‹ÃÃšÃÃÃ‰Ã… Ã“Ã”Ã’ÃÃ‹Ã‰X
++Ã·ÃÃ•Ã”Ã’Ã…ÃÃÃ‘Ã‘ ÃÃ›Ã‰Ã‚Ã‹Ã Ã— Ã“Ã‰ÃÃ”ÃÃ‹Ã“Ã‰Ã“Ã… (%s: %s)X
++Ã©Ã“ÃÃÃŒÃ˜ÃšÃÃ—ÃÃÃ‰Ã…: %sX
++%s: Ã—Ã’Ã…ÃÃ…ÃÃÃ™ÃŠ Ã‚Ã•Ã†Ã…Ã’ ÃÃ… Ã‰Ã“ÃÃÃŒÃ˜ÃšÃÃ—ÃÃX
++Ã­Ã…Ã”Ã‹Ã ÃÃÃ“Ã”ÃÃ—ÃŒÃ…ÃÃ ÃÃ…Ã’Ã…Ã„ Ã“Ã”Ã’ÃÃ‹ÃÃŠ 1X
++Ã­Ã…Ã”Ã‹Ã ÃÃÃ“Ã”ÃÃ—ÃŒÃ…ÃÃ ÃÃÃ“ÃŒÃ… Ã‹ÃÃÃƒÃ Ã†ÃÃŠÃŒÃX
++
++
++Ã«ÃÃÃÃÃ„Ã ex ÃÃ… Ã•Ã„ÃÃŒÃÃ“Ã˜: ÃÃÃ“ÃŒÃ…Ã„Ã•Ã€ÃÃ‰Ã… Ã‹ÃÃÃÃÃ„Ã™ ÃšÃÃ‚Ã™Ã”Ã™X
++
++Ã·Ã”ÃÃ’ÃÃŠ ÃÃ„Ã’Ã…Ã“ ÃÃ…ÃÃ˜Ã›Ã… ÃÃ…Ã ÃÃ…Ã’Ã—Ã™ÃŠX
++Ã®Ã… Ã•Ã‹ÃÃšÃÃÃ ÃÃÃšÃ—ÃÃÃ‰Ã… ÃÃ”ÃÃ…Ã”Ã‹Ã‰X
++\\ ÃÃ… ÃšÃÃ—Ã…Ã’Ã›ÃÃ…Ã”Ã“Ã‘ / Ã‰ÃŒÃ‰ ?X
++Ã³Ã“Ã™ÃŒÃ‹Ã Ã‹ Ã“Ã”Ã’ÃÃ‹Ã… Ã“ ÃÃÃÃ…Ã’ÃÃ ÃÃ…ÃÃ˜Ã›Ã… 0X
++Ã«ÃÃÃÃÃ„Ã %s ÃÃ…Ã‰ÃšÃ—Ã…Ã“Ã”ÃÃX
++Ã°Ã…Ã’Ã…ÃÃÃŒÃÃ…ÃÃ‰Ã… ÃšÃÃÃÃ…ÃÃ‰Ã‘ ÃÃ„Ã’Ã…Ã“ÃX
++Ã®Ã…Ã„ÃÃ‚ÃÃ’ ÃšÃÃÃÃ…ÃÃ‰Ã‘ ÃÃ„Ã’Ã…Ã“ÃX
++Ã®Ã…Ã„ÃÃÃ•Ã“Ã”Ã‰ÃÃÃ‘ Ã‹ÃÃÃ‚Ã‰ÃÃÃƒÃ‰Ã‘ Ã— ÃÃ„Ã’Ã…Ã“Ã…X
++Ã®Ã…ÃÃ’ÃÃ—Ã‰ÃŒÃ˜ÃÃ™ÃŠ ÃÃ„Ã’Ã…Ã“: Ã—Ã“Ã…Ã‡Ã %lu Ã“Ã”Ã’ÃÃ‹ Ã— Ã†ÃÃŠÃŒÃ…X
++Ã®Ã…ÃÃ’ÃÃ—Ã‰ÃŒÃ˜ÃÃ™ÃŠ ÃÃ„Ã’Ã…Ã“: Ã†ÃÃŠÃŒ ÃÃ•Ã“Ã”X
++Ã«ÃÃÃÃÃÃ„Ã %s ÃÃ… ÃÃÃ–Ã…Ã” Ã‰Ã“ÃÃÃŒÃ˜ÃšÃÃ—ÃÃ”Ã˜ ÃÃ„Ã’Ã…Ã“ 0X
++Ã¡Ã‚Ã‚Ã’Ã…Ã—Ã‰ÃÃ”Ã•Ã’Ã™ ÃÃ”Ã“Ã•Ã”Ã“Ã”Ã—Ã•Ã€Ã”X
++Ã¡Ã‚Ã‚Ã’Ã…Ã—Ã‰ÃÃ”Ã•Ã’Ã™ Ã„ÃÃŒÃ–ÃÃ™ ÃšÃÃ‹ÃÃÃÃ‰Ã—ÃÃ”Ã˜Ã“Ã‘ Ã“Ã‰ÃÃ—ÃÃŒÃÃ "word"X
++Ã¡Ã‚Ã‚Ã’Ã…Ã—Ã‰ÃÃ”Ã•Ã’Ã™ ÃÃ… ÃÃÃ‡Ã•Ã” Ã“ÃÃ„Ã…Ã’Ã–ÃÃ”Ã˜ Ã“Ã‰ÃÃ—ÃÃŒÃÃ™ Ã”ÃÃ‚ÃŒÃ‘ÃƒÃ‰Ã‰ Ã‰ÃŒÃ‰ ÃÃ’ÃÃ‚Ã…ÃŒÃ™X
++Ã¡Ã‚Ã‚Ã’Ã…Ã—Ã‰ÃÃ”Ã•Ã’Ã™ ÃÃ… ÃÃÃ‡Ã•Ã” Ã“ÃÃÃ…Ã”ÃÃ”Ã˜Ã“Ã‘ Ã“ Ã“Ã‰ÃÃ—ÃÃŒÃÃÃ‰ Ã“ÃŒÃÃ—/ÃÃ…-Ã“ÃŒÃÃ—, ÃšÃ Ã‰Ã“Ã‹ÃŒÃ€ÃÃ…ÃÃ‰Ã…Ã Ã‹ÃÃÃƒÃ Ã“Ã”Ã’ÃÃ‹Ã‰X
++"%s" ÃÃ… Ã‘Ã—ÃŒÃ‘Ã…Ã”Ã“Ã‘ ÃÃ‚Ã‚Ã’Ã…Ã—Ã‰ÃÃ”Ã•Ã’ÃÃŠX
++
++Ã¦ÃÃŠÃŒÃÃ— Ã„ÃŒÃ‘ Ã’Ã…Ã„ÃÃ‹Ã”Ã‰Ã’ÃÃ—ÃÃÃ‰Ã‘ Ã‚ÃÃŒÃ˜Ã›Ã… ÃÃ…Ã”X
++Ã¯Ã”Ã“Ã•Ã”Ã“Ã”Ã—Ã‰Ã… ÃÃ’Ã…Ã„Ã™Ã„Ã•ÃÃ…Ã‡Ã Ã†ÃÃŠÃŒÃ Ã„ÃŒÃ‘ Ã’Ã…Ã„ÃÃ‹Ã”Ã‰Ã’ÃÃ—ÃÃÃ‰Ã‘X
++Ã¯Ã”Ã“Ã•Ã”Ã“Ã”Ã—Ã‰Ã… ÃÃ’Ã…Ã„Ã™Ã„Ã•ÃÃ…Ã‡Ã Ã†ÃÃŠÃŒÃ Ã„ÃŒÃ‘ ÃÃ’ÃÃ“ÃÃÃ”Ã’Ã ÃÃÃšÃÃ„X
++Ã®Ã…Ã” Ã†ÃÃŠÃŒÃÃ—X
++Ã¯Ã”Ã“Ã•Ã”Ã“Ã”Ã—Ã‰Ã… ÃÃ’Ã…Ã„Ã™Ã„Ã•ÃÃ…ÃŠ Ã‹ÃÃÃÃÃ„Ã™ Ã„ÃŒÃ‘ ÃšÃÃÃ…ÃÃ™ "!"X
++Ã¯Ã”Ã“Ã•Ã”Ã“Ã”Ã—Ã‰Ã… ÃšÃÃÃ…ÃÃ™ Ã„ÃŒÃ‘ %%X
++Ã¯Ã”Ã“Ã•Ã”Ã“Ã”Ã—Ã‰Ã… ÃšÃÃÃ…ÃÃ™ Ã„ÃŒÃ‘ #X
++Ã¯Ã›Ã‰Ã‚Ã‹Ã: execl: %sX
++Ã¯Ã›Ã‰Ã‚Ã‹Ã Ã—Ã—ÃÃ„Ã/Ã—Ã™Ã—ÃÃ„Ã: %sX
++Ã¦ÃÃŠÃŒ Ã‰ÃšÃÃ…ÃÃ…Ã Ã“ ÃÃÃÃ…ÃÃ”Ã ÃÃÃ“ÃŒÃ…Ã„ÃÃ…ÃŠ ÃÃÃŒÃÃÃŠ ÃšÃÃÃ‰Ã“Ã‰: Ã‰Ã“ÃÃÃŒÃ˜ÃšÃ•ÃŠÃ”Ã… ! Ã„ÃŒÃ‘ ÃÃ‚ÃˆÃÃ„ÃX
++Ã®Ã…Ã—ÃÃšÃÃÃ–ÃÃ ÃÃÃŠÃ”Ã‰ Ã„ÃÃÃÃ›ÃÃ‰ÃŠ Ã‹ÃÃ”ÃÃŒÃÃ‡X
++Ã®ÃÃ—Ã™ÃŠ Ã‹ÃÃ”ÃÃŒÃÃ‡: %sX
++Ã®Ã…Ã” Ã—Ã™Ã’Ã…ÃšÃÃÃ™Ãˆ Ã‚Ã•Ã†Ã…Ã’ÃÃ—X
++Ã«ÃÃÃÃÃ„Ã %s ÃÃ… ÃÃÃ–Ã…Ã” Ã‚Ã™Ã”Ã˜ Ã‰Ã“ÃÃÃŒÃ˜ÃšÃÃ—ÃÃÃ Ã—ÃÃ•Ã”Ã’Ã‰ Ã‡ÃŒÃÃ‚ÃÃŒÃ˜ÃÃÃŠ Ã‰ÃŒÃ‰ v Ã‹ÃÃÃÃÃ„Ã™X
++%s/%s: ÃÃ… ÃÃ”Ã‹Ã’Ã™Ã”: ÃÃ… ÃÃ’Ã‰ÃÃÃ„ÃŒÃ…Ã–Ã‰Ã” Ã·ÃÃ Ã‰ÃŒÃ‰ root-Ã•X
++%s/%s: ÃÃ… ÃÃ”Ã‹Ã’Ã™Ã”: ÃÃ… ÃÃ’Ã‰ÃÃÃ„ÃŒÃ…Ã–Ã‰Ã” Ã·ÃÃX
++%s/%s: ÃÃ… ÃÃ”Ã‹Ã’Ã™Ã”: Ã—ÃÃšÃÃÃ–ÃÃÃ“Ã”Ã˜ ÃšÃÃÃ‰Ã“Ã‰ Ã• ÃÃÃŒÃ˜ÃšÃÃ—ÃÃ”Ã…ÃŒÃ‘, ÃÃ… Ã‘Ã—ÃŒÃ‘Ã€ÃÃ…Ã‡ÃÃ“Ã‘ Ã—ÃŒÃÃ„Ã…ÃŒÃ˜ÃƒÃ…ÃX
++%s: ÃÃ… Ã“ÃÃ‰Ã”ÃÃ: ÃÃ… ÃÃ’Ã‰ÃÃÃ„ÃŒÃ…Ã–Ã‰Ã” Ã·ÃÃ Ã‰ÃŒÃ‰ root-Ã•X
++%s: ÃÃ… Ã“ÃÃ‰Ã”ÃÃ: ÃÃ… ÃÃ’Ã‰ÃÃÃ„ÃŒÃ…Ã–Ã‰Ã” Ã·ÃÃX
++%s: ÃÃ… Ã“ÃÃ‰Ã”ÃÃ: Ã—ÃÃšÃÃÃ–ÃÃÃ“Ã”Ã˜ ÃšÃÃÃ‰Ã“Ã‰ Ã• ÃÃÃŒÃ˜ÃšÃÃ—ÃÃ”Ã…ÃŒÃ‘, ÃÃ… Ã‘Ã—ÃŒÃ‘Ã€ÃÃ…Ã‡ÃÃ“Ã‘ Ã—ÃŒÃÃ„Ã…ÃŒÃ˜ÃƒÃ…ÃX
++Ã°ÃÃ“ÃŒÃ…Ã„Ã•Ã€ÃÃ‰Ã… Ã“Ã”Ã’ÃÃ‹Ã‰ ÃÃ”Ã“Ã•Ã”Ã“Ã”Ã—Ã•Ã€Ã”X
++Ã¯Ã”Ã“Ã•Ã”Ã“Ã”Ã—Ã‰Ã… ÃÃÃ’ÃÃÃ…Ã”Ã’ÃÃ— Ã—Ã—ÃÃ„ÃX
++Ã¯Ã”Ã“Ã•Ã”Ã“Ã”Ã—Ã‰Ã… ÃÃÃ’ÃÃÃ…Ã”Ã’ÃÃ— Ã‹ÃÃÃÃÃ„Ã™X
++Ã³Ã‰ÃÃ—ÃÃŒ %s ÃÃ… ÃÃÃ–Ã…Ã” Ã‚Ã™Ã”Ã˜ ÃÃ…Ã’Ã…ÃÃÃšÃÃÃÃ…ÃX
++"%s" ÃÃ Ã„ÃÃÃÃ™ÃŠ ÃÃÃÃ…ÃÃ” ÃÃ… ÃÃÃšÃÃÃÃ…ÃX
++Ã©ÃÃ‘ ÃÃ…Ã”Ã‹Ã‰ Ã„ÃÃŒÃ–ÃÃ Ã‚Ã™Ã”Ã˜ ÃÃ„ÃÃ‰Ã Ã“Ã‰ÃÃ—ÃÃŒÃÃX
++%s Ã“Ã•ÃÃ…Ã“Ã”Ã—Ã•Ã…Ã”, ÃÃ… ÃšÃÃÃ‰Ã“ÃÃ; Ã‰Ã“ÃÃÃŒÃ˜ÃšÃ•ÃŠÃ”Ã… ! Ã„ÃŒÃ‘ ÃÃ‚ÃˆÃÃ„ÃX
++Ã®ÃÃ—Ã™ÃŠ Ã†ÃÃŠÃŒ exrc: %sX
++Ã³Ã”Ã’ÃÃ‹Ã ÃÃ…Ã’Ã…ÃÃÃ“Ã ÃÃÃˆÃÃ„Ã‰Ã”Ã“Ã‘ Ã—ÃÃ•Ã”Ã’Ã‰ ÃÃÃ’ÃÃÃ…Ã”Ã’ÃÃ— ÃÃ…Ã’Ã…ÃÃÃ“ÃX
++Ã«ÃÃÃÃÃ„Ã open ÃÃÃ„Ã’ÃÃšÃ•ÃÃ…Ã—ÃÃ…Ã” Ã•Ã“Ã”ÃÃÃÃ—Ã‹Ã• ÃÃÃƒÃ‰Ã‰ openX
++Ã«ÃÃÃÃÃ„Ã open ÃÃ… Ã’Ã…ÃÃŒÃ‰ÃšÃÃ—ÃÃÃX
++ÃºÃÃÃ‰Ã”Ã Ã†ÃÃŠÃŒÃ ÃÃ…Ã—ÃÃšÃÃÃ–ÃÃX
++Ã¦ÃÃŠÃŒ ÃšÃÃÃ‰ÃÃ…ÃX
++%s Ã’ÃÃ“Ã›Ã‰Ã’Ã‰ÃŒÃ“Ã‘ Ã— Ã“ÃŒÃ‰Ã›Ã‹ÃÃ Ã‚ÃÃŒÃ˜Ã›ÃÃ… Ã‹ÃÃŒÃ‰ÃÃ…Ã“Ã”Ã—Ã Ã‰ÃÃ…Ã Ã†ÃÃŠÃŒÃÃ—X
++
++%s: ÃšÃÃÃ‰Ã”Ã ÃÃ ÃÃ”Ã…ÃÃ‰Ã… Ã‚Ã™ÃŒÃ ÃÃ…Ã„ÃÃ“Ã”Ã•ÃÃÃX
++
++%s: %lu Ã“Ã”Ã’ÃÃ‹, %lu Ã“Ã‰ÃÃ—ÃÃŒÃÃ—X
++Ã®Ã…Ã” Ã”Ã…ÃÃ…Ã—Ã™Ãˆ ÃÃ‹ÃÃX
++Ã«ÃÃÃÃÃ„Ã script Ã‰Ã“ÃÃÃŒÃ˜ÃšÃ•Ã…Ã”Ã“Ã‘ Ã”ÃÃŒÃ˜Ã‹Ã Ã— Ã’Ã…Ã–Ã‰ÃÃ… viX
++Ã®Ã…Ã” Ã‹ÃÃÃÃÃ„Ã™ Ã„ÃŒÃ‘ Ã‰Ã“ÃÃÃŒÃÃ…ÃÃ‰Ã‘X
++Ã¯ÃÃƒÃ‰Ã‘ shiftwidth Ã•Ã“Ã”ÃÃÃÃ—ÃŒÃ…ÃÃ ÃÃ 0X
++Ã°Ã…Ã’Ã…ÃÃÃŒÃÃ…ÃÃ‰Ã… Ã“ÃÃ…Ã”ÃÃ‰Ã‹ÃX
++Ã£Ã‰Ã‹ÃŒ Ã—Ã™ÃÃÃŒÃÃ…Ã ÃÃ… Ã„Ã Ã‹ÃÃÃƒÃX
++ÃµÃ‹ÃÃšÃÃÃ Ã’Ã…Ã‡Ã•ÃŒÃ‘Ã’ÃÃÃ… Ã—Ã™Ã’ÃÃ–Ã…ÃÃ‰Ã…: Ã†ÃŒÃÃ‡ r ÃÃ… ÃÃ•Ã–Ã…ÃX
++Ã¦ÃŒÃÃ‡Ã‰ #, l Ã‰ p ÃÃ… ÃÃÃ‡Ã•Ã” Ã‚Ã™Ã”Ã˜ ÃÃ‚ÃŸÃ…Ã„Ã‰ÃÃ…ÃÃ™ Ã“ Ã†ÃŒÃÃ‡ÃÃ c Ã— Ã’Ã…Ã–Ã‰ÃÃ… viX
++Ã³ÃÃ—ÃÃÃ„Ã…ÃÃ‰ÃŠ ÃÃ…Ã”X
++Ã­Ã…Ã”Ã‹Ã ÃÃ”Ã“Ã•Ã”Ã“Ã”Ã—Ã•Ã…Ã”X
++Ã· Ã“Ã”Ã…Ã‹Ã… ÃÃ…Ã”ÃÃ‹ ÃšÃÃÃ‰Ã“Ã…ÃŠ ÃÃ…ÃÃ˜Ã›Ã…, ÃÃ…Ã %s, Ã‰Ã“ÃÃÃŒÃ˜ÃšÃ•ÃŠÃ”Ã… :display t[ags]X
++Ã¦ÃÃŠÃŒÃ Ã“ Ã‰ÃÃ…ÃÃ…Ã %s Ã— Ã“Ã”Ã…Ã‹Ã… ÃÃ…Ã”ÃÃ‹ ÃÃ…Ã”; Ã‰Ã“ÃÃÃŒÃ˜ÃšÃ•ÃŠÃ”Ã… :display t[ags]X
++
++%s: ÃÃ…Ã”Ã‹Ã ÃÃ… ÃÃÃŠÃ„Ã…ÃÃX
++%s: ÃÃŒÃÃˆÃÃ‘ ÃÃ…Ã”Ã‹Ã Ã— %sX
++
++Ã³Ã”Ã…Ã‹ ÃÃ…Ã”ÃÃ‹ ÃÃ•Ã“Ã”X
++%s: ÃÃ‚Ã’ÃÃšÃ…Ãƒ ÃÃÃ‰Ã“Ã‹Ã ÃÃ… ÃÃÃŠÃ„Ã…ÃX
++
++Ã¢Ã•Ã†Ã…Ã’ %s ÃÃ•Ã“Ã”X
++
++Ã°Ã’Ã…Ã’Ã—ÃÃÃX
++Ã¯Ã”Ã“Ã•Ã”Ã“Ã”Ã—Ã‰Ã… Ã‚Ã•Ã†Ã…Ã’Ã Ã„ÃŒÃ‘ Ã‰Ã“ÃÃÃŒÃ˜ÃšÃÃ—ÃÃÃ‰Ã‘X
++Ã®Ã…Ã” ÃÃ’Ã…Ã„Ã‰Ã„Ã•ÃÃ…Ã‡Ã Ã’Ã…Ã‡Ã•ÃŒÃ‘Ã’ÃÃÃ‡Ã Ã—Ã™Ã’ÃÃ–Ã…ÃÃ‰Ã‘X
++Ã«ÃÃÃÃÃ„Ã %s ÃÃÃ„Ã’ÃÃšÃ•ÃÃ…Ã—ÃÃ…Ã” ÃÃÃŒÃ‰ÃÃ‰Ã… ÃÃ’ÃÃÃ”Ã…ÃÃÃÃ‡Ã Ã†ÃÃŠÃŒÃX
++Ã©Ã“ÃÃÃŒÃ˜ÃšÃÃ—ÃÃÃ‰Ã…: %sX
++Ã«ÃÃÃÃÃ„Ã visual ÃÃÃ„Ã’ÃÃšÃ•ÃÃ…Ã—ÃÃ…Ã” ÃÃ‚Ã‘ÃšÃÃ”Ã…ÃŒÃ˜ÃÃ•Ã€ Ã•Ã“Ã”ÃÃÃÃ—Ã‹Ã• ÃÃÃƒÃ‰Ã‰ openX
++
++Ã°Ã•Ã“Ã”ÃÃŠ Ã†ÃÃŠÃŒX
++Ã®Ã…Ã” ÃÃ’Ã…Ã„Ã™Ã„Ã•ÃÃ…Ã‡Ã ÃÃÃ‰Ã“Ã‹Ã F, f, T, Ã‰ÃŒÃ‰ tX
++%s ÃÃ… ÃÃÃŠÃ„Ã…ÃÃX
++Ã®Ã…Ã” ÃÃ’Ã…Ã„Ã™Ã„Ã•ÃÃ…Ã‡Ã Ã†ÃÃŠÃŒÃ Ã„ÃŒÃ‘ Ã’Ã…Ã„ÃÃ‹Ã”Ã‰Ã’ÃÃ—ÃÃÃ‰Ã‘X
++Ã«Ã•Ã’Ã“ÃÃ’ Ã“Ã”ÃÃ‰Ã” ÃÃ… ÃÃ ÃƒÃ‰Ã†Ã’Ã…X
++Ã°ÃÃŒÃ•ÃÃ…ÃÃÃÃ… ÃÃ‰Ã“ÃŒÃ Ã“ÃŒÃ‰Ã›Ã‹ÃÃ Ã—Ã…ÃŒÃ‰Ã‹ÃX
++Ã°ÃÃŒÃ•ÃÃ…ÃÃÃÃ… ÃÃ‰Ã“ÃŒÃ Ã“ÃŒÃ‰Ã›Ã‹ÃÃ ÃÃÃŒÃX
++Ã°ÃÃ„ÃˆÃÃ„Ã‘ÃÃ…Ã‡Ã Ã“Ã‰ÃÃ—ÃÃŒÃ ÃÃ…Ã” ÃÃ ÃœÃ”ÃÃŠ Ã“Ã”Ã’ÃÃ‹Ã…X
++Ã°ÃÃ„ÃˆÃÃ„Ã‘ÃÃ‰ÃŠ Ã“Ã‰ÃÃ—ÃÃŒ ÃÃ… ÃÃÃŠÃ„Ã…ÃX
++Ã®Ã…Ã” Ã“Ã‰ÃÃ—ÃÃŒÃÃ— Ã„ÃŒÃ‘ Ã•Ã„ÃÃŒÃ…ÃÃ‰Ã‘X
++Ã¤Ã’Ã•Ã‡ÃÃ‡Ã ÃœÃ‹Ã’ÃÃÃ ÃÃ… Ã“Ã•ÃÃ…Ã“Ã”Ã—Ã•Ã…Ã”X
++Ã³Ã‰ÃÃ—ÃÃŒÃ™ ÃÃÃ“ÃŒÃ… Ã“Ã”Ã’ÃÃ‹Ã‰ Ã„ÃŒÃ‘ ÃÃÃ‰Ã“Ã‹Ã, Ã“ÃÃ…ÃÃ…ÃÃ‰Ã‘ Ã“Ã”Ã’ÃÃ‹Ã‰ Ã‰/Ã‰ÃŒÃ‰ Ã‹ÃÃÃÃÃ„Ã™ zX
++Ã°Ã’ÃÃ›ÃŒÃ™ÃŠ ÃÃ‚Ã’ÃÃšÃ…Ãƒ ÃÃÃ‰Ã“Ã‹Ã ÃÃ”Ã“Ã•Ã”Ã“Ã”Ã—Ã•Ã…Ã”X
++Ã°ÃÃ‰Ã“Ã‹ ÃšÃÃ—Ã…Ã’Ã›Ã‰ÃŒÃ“Ã‘ ÃÃ ÃÃÃÃÃŒÃ˜ÃÃÃŠ ÃÃÃšÃ‰ÃƒÃ‰Ã‰X
++
++Ã³Ã‰ÃÃ—ÃÃŒ ÃÃ…ÃÃ’ÃÃ—Ã‰ÃŒÃ…Ã; Ã‹Ã—ÃÃ”Ã‰Ã’Ã•ÃŠÃ”Ã… Ã„ÃŒÃ‘ Ã—Ã—ÃÃ„ÃX
++ÃµÃ–Ã… ÃÃ ÃÃÃÃÃŒÃ… Ã—Ã“Ã”ÃÃ—Ã‹Ã‰X
++Ã®Ã…Ã” Ã“Ã‰ÃÃ—ÃÃŒÃÃ— Ã„ÃŒÃ‘ Ã•Ã„ÃÃŒÃ…ÃÃ‰Ã‘X
++Ã°Ã…Ã’Ã…Ã„Ã—Ã‰Ã–Ã…ÃÃ‰Ã… ÃšÃ Ã‹ÃÃÃ…Ãƒ Ã†ÃÃŠÃŒÃX
++Ã°Ã…Ã’Ã…Ã„Ã—Ã‰Ã–Ã…ÃÃ‰Ã… ÃšÃ Ã‹ÃÃÃ…Ãƒ Ã“Ã”Ã’ÃÃ‹Ã‰X
++Ã¤Ã—Ã‰Ã–Ã…ÃÃ‰Ã… Ã“Ã”Ã’ÃÃ‹Ã‰ ÃÃ… Ã“Ã„Ã…ÃŒÃÃÃX
++ÃµÃ–Ã… ÃÃ ÃÃÃÃÃŒÃ… Ã†ÃÃŠÃŒÃX
++Ã¤Ã—Ã‰Ã–Ã…ÃÃ‰Ã… Ã‹Ã•Ã’Ã“ÃÃ’Ã ÃšÃ ÃÃÃÃÃŒÃ Ã†ÃÃŠÃŒÃX
++ÃµÃ–Ã… Ã— ÃÃ…Ã’Ã—ÃÃŠ Ã‹ÃÃŒÃÃÃ‹Ã…X
++Ã¢Ã•Ã†Ã…Ã’Ã™ Ã„ÃÃŒÃ–ÃÃ™ Ã‚Ã™Ã”Ã˜ Ã•Ã‹ÃÃšÃÃÃ™ Ã„Ã Ã—Ã™ÃÃÃŒÃÃ…ÃÃ‰Ã‘ Ã‹ÃÃÃÃÃ„Ã™X
++ÃµÃ–Ã… ÃÃ Ã‹ÃÃÃƒÃ… Ã†ÃÃŠÃŒÃX
++ÃµÃ–Ã… ÃÃ Ã‹ÃÃÃƒÃ… Ã“Ã”Ã’ÃÃ‹Ã‰X
++%s ÃÃ… Ã‘Ã—ÃŒÃ‘Ã…Ã”Ã“Ã‘ Ã‹ÃÃÃÃÃ„ÃÃŠ VIX
++Ã©Ã“ÃÃÃŒÃ˜ÃšÃÃ—ÃÃÃ‰Ã…: %sX
++Ã®Ã…Ã” Ã“Ã‰ÃÃ—ÃÃŒÃÃ— Ã„ÃŒÃ‘ Ã•Ã„ÃÃŒÃ…ÃÃ‰Ã‘X
++
++Ã®Ã…Ã” Ã‹ÃÃÃÃÃ„Ã™ Ã„ÃŒÃ‘ ÃÃÃ—Ã”ÃÃ’ÃX
++
++Ã«ÃÃÃÃÃ„Ã %s ÃÃ… ÃÃÃ–Ã…Ã” Ã‚Ã™Ã”Ã˜ Ã‰Ã“ÃÃÃŒÃ˜ÃšÃÃ—ÃÃÃ Ã‹ÃÃ‹ Ã‹ÃÃÃÃÃ„Ã ÃÃ…Ã’Ã…ÃÃ…ÃÃ…ÃÃ‰Ã‘X
++ÃµÃ–Ã… Ã— Ã‹ÃÃÃÃÃ„ÃÃÃ Ã’Ã…Ã–Ã‰ÃÃ…X
++
++
++ÃºÃÃÃÃ…ÃÃ‰Ã… ÃÃÃƒÃ‰Ã‰ windows Ã“ÃŒÃ‰Ã›Ã‹ÃÃ Ã—Ã…ÃŒÃ‰Ã‹Ã, ÃÃÃ‹Ã“Ã‰ÃÃÃŒÃ˜ÃÃÃ… ÃšÃÃÃÃ…ÃÃ‰Ã… = %uX
++
++
++
++
++
++Ã¤Ã—Ã‰Ã–Ã…ÃÃ‰Ã… Ã‹Ã•Ã’Ã“ÃÃ’Ã ÃšÃ Ã‹ÃÃÃ…Ãƒ ÃœÃ‹Ã’ÃÃÃX
++Ã¤Ã—Ã‰Ã–Ã…ÃÃ‰Ã… Ã‹Ã•Ã’Ã“ÃÃ’Ã ÃšÃ ÃÃÃÃÃŒÃ ÃœÃ‹Ã’ÃÃÃX
++
++Ã´Ã…ÃÃ…Ã—Ã™Ãˆ ÃÃ‹ÃÃ ÃÃ…Ã”X
++Ã®Ã… Ã“Ã•ÃÃ…Ã“Ã”Ã—Ã•Ã…Ã” Ã”Ã…ÃÃ…Ã—ÃÃ‡Ã ÃÃ‹ÃÃ Ã“ Ã’Ã…Ã„ÃÃ‹Ã”Ã‰Ã’ÃÃ—ÃÃÃ‰Ã…Ã Ã†ÃÃŠÃŒÃ %sX
++Ã·Ã™ ÃÃ… ÃÃÃ–Ã…Ã”Ã… Ã“Ã„Ã…ÃŒÃÃ”Ã˜ Ã…Ã„Ã‰ÃÃ“Ã”Ã—Ã…ÃÃÃÃ… ÃÃ‹ÃÃ Ã”Ã…ÃÃ…Ã—Ã™ÃX
++Ã¼Ã‹Ã’ÃÃ ÃÃÃ–Ã…Ã” Ã‚Ã™Ã”Ã˜ Ã“Ã–ÃÃ”X
++Ã¼Ã‹Ã’ÃÃ ÃÃ… ÃÃÃ–Ã…Ã” Ã‚Ã™Ã”Ã˜ Ã“Ã–ÃÃ” Ã”ÃÃŒÃ˜Ã‹Ã Ã„Ã %d Ã“Ã”Ã’ÃÃ‹X
++Ã¼Ã‹Ã’ÃÃ ÃÃ… ÃÃÃ–Ã…Ã” Ã‚Ã™Ã”Ã˜ Ã’ÃÃ“Ã›Ã‰Ã’Ã…ÃX
++
++
++
++
++Ã¤ÃÃÃÃ™ÃŠ Ã”Ã‰Ã Ã”Ã…Ã’ÃÃ‰ÃÃÃŒÃ ÃÃ… Ã‰ÃÃ…Ã…Ã” Ã‹ÃŒÃÃ—Ã‰Ã›Ã‰ %sX
++
++
++
++Ã®Ã…Ã—ÃÃšÃÃÃ–ÃÃ Ã“ÃÃšÃ„ÃÃ”Ã˜ Ã—Ã’Ã…ÃÃ…ÃÃÃ™ÃŠ Ã†ÃÃŠÃŒX
++Ã·ÃÃ‰ÃÃÃÃ‰Ã…: %s Ã“ÃÃ…ÃƒÃ‰ÃÃŒÃ˜ÃÃ™ÃŠ Ã†ÃÃŠÃŒX
++%s Ã•Ã–Ã… ÃšÃÃ‚ÃŒÃÃ‹Ã‰Ã’ÃÃ—ÃÃ, Ã„ÃÃ“Ã”Ã•ÃÃ…Ã Ã”ÃÃŒÃ˜Ã‹Ã ÃÃ ÃÃ”Ã…ÃÃ‰Ã…X
++%s: Ã•Ã„ÃÃŒÃ…ÃX
++%s: ÃšÃÃ‹Ã’Ã™Ã”X
++%s: Ã•Ã„ÃÃŒÃ…ÃX
++%s: Ã•Ã„ÃÃŒÃ…ÃX
++Ã¦ÃÃŠÃŒ Ã”ÃÃŒÃ˜Ã‹Ã Ã„ÃŒÃ‘ ÃÃ”Ã…ÃÃ‰Ã‘, ÃÃ… ÃšÃÃÃ‰Ã“ÃÃ: Ã©Ã“ÃÃÃŒÃ˜ÃšÃ•ÃŠÃ”Ã… ! Ã„ÃŒÃ‘ ÃÃ‚ÃˆÃÃ„ÃX
++Ã¦ÃÃŠÃŒ Ã”ÃÃŒÃ˜Ã‹Ã Ã„ÃŒÃ‘ ÃÃ”Ã…ÃÃ‰Ã‘, ÃÃ… ÃšÃÃÃ‰Ã“ÃÃX
++%s Ã“Ã•ÃÃ…Ã“Ã”Ã—Ã•Ã…Ã”, ÃÃ… ÃšÃÃÃ‰Ã“ÃÃ; Ã‰Ã“ÃÃÃŒÃ˜ÃšÃ•ÃŠÃ”Ã… ! Ã„ÃŒÃ‘ ÃÃ‚ÃˆÃÃ„ÃX
++%s Ã“Ã•ÃÃ…Ã“Ã”Ã—Ã•Ã…Ã”, ÃÃ… ÃšÃÃÃ‰Ã“ÃÃX
++Ã©Ã“ÃÃÃŒÃ˜ÃšÃ•ÃŠÃ”Ã… ! Ã„ÃŒÃ‘ ÃÃÃ“Ã”Ã‰ÃÃÃÃŠ ÃšÃÃÃ‰Ã“Ã‰ Ã†ÃÃŠÃŒÃX
++Ã¾ÃÃ“Ã”Ã˜ Ã†ÃÃŠÃŒÃ, Ã†ÃÃŠÃŒ ÃÃ… ÃšÃÃÃ‰Ã“ÃÃX
++%s: Ã¦ÃÃŠÃŒ Ã‰ÃšÃÃ…ÃÃ‘ÃŒÃ“Ã‘ ÃÃÃšÃ„ÃÃ…Ã…, ÃÃ…Ã Ã„ÃÃÃÃÃ‘ Ã‹ÃÃÃ‰Ã‘: Ã‰Ã“ÃÃÃŒÃ˜ÃšÃ•ÃŠÃ”Ã… ! Ã„ÃŒÃ‘ ÃÃ‚ÃˆÃÃ„ÃX
++%s: Ã¦ÃÃŠÃŒ Ã‰ÃšÃÃ…ÃÃ‘ÃŒÃ“Ã‘ ÃÃÃšÃ„ÃÃ…Ã…, ÃÃ…Ã Ã„ÃÃÃÃÃ‘ Ã‹ÃÃÃ‰Ã‘X
++%s: ÃšÃÃÃ‰Ã”Ã ÃÃ ÃšÃÃÃ‰Ã“Ã˜ Ã‚Ã™ÃŒÃ ÃÃ…Ã„ÃÃ“Ã”Ã•ÃÃÃX
++
++%s: Ã·Ã®Ã©Ã­Ã¡Ã®Ã©Ã¥: Ã¦Ã¡ÃªÃ¬ ÃµÃ³Ã¥Ã¾Ã¥Ã®X
++
++%s: ÃÃÃ—Ã™ÃŠ Ã†ÃÃŠÃŒ: %lu Ã“Ã”Ã’ÃÃ‹, %lu Ã“Ã‰ÃÃ—ÃÃŒÃÃ—X
++%s: %lu Ã“Ã”Ã’ÃÃ‹, %lu Ã“Ã‰ÃÃ—ÃÃŒÃÃ—X
++%s Ã’ÃÃ“Ã›Ã‰Ã’Ã‰ÃŒÃ“Ã‘ Ã— Ã“ÃŒÃ‰Ã›Ã‹ÃÃ Ã‚ÃÃŒÃ˜Ã›ÃÃ… Ã‹ÃÃŒÃ‰ÃÃ…Ã“Ã”Ã—Ã Ã‰ÃÃ…Ã Ã†ÃÃŠÃŒÃÃ—X
++%s: Ã“ÃÃ…ÃƒÃ‰ÃÃŒÃ˜ÃÃ™ÃŠ Ã†ÃÃŠÃŒX
++%s: ÃÃ… ÃÃ’Ã‰ÃÃÃ„ÃŒÃ…Ã–Ã‰Ã” Ã·ÃÃX
++%s: Ã„ÃÃ“Ã”Ã•ÃÃ…Ã ÃÃ… Ã”ÃÃŒÃ˜Ã‹Ã Ã·ÃÃX
++Ã¦ÃÃŠÃŒ Ã‰ÃšÃÃ…ÃÃ…Ã Ã“Ã Ã—Ã’Ã…ÃÃ…ÃÃ‰ ÃÃÃ“ÃŒÃ…Ã„ÃÃ…ÃŠ ÃšÃÃÃ‰Ã“Ã‰: Ã“ÃÃˆÃ’ÃÃÃ‰Ã”Ã… Ã‰ÃŒÃ‰ Ã‰Ã“ÃÃÃŒÃ˜ÃšÃ•ÃŠÃ”Ã… ! Ã„ÃŒÃ‘ ÃÃ‚ÃˆÃÃ„ÃX
++Ã¦ÃÃŠÃŒ Ã‰ÃšÃÃ…ÃÃ…Ã Ã“Ã Ã—Ã’Ã…ÃÃ…ÃÃ‰ ÃÃÃ“ÃŒÃ…Ã„ÃÃ…ÃŠ ÃšÃÃÃ‰Ã“Ã‰: Ã“ÃÃˆÃ’ÃÃÃ‰Ã”Ã… Ã‰ÃŒÃ‰ Ã‰Ã“ÃÃÃŒÃ˜ÃšÃ•ÃŠÃ”Ã… :edit Ã„ÃŒÃ‘ ÃÃ‚ÃˆÃÃ„ÃX
++Ã¦ÃÃŠÃŒ Ã‰ÃšÃÃ…ÃÃ…Ã Ã“Ã Ã—Ã’Ã…ÃÃ…ÃÃ‰ ÃÃÃ“ÃŒÃ…Ã„ÃÃ…ÃŠ ÃšÃÃÃ‰Ã“Ã‰: Ã“ÃÃˆÃ’ÃÃÃ‰Ã”Ã… Ã‰ÃŒÃ‰ Ã‰Ã“ÃÃÃŒÃ˜ÃšÃ•ÃŠÃ”Ã… ! Ã„ÃŒÃ‘ ÃÃ‚ÃˆÃÃ„ÃX
++Ã¦ÃÃŠÃŒ Ã—Ã’Ã…ÃÃ…ÃÃÃ™ÃŠ: Ã—Ã™ÃˆÃÃ„ Ã“ÃÃ”Ã’Ã…Ã” ÃŒÃ€Ã‚Ã™Ã… Ã‰ÃšÃÃ…ÃÃ…ÃÃ‰Ã‘X
+ 
+-úÁĞÉÓÉ ÎÁŞÁÔÙ ÚÁÎÏ×ÏX
++ÃºÃÃÃ‰Ã“Ã‰ ÃÃÃÃÃ”Ã™ ÃšÃÃÃÃ—ÃX
+Index: nvi-1.81.6/catalog/spanish
+===================================================================
+--- nvi-1.81.6.orig/catalog/spanish
++++ nvi-1.81.6/catalog/spanish
+@@ -1,11 +1,11 @@
+ VI_MESSAGE_CATALOG
+-Desbordamiento de longitud de l¡neaX
+-no se puede borrar la l¡nea %luX
+-no se puede a¤adir la l¡nea %luX
+-no se puede insertar en la l¡nea %luX
+-no se puede guardar la l¡nea %luX
+-no se puede obtener la £ltima l¡neaX
+-Error: no se puede recuperar la l¡nea %luX
++Desbordamiento de longitud de lÂ¡neaX
++no se puede borrar la lÂ¡nea %luX
++no se puede aâ‚¬adir la lÂ¡nea %luX
++no se puede insertar en la lÂ¡nea %luX
++no se puede guardar la lÂ¡nea %luX
++no se puede obtener la Â£ltima lÂ¡neaX
++Error: no se puede recuperar la lÂ¡nea %luX
+ Archivo de logX
+ No se realiza log, no se puede deshacerX
+ No hay cambios para deshacerX
+@@ -13,10 +13,10 @@ No se realiza log, no se puede deshacerX
+ No se realiza log, no se puede remontar hacia adelanteX
+ No hay cambios para rehacerX
+ %s/%d: error de logX
+-La entrada y salida est ndar de Vi debe ser una terminalX
++La entrada y salida estÂ ndar de Vi debe ser una terminalX
+ Marcar %s: no determinadoX
+-Marcar %s: se borr¢ la l¡neaX
+-Marcar %s: la posici¢n del cursor ya no existeX
++Marcar %s: se borrÂ¢ la lÂ¡neaX
++Marcar %s: la posiciÂ¢n del cursor ya no existeX
+ Error: X
+ nuevo archivoX
+ nombre cambiadoX
+@@ -24,91 +24,91 @@ modificadoX
+ no modificadoX
+ DESTRABADOX
+ lectura solamenteX
+-l¡nea %lu de %lu [%ld%%]X
+-archivo vac¡oX
+-l¡nea %luX
+-El archivo %s no es un cat logo de mensajesX
+-No se puede determinar la opci¢n por omisi¢n %sX
++lÂ¡nea %lu de %lu [%ld%%]X
++archivo vacÂ¡oX
++lÂ¡nea %luX
++El archivo %s no es un catÂ logo de mensajesX
++No se puede determinar la opciÂ¢n por omisiÂ¢n %sX
+ Uso: %sX
+-determinar: no hay opci¢n %s: 'determinar todo' establece todos los valores de opci¢nX
+-determinar: [no] hay opci¢n %s no tiene valorX
+-determinar: opci¢n %s no es booleanoX
+-determinar: opci¢n %s: %sX
+-determinar: opci¢n %s: %s: desbordamiento de valoresX
+-determinar: opci¢n %s: %s es un n£mero ilegalX
+-determinar: opci¢n %s no es booleanoX
+-Las columnas en pantalla son demasiado peque¤as, menos de %dX
+-Las columnas en pantalla son demasiado grandes, m s de %dX
+-Las l¡neas en pantalla son demasiado peque¤as, menos de %dX
+-Las l¡neas en pantalla son demasiado grandes, m s de %dX
+-La opci¢n lisp no est  implementadaX
++determinar: no hay opciÂ¢n %s: 'determinar todo' establece todos los valores de opciÂ¢nX
++determinar: [no] hay opciÂ¢n %s no tiene valorX
++determinar: opciÂ¢n %s no es booleanoX
++determinar: opciÂ¢n %s: %sX
++determinar: opciÂ¢n %s: %s: desbordamiento de valoresX
++determinar: opciÂ¢n %s: %s es un nÂ£mero ilegalX
++determinar: opciÂ¢n %s no es booleanoX
++Las columnas en pantalla son demasiado pequeâ‚¬as, menos de %dX
++Las columnas en pantalla son demasiado grandes, mÂ s de %dX
++Las lÂ¡neas en pantalla son demasiado pequeâ‚¬as, menos de %dX
++Las lÂ¡neas en pantalla son demasiado grandes, mÂ s de %dX
++La opciÂ¢n lisp no estÂ  implementadaX
+ mensajes no desconectados: %sX
+ mensajes no conectados: %sX
+ 
+-La opci¢n de p rrafo debe estar en dos grupos de caracteresX
+-La opci¢n de secci¢n debe estar en dos grupos de caracteresX
++La opciÂ¢n de pÂ rrafo debe estar en dos grupos de caracteresX
++La opciÂ¢n de secciÂ¢n debe estar en dos grupos de caracteresX
+ 
+ 
+ 
+-El buffer por omisi¢n est  vac¡oX
+-El buffer %s est  vac¡oX
+-Los archivos con nuevas l¡neas en el nombre son irrecuperablesX
+-Las modificaciones no pueden recuperarse si la sesi¢n fallaX
+-Copiando archivo para recuperaci¢n...X
+-Preservaci¢n fracasada: %sX
+-Las modificaciones no pueden recuperarse si la sesi¢n fallaX
++El buffer por omisiÂ¢n estÂ  vacÂ¡oX
++El buffer %s estÂ  vacÂ¡oX
++Los archivos con nuevas lÂ¡neas en el nombre son irrecuperablesX
++Las modificaciones no pueden recuperarse si la sesiÂ¢n fallaX
++Copiando archivo para recuperaciÂ¢n...X
++PreservaciÂ¢n fracasada: %sX
++Las modificaciones no pueden recuperarse si la sesiÂ¢n fallaX
+ Archivo de respaldo fracasado: %sX
+-Copiando archivo para recuperaci¢n...X
+-Informaci¢n sobre identificaci¢n del usuario %u no encontradaX
+-No se puede trabar archivo de recuperaci¢nX
+-Desbordamiento de buffer de archivo de recuperaci¢nX
+-Archivo de recuperaci¢nX
+-%s: archivo de recuperaci¢n defectuosoX
+-%s: archivo de recuperaci¢n defectuosoX
++Copiando archivo para recuperaciÂ¢n...X
++InformaciÂ¢n sobre identificaciÂ¢n del usuario %u no encontradaX
++No se puede trabar archivo de recuperaciÂ¢nX
++Desbordamiento de buffer de archivo de recuperaciÂ¢nX
++Archivo de recuperaciÂ¢nX
++%s: archivo de recuperaciÂ¢n defectuosoX
++%s: archivo de recuperaciÂ¢n defectuosoX
+ No hay archivos denominados %s, que usted pueda leer, para recuperarX
+-Existen versiones m s antiguas de este archivo que usted puede recuperarX
++Existen versiones mÂ s antiguas de este archivo que usted puede recuperarX
+ Existen otros archivos que usted puede recuperarX
+-no env¡a email: %sX
+-Archivo vac¡o; no hay nada para buscarX
+-Se alcanz¢ el final del archivo sin encontrar el patr¢nX
+-No hay patr¢n anterior de b£squedaX
+-No se encontr¢ el patr¢nX
+- Se alcanz¢ el principio del archivo sin encontrar el patr¢nX
+-B£squeda reiniciadaX
++no envÂ¡a email: %sX
++Archivo vacÂ¡o; no hay nada para buscarX
++Se alcanzÂ¢ el final del archivo sin encontrar el patrÂ¢nX
++No hay patrÂ¢n anterior de bÂ£squedaX
++No se encontrÂ¢ el patrÂ¢nX
++ Se alcanzÂ¢ el principio del archivo sin encontrar el patrÂ¢nX
++BÂ£squeda reiniciadaX
+ Buscando...X
+-No se encontr¢ ning£n car cter no imprimibleX
++No se encontrÂ¢ ningÂ£n carÂ cter no imprimibleX
+ Nombre de comando desconocidoX
+ 
+ %s: comando no disponible en modalidad exX
+ La cuenta no puede ser ceroX
+-%s: mala especificaci¢n de l¡neaX
++%s: mala especificaciÂ¢n de lÂ¡neaX
+ Error interno de tabla de sintaxis (%s: %s)X
+ Uso: %sX
+ %s: buffer temporario no liberadoX
+-Desplazamiento de marcador a antes de la l¡nea 1X
+-Desplazamiento de marcador m s all  del final del archivoX
++Desplazamiento de marcador a antes de la lÂ¡nea 1X
++Desplazamiento de marcador mÂ s allÂ  del final del archivoX
+ @ con rango que corre cuando se cambia el archivo/la pantallaX
+ Comando global/v que corre cuando se cambia el archivo/la pantallaX
+ Comando Ex fracasado: comandos pendientes descartadosX
+ Comando Ex fracasado: teclas mapeadas descartadasX
+-La segunda direcci¢n es m s peque¤a que la primeraX
++La segunda direcciÂ¢n es mÂ s pequeâ‚¬a que la primeraX
+ No se suministra nombre de marcaX
+ \\ no es seguido por / o ?X
+-Referencia a un n£mero de l¡nea menor que 0X
++Referencia a un nÂ£mero de lÂ¡nea menor que 0X
+ El comando %s es desconocidoX
+-Desbordamiento de valor de direcci¢nX
+-Subdesbordamiento de valor de direcci¢nX
+-Combinaci¢n de direcci¢n ilegalX
+-Direcci¢n ilegal: s¢lo %lu l¡neas en el archivoX
+-Direcci¢n ilegal: el archivo est  vac¡oX
+-El comando %s no permite una direcci¢n de 0X
++Desbordamiento de valor de direcciÂ¢nX
++Subdesbordamiento de valor de direcciÂ¢nX
++CombinaciÂ¢n de direcciÂ¢n ilegalX
++DirecciÂ¢n ilegal: sÂ¢lo %lu lÂ¡neas en el archivoX
++DirecciÂ¢n ilegal: el archivo estÂ  vacÂ¡oX
++El comando %s no permite una direcciÂ¢n de 0X
+ No hay abreviaturas para visualizarX
+-Las abreviaturas deben terminar con un car cter de \"palabra\" X
++Las abreviaturas deben terminar con un carÂ cter de \"palabra\" X
+ Las abreviaturas no pueden contener tabs o espaciosX
+ Las abreviaturas no pueden mezclar caracteres palabra/no-palabra, salvo al finalX
+ \"%s\" no es una abreviaturaX
+ Comando Vi fracasado: teclas mapeadas descartadasX
+-No hay m s archivos para editarX
++No hay mÂ s archivos para editarX
+ No hay archivos anteriores para editarX
+ No hay archivos anteriores para rebobinarX
+ No hay lista de archivos para visualizarX
+@@ -117,113 +117,113 @@ No hay nombre de archivo para sustituir
+ No hay nombre de archivo para sustituir por #X
+ Error: execl: %sX
+ Error de E/S: %sX
+-Archivo modificado desde la £ltima escritura completa; escribir o usar ! para alterarX
+-No se puede encontrar la ubicaci¢n del directorio inicialX
++Archivo modificado desde la Â£ltima escritura completa; escribir o usar ! para alterarX
++No se puede encontrar la ubicaciÂ¢n del directorio inicialX
+ Nuevo directorio actual: %sX
+ No hay buffers sueltos para visualizarX
+ El comando %s no puede usarse como parte de un comando global o vX
+-%s/%s: sin fuente: no le pertenece a usted o a ra¡zX
++%s/%s: sin fuente: no le pertenece a usted o a raÂ¡zX
+ %s/%s: sin fuente: no le pertenece a ustedX
+ %s/%s: sin fuente: puede ser escrito por un usuario que no sea el propietarioX
+-%s: sin fuente: no le pertenece a usted o a ra¡zX
++%s: sin fuente: no le pertenece a usted o a raÂ¡zX
+ %s: sin fuente: no le pertenece a ustedX
+ %s: sin fuente: puede ser escrito por un usuario que no sea el propietarioX
+-No hay l¡neas siguientes para unirX
++No hay lÂ¡neas siguientes para unirX
+ No hay anotaciones de mapa de entradaX
+ No hay anotaciones de mapa de comandoX
+-El car cter %s no puede remapearseX
+-\"%s\" no est  mapeado actualmenteX
+-Marca de nombres debe ser un s¢lo car cterX
+-%s existe, no est  escrito; usar ! para alterarX
++El carÂ cter %s no puede remapearseX
++\"%s\" no estÂ  mapeado actualmenteX
++Marca de nombres debe ser un sÂ¢lo carÂ cterX
++%s existe, no estÂ  escrito; usar ! para alterarX
+ Nuevo archivo exrc: %sX
+-La l¡nea de destino se encuentra dentro del rango de movimientoX
+-El comando abierto requiere que se determine la opci¢n abiertaX
+-El comando abierto no se ha implementado a£nX
++La lÂ¡nea de destino se encuentra dentro del rango de movimientoX
++El comando abierto requiere que se determine la opciÂ¢n abiertaX
++El comando abierto no se ha implementado aÂ£nX
+ No es posible preservar este archivoX
+ Archivo preservadoX
+ %s: expandido a demasiados nombres de archivoX
+-S¢lo pueden leerse los archivos regulares y los conductos nombradosX
++SÂ¢lo pueden leerse los archivos regulares y los conductos nombradosX
+ %s: traba de lectura no disponibleX
+ Leyendo...X
+-%s: %lu l¡neas, %lu caracteresX
++%s: %lu lÂ¡neas, %lu caracteresX
+ No hay pantallas de fondo para mostrarX
+-El comando de script s¢lo est  disponible en modalidad viX
++El comando de script sÂ¢lo estÂ  disponible en modalidad viX
+ No hay comando para ejecutarX
+-opci¢n de ancho de desplazamiento en 0X
++opciÂ¢n de ancho de desplazamiento en 0X
+ Desbordamiento de cuentaX
+ Subdesbordamiento de cuentaX
+-Expresi¢n regular especificada; marcador r no tiene significadoX
++ExpresiÂ¢n regular especificada; marcador r no tiene significadoX
+ Los marcadores #, l y p no pueden combinarse con el marcador c en la modalidad viX
+-No se encontr¢ coincidenciaX
+-No se ingres¢ un identificador anteriorX
++No se encontrÂ¢ coincidenciaX
++No se ingresÂ¢ un identificador anteriorX
+ Se encontraron menos de %s anotaciones en la pila de identificadores; usar :visualizar i[dentificadores]X
+ No hay archivo %s en la pila de identificadores al que se pueda volver; usar :visualizar i[dentificadores]" 
+ Presionar Intro para continuar: X
+-%s: no se encontr¢ el identificadorX
++%s: no se encontrÂ¢ el identificadorX
+ %s: identificador corrompido en %sX
+-%s: el n£mero de l¡nea del identificador es posterior al final del archivoX
+-La pila de identificadores est  vac¡aX
+-%s: patr¢n de b£squeda no encontradoX
+-%d archivos m s para editarX
+-El buffer %s est  vac¡oX
+-¨Confirmar cambio? [n]X
++%s: el nÂ£mero de lÂ¡nea del identificador es posterior al final del archivoX
++La pila de identificadores estÂ  vacÂ¡aX
++%s: patrÂ¢n de bÂ£squeda no encontradoX
++%d archivos mÂ s para editarX
++El buffer %s estÂ  vacÂ¡oX
++Å¡Confirmar cambio? [n]X
+ InterrumpidoX
+ No hay buffer anterior para ejecutarX
+-No hay expresi¢n regular anteriorX
+-El comando %s requiere que se haya le¡do un archivoX
++No hay expresiÂ¢n regular anteriorX
++El comando %s requiere que se haya leÂ¡do un archivoX
+ Uso: %sX
+-El comando visual requiere que se determine la opci¢n abiertaX
++El comando visual requiere que se determine la opciÂ¢n abiertaX
+ 
+-Archivo vac¡oX
+-No hay b£squeda F, f, T o t anteriorX
+-%s no se encontr¢X
++Archivo vacÂ¡oX
++No hay bÂ£squeda F, f, T o t anteriorX
++%s no se encontrÂ¢X
+ No hay archivo anterior para editarX
+-El cursor no est  en un n£meroX
+-El n£mero resultante es demasiado grandeX
+- El n£mero resultante es demasiado peque¤oX
+-No hay car cter coincidente en esta l¡neaX
+-No se encontr¢ un car cter coincidenteX
++El cursor no estÂ  en un nÂ£meroX
++El nÂ£mero resultante es demasiado grandeX
++ El nÂ£mero resultante es demasiado pequeâ‚¬oX
++No hay carÂ cter coincidente en esta lÂ¡neaX
++No se encontrÂ¢ un carÂ cter coincidenteX
+ No hay caracteres para reemplazarX
+ No hay otra pantalla a la que se pueda pasarX
+-Caracteres despu‚s de cadena de b£squeda, desplazamiento de l¡nea y/o comando zX
+-No hay patr¢n anterior de b£squedaX
+-B£squeda vuelve a la posici¢n inicialX
+-Se super¢ el l¡mite de expansi¢n de abreviatura: se descartaron caracteresX
+-Car cter ilegal; mencionar para entrarX
+-Ya se encuentra al principio de la inserci¢nX
+-No hay m s caracteres para borrarX
+-Movimiento m s all  del final del archivoX
+-Movimiento m s all  del final de la l¡neaX
++Caracteres despuÂ‚s de cadena de bÂ£squeda, desplazamiento de lÂ¡nea y/o comando zX
++No hay patrÂ¢n anterior de bÂ£squedaX
++BÂ£squeda vuelve a la posiciÂ¢n inicialX
++Se superÂ¢ el lÂ¡mite de expansiÂ¢n de abreviatura: se descartaron caracteresX
++CarÂ cter ilegal; mencionar para entrarX
++Ya se encuentra al principio de la inserciÂ¢nX
++No hay mÂ s caracteres para borrarX
++Movimiento mÂ s allÂ  del final del archivoX
++Movimiento mÂ s allÂ  del final de la lÂ¡neaX
+ No hay movimiento del cursorX
+ Ya se encuentra al principio del archivoX
+-Movimiento m s all  del principio del archivoX
++Movimiento mÂ s allÂ  del principio del archivoX
+ Ya se encuentra en la primera columnaX
+ Los buffers deben especificarse antes del comandoX
+ Ya se encuentra al final del archivoX
+-Ya se encuentra al final de la l¡neaX
++Ya se encuentra al final de la lÂ¡neaX
+ %s no es un comando viX
+ Uso: %sX
+ No hay caracteres para borrarX
+ El comando Q requiere la interfase de terminal exX
+ No hay comando para repetirX
+-El archivo est  vac¡oX
++El archivo estÂ  vacÂ¡oX
+ %s no puede usarse como comando de movimientoX
+ Ya se encuentra en modalidad de comandoX
+ El cursor no se encuentra en una palabraX
+ 
+-El valor de opci¢n de Windows es demasiado grande, el m x. es %uX
+-A¤adirX
++El valor de opciÂ¢n de Windows es demasiado grande, el mÂ x. es %uX
++Aâ‚¬adirX
+ CambiarX
+ ComandoX
+ InsertarX
+ ReemplazarX
+-El movimiento va m s all  del final de la pantallaX
+-El movimiento va m s all  del principio de la pantallaX
+-La pantalla debe tener m s de %d l¡neas para dividirseX
++El movimiento va mÂ s allÂ  del final de la pantallaX
++El movimiento va mÂ s allÂ  del principio de la pantallaX
++La pantalla debe tener mÂ s de %d lÂ¡neas para dividirseX
+ No hay pantallas de fondoX
+ No hay pantalla de fondo editando un archivo denominado %sX
+-No se puede poner fondo a la £nica pantalla que se visualizaX
+-La pantalla s¢lo puede reducirse a %d hilerasX
++No se puede poner fondo a la Â£nica pantalla que se visualizaX
++La pantalla sÂ¢lo puede reducirse a %d hilerasX
+ La pantalla no puede reducirseX
+ La pantalla no puede aumentarseX
+ 
+@@ -231,12 +231,12 @@ Esta pantalla no puede suspenderseX
+ Interrumpido: teclas mapeadas descartadasX
+ vi: buffer temporario no liberadoX
+ Esta terminal no tiene tecla %sX
+-S¢lo un buffer puede especificarseX
+-N£mero mayor que %luX
++SÂ¢lo un buffer puede especificarseX
++NÂ£mero mayor que %luX
+ InterrumpidoX
+ No se puede crear archivo temporarioX
+ Advertencia: %s no es un archivo regularX
+-%s ya se encuentra trabado, la sesi¢n es de lectura solamenteX
++%s ya se encuentra trabado, la sesiÂ¢n es de lectura solamenteX
+ %s: eliminarX
+ %s: cerrarX
+ %s: eliminarX
+@@ -247,49 +247,49 @@ Archivo de lectura solamente, no escrito
+ %s existe, no escritoX
+ Archivo parcial, no escrito; usar ! para alterarX
+ Archivo parcial, no escritoX
+-%s: archivo modificado m s recientemente que esta copia; usar ! para alterarX
+-%s: archivo modificado m s recientemente que esta copiaX
++%s: archivo modificado mÂ s recientemente que esta copia; usar ! para alterarX
++%s: archivo modificado mÂ s recientemente que esta copiaX
+ %s: la traba de escritura no estaba disponibleX
+ Escribiendo...X
+ %s: ADVERTENCIA: ARCHIVO TRUNCADOX
+ Ya se encuentra en el primer identificador de este grupoX
+-%s: nuevo archivo: %lu l¡neas, %lu caracteresX
+-%s: %lu l¡neas, %lu caracteresX
++%s: nuevo archivo: %lu lÂ¡neas, %lu caracteresX
++%s: %lu lÂ¡neas, %lu caracteresX
+ %s expandido a demasiados nombres de archivosX
+ %s: no es un archivo regularX
+ %s: no le perteneceX
+ %s: accesible por un usuario que no sea el propietarioX
+-Archivo modificado desde la £ltima escritura completa; escribir o usar ! para alterarX
+-Archivo modificado desde la £ltima escritura completa; escribir o usar :editar! para alterarX
+-Archivo modificado desde la £ltima escritura completa; escribir o usar ! para alterarX
+-El archivo es temporario; al salir se descartar n las modificacionesX
++Archivo modificado desde la Â£ltima escritura completa; escribir o usar ! para alterarX
++Archivo modificado desde la Â£ltima escritura completa; escribir o usar :editar! para alterarX
++Archivo modificado desde la Â£ltima escritura completa; escribir o usar ! para alterarX
++El archivo es temporario; al salir se descartarÂ n las modificacionesX
+ Archivo de lectura solamente, las modificaciones no se autoescribenX
+-Se reinici¢ el logX
++Se reiniciÂ¢ el logX
+ confirmar? [snq]X
+ Presionar cualquier tecla para continuar: X
+-Presionar cualquier tecla para continuar [: para ingresar m s comandos ex]: X
++Presionar cualquier tecla para continuar [: para ingresar mÂ s comandos ex]: X
+ Presionar cualquier tecla para continuar [q para salir]: X
+ Esta forma de %s requiere la interfase terminal exX
+ Ingresando en la modalidad de entrada ex.X
+-Comando fracasado, no hay archivo le¡do aun.X
++Comando fracasado, no hay archivo leÂ¡do aun.X
+  cont?X
+-Evento inesperado de car cterX
++Evento inesperado de carÂ cterX
+ Evento inesperado de final de archivoX
+ No hay coincidencias para consultaX
+-Evento inesperado de interrupci¢nX
++Evento inesperado de interrupciÂ¢nX
+ Evento inesperado de salidaX
+ Evento inesperado de repinturaX
+-Ya se encuentra en el £ltimo identificador de este grupoX
++Ya se encuentra en el Â£ltimo identificador de este grupoX
+ El comando %s requiere la interfase terminal exX
+-Esta forma de %s no se encuentra soportada cuando se determina la opci¢n de edici¢n seguraX
++Esta forma de %s no se encuentra soportada cuando se determina la opciÂ¢n de ediciÂ¢n seguraX
+ Evento inesperado de cadenaX
+ Evento inesperado de tiempo excedidoX
+ Evento inesperado de escrituraX
+ 
+-Las expansiones de shell no se encuentran soportadas cuando se determina la opci¢n de edici¢n seguraX
+-El comando %s no se encuentra soportado cuando se determina la opci¢n de edici¢n seguraX
+-determinar: la opci¢n %s puede no estar desconectadaX
+-El monitor es demasiado peque¤o.X
++Las expansiones de shell no se encuentran soportadas cuando se determina la opciÂ¢n de ediciÂ¢n seguraX
++El comando %s no se encuentra soportado cuando se determina la opciÂ¢n de ediciÂ¢n seguraX
++determinar: la opciÂ¢n %s puede no estar desconectadaX
++El monitor es demasiado pequeâ‚¬o.X
+ agregadoX
+ cambiadoX
+ borradoX
+@@ -297,21 +297,21 @@ unidoX
+ movidoX
+ desplazadoX
+ arrancadoX
+-l¡neaX
+-l¡neasX
+-Vi no se carg¢ con un int‚rprete TclX
+-Archivo modificado desde la £ltima escritura.X
+-Expansi¢n de shell fracasadaX
+-No hay opci¢n de edici¢n %s especificadaX
+-Vi no se carg¢ con un int‚rprete PerlX
++lÂ¡neaX
++lÂ¡neasX
++Vi no se cargÂ¢ con un intÂ‚rprete TclX
++Archivo modificado desde la Â£ltima escritura.X
++ExpansiÂ¢n de shell fracasadaX
++No hay opciÂ¢n de ediciÂ¢n %s especificadaX
++Vi no se cargÂ¢ con un intÂ‚rprete PerlX
+ No hay comando ex para ejecutarX
+ Ingresar <CR> para ejecutar un comando, :q para salirX
+ Usar \"cscope ayuda\" para obtener ayudaX
+ No hay conexiones cscope corriendoX
+-%s: tipo de b£squeda desconocido: usar uno de %sX
+-%d: no existe esta sesi¢n cscopeX
+-determinar: la opci¢n %s no puede conectarse nuncaX
+-determinar: la opci¢n %s no puede determinarse nunca en 0X
+-%s: a¤adido: %lu l¡neas, %lu caracteresX
+-Evento inesperado de modificaci¢n de tama¤oX
++%s: tipo de bÂ£squeda desconocido: usar uno de %sX
++%d: no existe esta sesiÂ¢n cscopeX
++determinar: la opciÂ¢n %s no puede conectarse nuncaX
++determinar: la opciÂ¢n %s no puede determinarse nunca en 0X
++%s: aâ‚¬adido: %lu lÂ¡neas, %lu caracteresX
++Evento inesperado de modificaciÂ¢n de tamaâ‚¬oX
+ %d archivos para editarX
+Index: nvi-1.81.6/catalog/swedish
+===================================================================
+--- nvi-1.81.6.orig/catalog/swedish
++++ nvi-1.81.6/catalog/swedish
+@@ -1,297 +1,297 @@
+ VI_MESSAGE_CATALOG
+-För långa raderX
++FÃ¶r lÃ¥nga raderX
+ kan inte ta bort rad %luX
+-kan inte lägga till på rad %luX
+-kan inte sätta in på rad %luX
++kan inte lÃ¤gga till pÃ¥ rad %luX
++kan inte sÃ¤tta in pÃ¥ rad %luX
+ kan inte lagra rad %luX
+-kan inte hämta sista radenX
+-Fel: kan inte hämta rad %luX
++kan inte hÃ¤mta sista radenX
++Fel: kan inte hÃ¤mta rad %luX
+ LoggningsfilX
+-Loggning utförs inte, ångra är inte möjligtX
+-Inga ändringar att ångraX
+-Loggning utförs inte, ångra är inte möjligtX
+-Loggning utförs inte, ångra ångra är inte möjligtX
+-Inga ändringar att återgöraX
++Loggning utfÃ¶rs inte, Ã¥ngra Ã¤r inte mÃ¶jligtX
++Inga Ã¤ndringar att Ã¥ngraX
++Loggning utfÃ¶rs inte, Ã¥ngra Ã¤r inte mÃ¶jligtX
++Loggning utfÃ¶rs inte, Ã¥ngra Ã¥ngra Ã¤r inte mÃ¶jligtX
++Inga Ã¤ndringar att Ã¥tergÃ¶raX
+ %s/%d: fel vid loggningX
+-Vi:s standard in och ut måste gå till en terminalX
++Vi:s standard in och ut mÃ¥ste gÃ¥ till en terminalX
+ Markering %s: inte sattX
+ Markering %s: raden har tagits bortX
+-Markering %s: markörpositionen finns inte längreX
++Markering %s: markÃ¶rpositionen finns inte lÃ¤ngreX
+ Fel: X
+ ny filX
+-namnet ändradesX
+-ändradX
+-oförändradX
+-OLÅSTX
++namnet Ã¤ndradesX
++Ã¤ndradX
++ofÃ¶rÃ¤ndradX
++OLÃ…STX
+ inte skrivbarX
+ rad %lu av %lu [%ld%%]X
+ tom filX
+ rad %luX
+-Filen %s är ingen meddelandekatalogX
+-Kan inte sätta standardvärde för %s flagganX
+-Användning: %sX
+-set: %s är en okänd flagga: "set all" visar alla flaggorX
+-set: [no]%s flaggan kan inte ges ett värdeX
+-set: %s flaggan är inte boleanskX
++Filen %s Ã¤r ingen meddelandekatalogX
++Kan inte sÃ¤tta standardvÃ¤rde fÃ¶r %s flagganX
++AnvÃ¤ndning: %sX
++set: %s Ã¤r en okÃ¤nd flagga: "set all" visar alla flaggorX
++set: [no]%s flaggan kan inte ges ett vÃ¤rdeX
++set: %s flaggan Ã¤r inte boleanskX
+ set: %s flaggan: %sX
+-set: %s flaggan: %s: för stort värdeX
+-set: %s flaggan: %s är ett otillåtet talX
+-set: %s flaggan är inte boleanskX
+-Fönsterkolumnerna är för få, mindre än %dX
+-Fönsterkolumnerna är för många, fler än %dX
+-Fönsterraderna är för få, mindre än %dX
+-Fönsterraderna är för många, fler än %dX
+-Lisp flaggan är inte implementeradX
+-meddelanden är inte avslagna: %sX
+-meddelanden är inte påslagna: %sX
++set: %s flaggan: %s: fÃ¶r stort vÃ¤rdeX
++set: %s flaggan: %s Ã¤r ett otillÃ¥tet talX
++set: %s flaggan Ã¤r inte boleanskX
++FÃ¶nsterkolumnerna Ã¤r fÃ¶r fÃ¥, mindre Ã¤n %dX
++FÃ¶nsterkolumnerna Ã¤r fÃ¶r mÃ¥nga, fler Ã¤n %dX
++FÃ¶nsterraderna Ã¤r fÃ¶r fÃ¥, mindre Ã¤n %dX
++FÃ¶nsterraderna Ã¤r fÃ¶r mÃ¥nga, fler Ã¤n %dX
++Lisp flaggan Ã¤r inte implementeradX
++meddelanden Ã¤r inte avslagna: %sX
++meddelanden Ã¤r inte pÃ¥slagna: %sX
+ 
+-Paragraph flaggan måste ges i teckengrupper om tvåX
+-Section flaggan måste ges i teckengrupper om tvåX
++Paragraph flaggan mÃ¥ste ges i teckengrupper om tvÃ¥X
++Section flaggan mÃ¥ste ges i teckengrupper om tvÃ¥X
+ 
+ 
+ 
+-Standardbufferten är tomX
+-Buffer %s är tomX
+-Filer med radmatning i namnet kan inte återskapasX
+-Ändringar kan inte återskapas om programmet krascharX
+-Kopierar filen för återskapning...X
+-Säkerhetskopiering misslyckades: %sX
+-Ändringar kan inte återskapas om programmet krascharX
+-Misslyckades att säkerhetskopiera filen: %sX
+-Kopierar filen för återskapning...X
+-Kan inte hitta information om användaridentitet %uX
+-Kan inte låsa återskapningsfilenX
+-Återskapningsfilens buffer överskrivenX
+-ÅterskapningsfilX
+-%s: Återskapningsfilen är korruptX
+-%s: Återskapningsfilen är korruptX
+-Det finns ingen fil %s, läsbar av dig, att återskapaX
+-Det finns äldre versioner av denna fil som du kan återskapaX
+-Det finns andra filer du kan återskapaX
++Standardbufferten Ã¤r tomX
++Buffer %s Ã¤r tomX
++Filer med radmatning i namnet kan inte Ã¥terskapasX
++Ã„ndringar kan inte Ã¥terskapas om programmet krascharX
++Kopierar filen fÃ¶r Ã¥terskapning...X
++SÃ¤kerhetskopiering misslyckades: %sX
++Ã„ndringar kan inte Ã¥terskapas om programmet krascharX
++Misslyckades att sÃ¤kerhetskopiera filen: %sX
++Kopierar filen fÃ¶r Ã¥terskapning...X
++Kan inte hitta information om anvÃ¤ndaridentitet %uX
++Kan inte lÃ¥sa Ã¥terskapningsfilenX
++Ã…terskapningsfilens buffer Ã¶verskrivenX
++Ã…terskapningsfilX
++%s: Ã…terskapningsfilen Ã¤r korruptX
++%s: Ã…terskapningsfilen Ã¤r korruptX
++Det finns ingen fil %s, lÃ¤sbar av dig, att Ã¥terskapaX
++Det finns Ã¤ldre versioner av denna fil som du kan Ã¥terskapaX
++Det finns andra filer du kan Ã¥terskapaX
+ skickar inte email: %sX
+-Filen är tom; inget att söka iX
+-Kom till slutet på filen utan att hitta söksträngenX
+-Ingen tidigare söksträngX
+-Hittar inte söksträngenX
+-Kom till början av filen utan att hitta söksträngenX
+-Sökningen slog runtX
+-Söker...X
++Filen Ã¤r tom; inget att sÃ¶ka iX
++Kom till slutet pÃ¥ filen utan att hitta sÃ¶kstrÃ¤ngenX
++Ingen tidigare sÃ¶kstrÃ¤ngX
++Hittar inte sÃ¶kstrÃ¤ngenX
++Kom till bÃ¶rjan av filen utan att hitta sÃ¶kstrÃ¤ngenX
++SÃ¶kningen slog runtX
++SÃ¶ker...X
+ Inga icke skrivbara tecken funnaX
+-Okänt kommandonamnX
++OkÃ¤nt kommandonamnX
+ 
+-%s: kommandot är inte tillgängligt i "ex" lägeX
+-Talet får inte vara nollX
++%s: kommandot Ã¤r inte tillgÃ¤ngligt i "ex" lÃ¤geX
++Talet fÃ¥r inte vara nollX
+ %s: Ogiltig radspecifikationX
+ Fel i intern syntaxtabell (%s: %s)X
+-Användning: %sX
+-%s: temporärbuffert inte frisläpptX
+-Offset är före rad 1X
+-Offset är efter slutet på filenX
+-@ med intervall exekverades när filen/fönstret ändradesX
+-Global/v kommando exekverades när filen/fönstret ändradesX
+-Ex kommando misslyckades: efterföljande kommandon ignoreradeX
++AnvÃ¤ndning: %sX
++%s: temporÃ¤rbuffert inte frislÃ¤pptX
++Offset Ã¤r fÃ¶re rad 1X
++Offset Ã¤r efter slutet pÃ¥ filenX
++@ med intervall exekverades nÃ¤r filen/fÃ¶nstret Ã¤ndradesX
++Global/v kommando exekverades nÃ¤r filen/fÃ¶nstret Ã¤ndradesX
++Ex kommando misslyckades: efterfÃ¶ljande kommandon ignoreradeX
+ Ex kommando misslyckades: omdefinierade tangenter ignoreradeX
+-Den andra adressen är mindre än den förstaX
+-Inget namn på markering givetX
+-\\ följs inte av / eller ?X
+-Referens till ett radnummer mindre än 0X
+-%s kommandot är inte käntX
+-Värdet på adressen är för stortX
+-Värdet på adressen är för litetX
+-Otillåten adresskombinationX
+-Otillåten adress: bara %lu rader finns i filenX
+-Otillåten adress: filen är tomX
+-%s kommandot tillåter inte en adress som är 0X
+-Inga förkortningar att visaX
+-Förkortningar måste sluta med ett "ord" teckenX
+-Förkortningar kan inte innehålla mellanslag eller tabX
+-Förkortningar kan inte blanda "ord"/"icke ord" tecken, utom i slutetX
+-"%s" är ingen förkortningX
++Den andra adressen Ã¤r mindre Ã¤n den fÃ¶rstaX
++Inget namn pÃ¥ markering givetX
++\\ fÃ¶ljs inte av / eller ?X
++Referens till ett radnummer mindre Ã¤n 0X
++%s kommandot Ã¤r inte kÃ¤ntX
++VÃ¤rdet pÃ¥ adressen Ã¤r fÃ¶r stortX
++VÃ¤rdet pÃ¥ adressen Ã¤r fÃ¶r litetX
++OtillÃ¥ten adresskombinationX
++OtillÃ¥ten adress: bara %lu rader finns i filenX
++OtillÃ¥ten adress: filen Ã¤r tomX
++%s kommandot tillÃ¥ter inte en adress som Ã¤r 0X
++Inga fÃ¶rkortningar att visaX
++FÃ¶rkortningar mÃ¥ste sluta med ett "ord" teckenX
++FÃ¶rkortningar kan inte innehÃ¥lla mellanslag eller tabX
++FÃ¶rkortningar kan inte blanda "ord"/"icke ord" tecken, utom i slutetX
++"%s" Ã¤r ingen fÃ¶rkortningX
+ Vi kommando misslyckades: omdefinierade tangenter ignoreradeX
+ Inga fler filer att editeraX
+ Inga tidigare filer att editeraX
+ Inga tidigare filer att spela tillbakaX
+ Ingen fillista att visaX
+-Inget tidigare kommando att ersätta "!" medX
+-Inget filnamn att ersätta %% medX
+-Inget filnamn att ersätta # medX
++Inget tidigare kommando att ersÃ¤tta "!" medX
++Inget filnamn att ersÃ¤tta %% medX
++Inget filnamn att ersÃ¤tta # medX
+ Fel: execl: %sX
+ I/O fel: %sX
+-Filen ändrad efter sista skrivning; spara eller använd !X
++Filen Ã¤ndrad efter sista skrivning; spara eller anvÃ¤nd !X
+ Kan inte hitta hemkatalogX
+ Ny nuvarande katalog: %sX
+ Inga "cut buffers" att visaX
+-%s kommandot kan inte används som del i ett "global" eller v kommandoX
+-%s/%s: inte läst: varken du eller root är ägareX
+-%s/%s: inte läst: du är inte ägareX
+-%s/%s: inte läst: skrivbar av annan än ägarenX
+-%s: inte läst: varken du eller root är ägareX
+-%s: inte läst: du är inte ägareX
+-%s: inte läst: skrivbar av annan än ägarenX
+-Ingen nästa rad att sätta ihop medX
++%s kommandot kan inte anvÃ¤nds som del i ett "global" eller v kommandoX
++%s/%s: inte lÃ¤st: varken du eller root Ã¤r Ã¤gareX
++%s/%s: inte lÃ¤st: du Ã¤r inte Ã¤gareX
++%s/%s: inte lÃ¤st: skrivbar av annan Ã¤n Ã¤garenX
++%s: inte lÃ¤st: varken du eller root Ã¤r Ã¤gareX
++%s: inte lÃ¤st: du Ã¤r inte Ã¤gareX
++%s: inte lÃ¤st: skrivbar av annan Ã¤n Ã¤garenX
++Ingen nÃ¤sta rad att sÃ¤tta ihop medX
+ Det finns inget i inmatningsmappningenX
+ Det finns inget i kommandomappningenX
+ %s tecknet kan inte mappas omX
+-"%s" är inte ommappat just nuX
+-Namn på markeringar måste vara ett tecken långaX
+-%s finns, inget sparat; använd ! för att sparaX
++"%s" Ã¤r inte ommappat just nuX
++Namn pÃ¥ markeringar mÃ¥ste vara ett tecken lÃ¥ngaX
++%s finns, inget sparat; anvÃ¤nd ! fÃ¶r att sparaX
+ Ny exrc fil: %sX
+-Målraden ligger inne i området som ska flyttasX
+-Open kommandot kräver att open flaggan är sattX
+-Open kommandot är inte implementerat ännuX
+-Säkerhetskopiering av filen är inte möjligtX
+-Filen säkerhetskopieradX
+-%s expanderade till för många filnamnX
+-Endast vanliga filer och namngivna rör kan läsasX
+-%s: läslåset är otillgängligtX
+-Läser...X
++MÃ¥lraden ligger inne i omrÃ¥det som ska flyttasX
++Open kommandot krÃ¤ver att open flaggan Ã¤r sattX
++Open kommandot Ã¤r inte implementerat Ã¤nnuX
++SÃ¤kerhetskopiering av filen Ã¤r inte mÃ¶jligtX
++Filen sÃ¤kerhetskopieradX
++%s expanderade till fÃ¶r mÃ¥nga filnamnX
++Endast vanliga filer och namngivna rÃ¶r kan lÃ¤sasX
++%s: lÃ¤slÃ¥set Ã¤r otillgÃ¤ngligtX
++LÃ¤ser...X
+ %s: %lu rader, %lu teckenX
+-Inga bakgrundsfönster att visaX
+-Script kommandot finns bara i "vi" lägeX
++Inga bakgrundsfÃ¶nster att visaX
++Script kommandot finns bara i "vi" lÃ¤geX
+ Inget kommando att exekveraX
+ shiftwidth flaggan satt till 0X
+-Talet har för stort värdeX
+-Talet har för litet värdeX
+-Reguljärt uttryck är givet; r flaggan är meningslösX
+-#, l och p flaggorna kan inte kombineras med c flaggan i "vi" lägeX
++Talet har fÃ¶r stort vÃ¤rdeX
++Talet har fÃ¶r litet vÃ¤rdeX
++ReguljÃ¤rt uttryck Ã¤r givet; r flaggan Ã¤r meningslÃ¶sX
++#, l och p flaggorna kan inte kombineras med c flaggan i "vi" lÃ¤geX
+ Ingen matchande text funnenX
+-Inget tidigare märke har givitsX
+-Det är färre än %s märken i stacken; använd :display t[ags]X
+-Det finns ingen fil %s i märkesstacken; använd :display t[ags]X
+-Tryck Enter för att fortsätta: X
+-%s: märke inte funnetX
+-%s: korrupt märke i %sX
+-%s: märkets radnummer är bortom filslutetX
+-Märkesstacken är tomX
+-%s: söksträngen inte funnenX
++Inget tidigare mÃ¤rke har givitsX
++Det Ã¤r fÃ¤rre Ã¤n %s mÃ¤rken i stacken; anvÃ¤nd :display t[ags]X
++Det finns ingen fil %s i mÃ¤rkesstacken; anvÃ¤nd :display t[ags]X
++Tryck Enter fÃ¶r att fortsÃ¤tta: X
++%s: mÃ¤rke inte funnetX
++%s: korrupt mÃ¤rke i %sX
++%s: mÃ¤rkets radnummer Ã¤r bortom filslutetX
++MÃ¤rkesstacken Ã¤r tomX
++%s: sÃ¶kstrÃ¤ngen inte funnenX
+ %d filer till att editeraX
+-Buffert %s är tomX
+-Bekräfta ändring? [n]X
++Buffert %s Ã¤r tomX
++BekrÃ¤fta Ã¤ndring? [n]X
+ AvbrutenX
+ Ingen tidigare buffert att exekveraX
+-Inget tidigare reguljärt uttryckX
+-%s kommandot kräver att en fil redan lästs inX
+-Användning: %sX
+-Visual kommandot kräver att open flaggan är sattX
++Inget tidigare reguljÃ¤rt uttryckX
++%s kommandot krÃ¤ver att en fil redan lÃ¤sts inX
++AnvÃ¤ndning: %sX
++Visual kommandot krÃ¤ver att open flaggan Ã¤r sattX
+ 
+ Tom filX
+-Ingen tidigare F, f, T eller t sökningX
++Ingen tidigare F, f, T eller t sÃ¶kningX
+ %s inte funnenX
+ Ingen tidigare fil att editeraX
+-Markören är inte i ett talX
+-Det resulterande talet är för stortX
+-Det resulterande talet är för litetX
+-Inget matchande tecken på denna radX
++MarkÃ¶ren Ã¤r inte i ett talX
++Det resulterande talet Ã¤r fÃ¶r stortX
++Det resulterande talet Ã¤r fÃ¶r litetX
++Inget matchande tecken pÃ¥ denna radX
+ Matchande tecken inte funnetX
+-Det finns inga tecken att ersättaX
+-Det finns inget fönster att byta tillX
+-Tecken efter söksträng, radoffset och/eller z kommandotX
+-Ingen tidigare söksträngX
+-Sökningen slog runt till ursprungliga positionenX
+-Förkortning överskred expanderingsgränsen: tecken har tagits bortX
+-Ogiltigt tecken; använd "quote" för att sätta inX
+-Redan i början på insättningenX
++Det finns inga tecken att ersÃ¤ttaX
++Det finns inget fÃ¶nster att byta tillX
++Tecken efter sÃ¶kstrÃ¤ng, radoffset och/eller z kommandotX
++Ingen tidigare sÃ¶kstrÃ¤ngX
++SÃ¶kningen slog runt till ursprungliga positionenX
++FÃ¶rkortning Ã¶verskred expanderingsgrÃ¤nsen: tecken har tagits bortX
++Ogiltigt tecken; anvÃ¤nd "quote" fÃ¶r att sÃ¤tta inX
++Redan i bÃ¶rjan pÃ¥ insÃ¤ttningenX
+ Inga fler tecken att ta bortX
+-Försök att gå bortom slutet på filenX
+-Försök att gå bortom slutet på radenX
+-Ingen förflyttning gjordX
+-Redan i början på filenX
+-Försök att gå före början på filenX
+-Redan i första kolumnenX
+-Buffertar måste anges före kommandotX
++FÃ¶rsÃ¶k att gÃ¥ bortom slutet pÃ¥ filenX
++FÃ¶rsÃ¶k att gÃ¥ bortom slutet pÃ¥ radenX
++Ingen fÃ¶rflyttning gjordX
++Redan i bÃ¶rjan pÃ¥ filenX
++FÃ¶rsÃ¶k att gÃ¥ fÃ¶re bÃ¶rjan pÃ¥ filenX
++Redan i fÃ¶rsta kolumnenX
++Buffertar mÃ¥ste anges fÃ¶re kommandotX
+ Redan i slutet av filenX
+-Redan på slutet av radenX
+-%s är inte ett "vi" kommandoX
+-Användning: %sX
++Redan pÃ¥ slutet av radenX
++%s Ã¤r inte ett "vi" kommandoX
++AnvÃ¤ndning: %sX
+ Inga tecken att ta bortX
+-Q kommandot kräver "ex" i terminallägeX
++Q kommandot krÃ¤ver "ex" i terminallÃ¤geX
+ Inget kommando att repeteraX
+-Filen är tomX
+-%s kan inte användas som ett förflyttningskommandoX
+-Redan i kommando lägeX
+-Markören är inte i ett ordX
++Filen Ã¤r tomX
++%s kan inte anvÃ¤ndas som ett fÃ¶rflyttningskommandoX
++Redan i kommando lÃ¤geX
++MarkÃ¶ren Ã¤r inte i ett ordX
+ 
+-Windows flaggans värde är för stor, största värde är %uX
+-Lägg tillX
+-ÄndraX
++Windows flaggans vÃ¤rde Ã¤r fÃ¶r stor, stÃ¶rsta vÃ¤rde Ã¤r %uX
++LÃ¤gg tillX
++Ã„ndraX
+ KommandoX
+-Sätt inX
+-ErsättX
+-Förflyttning bortom fönsterslutX
+-Förflyttning till före fönstrets börjanX
+-Fönstret måste vara större än %d rader för delningX
+-Det finns inga fönster i bakgrundenX
+-Det finns inget fönster i bakgrunden som editerar filen %sX
+-Du får inte sätta ditt enda synliga fönster i bakgrundenX
+-Fönstret kan bara krympa till %d raderX
+-Fönstret kan inte krympaX
+-Fönstret kan inte växaX
++SÃ¤tt inX
++ErsÃ¤ttX
++FÃ¶rflyttning bortom fÃ¶nsterslutX
++FÃ¶rflyttning till fÃ¶re fÃ¶nstrets bÃ¶rjanX
++FÃ¶nstret mÃ¥ste vara stÃ¶rre Ã¤n %d rader fÃ¶r delningX
++Det finns inga fÃ¶nster i bakgrundenX
++Det finns inget fÃ¶nster i bakgrunden som editerar filen %sX
++Du fÃ¥r inte sÃ¤tta ditt enda synliga fÃ¶nster i bakgrundenX
++FÃ¶nstret kan bara krympa till %d raderX
++FÃ¶nstret kan inte krympaX
++FÃ¶nstret kan inte vÃ¤xaX
+ 
+-Detta fönster kan inte pausasX
++Detta fÃ¶nster kan inte pausasX
+ Avbrutet: omdefinierade tangenter ignoreradeX
+-vi: temporärbuffertar inte frisläpptaX
++vi: temporÃ¤rbuffertar inte frislÃ¤pptaX
+ Denna terminal har ingen %s tangentX
+ Endast en buffert kan angesX
+-Talet är större än %luX
++Talet Ã¤r stÃ¶rre Ã¤n %luX
+ AvbrutetX
+-Kan inte skapa temporär filX
+-Warning: %s är inte en normal filX
+-%s är redan låst, detta blir en icke skrivbar sessionX
++Kan inte skapa temporÃ¤r filX
++Warning: %s Ã¤r inte en normal filX
++%s Ã¤r redan lÃ¥st, detta blir en icke skrivbar sessionX
+ %s: ta bortX
+-%s: stängX
++%s: stÃ¤ngX
+ %s: ta bortX
+ %s: ta bortX
+-Ej skrivbar fil, filen inte sparad; använd ! för att skriva överX
++Ej skrivbar fil, filen inte sparad; anvÃ¤nd ! fÃ¶r att skriva Ã¶verX
+ Ej skrivbar fil, filen inte sparadX
+-%s finns, ej sparad; använd ! för att utföra operationenX
++%s finns, ej sparad; anvÃ¤nd ! fÃ¶r att utfÃ¶ra operationenX
+ %s finns, filen inte sparadX
+-Ofullständig fil, filen inte sparad, använd ! för att skriva överX
+-Ofullständig fil, filen inte sparadX
+-%s: filen ändrad efter denna kopia togs; använd ! för att utföra operationenX
+-%s: filen ändrad efter denna kopia togsX
+-%s: skrivlåset är otillgängligtX
++OfullstÃ¤ndig fil, filen inte sparad, anvÃ¤nd ! fÃ¶r att skriva Ã¶verX
++OfullstÃ¤ndig fil, filen inte sparadX
++%s: filen Ã¤ndrad efter denna kopia togs; anvÃ¤nd ! fÃ¶r att utfÃ¶ra operationenX
++%s: filen Ã¤ndrad efter denna kopia togsX
++%s: skrivlÃ¥set Ã¤r otillgÃ¤ngligtX
+ Skriver...X
+ %s: VARNING: FILEN TRUNKERADX
+-Redan vid första märket i denna gruppX
++Redan vid fÃ¶rsta mÃ¤rket i denna gruppX
+ %s: ny fil: %lu rader, %lu teckenX
+ %s: %lu rader, %lu teckenX
+-%s expanderade till för många filnamnX
+-%s är inte en normal filX
+-%s ägs inte av digX
+-%s är åtkomstbar av andra än ägarenX
+-Filen har ändrats efter den sparats; spara eller använd !X
+-Filen har ändrats efter den sparats; spara eller använd :edit!X
+-Filen har ändrats efter den sparats; spara eller använd !X
+-Filen är temporär; exit kastar bort ändringarnaX
+-Ej skrivbar fil, ändringar har inte automatsparatsX
++%s expanderade till fÃ¶r mÃ¥nga filnamnX
++%s Ã¤r inte en normal filX
++%s Ã¤gs inte av digX
++%s Ã¤r Ã¥tkomstbar av andra Ã¤n Ã¤garenX
++Filen har Ã¤ndrats efter den sparats; spara eller anvÃ¤nd !X
++Filen har Ã¤ndrats efter den sparats; spara eller anvÃ¤nd :edit!X
++Filen har Ã¤ndrats efter den sparats; spara eller anvÃ¤nd !X
++Filen Ã¤r temporÃ¤r; exit kastar bort Ã¤ndringarnaX
++Ej skrivbar fil, Ã¤ndringar har inte automatsparatsX
+ Loggningen startar omX
+-bekräfta? [ynq]X
+-Tryck på en tangent för att fortsätta: X
+-Tryck på en tangent för att fortsätta [: för att ge fler kommandon]: X
+-Tryck på en tangent för att fortsätta [q för att avsluta]: X
+-Den formen av %s kräver "ex" i terminallägeX
+-Går till "ex" inmatningsläge.X
+-Kommandot misslyckades, ingen fil inläst ännu.X
++bekrÃ¤fta? [ynq]X
++Tryck pÃ¥ en tangent fÃ¶r att fortsÃ¤tta: X
++Tryck pÃ¥ en tangent fÃ¶r att fortsÃ¤tta [: fÃ¶r att ge fler kommandon]: X
++Tryck pÃ¥ en tangent fÃ¶r att fortsÃ¤tta [q fÃ¶r att avsluta]: X
++Den formen av %s krÃ¤ver "ex" i terminallÃ¤geX
++GÃ¥r till "ex" inmatningslÃ¤ge.X
++Kommandot misslyckades, ingen fil inlÃ¤st Ã¤nnu.X
+  forts?X
+-Oväntad teckenhändelseX
+-Oväntad filslutshändelseX
+-Sökningen hittade ingentingX
+-Oväntad avbrottshändelseX
+-Oväntad avslutningshändelseX
+-Oväntad omritningshändelseX
+-Redan vid sista märket i denna gruppX
+-%s kommandot kräver "ex" i terminallägeX
+-Den formen av %s är inte tillgänglig när secure edit flaggan är sattX
+-Oväntad stränghändelseX
+-Oväntad tidshändelseX
+-Oväntad skrivhändelseX
++OvÃ¤ntad teckenhÃ¤ndelseX
++OvÃ¤ntad filslutshÃ¤ndelseX
++SÃ¶kningen hittade ingentingX
++OvÃ¤ntad avbrottshÃ¤ndelseX
++OvÃ¤ntad avslutningshÃ¤ndelseX
++OvÃ¤ntad omritningshÃ¤ndelseX
++Redan vid sista mÃ¤rket i denna gruppX
++%s kommandot krÃ¤ver "ex" i terminallÃ¤geX
++Den formen av %s Ã¤r inte tillgÃ¤nglig nÃ¤r secure edit flaggan Ã¤r sattX
++OvÃ¤ntad strÃ¤nghÃ¤ndelseX
++OvÃ¤ntad tidshÃ¤ndelseX
++OvÃ¤ntad skrivhÃ¤ndelseX
+ 
+-Skalexpansion är inte tillgänglig när secure edit flaggan är sattX
+-%s kommandot är inte tillgänglig när secure edit flaggan är sattX
+-set: %s kan inte slås avX
+-Fönstret för litet.X
++Skalexpansion Ã¤r inte tillgÃ¤nglig nÃ¤r secure edit flaggan Ã¤r sattX
++%s kommandot Ã¤r inte tillgÃ¤nglig nÃ¤r secure edit flaggan Ã¤r sattX
++set: %s kan inte slÃ¥s avX
++FÃ¶nstret fÃ¶r litet.X
+ tillagdaX
+-ändradeX
++Ã¤ndradeX
+ borttagnaX
+ ihopsattaX
+ flyttadeX
+@@ -299,19 +299,19 @@ flyttadeX
+ inklistradeX
+ radX
+ raderX
+-Vi har inte länkats med en Tcl tolkX
+-Filen har ändrats efter den sparats.X
++Vi har inte lÃ¤nkats med en Tcl tolkX
++Filen har Ã¤ndrats efter den sparats.X
+ Skalexpansion misslyckadesX
+ Ingen %s edit flagga givenX
+-Vi har inte länkats med en Perl tolkX
++Vi har inte lÃ¤nkats med en Perl tolkX
+ Inga "ex" kommandon att exekveraX
+-Tryck <CR> för att exekvera kommando, :q för att avslutaX
+-Gör "cscope help" för hjälpX
+-Inga cscope kopplingar körsX
+-%s: okänd söktyp: använd en av %sX
+-%d: ingen sådan cscope sessionX
+-set: %s flaggan får aldrig slås påX
+-set: %s flaggan får aldrig sättas till 0X
++Tryck <CR> fÃ¶r att exekvera kommando, :q fÃ¶r att avslutaX
++GÃ¶r "cscope help" fÃ¶r hjÃ¤lpX
++Inga cscope kopplingar kÃ¶rsX
++%s: okÃ¤nd sÃ¶ktyp: anvÃ¤nd en av %sX
++%d: ingen sÃ¥dan cscope sessionX
++set: %s flaggan fÃ¥r aldrig slÃ¥s pÃ¥X
++set: %s flaggan fÃ¥r aldrig sÃ¤ttas till 0X
+ %s: tillagt: %lu rader, %lu teckenX
+-Oväntad storleksändringX
++OvÃ¤ntad storleksÃ¤ndringX
+ %d filer att editeraX

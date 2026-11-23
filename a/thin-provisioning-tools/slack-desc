@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                       |-----handy-ruler------------------------------------------------------|
+thin-provisioning-tools: thin-provisioning-tools (Thin provisioning tools for device mapper)
+thin-provisioning-tools:
+thin-provisioning-tools: A suite of tools for manipulating the metadata of the dm-thin,
+thin-provisioning-tools: dm-cache and dm-era device mapper targets. These tools are used
+thin-provisioning-tools: to check, dump, repair and restore the metadata of thinly
+thin-provisioning-tools: provisioned volumes and caches, and are required by LVM2 for
+thin-provisioning-tools: managing thin pools.
+thin-provisioning-tools:
+thin-provisioning-tools: Homepage: https://github.com/jthornber/thin-provisioning-tools
+thin-provisioning-tools:
+thin-provisioning-tools:

@@ -1,0 +1,5 @@
+# In Qt6 6.10, the GuiPrivate component must be explicitly specified in 'find_package()':
+cat $CWD/patch/labplot/labplot-2.11.1-qt-6.10.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+# Add missing include to fix the build:
+cat $CWD/patch/labplot/labplot-2.11.1-missing-header.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+

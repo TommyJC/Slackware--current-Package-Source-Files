@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+   |-----handy-ruler------------------------------------------------------|
+stb: stb (single-file libraries for C/C++)
+stb:
+stb: This package contains single-file libraries, including:
+stb: image loader: [stb_image.h](stb_image.h)
+stb: image writer: [stb_image_write.h](stb_image_write.h)
+stb: image resizer: [stb_image_resize.h](stb_image_resize.h)
+stb: font text rasterizer: [stb_truetype.h](stb_truetype.h)
+stb: typesafe containers: [stb_ds.h](stb_ds.h)
+stb:
+stb: Homepage: https://github.com/nothings/stb
+stb:

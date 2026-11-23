@@ -1,0 +1,8 @@
+mkdir cmake-build
+cd cmake-build
+  cmake \
+    "${KDE_BUILD_ARGS[@]/-DKDE_INSTALL_LIBDIR=?*/}" \
+    "${KDE_QT6_ARGS[@]}" \
+    $KDE_OPT_ARGS \
+    -DKDE_INSTALL_LIBDIR=/lib${LIBDIRSUFFIX} \
+    ..

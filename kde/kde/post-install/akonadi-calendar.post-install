@@ -1,0 +1,5 @@
+# Only autospawn in KDE:
+cat << EOF >> $PKG/etc/xdg/autostart/org.kde.kalendarac.desktop
+# Only autospawn in KDE:
+OnlyShowIn=KDE
+EOF

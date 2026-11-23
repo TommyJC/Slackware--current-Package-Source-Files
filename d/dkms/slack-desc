@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+    |-----handy-ruler------------------------------------------------------|
+dkms: dkms (Dynamic Kernel Module Support)
+dkms:
+dkms: Dynamic Kernel Module Support is a framework for automatically
+dkms: rebuilding out-of-tree kernel modules when a new kernel is installed.
+dkms: Most kernel modules registered with DKMS will be rebuilt when the
+dkms: machine is rebooted with the new kernel. For special cases, the
+dkms: modules are rebuilt when geninitrd is run so that they will be
+dkms: available when the machine is rebooted.
+dkms:
+dkms: Homepage: https://github.com/dell/dkms
+dkms:

@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+              |-----handy-ruler------------------------------------------------------|
+opentimelineio: opentimelineio (interchange format and API for editorial cuts)
+opentimelineio:
+opentimelineio: OpenTimelineIO is an interchange format and API for editorial cut
+opentimelineio: information. OTIO contains information about the order and length of
+opentimelineio: cuts and references to external media. It is not however, a container
+opentimelineio: format for media.
+opentimelineio:
+opentimelineio: Homepage: https://opentimeline.io/
+opentimelineio:
+opentimelineio:
+opentimelineio:

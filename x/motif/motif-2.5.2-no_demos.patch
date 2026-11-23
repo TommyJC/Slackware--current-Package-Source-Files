@@ -1,0 +1,9 @@
+--- ./Makefile.am.orig	2026-04-16 23:32:16.000000000 -0500
++++ ./Makefile.am	2026-05-31 14:53:44.460161692 -0500
+@@ -20,6 +20,3 @@
+ 
+ SUBDIRS	= config bindings bitmaps doc icons localized lib include tools clients tests
+ 
+-if WITH_DEMOS
+-SUBDIRS += demos
+-endif

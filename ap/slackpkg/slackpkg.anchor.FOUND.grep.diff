@@ -1,0 +1,29 @@
+--- ./slackpkg.orig	2026-10-25 16:01:49.524077074 -0500
++++ ./slackpkg	2026-10-25 16:03:36.499275122 -0500
+@@ -449,7 +449,7 @@
+ 				DELALL="$OLDDEL"
+ 			fi
+ 			FOUND=""
+-			FOUND=$(echo $SHOWLIST | tr -s ' ' "\n" | grep "slackpkg-[0-9]")
++			FOUND=$(echo $SHOWLIST | tr -s ' ' "\n" | grep "^slackpkg-[0-9]")
+ 			if [ "$FOUND" != "" ]; then 
+ 				getpkg $FOUND upgradepkg Upgrading
+ 				echo -e "slackpkg was upgraded - you will need to start the upgrade process again...\n"
+@@ -461,7 +461,7 @@
+ 			# The list should be reverse ordered.
+ 			for i in sed readline aaa_elflibs aaa_libraries glibc-solibs aaa_glibc-solibs pkgtools; do
+ 				FOUND=""
+-				FOUND=$(echo $SHOWLIST | tr -s ' ' "\n" | grep "${i}-[0-9]")
++				FOUND=$(echo $SHOWLIST | tr -s ' ' "\n" | grep "^${i}-[0-9]")
+ 				if [ "$FOUND" != "" ]; then 
+ 					SHOWLIST=$(echo $SHOWLIST | sed 's/\<'${FOUND}'\>//g;s/^/'${FOUND}' /')
+ 				fi
+@@ -470,7 +470,7 @@
+ 			# Kernel packages need to be the last ones upgraded
+ 			for i in kernel-generic kernel_armv{0..9}; do
+ 				FOUND=""
+-				FOUND=$(echo $SHOWLIST | tr -s ' ' "\n" | grep "${i}-[0-9]")
++				FOUND=$(echo $SHOWLIST | tr -s ' ' "\n" | grep "^${i}-[0-9]")
+ 				if [ "${FOUND}" != "" ]; then
+ 					SHOWLIST=$(echo $SHOWLIST | sed 's/\<'${FOUND}'\>//g;s/$/ '${FOUND}'/')
+ 					break

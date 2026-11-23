@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+         |-----handy-ruler------------------------------------------------------|
+mpv-mpris: mpv-mpris (plugin to control mpv with media keys)
+mpv-mpris:
+mpv-mpris: mpv-mpris is a plugin for mpv which allows control of the player using
+mpv-mpris: standard media keys. This plugin implements the MPRIS D-Bus interface
+mpv-mpris: and can be controlled using tools such as playerctl or through many
+mpv-mpris: open source desktop environments such as GNOME and KDE.
+mpv-mpris:
+mpv-mpris: Homepage: https://github.com/hoyon/mpv-mpris
+mpv-mpris:
+mpv-mpris:
+mpv-mpris:

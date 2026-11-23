@@ -1,0 +1,30 @@
+#!/bin/sh
+# Boot script for the Kea DHCP server.
+
+# Make the runtime directory:
+if [ ! -d /run/kea ]; then
+  mkdir -p /run/kea
+  chmod 750 /run/kea
+fi
+
+case "$1" in
+'start')
+  keactrl start
+  ;;
+'stop')
+  keactrl stop
+  ;;
+'restart')
+  keactrl stop
+  keactrl start
+  ;;
+'reload')
+  keactrl reload
+  ;;
+'status')
+  keactrl status
+  ;;
+*)
+  echo "usage $0 start|stop|restart|reload|status"
+esac
+

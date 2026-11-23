@@ -1,0 +1,7 @@
+# Package the symlinks directly rather than including them in the install
+# script. I almost never do this, because the package system can be a bit
+# brittle when it comes to collisions. But it's unlikely we'll have any
+# with this, and the number of symbolic links has gotten out of hand making
+# the package install take a very long time.
+# We will test this and see how it goes.
+/sbin/makepkg -l n -c n ${SLACK_KDE_BUILD_DIR}/${kde_module}/${PKGNAME}-${MODULAR_PACKAGE_VERSION}-${PKGARCH}-${MODBUILD}${TAG}.txz

@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+        |-----handy-ruler------------------------------------------------------|
+kwin-x11: kwin-x11 (KDE Plasma window manager for X11)
+kwin-x11:
+kwin-x11: KWin/X11 is an X11 window manager and a compositing manager. Its
+kwin-x11: primary usage is in conjunction with a Desktop Shell: (e.g. KDE Plasma
+kwin-x11: Desktop). KWin/X11 is designed to stay out of the way; users should
+kwin-x11: not notice that they use a window manager at all. 
+kwin-x11:
+kwin-x11:
+kwin-x11:
+kwin-x11:
+kwin-x11:

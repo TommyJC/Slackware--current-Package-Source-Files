@@ -1,0 +1,1 @@
+setcap cap_net_raw+ep $PKG/usr/libexec/ksysguard/ksgrd_network_helper

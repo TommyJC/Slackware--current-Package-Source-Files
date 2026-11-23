@@ -1,0 +1,15 @@
+Description: Fix spelling error: Ovverrides must be Overrides.
+Author: Mònica Ramírez Arceda <monica@debian.org>
+Last-Update: 2016-06-07
+
+--- a/splitvt.1
++++ b/splitvt.1
+@@ -52,7 +52,7 @@
+ .TP
+ .TB
+ .I \-nologin
+-Ovverrides any "set login on" statement in the startup file.
++Overrides any "set login on" statement in the startup file.
+ .TP
+ .TB
+ .I \-rcfile file

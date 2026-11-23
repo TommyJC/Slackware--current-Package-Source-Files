@@ -1,0 +1,11 @@
+--- ./Makefile.orig	2025-06-11 16:10:59.839765755 -0500
++++ ./Makefile	2025-06-11 16:11:34.236708716 -0500
+@@ -44,7 +44,7 @@
+ BINDIR=/usr/sbin
+ MANDIR=/usr/share/man
+ 
+-CFLAGS= $(OPTDEFS) $(SYSDEFS) $(FILEDEFS) $(MOREDEFS)
++CFLAGS= $(OPTDEFS) $(SYSDEFS) $(FILEDEFS) $(MOREDEFS) -std=gnu17
+ PROGS= bootpd bootpef bootpgw bootptest
+ TESTS= trylook trygetif trygetea
+ 

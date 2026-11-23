@@ -1,0 +1,2 @@
+( git ls-remote --tags https://github.com/jthornber/thin-provisioning-tools.git | grep -v '\^{}' ) | sort -k 2 -V | tail -n2
+

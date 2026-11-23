@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+            |-----handy-ruler------------------------------------------------------|
+kunifiedpush: kunifiedpush (UnifiedPush client components)
+kunifiedpush:
+kunifiedpush: KUnifiedPush provides push notifications for KDE applications. Push
+kunifiedpush: notifications are a mechanism to support applications that
+kunifiedpush: occasionally need to receive some kind of information from their
+kunifiedpush: server-side part, and where receiving in a timely manner matters. Chat
+kunifiedpush: applications or weather and emergency alerts would be examples for
+kunifiedpush: that.
+kunifiedpush:
+kunifiedpush:
+kunifiedpush:

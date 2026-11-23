@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+                |-----handy-ruler------------------------------------------------------|
+subtitlecomposer: subtitlecomposer (subtitle editor)
+subtitlecomposer:
+subtitlecomposer: Subtitle editor, designed for creating, editing, and synchronizing
+subtitlecomposer: subtitles with video, offering advanced features like side-by-side
+subtitlecomposer: translation, waveform editing, spell checking, and support for
+subtitlecomposer: numerous text and graphics formats (SRT, ASS, VobSub, etc.).
+subtitlecomposer: It integrates a video player for live previews and precise
+subtitlecomposer: timing adjustments.
+subtitlecomposer:
+subtitlecomposer: Homepage: https://subtitlecomposer.kde.org/
+subtitlecomposer:

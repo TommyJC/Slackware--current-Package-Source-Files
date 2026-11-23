@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+      |-----handy-ruler------------------------------------------------------|
+spleen: spleen (monospaced bitmap fonts)
+spleen:
+spleen: Spleen is a monospaced bitmap font available in 6 sizes
+spleen: 5x8 6x12 8x16 12x24 16x32 32x64
+spleen:
+spleen: All font sizes contain all ISO/IEC 8859-1 characters (Basic Latin and
+spleen: Latin-1 Supplement Unicode block), Latin Extended-A characters, 
+spleen: as well as Box Drawing, Block Elements, and Braille Patterns Unicode
+spleen: blocks, except for the 5x8 and the 6x12 versions.
+spleen:
+spleen: Homepage: https://www.cambus.net/spleen-monospaced-bitmap-fonts/

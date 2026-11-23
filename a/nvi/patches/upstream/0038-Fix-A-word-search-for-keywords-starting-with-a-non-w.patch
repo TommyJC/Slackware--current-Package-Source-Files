@@ -1,0 +1,83 @@
+From: Wolfgang Jenkner <wjenkner@inode.at>
+Date: Thu, 22 May 2008 16:33:56 +0200
+Subject: Fix ^A word search for keywords starting with a non-word character.
+Origin: upstream, https://repo.or.cz/nvi.git/commit/9ba2bd88564a5bcfbc612fa954e16f15b5c81be6
+
+E.g., putting the cursor over ^ and typing ^A would give a 'Pattern
+not found' message (with wrapscan set).
+
+Adjust v_searchw to the current version of v_curword (the bug was already
+present before the recent changes, though).
+
+There's also a new auxiliary function is_especial, for clarity.
+---
+ vi/v_search.c | 44 ++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 36 insertions(+), 8 deletions(-)
+
+diff --git a/vi/v_search.c b/vi/v_search.c
+index 8318d83..275e174 100644
+--- a/vi/v_search.c
++++ b/vi/v_search.c
+@@ -312,6 +312,25 @@ v_searchn(SCR *sp, VICMD *vp)
+ 	return (v_search(sp, vp, NULL, 0, SEARCH_PARSE, sp->searchdir));
+ }
+ 
++/*
++ * is_especial --
++ *	Test if the character is special in an extended RE.
++ */
++static int
++is_especial(CHAR_T c)
++{
++	/*
++	 * !!!
++	 * Right-brace is not an ERE special according to IEEE 1003.1-2001.
++	 * Right-parenthesis is a special character (so quoting doesn't hurt),
++	 * though it has no special meaning in this context, viz. at the
++	 * beginning of the string.  So we need not quote it.  Then again,
++	 * see the BUGS section in regex/re_format.7.
++	 * The tilde is vi-specific, of course.
++	 */
++	return (STRCHR(L(".[\\()*+?{|^$~"), c) && c);
++}
++
+ /*
+  * v_searchw -- [count]^A
+  *	Search for the word under the cursor.
+@@ -321,19 +340,28 @@ v_searchn(SCR *sp, VICMD *vp)
+ int
+ v_searchw(SCR *sp, VICMD *vp)
+ {
+-	size_t blen, len;
++	size_t blen;
++	/* An upper bound for the SIZE of the RE under construction. */
++	size_t len = VIP(sp)->klen + MAX(RE_WSTART_LEN, 1) + RE_WSTOP_LEN;
+ 	int rval;
+ 	CHAR_T *bp, *p;
+ 
+-	len = VIP(sp)->klen + RE_WSTART_LEN + RE_WSTOP_LEN;
+ 	GET_SPACE_RETW(sp, bp, blen, len);
+-	MEMCPY(bp, RE_WSTART, RE_WSTART_LEN); 
+-	p = bp + RE_WSTART_LEN;
+-	MEMCPY(p, VIP(sp)->keyw, VIP(sp)->klen);
+-	p += VIP(sp)->klen;
+-	MEMCPY(p, RE_WSTOP, RE_WSTOP_LEN); 
++	p = bp;
++
++	/* Only the first character can be non-word, see v_curword. */
++	if (inword(VIP(sp)->keyw[0]))
++		p = MEMPCPY(p, RE_WSTART, RE_WSTART_LEN);
++	else if (is_especial(VIP(sp)->keyw[0]))
++		p = MEMPCPY(p, L("\\"), 1);
++
++	p = MEMPCPY(p, VIP(sp)->keyw, VIP(sp)->klen);
++
++	if (inword(p[-1]))
++		p = MEMPCPY(p, RE_WSTOP, RE_WSTOP_LEN);
+ 
+-	rval = v_search(sp, vp, bp, len, SEARCH_SET, FORWARD);
++	len = p - bp;
++	rval = v_search(sp, vp, bp, len, SEARCH_SET | SEARCH_EXTEND, FORWARD);
+ 
+ 	FREE_SPACEW(sp, bp, blen);
+ 	return (rval);

@@ -1,0 +1,26 @@
+From: Wolfgang Jenkner <wjenkner@inode.at>
+Date: Thu, 22 May 2008 16:33:55 +0200
+Subject: New macro MEMPCPY.
+Origin: upstream, https://repo.or.cz/nvi.git/commit/193d6e7fb11a7da6ad611a6bba3f020e87b7b3a8
+
+---
+ common/multibyte.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/common/multibyte.h b/common/multibyte.h
+index 92b6512..820f4ec 100644
+--- a/common/multibyte.h
++++ b/common/multibyte.h
+@@ -54,6 +54,12 @@ typedef	u_char		UCHAR_T;
+ 	memcmp(to, from, (n) * sizeof(*(to)))
+ #define	MEMMOVE(p, t, len)	memmove(p, t, (len) * sizeof(*(p)))
+ #define	MEMCPY(p, t, len)	memcpy(p, t, (len) * sizeof(*(p)))
++/*
++ * Like MEMCPY but return a pointer to the end of the copied bytes.
++ * Glibc has a function mempcpy with the same purpose.
++ */
++#define MEMPCPY(p, t, len) \
++	((void *)((char *)MEMCPY(p, t, len) + (len) * sizeof(*(p))))
+ #define SIZE(w)		(sizeof(w)/sizeof(*w))
+ 
+ #endif

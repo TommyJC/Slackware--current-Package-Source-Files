@@ -1,0 +1,11 @@
+--- ./src/init.h.orig	2026-03-21 01:41:30.000000000 -0500
++++ ./src/init.h	2026-03-21 15:08:17.155334193 -0500
+@@ -48,7 +48,7 @@
+ #define SLEEPTIME  300			/* Disable time */
+ 
+ /* Default path inherited by every child. */
+-#define PATH_DEFAULT   "/sbin:/usr/sbin:/bin:/usr/bin"
++#define PATH_DEFAULT   "/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin"
+ 
+ 
+ /* Prototypes. */

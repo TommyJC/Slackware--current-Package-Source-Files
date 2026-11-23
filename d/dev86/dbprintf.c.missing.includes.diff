@@ -1,0 +1,11 @@
+--- ./bcc/dbprintf.c.orig	2013-10-29 10:44:51.000000000 -0500
++++ ./bcc/dbprintf.c	2026-06-14 17:54:02.709148818 -0500
+@@ -1,6 +1,8 @@
+ 
+ #include <sys/types.h>
+ #include <fcntl.h>
++#include <stdio.h>
++#include <string.h>
+ 
+ #if defined(__STDC__) && !defined(__FIRST_ARG_IN_AX__)
+ #include <stdarg.h>

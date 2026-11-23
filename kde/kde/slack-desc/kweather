@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side mkweathers the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+        |-----handy-ruler------------------------------------------------------|
+kweather: kweather (weather application for Plasma)
+kweather:
+kweather: A convergent weather application for Plasma.
+kweather:
+kweather: Features daily and hourly weather data that can be viewed in flat and
+kweather: dynamic views. The Plasmoid can be used on both desktop and mobile.
+kweather:
+kweather: Homepage: https://invent.kde.org/utilities/kweather
+kweather:
+kweather:
+kweather:

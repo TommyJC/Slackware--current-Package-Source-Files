@@ -1,0 +1,104 @@
+Fri Apr  4 17:43:37 UTC 2025
+  poppler: fixed LCMS option and removed obsolete options.
+  This didn't break the build, and poppler already used the correct options by
+  default, so we're not going to rebuild this. It was worth correcting, though.
+  Thanks to UrbanDesimator.
++--------------------------+
+Wed Apr  2 19:16:09 UTC 2025
+  libnih: don't autoreconf.
+  aalib: add GCC 14 workaround flags.
++--------------------------+
+Mon Mar 31 20:42:10 UTC 2025
+  clucene: fix build with cmake4.
+  cryfs: fix build with cmake4.
+  ebook-tools: fix build with cmake4.
+  fftw: fix build with cmake4.
+  frei0r-plugins: fix build with cmake4.
+  graphite2: fix build with cmake4.
+  json-c: fix build with cmake4.
+  lensfun: fix build with cmake4.
+  libcue: fix build with cmake4.
+  libdbusmenu-qt: fix build with cmake4.
+  libdiscid: fix build with cmake4.
+  libvncserver: fix build with cmake4.
+  opencv: fix build with cmake4.
+  rttr: fix build with cmake4.
+  shared-desktop-ontologies: fix build with cmake4.
+  taglib: fix build with cmake4.
+  tidy-html5: fix build with cmake4.
+  vid.stab: fix build with cmake4.
+  woff2: fix build with cmake4.
++--------------------------+
+Fri Dec 27 19:56:16 UTC 2024
+  ffmpeg: applied upstream patch to fix build with texinfo-7.2.
++--------------------------+
+Fri Mar 22 18:04:34 UTC 2024
+  qt5-webkit: Patched to built with python3.
++--------------------------+
+Thu Mar 14 19:58:14 UTC 2024
+  quazip: -DQUAZIP_QT_MAJOR_VERSION=5
++--------------------------+
+Thu Mar 14 19:22:30 UTC 2024
+  libieee1284: drop unmaintained python support, following other distros
+  libimobiledevice: build --without-cython
+  opencv: Build with -DOpenGL_GL_PREFERENCE=LEGACY
++--------------------------+
+Mon Mar  4 18:48:34 UTC 2024
+  giflib: fix build with NUMJOBS=-j1. Thanks to lucabon.
++--------------------------+
+Mon Mar  4 02:27:43 UTC 2024
+  OK, some of these are in the D series, but I'll drop this hint here.
+  Upon upgrading to a new Python version, this is the magic build order
+  to prop up the build system. Hi nobodino! :-)
+  python-flit-core
+  python-installer
+  python-packaging
+  python-build
+  python-setuptools
+  python-pip
+  python-pyproject-hooks
++--------------------------+
+Thu Jan  4 20:38:00 UTC 2024
+  libcap-ng: patch to fix build with swig-4.2.0. Thanks to lucabon.
++--------------------------+
+Tue Dec 12 19:23:30 UTC 2023
+  libsoup: patch to fix build with libxml2-2.12. Thanks to marav.
++--------------------------+
+Fri Oct 27 17:55:58 UTC 2023
+  ffmpeg: fix building HTML documentation with texinfo-7.1.
+  Thanks to rizitis.
++--------------------------+
+Sat Oct 14 19:43:09 UTC 2023
+  qt5: fix build with libxkbcommon-1.6.0. Thanks to lucabon.
++--------------------------+
+Tue Aug 15 02:20:40 UTC 2023
+  rinutils: use release tarball from github since tar.gz pull is missing needed
+    components. Thanks to lucabon.
++--------------------------+
+Fri Aug  4 04:22:19 UTC 2023
+  ffmpeg: applied patch to build with binutils-2.41. Thanks to marav.
++--------------------------+
+Thu May  4 03:21:41 UTC 2023
+  qt5-webkit: Fix build with gcc13. Thanks to nobodino.
++--------------------------+
+Tue May  2 19:04:09 UTC 2023
+  qt5: fix build with gcc13. Thanks to marav and nobodino.
++--------------------------+
+Tue May  2 18:47:43 UTC 2023
+  cryfs: patch for gcc13. Thanks to nobodino.
++--------------------------+
+Sun Feb  5 20:29:10 UTC 2023
+  qt5-webkit: Fix build with ruby-3.2.0. Thanks to nobodino and marav.
++--------------------------+
+Tue Nov  1 18:49:18 UTC 2022
+  glibc: fix build with make-4.4. Thanks to nobodino and marav.
++--------------------------+
+Sun Oct  9 20:08:52 UTC 2022
+  clucene: add #include <ctime>. Thanks to nobodino.
++--------------------------+
+Tue Apr 12 00:21:44 UTC 2022
+  babl: fix to build with meson 0.62.0. Thanks to nobodino.
++--------------------------+
+Mon Feb  7 20:57:55 UTC 2022
+  All packages tested and found to compile properly.
++--------------------------+

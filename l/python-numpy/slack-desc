@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.  Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in.  You must
+# make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+            |-----handy-ruler------------------------------------------------------|
+python-numpy: python-numpy (Python module for scientific computing)
+python-numpy:
+python-numpy: NumPy is the fundamental package for scientific computing with Python.
+python-numpy: Besides its obvious scientific uses, NumPy can also be used as an
+python-numpy: efficient multi-dimensional container of generic data. Arbitrary data
+python-numpy: types can be defined, allowing NumPy to seamlessly integrate with a
+python-numpy: wide variety of databases. 
+python-numpy:
+python-numpy: Homepage: https://www.numpy.org/
+python-numpy:
+python-numpy:

@@ -1,0 +1,5 @@
+[General]
+LogoPath=/etc/xdg/slackware_logo.png
+Website=http://www.slackware.com/
+# Commented out - just show what kinfocenter finds from /etc/os-release:
+#Variant=Post 15.0 -current\n(KTOWN packages by AlienBOB)

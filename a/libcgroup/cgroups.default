@@ -1,0 +1,23 @@
+# Which version of cgroups should we mount, version 1 or version 2?
+# Please note that the rc.cgred init script (as well as the cgrulesengd
+# utility itself) will not function with cgroups version 2. Upstream
+# did not implement support for this since systemd handles it (of course).
+CGROUPS_VERSION=1
+
+# A list of controllers to enable in the root cgroup.subtree_control file.
+# These are only used for cgroup version 2 configurations. Note that enabling
+# the 'cpu' controller will cause the kernel to no longer use real-time
+# scheduling. For a full list of available controllers, examine the contents
+# of /sys/fs/cgroup/cgroup.controllers. The following commented list is a
+# typical full list of controllers, while the shorter one is a typical default list
+# used on systemd/logind systems.
+# Warning: the stock kernel has CONFIG_RT_GROUP_SCHED=y. Adding 'cpu' here
+# will silently prevent real-time scheduling for processes in user sessions
+# (PipeWire, JACK, rtkit). Boot with rt_group_sched=0 if you need both.
+#CGROUP_V2_CONTROLLERS="cpuset io memory pids misc dmem"
+#CGROUP_V2_CONTROLLERS="memory pids"
+
+# Options to pass when mounting cgroup2. Prefix options with '-o'. 
+# The following example adds the 'nsdelegate' option to the mount
+# of cgroup2:
+#CGROUP_V2_MOUNT_OPTS="-o nsdelegate"

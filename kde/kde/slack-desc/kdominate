@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|' on
+# the right side marks the last column you can put a character in. You must make
+# exactly 11 lines for the formatting to be correct. It's also customary to
+# leave one space after the ':'.
+
+         |-----handy-ruler------------------------------------------------------|
+kdominate: kdominate (tactical tile game)
+kdominate:
+kdominate: KDominate is a tactical game for one or two players, where players
+kdominate: place and convert tiles with the goal of controlling the majority of
+kdominate: the board. Each player starts with some tiles of their own on the
+kdominate: board, and they can either clone a tile to an adjacent empty space, or
+kdominate: jump with the tile to an empty position 2 spaces away. After cloning
+kdominate: or jumping, all the adjacent enemy tiles become your own. The game
+kdominate: ends when the board is full, and the winner is the player who owns
+kdominate: more tiles.
+kdominate:

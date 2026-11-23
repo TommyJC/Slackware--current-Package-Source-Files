@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.  Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in.  You must
+# make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':'.
+
+            |-----handy-ruler------------------------------------------------------|
+libmaxminddb: libmaxminddb (library for the MaxMind DB file format)
+libmaxminddb:
+libmaxminddb: The libmaxminddb library provides a C library for reading MaxMind DB
+libmaxminddb: files, including the GeoIP2 databases from MaxMind. This database
+libmaxminddb: format is designed to facilitate fast lookups of IP addresses while
+libmaxminddb: allowing for great flexibility in the type of data associated with an
+libmaxminddb: address. The MaxMind DB format is an open format.
+libmaxminddb:
+libmaxminddb: Homepage: https://github.com/maxmind/libmaxminddb
+libmaxminddb:
+libmaxminddb:

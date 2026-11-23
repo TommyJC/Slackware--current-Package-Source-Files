@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+         |-----handy-ruler------------------------------------------------------|
+corrosion: corrosion (Tool for adding Rust to a CMake project)
+corrosion:
+corrosion: Corrosion, formerly known as cmake-cargo, is a tool for integrating
+corrosion: Rust into an existing CMake project. Corrosion can automatically
+corrosion: import executables, static libraries, and dynamic libraries from a
+corrosion: workspace or package manifest (`Cargo.toml` file).
+corrosion:
+corrosion: Homepage: https://github.com/corrosion-rs/corrosion
+corrosion:
+corrosion:
+corrosion:

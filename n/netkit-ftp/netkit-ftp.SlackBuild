@@ -1,0 +1,120 @@
+#!/bin/bash
+
+# Copyright 2007-2025  Patrick J. Volkerding, Sebeka, MN, USA
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PKGNAM=netkit-ftp
+VERSION=0.17
+BUILD=${BUILD:-10}
+
+# Automatically determine the architecture we're building on:
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) export ARCH=i686 ;;
+    arm*) export ARCH=arm ;;
+    # Unless $ARCH is already set, use uname -m for all other archs:
+       *) export ARCH=$( uname -m ) ;;
+  esac
+fi
+
+# If the variable PRINT_PACKAGE_NAME is set, then this script will report what
+# the name of the created package would be, and then exit. This information
+# could be useful to other scripts.
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PKGNAM-$VERSION-$ARCH-$BUILD.txz"
+  exit 0
+fi
+
+TMP=${TMP:-/tmp}
+PKG=$TMP/package-netkit-ftp
+
+rm -rf $PKG
+mkdir -p $TMP $PKG
+
+cd $TMP
+rm -rf netkit-ftp-$VERSION
+tar xzvf $CWD/netkit-ftp-$VERSION.tar.gz || exit 1
+cd netkit-ftp-$VERSION
+chown -R root:root .
+
+cat $CWD/patches/netkit-ftp-0.17-pre20000412.pasv-security.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-acct.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp.usagi-ipv6.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-segv.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-volatile.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-runique_mget.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-locale.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-printf.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-longint.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-vsftp165083.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-C-Frame121.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-data.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-multihome.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-longnames.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-multiipv6.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-nodebug.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-stamp.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-sigseg.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-size.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-fdleak.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-fprintf.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-bitrate.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-arg_max.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-case.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-chkmalloc.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-man.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-acct_ovl.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-remove-nested-include.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-linelen.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-active-mode-option.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-commands-leaks.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-lsn-timeout.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-getlogin.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-token.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-linelen-segfault.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-out-of-memory.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/netkit-ftp-0.17-gcc15.patch | patch -p1 --verbose || exit 1
+
+./configure --prefix=/usr --enable-ipv6
+
+make || exit 1
+cd ftp
+strip ftp
+mkdir -p $PKG/bin
+cat ftp > $PKG/bin/ftp
+chmod 755 $PKG/bin/ftp
+mkdir -p $PKG/usr/man/man{1,5}
+cat ftp.1 | gzip -9c > $PKG/usr/man/man1/ftp.1.gz
+cat netrc.5 | gzip -9c > $PKG/usr/man/man5/netrc.5.gz
+cd ..
+mkdir -p $PKG/usr/doc/netkit-ftp-$VERSION
+cp -a README $PKG/usr/doc/netkit-ftp-$VERSION
+chown root:root $PKG/usr/doc/netkit-ftp-$VERSION/*
+chmod 644 $PKG/usr/doc/netkit-ftp-$VERSION/*
+
+# Finish up the package:
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+# Build the package:
+cd $PKG
+/sbin/makepkg -l y -c n $TMP/netkit-ftp-$VERSION-$ARCH-$BUILD.txz

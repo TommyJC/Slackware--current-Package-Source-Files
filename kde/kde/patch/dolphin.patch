@@ -1,0 +1,2 @@
+# Enhance the UI with a 'go up' element:
+cat $CWD/patch/dolphin/dolphin-go_up.diff | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }

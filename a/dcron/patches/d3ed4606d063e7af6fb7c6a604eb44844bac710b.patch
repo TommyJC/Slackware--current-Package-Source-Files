@@ -1,0 +1,33 @@
+From d3ed4606d063e7af6fb7c6a604eb44844bac710b Mon Sep 17 00:00:00 2001
+From: Gary Langshaw <gary.langshaw@gmail.com>
+Date: Thu, 10 Aug 2023 12:35:06 +0100
+Subject: [PATCH] Fix #15 "@daily @hourly etc not run"
+
+Initialisation for day-of-week(dow) is missing for jobs that use
+one of the aliases such as @hourly, @daily, @weekly.
+
+In TestJobs() (database:1032) and ArmJob() (database.c:1105) there is
+a check that involves day-of-week that consequently fails, so the job
+will never be run.
+
+Add the missing initialisation.
+
+Credit for debugging/fixing this goes to jensrenner1980 @ github
+Fixes Issue #15, introduced by fix for Issue #3
+---
+ database.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/database.c b/database.c
+index c0cdc11..ba71b93 100644
+--- a/database.c
++++ b/database.c
+@@ -454,6 +454,8 @@ SynchronizeFile(const char *dpath, const char *fileName, const char *userName)
+ 							line.cl_Days[j] = 1;
+ 						for (j=0; j<12; ++j)
+ 							line.cl_Mons[j] = 1;
++						for (j=0; j<7; ++j)
++							line.cl_Dow[j] = ALL_DOW;
+ 					}
+ 
+ 					while (*ptr == ' ' || *ptr == '\t')

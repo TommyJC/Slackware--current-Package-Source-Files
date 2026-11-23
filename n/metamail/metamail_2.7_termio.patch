@@ -1,0 +1,168 @@
+diff -Naur metamail-2.7.orig/configure metamail-2.7/configure
+--- metamail-2.7.orig/configure	2026-04-15 08:24:44.186773000 +0200
++++ metamail-2.7/configure	2026-04-15 08:30:19.594773000 +0200
+@@ -7126,7 +7126,8 @@
+ #include <sys/file.h>
+ #include <signal.h>
+ 
+-#include <termio.h>
++#include <termios.h>
++#include <sys/ioctl.h>
+ #include <fcntl.h>
+ #include <sys/utsname.h>
+ _EOF_
+@@ -7293,7 +7294,7 @@
+     case "${host}" in
+       *-*-linux-gnu*) cat >> $tmpfile << '_EOF_'
+ #define TMPNAME_MAX NAME_MAX
+-static struct termio MyTtyStateIn, MyTtyStateOut;
++static struct termios MyTtyStateIn, MyTtyStateOut;
+ 
+ _EOF_
+ ;;
+diff -Naur metamail-2.7.orig/configure.in metamail-2.7/configure.in
+--- metamail-2.7.orig/configure.in	2026-04-15 08:24:44.179509418 +0200
++++ metamail-2.7/configure.in	2026-04-15 08:30:30.511773000 +0200
+@@ -115,7 +115,8 @@
+ #include <sys/file.h>
+ #include <signal.h>
+ 
+-#include <termio.h>
++#include <termios.h>
++#include <sys/ioctl.h>
+ #include <fcntl.h>
+ #include <sys/utsname.h>
+ _EOF_
+@@ -282,7 +283,7 @@
+     case "${host}" in
+       *-*-linux-gnu*) cat >> $tmpfile << '_EOF_'
+ #define TMPNAME_MAX NAME_MAX
+-static struct termio MyTtyStateIn, MyTtyStateOut;
++static struct termios MyTtyStateIn, MyTtyStateOut;
+ 
+ _EOF_
+ ;;
+diff -Naur metamail-2.7.orig/mailers.txt metamail-2.7/mailers.txt
+--- metamail-2.7.orig/mailers.txt	1993-11-27 16:54:53.000000000 +0100
++++ metamail-2.7/mailers.txt	2026-04-15 08:30:48.530773000 +0200
+@@ -1049,8 +1049,9 @@
+ #ifndef NOMETAMAIL
+     if (!getenv("NOMETAMAIL") && nontext(--msgnum, mp)) {
+ #ifdef SYS5
+-#include <termio.h>
+-	struct termio ttystatein, ttystateout;
++#include <termios.h>
++#include <sys/ioctl.h>
++	struct termios ttystatein, ttystateout;
+ #else
+ #include <sgtty.h>
+ 	struct sgttyb ttystatein, ttystateout;
+diff -Naur metamail-2.7.orig/metamail/common.h metamail-2.7/metamail/common.h
+--- metamail-2.7.orig/metamail/common.h	2026-04-15 08:24:44.178191937 +0200
++++ metamail-2.7/metamail/common.h	2026-04-15 08:31:02.993773000 +0200
+@@ -21,7 +21,8 @@
+ #include <sys/file.h>
+ #include <signal.h>
+ 
+-#include <termio.h>
++#include <termios.h>
++#include <sys/ioctl.h>
+ #include <fcntl.h>
+ #include <sys/utsname.h>
+ 
+@@ -196,7 +197,7 @@
+ #define CATCOMMAND "cat"
+ #define CATTEMPLATE "cat %s"
+ #define TMPNAME_MAX NAME_MAX
+-static struct termio MyTtyStateIn, MyTtyStateOut;
++static struct termios MyTtyStateIn, MyTtyStateOut;
+ 
+ 
+ 
+diff -Naur metamail-2.7.orig/metamail/metamail.c metamail-2.7/metamail/metamail.c
+--- metamail-2.7.orig/metamail/metamail.c	1994-02-17 02:57:19.000000000 +0100
++++ metamail-2.7/metamail/metamail.c	2026-04-15 08:31:30.622773000 +0200
+@@ -47,7 +47,8 @@
+ 
+ #ifndef AMIGA
+ #ifdef SYSV
+-#include <termio.h>
++#include <termios.h>
++#include <sys/ioctl.h>
+ #include <unistd.h>
+ #else /* SYSV */
+ #include <sgtty.h>
+@@ -2376,7 +2377,7 @@
+ int HasSavedTtyState=0;
+ #if !defined(AMIGA) && !defined(MSDOS)
+ #ifdef SYSV
+-static struct termio MyTtyStateIn, MyTtyStateOut;
++static struct termios MyTtyStateIn, MyTtyStateOut;
+ #else
+ static struct sgttyb MyTtyStateIn, MyTtyStateOut;
+ #endif
+@@ -2682,7 +2683,7 @@
+ StartRawStdin() {
+ #if !defined(AMIGA) && !defined(MSDOS)
+ #ifdef SYSV
+-    struct termio   orterm, fterm;
++    struct termios   orterm, fterm;
+     ioctl(0, TCGETA, &orterm);	/* get current (i.e. cooked) termio */
+     fterm = orterm;		/* get termio to modify */
+ 
+diff -Naur metamail-2.7.orig/src/metamail/includeaway metamail-2.7/src/metamail/includeaway
+--- metamail-2.7.orig/src/metamail/includeaway	2026-04-15 08:24:44.169546662 +0200
++++ metamail-2.7/src/metamail/includeaway	2026-04-15 08:27:48.739773000 +0200
+@@ -14,7 +14,8 @@
+ 
+ #ifndef AMIGA
+ #ifdef SYSV
+-//#include <termio.h>
++//#include <termios.h>
++//#include <sys/ioctl.h>
+ //#include <unistd.h>
+ #else /* SYSV */
+ #include <sgtty.h>
+diff -Naur metamail-2.7.orig/src/metamail/metamail.c metamail-2.7/src/metamail/metamail.c
+--- metamail-2.7.orig/src/metamail/metamail.c	2026-04-15 08:24:44.167260661 +0200
++++ metamail-2.7/src/metamail/metamail.c	2026-04-15 08:32:19.848773000 +0200
+@@ -2200,7 +2200,7 @@
+ }
+ 
+ StartRawStdin() {
+-    struct termio   orterm, fterm;
++    struct termios   orterm, fterm;
+     ioctl(0, TCGETA, &orterm);	/* get current (i.e. cooked) termio */
+     fterm = orterm;		/* get termio to modify */
+ 
+diff -Naur metamail-2.7.orig/src/metamail/metamail.old metamail-2.7/src/metamail/metamail.old
+--- metamail-2.7.orig/src/metamail/metamail.old	2026-04-15 08:24:44.168187526 +0200
++++ metamail-2.7/src/metamail/metamail.old	2026-04-15 08:31:55.429773000 +0200
+@@ -48,7 +48,8 @@
+ #include <signal.h>
+ #ifndef AMIGA
+ #ifdef SYSV
+-#include <termio.h>
++#include <termios.h>
++#include <sys/ioctl.h>
+ #include <unistd.h>
+ #else /* SYSV */
+ #include <sgtty.h>
+@@ -2385,7 +2386,7 @@
+ int HasSavedTtyState=0;
+ #if !defined(AMIGA) && !defined(MSDOS)
+ #ifdef SYSV
+-static struct termio MyTtyStateIn, MyTtyStateOut;
++static struct termios MyTtyStateIn, MyTtyStateOut;
+ #else
+ static struct sgttyb MyTtyStateIn, MyTtyStateOut;
+ #endif
+@@ -2724,7 +2725,7 @@
+ StartRawStdin() {
+ #if !defined(AMIGA) && !defined(MSDOS)
+ #ifdef SYSV
+-    struct termio   orterm, fterm;
++    struct termios   orterm, fterm;
+     ioctl(0, TCGETA, &orterm);	/* get current (i.e. cooked) termio */
+     fterm = orterm;		/* get termio to modify */
+ 

@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+        |-----handy-ruler------------------------------------------------------|
+libfido2: libfido2 (FIDO device library)
+libfido2:
+libfido2: libfido2 provides library functionality and command-line tools to
+libfido2: communicate with a FIDO device over USB or NFC, and to verify
+libfido2: attestation and assertion signatures.
+libfido2:
+libfido2: libfido2 supports the FIDO U2F (CTAP 1) and FIDO2 (CTAP 2) protocols.
+libfido2:
+libfido2: Homepage: https://github.com/Yubico/libfido2
+libfido2:
+libfido2:

@@ -1,0 +1,66 @@
+--- ./requirements-test.txt.orig	2020-06-22 18:27:42.000000000 -0500
++++ ./requirements-test.txt	2026-07-28 15:50:15.328600809 -0500
+@@ -8,3 +8,5 @@
+ pytest-expect>=1.1.0,<2
+ mock>=3.0.5,<4 ; python_version < '3.6'
+ mock>=4.0.2,<5 ; python_version >= '3.6'
++packaging
++importlib-metadata; python_version < '3.8'
+--- ./html5lib/tests/conftest.py.orig	2020-06-22 18:27:42.000000000 -0500
++++ ./html5lib/tests/conftest.py	2026-07-28 15:49:00.339399203 -0500
+@@ -2,7 +2,12 @@
+ import os.path
+ import sys
+ 
+-import pkg_resources
++from packaging.requirements import Requirement
++from packaging.markers import Marker
++try:
++    from importlib import metadata
++except ImportError:
++    import importlib_metadata as metadata
+ import pytest
+ 
+ from .tree_construction import TreeConstructionFile
+@@ -63,17 +68,16 @@
+                             spec, marker = line.strip().split(";", 1)
+                         else:
+                             spec, marker = line.strip(), None
+-                        req = pkg_resources.Requirement.parse(spec)
+-                        if marker and not pkg_resources.evaluate_marker(marker):
++                        req = Requirement(spec)
++                        if marker and not Marker(marker).evaluate():
+                             msgs.append("%s not available in this environment" % spec)
+                         else:
+                             try:
+-                                installed = pkg_resources.working_set.find(req)
+-                            except pkg_resources.VersionConflict:
+-                                msgs.append("Outdated version of %s installed, need %s" % (req.name, spec))
+-                            else:
+-                                if not installed:
+-                                    msgs.append("Need %s" % spec)
++                                installed = metadata.version(req.name)
++                                if not req.specifier.contains(installed, prereleases=True):
++                                    msgs.append("Outdated version of %s installed, need %s" % (req.name, spec))
++                            except metadata.PackageNotFoundError:
++                                msgs.append("Need %s" % spec)
+ 
+         # Check cElementTree
+         import xml.etree.ElementTree as ElementTree
+--- ./setup.py.orig	2020-06-22 18:27:42.000000000 -0500
++++ ./setup.py	2026-07-28 15:49:00.339499202 -0500
+@@ -6,9 +6,12 @@
+ 
+ from os.path import join, dirname
+ from setuptools import setup, find_packages, __version__ as setuptools_version
+-from pkg_resources import parse_version
+ 
+-import pkg_resources
++try:
++    import pkg_resources
++    from pkg_resources import parse_version
++except ImportError:
++    pkg_resources = None
+ 
+ try:
+     import _markerlib.markers

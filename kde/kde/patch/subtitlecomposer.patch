@@ -1,0 +1,6 @@
+# Build against Qt 6.10:
+cat $CWD/patch/subtitlecomposer/subtitlecomposer_qt610.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+
+# Build against ffmpeg 8.x:
+cat $CWD/patch/subtitlecomposer/subtitlecomposer_ffmpeg8.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+

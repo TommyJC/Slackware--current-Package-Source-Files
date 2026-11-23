@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|' on
+# the right side marks the last column you can put a character in. You must make
+# exactly 11 lines for the formatting to be correct. It's also customary to
+# leave one space after the ':'.
+
+              |-----handy-ruler------------------------------------------------------|
+python-tomlkit: python-tomlkit (Style-preserving TOML library)
+python-tomlkit:
+python-tomlkit: TOML Kit is a TOML library. It includes a parser that preserves all
+python-tomlkit: comments, indentations, whitespace and internal element ordering, and
+python-tomlkit: makes them accessible and editable via an intuitive API. You can also
+python-tomlkit: create new TOML documents from scratch using the provided helpers.
+python-tomlkit:
+python-tomlkit: Homepage: https://pypi.org/project/tomlkit
+python-tomlkit:
+python-tomlkit:
+python-tomlkit:

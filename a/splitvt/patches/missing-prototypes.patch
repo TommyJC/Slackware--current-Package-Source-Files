@@ -1,0 +1,62 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix building with -Werror=implicit-function-declaration
+
+--- a/video.h
++++ b/video.h
+@@ -64,3 +64,5 @@ void getsel_video();		/* Get a selection
+ void clrsel_video();		/* Clear a selection from the video buffer */
+ void put_video();		/* Set a character in the video buffer */
+ int  get_video();		/* Get a character from the video buffer */
++
++int check_attr(int pixel, int lastattr, unsigned char *currattr);
+--- a/config.c
++++ b/config.c
+@@ -4,6 +4,7 @@
+ #include	<signal.h>
+ #include	<stdlib.h>
+ #include	<string.h>
++#include	<unistd.h>
+ 
+ /*#define DEBUG		/* Provides extra debugging info */
+ 
+@@ -14,6 +15,8 @@
+ #define W_OK	2
+ #define R_OK	4
+ 
++int grep(char *dir, char *file, char *word);
++
+ int exists(dir, file)
+ char *dir;
+ char *file;
+@@ -47,6 +50,7 @@ char *deblibmultiarch;
+    strcat(deblibmultiarch, "/");
+ }
+ 
++int
+ main(argc, argv)
+ int argc;
+ char *argv[];
+--- a/terminal.c
++++ b/terminal.c
+@@ -424,7 +424,7 @@ int application;
+ 	else
+ 		printf("\033>\033[?1l");
+ }
+-void vt_insertchar(numcols)
++void vt_insertchar(int numcols)
+ {
+ 	printf("\033[%d@", numcols);
+ }
+--- a/utmp.c
++++ b/utmp.c
+@@ -216,7 +216,9 @@ char *tty;		/* /dev/ttyxx */
+ 		ut.ut_time = now & 0xffffffff; /* Discard upper bits. */
+ 	}
+ #else /* Equal size time representation. */
+-	(void) time(&ut.ut_time);
++	time_t now;
++	(void) time(&now);
++	ut.ut_time = now;
+ #endif
+ 
+ 

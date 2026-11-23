@@ -1,0 +1,267 @@
+#!/bin/bash
+
+# Copyright 2007, 2008, 2009, 2010, 2012, 2016, 2017, 2019, 2020, 2021  Eric Hameleers, Eindhoven, Netherlands
+# Copyright 2026  Patrick J. Volkerding, Sebeka, Minnesota, USA
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PKGNAM=qemu
+VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
+BUILD=${BUILD:-2}
+
+# Allow user to specify a specific set of supported audio backends:
+AUDIO_DRV=${AUDIO_DRV:-"sdl,alsa,oss,pa,pipewire"}
+
+# Build with SPICE protocol support by default:
+USE_SPICE_PROTOCOL=${USE_SPICE_PROTOCOL:---enable-spice-protocol}
+
+# Build with SPICE support by default:
+USE_SPICE=${USE_SPICE:---enable-spice}
+
+# Build with libslirp support by default:
+USE_SLIRP=${USE_SLIRP:---enable-slirp}
+
+# Build with usbredir support by default:
+USE_USBREDIR=${USE_USBREDIR:---enable-usb-redir}
+
+# Build with VNC support by default:
+USE_VNC=${USE_VNC:---enable-vnc --enable-qemu-vnc --enable-vnc-sasl --enable-vnc-jpeg}
+
+# Default 32-bit targets:
+TARGETS32=${TARGETS32:-i386-softmmu,i386-linux-user,arm-softmmu,arm-linux-user,armeb-linux-user,riscv32-softmmu,riscv32-linux-user,sparc-softmmu,sparc-linux-user}
+
+# Default 64-bit targets:
+TARGETS64=${TARGETS64:-x86_64-softmmu,x86_64-linux-user,aarch64-softmmu,aarch64-linux-user,loongarch64-softmmu,loongarch64-linux-user,riscv64-softmmu,riscv64-linux-user,sparc64-softmmu,sparc64-linux-user}
+
+# Unless TARGET_LIST was provided by the user, set the target list based
+# on 32 or 64 bit arch:
+if [ "$(getconf LONG_BIT)" = "64" ]; then
+  # Set default target list for 64-bit.
+  TARGET_LIST=${TARGET_LIST:-"$TARGETS64,$TARGETS32"}
+else
+  # Set default target list for 32-bit.
+  TARGET_LIST=${TARGET_LIST:-"$TARGETS32"}
+fi
+
+# Automatically determine the architecture we're building on:
+if [ -z "$ARCH" ]; then
+  case "$(uname -m)" in
+    i?86) ARCH=i686 ;;
+    arm*) readelf /usr/bin/file -A | egrep -q "Tag_CPU.*[4,5]" && ARCH=arm || ARCH=armv7hl ;;
+    # Unless $ARCH is already set, use uname -m for all other archs:
+    *) ARCH=$(uname -m) ;;
+  esac
+  export ARCH
+fi
+
+# If the variable PRINT_PACKAGE_NAME is set, then this script will report what
+# the name of the created package would be, and then exit. This information
+# could be useful to other scripts.
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PKGNAM-$VERSION-$ARCH-$BUILD.txz"
+  echo "$PKGNAM-guest-agent-$VERSION-$ARCH-$BUILD.txz"
+  exit 0
+fi
+
+if [ "$ARCH" = "i686" ]; then
+  echo "Sorry, but QEMU is not supported on a 32-bit architecture."
+  exit 1
+fi
+
+NUMJOBS=${NUMJOBS:-" -j $(expr $(nproc) + 1) "}
+
+if [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-O2 -march=pentium4 -mtune=generic"
+  LIBDIRSUFFIX=""
+  KVMARCH="i386"
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-O2 -march=x86-64 -mtune=generic -fPIC"
+  LIBDIRSUFFIX="64"
+  KVMARCH="x86_64"
+else
+  SLKCFLAGS="-O2"
+  LIBDIRSUFFIX=""
+  KVMARCH=""
+fi
+
+# Fail on undeclared variables and broken pipes:
+set -u -o pipefail
+
+TMP=${TMP:-/tmp}
+PKG=$TMP/package-$PKGNAM
+PKG2=$TMP/package-$PKGNAM-guest-agent
+
+rm -rf $PKG $PKG2
+mkdir -p $TMP $PKG $PKG2
+
+cd $TMP
+rm -rf $PKGNAM-$VERSION
+echo "Extracting $CWD/$PKGNAM-$VERSION.tar.?z..."
+tar xf $CWD/$PKGNAM-$VERSION.tar.?z || exit 1
+cd $PKGNAM-$VERSION || exit 1
+
+chown -R root:root .
+find . \
+  \( -perm 777 -o -perm 775 -o -perm 711 -o -perm 555 -o -perm 511 \) \
+  -exec chmod 755 {} \+ -o \
+  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
+  -exec chmod 644 {} \+
+
+# "Download" subprojects:
+if [ -r $CWD/subprojects.tar.lz ]; then
+  tar xvf $CWD/subprojects.tar.lz || exit 1
+fi
+
+# Configure, build, and install:
+if [ ! -r configure ]; then
+  if [ -x ./autogen.sh ]; then
+    NOCONFIGURE=1 ./autogen.sh
+  else
+    autoreconf -vif
+  fi
+fi
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCFLAGS" \
+./configure \
+  --prefix=/usr \
+  --libdir=/usr/lib${LIBDIRSUFFIX} \
+  --sysconfdir=/etc \
+  --localstatedir=/var \
+  --docdir=/usr/doc/$PKGNAM-$VERSION \
+  --mandir=/usr/man \
+  --infodir=/usr/info \
+  --enable-dbus-display \
+  --enable-gtk \
+  --enable-malloc=jemalloc \
+  --enable-kvm \
+  --enable-linux-io-uring \
+  --enable-nettle \
+  --enable-sdl \
+  --enable-system \
+  --enable-tools \
+  --enable-vde \
+  --enable-virtfs \
+  --target-list=${TARGET_LIST} \
+  --audio-drv-list=${AUDIO_DRV} \
+  $USE_SPICE_PROTOCOL \
+  $USE_SPICE \
+  $USE_SLIRP \
+  $USE_USBREDIR \
+  $USE_VNC \
+  || exit 1
+  # If there's no subprojects.tar.lz in $CWD, let's try to make one:
+  if [ ! -r $CWD/subprojects.tar.lz ]; then
+    mkdir -p tmp/subprojects
+    for file in subprojects/* ; do
+      if [ "$file" -nt "$PKG" ]; then
+        cp -a -v $file tmp/subprojects
+      fi
+    done
+    cd tmp
+    find . -name ".git*" -exec rm -r "{}" \; 2> /dev/null
+    tar cf $CWD/subprojects.tar subprojects
+    plzip -9 $CWD/subprojects.tar
+    # If it's empty, throw it away:
+    if [ "$(/bin/ls subprojects | wc -l)" = "0" ]; then
+      rm $CWD/subprojects.tar.lz
+    fi
+    cd ..
+    rm -r tmp
+  fi
+make $NUMJOBS || exit 1
+make install DESTDIR=$PKG || exit 1
+
+# Make sure qemu-vnc is installed:
+if [ ! -x $PKG/usr/bin/qemu-vnc ]; then
+  cp build/tools/qemu-vnc/qemu-vnc $PKG/usr/bin/qemu-vnc
+fi
+
+# Don't ship .la files:
+rm -f $PKG/{,usr/}lib${LIBDIRSUFFIX}/*.la
+
+# Strip binaries:
+find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null
+
+# Create "qemu-kvm" symlink. some 3rd party frontends look for it:
+[ ! -z $KVMARCH ] && ln -s qemu-system-$KVMARCH $PKG/usr/bin/qemu-kvm
+
+# We might as well install the guest agest boot script here also, just to make
+# the QEMU package complete. Someone might install it in a guest when they
+# really only needed the guest agent, and that should be fine.
+mkdir -p $PKG/etc/rc.d
+cp -a $CWD/rc.qemu-ga $PKG/etc/rc.d/rc.qemu-ga.new
+chown root:root $PKG/etc/rc.d/rc.qemu-ga.new
+chmod 644 $PKG/etc/rc.d/rc.qemu-ga.new
+
+# Compress manual pages:
+find $PKG/usr/man -type f -exec gzip -9 {} \+
+for i in $( find $PKG/usr/man -type l ) ; do
+  ln -s $( readlink $i ).gz $i.gz
+  rm $i
+done
+
+# Add a documentation directory:
+mkdir -p $PKG/usr/doc/${PKGNAM}-$VERSION
+cp -a \
+  COPYING* Changelog LICENSE* MAINTAINERS* README* VERSION* \
+  $PKG/usr/doc/${PKGNAM}-$VERSION
+
+# If there's a ChangeLog, installing at least part of the recent history
+# is useful, but don't let it get totally out of control:
+if [ -r ChangeLog ]; then
+  DOCSDIR=$(echo $PKG/usr/doc/${PKGNAM}-$VERSION)
+  cat ChangeLog | head -n 1000 > $DOCSDIR/ChangeLog
+  touch -r ChangeLog $DOCSDIR/ChangeLog
+fi
+
+mkdir -p $PKG/install
+cat $CWD/doinst.sh > $PKG/install/doinst.sh
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+pushd $PKG
+/sbin/makepkg -l y -c n $TMP/$PKGNAM-$VERSION-$ARCH-$BUILD.txz
+popd
+
+# Build qemu-guest-agent package:
+# Install the binary:
+mkdir -p $PKG2/usr/bin
+cp -a $PKG/usr/bin/qemu-ga $PKG2/usr/bin/qemu-ga
+# Install helper script which gets called when the host issues a 'fsfreeze':
+mkdir -p $PKG2/etc/qemu/fsfreeze-hook.d
+cp -a scripts/qemu-guest-agent/fsfreeze-hook $PKG2/etc/qemu/fsfreeze-hook
+chown root:root $PKG2/etc/qemu/fsfreeze-hook
+chmod 755 $PKG2/etc/qemu/fsfreeze-hook
+# Install a boot script:
+mkdir -p $PKG2/etc/rc.d
+cp -a $CWD/rc.qemu-ga $PKG2/etc/rc.d/rc.qemu-ga.new
+chown root:root $PKG2/etc/rc.d/rc.qemu-ga.new
+chmod 644 $PKG2/etc/rc.d/rc.qemu-ga.new
+# Add a documentation directory (at least the licenses):
+mkdir -p $PKG2/usr/doc/${PKGNAM}-guest-agent-$VERSION
+cp -a \
+  COPYING* LICENSE* \
+  $PKG2/usr/doc/${PKGNAM}-guest-agent-$VERSION
+# Pachage metadata:
+mkdir -p $PKG2/install
+cat $CWD/qemu-guest-agent.doinst.sh > $PKG2/install/doinst.sh
+cat $CWD/qemu-guest-agent.slack-desc > $PKG2/install/slack-desc
+cd $PKG2
+/sbin/makepkg -l y -c n $TMP/$PKGNAM-guest-agent-$VERSION-$ARCH-$BUILD.txz

@@ -1,0 +1,95 @@
+Description: Breaking very long Line.
+Author: Hugo Torres de Lima <hugotorres@protonmail.com>
+Last-Update: 2021-11-28
+Index: nvi-1.81.6/docs/html/exref.html
+===================================================================
+--- nvi-1.81.6.orig/docs/html/exref.html
++++ nvi-1.81.6/docs/html/exref.html
+@@ -921,7 +921,8 @@ they are interpreted left-to-right.</sma
+        cols="2" cellspacing="0" cellpadding="0">
+ <tr valign="top" align="left">
+ <td width="7%"></td><td width="93%">
+-<small>On each specified line, the first instance of pattern <i>pat</i> is replaced by replacement pattern <i>repl.</i> If the <i>global</i> indicator option character `g' appears, then all instances are substituted; if the <i>confirm</i> indication character `c' appears, then before each substitution the line to be substituted is typed with the string to be substituted marked with `' characters. By typing an `y' one can cause the substitution to be performed, any other input causes no change to take place. After a <i>substitute</i> the current line is the last line substituted.</small></td></table>
++<small>On each specified line, the first instance of pattern <i>pat</i> is replaced by replacement pattern <i>repl.</i> If the <i>global</i> indicator option character `g' appears, then all instances are substituted; if the <i>confirm</i> indication character `c' appears, then before each substitution the line to be substituted is typed with the string to be substituted marked with `' characters. By typing an `y' one can cause the substitution to be performed, any other input causes no change
++ to take place. After a <i>substitute</i> the current line is the last line substituted.</small></td></table>
+ 
+ <table width="100%" border=0 rules="none" frame="void"
+        cols="2" cellspacing="0" cellpadding="0">
+@@ -969,7 +970,8 @@ flags</i></small></p>
+        cols="2" cellspacing="0" cellpadding="0">
+ <tr valign="top" align="left">
+ <td width="7%"></td><td width="93%">
+-<small>The tags file is normally created by a program such as <i>ctags,</i> and consists of a number of lines with three fields separated by blanks or tabs. The first field gives the name of the tag, the second the name of the file where the tag resides, and the third gives an addressing form which can be used by the editor to find the tag; this field is usually a contextual scan using `/<i>pat</i>/' to be immune to minor changes in the file. Such scans are always performed as if <i>nomagic</i> was set.</small></td></table>
++<small>The tags file is normally created by a program such as <i>ctags,</i> and consists of a number of lines with three fields separated by blanks or tabs. The first field gives the name of the tag, the second the name of the file where the tag resides, and the third gives an addressing form which can be used by the editor to find the tag; this field is usually a contextual scan using `/<i>pat</i>/' to be immune to minor changes in the file. Such scans are always performed as if
++ <i>nomagic</i> was set.</small></td></table>
+ 
+ <p><small>The tag names in the tags file must be sorted
+ alphabetically.</small></p>
+@@ -1029,7 +1031,8 @@ flags</i> abbr: <b>vi</b></small></p>
+        cols="2" cellspacing="0" cellpadding="0">
+ <tr valign="top" align="left">
+ <td width="7%"></td><td width="93%">
+-<small>Enters visual mode at the specified line. <i>Type</i> is optional and may be `-' , `' or `<b>.</b>' as in the <i>z</i> command to specify the placement of the specified line on the screen. By default, if <i>type</i> is omitted, the specified line is placed as the first on the screen. A <i>count</i> specifies an initial window size; the default is the value of the option <i>window.</i> See the document <i>An Introduction to Display Editing with Vi</i> for more details. To exit this mode, type Q.</small></td></table>
++<small>Enters visual mode at the specified line. <i>Type</i> is optional and may be `-' , `' or `<b>.</b>' as in the <i>z</i> command to specify the placement of the specified line on the screen. By default, if <i>type</i> is omitted, the specified line is placed as the first on the screen. A <i>count</i> specifies an initial window size; the default is the value of the option <i>window.</i> See the document <i>An Introduction to Display Editing with Vi</i> for more details.
++ To exit this mode, type Q.</small></td></table>
+ 
+ <p><small><b>visual</b> file<b><br>
+ visual</b> +<i>n</i> file</small></p>
+@@ -1372,7 +1375,8 @@ noai</small></p>
+        cols="2" cellspacing="0" cellpadding="0">
+ <tr valign="top" align="left">
+ <td width="7%"></td><td width="93%">
+-<small>Can be used to ease the preparation of structured program text. At the beginning of each <i>append</i>, <i>change</i> or <i>insert</i> command or when a new line is <i>opened</i> or created by an <i>append</i>, <i>change</i>, <i>insert</i>, or <i>substitute</i> operation within <i>open</i> or <i>visual</i> mode, <i>ex</i> looks at the line being appended after, the first line changed or the line inserted before and calculates the amount of white space at the start of the line. It then aligns the cursor at the level of indentation so determined.</small></td></table>
++<small>Can be used to ease the preparation of structured program text. At the beginning of each <i>append</i>, <i>change</i> or <i>insert</i> command or when a new line is <i>opened</i> or created by an <i>append</i>, <i>change</i>, <i>insert</i>, or <i>substitute</i> operation within <i>open</i> or <i>visual</i> mode, <i>ex</i> looks at the line being appended after, the first line changed or the line inserted before and calculates the amount of white space at the start of the line. It then aligns
++ the cursor at the level of indentation so determined.</small></td></table>
+ 
+ <table width="100%" border=0 rules="none" frame="void"
+        cols="2" cellspacing="0" cellpadding="0">
+@@ -1426,7 +1430,8 @@ noaw</small></p>
+        cols="2" cellspacing="0" cellpadding="0">
+ <tr valign="top" align="left">
+ <td width="7%"></td><td width="93%">
+-<small>Causes the contents of the buffer to be written to the current file if you have modified it and give a <i>next, rewind, stop, tag,</i> or <i>!</i> command, or a <b>^</b> (switch files) or <b>^]</b> (tag goto) command in <i>visual.</i> Note, that the <i>edit</i> and <i>ex</i> commands do <b>not</b> autowrite. In each case, there is an equivalent way of switching when autowrite is set to avoid the <i>autowrite</i> (<i>edit</i> for <i>next</i>, <i>rewind!</i> for .I rewind , <i>stop!</i> for <i>stop</i>, <i>tag!</i> for <i>tag</i>, <i>shell</i> for <i>!</i>, and <b>:e #</b> and a <b>:ta!</b> command from within <i>visual).</i></small></td></table>
++<small>Causes the contents of the buffer to be written to the current file if you have modified it and give a <i>next, rewind, stop, tag,</i> or <i>!</i> command, or a <b>^</b> (switch files) or <b>^]</b> (tag goto) command in <i>visual.</i> Note, that the <i>edit</i> and <i>ex</i> commands do <b>not</b> autowrite. In each case, there is an equivalent way of switching when autowrite is set to avoid the <i>autowrite</i> (<i>edit</i> for <i>next</i>, <i>rewind!</i> for .I rewind , <i>stop!</i> for
++<i> stop</i>, <i>tag!</i> for <i>tag</i>, <i>shell</i> for <i>!</i>, and <b>:e #</b> and a <b>:ta!</b> command from within <i>visual).</i></small></td></table>
+ 
+ <p><small><b>beautify</b>, <b>bf</b> default:
+ nobeautify</small></p>
+@@ -1582,7 +1587,8 @@ LIbp</small></p>
+        cols="2" cellspacing="0" cellpadding="0">
+ <tr valign="top" align="left">
+ <td width="7%"></td><td width="93%">
+-<small>Specifies a threshold for feedback from commands. Any command which modifies more than the specified number of lines will provide feedback as to the scope of its changes. For commands such as <i>global</i>, <i>open</i>, <i>undo</i>, and <i>visual</i> which have potentially more far reaching scope, the net change in the number of lines in the buffer is presented at the end of the command, subject to this same threshold. Thus notification is suppressed during a <i>global</i> command on the individual commands performed.</small></td></table>
++<small>Specifies a threshold for feedback from commands. Any command which modifies more than the specified number of lines will provide feedback as to the scope of its changes. For commands such as <i>global</i>, <i>open</i>, <i>undo</i>, and <i>visual</i> which have potentially more far reaching scope, the net change in the number of lines in the buffer is presented at the end of the command, subject to this same threshold. Thus notification is suppressed during a <i>global</i> command on
++ the individual commands performed.</small></td></table>
+ 
+ <p><small><b>scroll</b> default: scroll= window</small></p>
+ <table width="100%" border=0 rules="none" frame="void"
+Index: nvi-1.81.6/docs/html/viapwh.html
+===================================================================
+--- nvi-1.81.6.orig/docs/html/viapwh.html
++++ nvi-1.81.6/docs/html/viapwh.html
+@@ -1168,7 +1168,8 @@ supplied.</td></table>
+        cols="2" cellspacing="0" cellpadding="0">
+ <tr valign="top" align="left">
+ <td width="24%"></td><td width="76%">
+-Start editing a new file called &quot;file&quot; or start editing the current file over again. The command &quot;:e!&quot; says &quot;ignore the changes I've made to this file and start over from the beginning&quot;. It is useful if you really mess up the file. The optional &quot;+&quot; says instead of starting at the beginning, start at the &quot;end&quot;, or, if &quot;cmd&quot; is supplied, execute &quot;cmd&quot; first. Useful cases of this are where cmd is &quot;n&quot; (any integer) which starts at line number n, and &quot;/text&quot;, which searches for &quot;text&quot; and starts at the line where it is found.</td></table>
++Start editing a new file called &quot;file&quot; or start editing the current file over again. The command &quot;:e!&quot; says &quot;ignore the changes I've made to this file and start over from the beginning&quot;. It is useful if you really mess up the file. The optional &quot;+&quot; says instead of starting at the beginning, start at the &quot;end&quot;, or, if &quot;cmd&quot; is supplied, execute &quot;cmd&quot; first. Useful cases of this are where cmd is &quot;n&quot; (any integer)
++ which starts at line number n, and &quot;/text&quot;, which searches for &quot;text&quot; and starts at the line where it is found.</td></table>
+ 
+ <table width="100%" border=0 rules="none" frame="void"
+        cols="2" cellspacing="0" cellpadding="0">
+Index: nvi-1.81.6/docs/html/vitut.html
+===================================================================
+--- nvi-1.81.6.orig/docs/html/vitut.html
++++ nvi-1.81.6/docs/html/vitut.html
+@@ -1292,7 +1292,8 @@ form:</td></table>
+ <tr valign="top" align="left">
+ <td width="7%"></td><td width="93%">
+ <pre>     :map <i>lhs rhs</i><small>CR
+-</small></pre>mapping <i>lhs</i> into <i>rhs.</i> There are restrictions: <i>lhs</i> should be one keystroke (either 1 character or one function key) since it must be entered within one second (unless <i>notimeout</i> is set, in which case you can type it as slowly as you wish, and <i>vi</i> will wait for you to finish it before it echoes anything). The <i>lhs</i> can be no longer than 10 characters, the <i>rhs</i> no longer than 100. To get a space, tab or newline into <i>lhs</i> or <i>rhs</i> you should escape them with a <b>^V</b>. (It may be necessary to double the <b>^V</b> if the map command is given inside <i>vi,</i> rather than in <i>ex.)</i> Spaces and tabs inside the <i>rhs</i> need not be escaped.</td></table>
++</small></pre>mapping <i>lhs</i> into <i>rhs.</i> There are restrictions: <i>lhs</i> should be one keystroke (either 1 character or one function key) since it must be entered within one second (unless <i>notimeout</i> is set, in which case you can type it as slowly as you wish, and <i>vi</i> will wait for you to finish it before it echoes anything). The <i>lhs</i> can be no longer than 10 characters, the <i>rhs</i> no longer than 100. To get a space, tab or newline into <i>lhs</i> or
++<i> rhs</i> you should escape them with a <b>^V</b>. (It may be necessary to double the <b>^V</b> if the map command is given inside <i>vi,</i> rather than in <i>ex.)</i> Spaces and tabs inside the <i>rhs</i> need not be escaped.</td></table>
+ 
+ <p>Thus to make the <b>q</b> key write and exit the editor,
+ you can give the command</p>

@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                        |-----handy-ruler------------------------------------------------------|
+python-scikit-build-core: python-scikit-build-core (extension build system using CMake)
+python-scikit-build-core:
+python-scikit-build-core: Scikit-build-core is a build backend for Python that uses CMake to
+python-scikit-build-core: build extension modules. It has a simple yet powerful static
+python-scikit-build-core: configuration system in pyproject.toml, and supports almost unlimited
+python-scikit-build-core: flexibility via CMake. It was initially developed to support the
+python-scikit-build-core: demanding needs of scientific users, but can build any sort of package
+python-scikit-build-core: that uses CMake.
+python-scikit-build-core:
+python-scikit-build-core: Homepage: https://github.com/scikit-build/scikit-build-core
+python-scikit-build-core:

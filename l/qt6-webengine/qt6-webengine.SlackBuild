@@ -1,0 +1,243 @@
+#!/bin/sh
+
+# Copyright 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026  Patrick J. Volkerding, Sebeka, MN, USA
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# Merged some ideas from Alex Sarmardzic's script for qt4 at SlackBuilds.org
+# ^^ Modified by Robby Workman <rworkman@slackware.com> for QT4 & KDE4
+#
+# Modifications 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2023  Eric Hameleers, Eindhoven, NL
+# Modifications for qt 5.2.0 2013 by Michael James, AU
+# Modifications for qt 5.x by Eric Hameleers, Eindhoven, NL
+# Modifications for qt 6.x 2023, 2024 by Eric Hameleers, Eindhoven, NL
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PKGNAM=qt6-webengine
+VERSION=$(ls qtwebengine-*.tar.?z | rev | cut -f 3- -d . | cut -f 1 -d - | rev)
+BUILD=${BUILD:-1}
+PKGSRC=$(echo $VERSION | cut -d - -f 1)
+PKGVER=$(echo $VERSION | tr - _)
+
+USE_CODECS=${USE_CODECS:-YES}
+SYSTEM_FFMPEG=${SYSTEM_FFMPEG:-YES}
+
+# Automatically determine the architecture we're building on:
+if [ -z "$ARCH" ]; then
+  case "$(uname -m)" in
+    i?86) ARCH=i686 ;;
+    arm*) readelf /usr/bin/file -A | grep -E -q "Tag_CPU.*[4,5]" && ARCH=arm || ARCH=armv7hl ;;
+    # Unless $ARCH is already set, use uname -m for all other archs:
+    *) ARCH=$(uname -m) ;;
+  esac
+  export ARCH
+fi
+
+# If the variable PRINT_PACKAGE_NAME is set, then this script will report what
+# the name of the created package would be, and then exit. This information
+# could be useful to other scripts.
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PKGNAM-${PKGVER}-${ARCH}-${BUILD}${TAG}.txz"
+  exit 0
+fi
+
+# Since this could be needed twice...
+OPTS32="-O2 -march=pentium4 -mtune=generic"
+
+if [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="$OPTS32"
+  SLKLDFLAGS=""
+  LIBDIRSUFFIX=""
+  FIXBUILD="-DFEATURE_webengine_jumbo_build=OFF"
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-O2 -march=x86-64 -mtune=generic -fPIC"
+  SLKLDFLAGS="-L/usr/lib64"
+  LIBDIRSUFFIX="64"
+else
+  SLKCFLAGS="-O2"
+  SLKLDFLAGS=""
+  LIBDIRSUFFIX=""
+fi
+
+# Fail on broken pipes:
+set -o pipefail
+
+# GCC 14 "fix":
+# It seems this flag doesn't carry through to qtwebengine where most of the
+# warnings are, but we'll leave it here anyway.
+SLKCFLAGS="$SLKCFLAGS -Wno-error=template-id-cdtor"
+
+# LLVM22 hack:
+SLKCFLAGS="$SLKCFLAGS -Wno-error=template-body"
+
+case "$ARCH" in
+    arm*) TARGET=$ARCH-slackware-linux-gnueabi ;;
+    *)    TARGET=$ARCH-slackware-linux ;;
+esac
+
+NUMJOBS=${NUMJOBS:-" -j $(expr $(nproc) + 1) "}
+NINJAJOBS=${NINJAJOBS:-"$(echo $NUMJOBS | cut -f 2 -d j | tr -d ' ')"}
+export NINJAJOBS
+
+TMP=${TMP:-/tmp}
+PKG=$TMP/package-${PKGNAM}
+
+rm -rf $PKG
+mkdir -p $TMP $PKG
+cd $TMP
+rm -rf qtwebengine-everywhere-src-$VERSION
+echo "Extracting qtwebengine-everywhere-src-$VERSION"
+tar xf $CWD/qtwebengine-everywhere-src-$VERSION.tar.?z || exit 1
+cd qtwebengine-everywhere-src-$PKGSRC || exit 1
+
+chown -R root:root .
+find . \
+ \( -perm 777 -o -perm 775 -o -perm 711 -o -perm 555 -o -perm 511 \) \
+ -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
+ -exec chmod 644 {} \+
+
+# Re-add support for 32bit architectures - Google no longer supports it:
+sed -i src/3rdparty/chromium/BUILD.gn \
+  -e 's/target_os != "linux" || /target_os == "linux" || /'
+  # Thanks Debian! See https://salsa.debian.org/qt-kde-team/qt6/qt6-webengine/-/tree/master/debian/patches
+  cat $CWD/patches/qt6-webengine_32bit_compressing_files.patch | patch -p1 --verbose || exit 1
+cat $CWD/patches/nodejs-allow-32bit.patch | patch -p2 --verbose || exit 1
+
+# Patch header issue that causes the compile to fail with "x11 not defined"
+cat $CWD/patches/qtwebengine-6.7.0-displaykey-header.patch | patch -p1 --verbose || exit 1
+
+# CVE-2026-107080:
+cat $CWD/patches/CVE-2026-107080.patch | patch -p1 --verbose || exit 1
+
+# Fix compile with icu4c-79.1:
+cat $CWD/patches/qtwebengine-6.140.0-icu4c_79-1.patch | patch -p1 --verbose || exit 1
+
+if [ "$ARCH" = "i686" ]; then
+  # 1) Chromium tree: GLintptr -> ptrdiff_t
+  grep -rIl --include='*.h' '^typedef khronos_intptr_t GLintptr;$' \
+    src/3rdparty/chromium \
+  | while read -r f ; do
+      sed -i -e 's@^typedef khronos_intptr_t GLintptr;$@#include <stddef.h>\ntypedef ptrdiff_t GLintptr;@' "$f"
+    done
+  # 2) Skia GrGLTypes.h: GrGLintptr -> ptrdiff_t
+  sed -i \
+    -e 's@typedef signed long int GrGLintptr;@#include <stddef.h>\ntypedef ptrdiff_t GrGLintptr;@' \
+    src/3rdparty/chromium/third_party/skia/include/gpu/ganesh/gl/GrGLTypes.h
+  # 4) Drop the stray system desktop-GL include that collides with Chromium's
+      # bundled GLES headers on i686. ui/gl/gl_bindings.h (already included in the
+      # file) supplies the GL symbols, so this include is redundant.
+  sed -i '\@^#include <GL/gl\.h>$@d' \
+    src/3rdparty/chromium/ui/ozone/platform/x11/native_pixmap_egl_x11_binding.cc
+fi
+
+# Previously we didn't have a protobuf package in Slackware.
+# Now that we do, it's apparently too new to use with Qt6, so let's just
+# disable it to get the same features that we previously did.
+# Patches would be accepted here. :-)
+#PROTOBUF="-DQT_FEATURE_qtprotobufgen=OFF"
+
+# The qtquick3dphysics only compiles on a limited set of architectures:
+case "${ARCH}" in
+  i?86 | arm | s390) DO_PHYSX3D="OFF" ;;
+  *)                 DO_PHYSX3D="ON" ;;
+esac
+
+# Use our custom compiler and linker flags:
+#sed -e "s|^\(QMAKE_CFLAGS_RELEASE.*\)|\1 ${SLKCFLAGS}|" \
+#  -i qtbase/mkspecs/common/gcc-base.conf || exit 1
+#sed -e "s|^\(QMAKE_LFLAGS_RELEASE.*\)|\1 ${SLKLDFLAGS}|" \
+#  -i qtbase/mkspecs/common/g++-unix.conf || exit 1
+
+# As SBOM generation is failing with 6.8.1 (and was newly changed to be ON by
+# default, we'll turn it OFF. But we should test in the future to see if it
+# starts to work.
+
+export CFLAGS="$SLKCFLAGS"
+export CXXFLAGS="$SLKCFLAGS"
+export OPENSOURCE_CXXFLAGS="$SLKCFLAGS"
+export QTDIR="${TMP}/qtwebengine-everywhere-src-${PKGSRC}"
+if [ ! -z "${LD_LIBRARY_PATH}" ]; then
+  export LD_LIBRARY_PATH="${QTDIR}/qtbase/lib:${QTDIR}/qttools/lib:${LD_LIBRARY_PATH}"
+else
+  export LD_LIBRARY_PATH="${QTDIR}/qtbase/lib:${QTDIR}/qttools/lib"
+fi
+export QT_PLUGIN_PATH="${QTDIR}/qtbase/plugins"
+cmake -S $(pwd) -B build-${PKGNAM} \
+  -G Ninja \
+  -Wno-dev \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
+  -DCMAKE_C_FLAGS_RELEASE:STRING="$SLKCFLAGS" \
+  -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
+  -DCMAKE_CXX_FLAGS_RELEASE:STRING="$SLKCFLAGS" \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DINSTALL_BINDIR=/usr/lib${LIBDIRSUFFIX}/qt6/bin \
+  -DINSTALL_PUBLICBINDIR=/usr/bin \
+  -DINSTALL_LIBDIR=/usr/lib${LIBDIRSUFFIX} \
+  -DINSTALL_LIBEXECDIR=/usr/lib${LIBDIRSUFFIX}/qt6/bin \
+  -DINSTALL_ARCHDATADIR=/usr/lib${LIBDIRSUFFIX}/qt6 \
+  -DINSTALL_DATADIR=/usr/share/qt6 \
+  -DINSTALL_INCLUDEDIR=/usr/include/qt6 \
+  -DINSTALL_MKSPECSDIR=lib${LIBDIRSUFFIX}/qt6/mkspecs \
+  -DINSTALL_DOCDIR=/usr/doc/qt6-${PKGVER} \
+  -DINSTALL_EXAMPLESDIR=/usr/doc/qt6-${PKGVER}/examples \
+  -DFEATURE_webengine_proprietary_codecs="${USE_CODECS}" \
+  -DFEATURE_webengine_system_ffmpeg="${SYSTEM_FFMPEG}" \
+  -DFEATURE_webengine_system_icu=ON \
+  -DFEATURE_webengine_system_pulseaudio=ON \
+  -DFEATURE_webengine_webrtc_pipewire=ON \
+  -DFEATURE_quick3dxr_openxr:BOOL=OFF \
+  -DFEATURE_system_openxr:BOOL=OFF \
+  $PROTOBUF \
+  $FIXBUILD \
+  -DQT_GENERATE_SBOM=OFF \
+  -DQT_BUILD_EXAMPLES=OFF || exit 1
+#cmake --build build-${PKGNAM} --parallel $NINJAJOBS || cmake --build build-${PKGNAM} || exit 1
+# Don't try again non-parallel... it just makes you wait a long time to see
+# what the error was.
+cmake --build build-${PKGNAM} --parallel $NINJAJOBS || exit 1
+DESTDIR=$PKG cmake --install build-${PKGNAM} || exit 1
+
+# Strip binaries:
+find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null
+
+# Remove rpaths:
+for file in $(find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF | cut -f 1 -d : 2> /dev/null) ; do
+  if [ ! "$(patchelf --print-rpath $file 2> /dev/null)" = "" ]; then
+    patchelf --remove-rpath $file
+  fi
+done
+
+# Fix the path in prl files:
+find "$PKG/usr/lib${LIBDIRSUFFIX}" -type f -name '*.prl' \
+  -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d;s/\(QMAKE_PRL_LIBS =\).*/\1/' {} \;
+
+# Add a documentation directory:
+mkdir -p $PKG/usr/doc/$PKGNAM-$PKGVER
+cp -a \
+  CHROMIUM_VERSION* CODE_OF_CONDUCT* CONTRIBUTING* LICENSE* README* SECURITY* \
+  $PKG/usr/doc/$PKGNAM-$PKGVER
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+cd $PKG
+/sbin/makepkg -l y -c n $TMP/$PKGNAM-$PKGVER-$ARCH-${BUILD}${TAG}.txz

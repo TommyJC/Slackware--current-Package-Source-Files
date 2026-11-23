@@ -1,0 +1,1 @@
+cat $CWD/patch/plasma-bigscreen/889949a0c2b0b3d36f13fab5887e943ad842fcf3.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }

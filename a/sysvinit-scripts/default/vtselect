@@ -1,0 +1,7 @@
+# List of consoles that we should try to start KMSCON on.
+# If the system isn't running a drmfb framebuffer, we will fall back on
+# starting a normal fbcon kernel VT subsystem based console instead.
+# It is suggested to leave tty1 as a normal console for use in cases where
+# KMSCON may be troublesome, like using links -g, or starting X or Wayland.
+# To use KMSCON, uncomment the line below and edit the list if you like.
+#KMSCONSOLES="tty2 tty3 tty4 tty5 tty6"

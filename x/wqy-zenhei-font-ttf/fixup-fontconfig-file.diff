@@ -1,0 +1,65 @@
+--- ./44-wqy-zenhei.conf.orig	2009-05-17 15:25:41.000000000 -0500
++++ ./44-wqy-zenhei.conf	2025-10-21 15:48:49.829468026 -0500
+@@ -6,7 +6,11 @@
+   <match target="font">
+         <test qual="any" name="family">
+                 <string>WenQuanYi Zen Hei</string>
++        </test> 
++        <test qual="any" name="family">
+                 <string>文泉驿正黑</string>
++        </test> 
++        <test qual="any" name="family">
+                 <string>文泉驛正黑</string>
+         </test> 
+         <edit name="globaladvance"><bool>false</bool></edit>
+@@ -22,14 +26,18 @@
+         <alias>
+                 <family>serif</family>
+                 <prefer>
+-                        <family>Bitstream Vera Serif</family>
++                        <family>Liberation Serif</family>
++                        <family>Noto Serif</family>
+                         <family>DejaVu Serif</family>
++                        <family>Bitstream Vera Serif</family>
+                         <family>WenQuanYi Zen Hei</family>
+                 </prefer>
+         </alias>
+         <alias>
+                 <family>sans-serif</family>
+                 <prefer>
++                        <family>Liberation Sans</family>
++                        <family>Noto Sans</family>
+                         <family>DejaVu Sans</family>
+                         <family>Bitstream Vera Sans</family>
+                         <family>WenQuanYi Zen Hei</family>
+@@ -38,6 +46,8 @@
+         <alias>
+                 <family>monospace</family>
+                 <prefer>
++                        <family>Liberation Sans Mono</family>
++                        <family>Noto Sans Mono</family>
+                         <family>DejaVu Sans Mono</family>
+                         <family>Bitstream Vera Sans Mono</family>
+                         <family>WenQuanYi Zen Hei Mono</family>
+--- ./43-wqy-zenhei-sharp.conf.orig	2009-10-03 10:19:23.000000000 -0500
++++ ./43-wqy-zenhei-sharp.conf	2025-10-21 15:50:26.569470190 -0500
+@@ -5,14 +5,18 @@
+         <alias>
+                 <family>serif</family>
+                 <prefer>
+-                        <family>Bitstream Vera Serif</family>
++                        <family>Liberation Serif</family>
++                        <family>Noto Serif</family>
+                         <family>DejaVu Serif</family>
++                        <family>Bitstream Vera Serif</family>
+                         <family>WenQuanYi Zen Hei Sharp</family>
+                 </prefer>
+         </alias>
+         <alias>
+                 <family>sans-serif</family>
+                 <prefer>
++                        <family>Liberation Sans</family>
++                        <family>Noto Sans</family>
+                         <family>DejaVu Sans</family>
+                         <family>Bitstream Vera Sans</family>
+                         <family>WenQuanYi Zen Hei Sharp</family>

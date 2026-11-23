@@ -1,0 +1,59 @@
+#!/bin/sh
+# Start/stop/restart ntpd.
+
+# Load options from /etc/default/ntp:
+. /etc/default/ntp
+
+# Start ntpd:
+ntpd_start() {
+  echo -n "Starting NTP daemon:  /usr/sbin/ntpd $NTPD_OPTS"
+  /usr/sbin/ntpd $NTPD_OPTS
+  echo
+}
+
+# Stop ntpd:
+ntpd_stop() {
+  echo -n "Stopping NTP daemon... "
+  if [ -r /run/ntpd.pid ]; then
+    echo -n "(PID $(cat /run/ntpd.pid))"
+    kill -HUP $(cat /run/ntpd.pid)
+    rm -f /run/ntpd.pid
+  else
+    killall --ns $$ -HUP -q ntpd
+  fi
+  echo
+}
+
+# Restart ntpd:
+ntpd_restart() {
+  ntpd_stop
+  sleep 1
+  ntpd_start
+}
+
+# Check if ntpd is running
+ntpd_status() {
+  if [ -e /run/ntpd.pid ]; then
+    echo "ntpd is running as PID $(cat /run/ntpd.pid)."
+  else 
+    echo "ntpd is stopped."
+    exit 1
+  fi
+}
+
+case "$1" in
+'start')
+  ntpd_start
+  ;;
+'stop')
+  ntpd_stop
+  ;;
+'restart')
+  ntpd_restart
+  ;;
+'status')
+  ntpd_status
+  ;;
+*)
+  echo "usage $0 start|stop|restart|status"
+esac

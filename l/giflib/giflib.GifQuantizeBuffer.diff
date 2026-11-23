@@ -1,0 +1,16 @@
+--- ./Makefile.orig	2026-04-12 12:17:27.000000000 -0500
++++ ./Makefile	2026-05-23 18:32:38.086944959 -0500
+@@ -121,11 +121,11 @@
+ 
+ static-lib: $(STATIC_LIBS)
+ 
+-$(LIBGIFSO): $(OBJECTS) $(HEADERS)
++$(LIBGIFSO): $(OBJECTS) $(UOBJECTS) $(HEADERS)
+ ifeq ($(UNAME), Darwin)
+ 	$(CC) $(CFLAGS) -dynamiclib -current_version $(LIBVER) $(OBJECTS) -o $(LIBGIFSO)
+ else
+-	$(CC) $(CFLAGS) $(CPPFLAGS) -shared $(LDFLAGS) -Wl,-soname -Wl,$(LIBGIFSOMAJOR) -o $(LIBGIFSO) $(OBJECTS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -shared $(LDFLAGS) -Wl,-soname -Wl,$(LIBGIFSOMAJOR) -o $(LIBGIFSO) $(OBJECTS) $(UOBJECTS)
+ endif
+ 
+ libgif.a: $(OBJECTS) $(HEADERS)

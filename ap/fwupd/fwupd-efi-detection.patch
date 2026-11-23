@@ -1,0 +1,18 @@
+diff --git a/plugins/uefi-capsule/fu-uefi-capsule-plugin.c b/plugins/uefi-capsule/fu-uefi-capsule-plugin.c
+--- a/plugins/uefi-capsule/fu-uefi-capsule-plugin.c
++++ b/plugins/uefi-capsule/fu-uefi-capsule-plugin.c
+@@ -181,9 +181,13 @@ fu_uefi_capsule_plugin_fwupd_efi_probe(FuUefiCapsulePlugin *self, GError **error)
+ 	FuEfivars *efivars = fu_context_get_efivars(ctx);
+ 	FuPathStore *pstore = fu_context_get_path_store(ctx);
+ 	g_autofree gchar *fn = NULL;
++	g_autofree gchar *basename = NULL;
+
+ 	/* find the app binary */
+-	fn = fu_uefi_get_built_app_path(pstore, efivars, "fwupd", error);
++	basename = fu_uefi_capsule_build_app_basename(pstore, "fwupd", error);
++	if (basename == NULL)
++		return FALSE;
++	fn = fu_uefi_get_built_app_path(pstore, efivars, basename, error);
+ 	if (fn == NULL)
+ 		return FALSE;
+ 	self->fwupd_efi_file = g_file_new_for_path(fn);

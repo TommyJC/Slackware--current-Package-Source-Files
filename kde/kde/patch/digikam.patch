@@ -1,0 +1,3 @@
+cat $CWD/patch/digikam/opencv-5.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+cat $CWD/patch/digikam/17614e3fd6db5999cb14830192d5265cf8be6e27.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+cat $CWD/patch/digikam/disable-aesthetic-detector.patch opencv-5.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }

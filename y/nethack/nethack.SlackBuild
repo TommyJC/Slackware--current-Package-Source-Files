@@ -1,0 +1,194 @@
+#!/bin/bash
+
+# Copyright 2020, 2023, 2025, 2026  Patrick J. Volkerding, Sebeka, Minnesota, USA
+# Copyright 2025, 2026 David Ferrone RI, USA
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PKGNAM=nethack
+VERSION=5.0.0
+SRCVER=500
+BUILD=${BUILD:-5}
+
+# Automatically determine the architecture we're building on:
+if [ -z "$ARCH" ]; then
+  case "$(uname -m)" in
+    i?86) ARCH=i686 ;;
+    arm*) readelf /usr/bin/file -A | grep -E -q "Tag_CPU.*[4,5]" && ARCH=arm || ARCH=armv7hl ;;
+    # Unless $ARCH is already set, use uname -m for all other archs:
+    *) ARCH=$(uname -m) ;;
+  esac
+  export ARCH
+fi
+
+# If the variable PRINT_PACKAGE_NAME is set, then this script will report what
+# the name of the created package would be, and then exit. This information
+# could be useful to other scripts.
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PKGNAM-$VERSION-$ARCH-$BUILD.txz"
+  exit 0
+fi
+
+# Multi threaded builds do not work.
+#NUMJOBS=${NUMJOBS:-" -j $(expr $(nproc) + 1) "}
+
+if [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-O2 -march=pentium4 -mtune=generic"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-O2 -march=x86-64 -mtune=generic -fPIC"
+  LIBDIRSUFFIX="64"
+else
+  SLKCFLAGS="-O2"
+  LIBDIRSUFFIX=""
+fi
+
+NUMJOBS=${NUMJOBS:-" -j $(expr $(nproc) + 1) "}
+
+TMP=${TMP:-/tmp}
+PKG=$TMP/package-$PKGNAM
+
+rm -rf $PKG
+mkdir -p $TMP $PKG
+
+cd $TMP
+rm -rf NetHack-${VERSION}
+tar xvf $CWD/nethack-${SRCVER}-src.tar.?z || exit 1
+cd NetHack-${VERSION} || exit 1
+
+chown -R root:root .
+find . \
+  \( -perm 777 -o -perm 775 -o -perm 711 -o -perm 555 -o -perm 511 \) \
+  -exec chmod 755 {} \+ -o \
+  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
+  -exec chmod 644 {} \+
+
+cd sys/unix
+sh setup.sh hints/linux.500 || exit 1
+cd ../..
+
+# Do not edit include/config.h if you're using the WANT_WIN options below.
+# HACKDIR is the location of the game files. SHELLDIR is location of the launcher (usr/games by default).
+sed -i "s|^HACKDIR=\$(PREFIX)/games/lib/nethackdir$|HACKDIR=/var/lib/$PKGNAM|; s|^PREFIX=\$(wildcard ~)/nh/install$|PREFIX=/usr|" src/Makefile util/Makefile Makefile
+
+mkdir -p $PKG/var/lib/$PKGNAM $PKG/usr/games
+
+touch util/makedefs.c
+
+# Prepare sources:
+sed -e 's|^/\* \(#define LINUX\) \*/|\1|' -i include/unixconf.h
+
+# Set default directories and install to use setgid games:
+sed -e '/^HACKDIR/ s|/games/lib/\$(GAME)dir|/var/lib/nethack/|' \
+    -e '/^SHELLDIR/ s|/games|/usr/games|' \
+    -e '/^VARDIRPERM/ s|0755|0775|' \
+    -e '/^VARFILEPERM/ s|0600|0664|' \
+    -e '/^GAMEPERM/ s|0755|02755|' \
+    -e 's|\(DSYSCF_FILE=\)\\"[^"]*\\"|\1\\"/var/lib/nethack/sysconf\\"|' \
+    -e 's|\(DHACKDIR=\)\\"[^"]*\\"|\1\\"/var/lib/nethack/\\"|' -i sys/unix/hints/linux-minimal
+
+sed -e 's|^#GAMEUID.*|GAMEUID = root|' \
+    -e 's|^#GAMEGRP.*|GAMEGRP = games|' \
+    -e '/^FILEPERM\s*=/ s|0644|0664|' \
+    -e '/^DIRPERM\s*=/ s|0755|0775|' -i sys/unix/Makefile.top
+
+sed -e "/^MANDIR\s*=/s|/usr/man/man6|$PKG/usr/man/man6|" -i sys/unix/Makefile.doc
+
+# Create a few directories:
+mkdir -p $PKG/usr/man/man6
+mkdir -p $PKG/usr/doc/nethack-$VERSION
+mkdir -p $PKG/var/lib
+
+# Fetch lua:
+#make fetch-lua || exit 1
+( mkdir lib
+  cd lib
+  tar xf $CWD/lua-5.4.8.tar.lz || exit 1
+) || exit 1
+
+# Build and install:
+## Uncomment ONE pair of the following make commands, depending on which windowing system you would like to support.
+
+# To build a binary with tty + curses + X11 support, you can use the following build command:
+make $NUMJOBS PREFIX=/usr HACKDIR=/var/lib/$PKGNAM WANT_WIN_TTY=1 WANT_WIN_CURSES=1 WANT_WIN_X11=1
+make $NUMJOBS PREFIX=$PKG/usr HACKDIR=$PKG/var/lib/$PKGNAM WANT_WIN_TTY=1 WANT_WIN_CURSES=1 WANT_WIN_X11=1 install
+
+# To build with tty + curses + QT support, use the following command:
+#make $NUMJOBS PREFIX=/usr HACKDIR=/var/lib/$PKGNAM WANT_WIN_TTY=1 WANT_WIN_CURSES=1 WANT_WIN_QT=1
+#make $NUMJOBS PREFIX=$PKG/usr HACKDIR=$PKG/var/lib/$PKGNAM WANT_WIN_TTY=1 WANT_WIN_CURSES=1 WANT_WIN_QT=1 install
+
+# To build a binary with tty + curses + X11 + Qt support (that is, all the interfaces that are available for unix):
+#make $NUMJOBS PREFIX=/usr HACKDIR=/var/lib/$PKGNAM WANT_WIN_ALL=1
+#make $NUMJOBS PREFIX=$PKG/usr HACKDIR=$PKG/var/lib/$PKGNAM WANT_WIN_ALL=1 install
+
+# Build a binary with tty only:
+#make $NUMJOBS PREFIX=/usr HACKDIR=/var/lib/$PKGNAM
+#make $NUMJOBS PREFIX=$PKG/usr HACKDIR=$PKG/var/lib/$PKGNAM install
+
+# Fix some paths / perms:
+sed -i "s|HACKDIR=.*|HACKDIR=/var/lib/nethack|g" $PKG/usr/games/nethack
+sed -i "s|HACK=.*|HACK=/usr/share/games/nethack/nethack|g" $PKG/usr/games/nethack
+chmod 664 $PKG/var/lib/nethack/{perm,record,sysconf,logfile,livelog,xlogfile}
+chmod 775 $PKG/var/lib/nethack $PKG/var/lib/nethack/save
+
+# Install manpages:
+( cd doc
+  mkdir -p $PKG/usr/man/man6
+  for manpage in dlb.6 makedefs.6 nethack.6 recover.6 ; do
+    cat $manpage | ../util/makedefs --grep --input - --output - > $PKG/usr/man/man6/$manpage
+  done
+)
+
+mkdir -p $PKG/usr/share/games/nethack
+mv $PKG/var/lib/nethack/{nethack,recover} $PKG/usr/share/games/nethack
+
+# Fix perms:
+chown -R root:games $PKG/var/lib/nethack
+chown root:games $PKG/usr/share/games/nethack/{nethack,recover}
+chmod 2755 $PKG/usr/share/games/nethack/{nethack,recover}
+
+mkdir -p $PKG/usr/share/pixmaps $PKG/usr/share/applications
+cat $CWD/nethack.desktop > $PKG/usr/share/applications/nethack.desktop
+cat $CWD/nethack.png > $PKG/usr/share/pixmaps/nethack.png
+
+# Add some documentation:
+mkdir -p $PKG/usr/doc/nethack-$VERSION
+cp -a \
+  Porting README* \
+  dat/license \
+  doc/Guidebook.txt \
+$PKG/usr/doc/nethack-$VERSION
+
+# Strip binaries:
+find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null
+
+# Compress manual pages:
+find $PKG/usr/man -type f -exec gzip -9 {} \+
+for i in $( find $PKG/usr/man -type l ) ; do
+  ln -s $( readlink $i ).gz $i.gz
+  rm $i
+done
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+cd $PKG
+/sbin/makepkg -l y -c n $TMP/$PKGNAM-$VERSION-$ARCH-$BUILD.txz

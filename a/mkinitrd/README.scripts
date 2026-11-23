@@ -1,0 +1,5 @@
+Scripts in this directory are run if:
+1. They end in '.sh'
+2. They are executable.
+
+To disable any scripts, make them non-executable.

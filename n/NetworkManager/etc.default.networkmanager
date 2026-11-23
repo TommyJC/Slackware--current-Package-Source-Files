@@ -1,0 +1,3 @@
+# After starting NetworkManager, wait until we are online before
+# exiting rc.networkmanager:
+#WAIT_UNTIL_ONLINE=true

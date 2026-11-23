@@ -1,0 +1,162 @@
+#!/bin/sh
+#
+# rc.inet2	This shell script boots up the entire network system.
+#		Note, that when this script is used to also fire
+#		up any important remote NFS disks (like the /usr
+#		directory), care must be taken to actually
+#		have all the needed binaries online _now_ ...
+#
+#               Uncomment or comment out sections depending on which
+#               services your site requires.
+#
+# Author:	Fred N. van Kempen, <waltje@uwalt.nl.mugnet.org>
+# Modified for Slackware by Patrick Volkerding <volkerdi@slackware.com>
+
+
+# At this point, we are (almost) ready to talk to The World...
+
+
+# If there is a firewall script, run it before enabling packet forwarding.
+# See the HOWTOs on http://www.netfilter.org/ for documentation on
+# setting up a firewall or NAT on Linux. In some cases this might need to
+# be moved past the section below dealing with IP packet forwarding.
+if [ -x /etc/rc.d/rc.firewall ]; then
+  /etc/rc.d/rc.firewall start
+fi
+
+# Turn on IPv4 packet forwarding support.
+if [ -x /etc/rc.d/rc.ip_forward ]; then
+  . /etc/rc.d/rc.ip_forward start
+fi
+
+# Start krb5kdc, which is the Kerberos version 5 Authentication Service
+# and Key Distribution Center (AS/KDC). This needs to run first on both
+# master and secondary KDCs.
+if [ -x /etc/rc.d/rc.krb5kdc ]; then
+  sh /etc/rc.d/rc.krb5kdc start
+fi
+
+# Start the Kerberos administration server. This typically runs on the
+# master Kerberos server, which stores the KDC database.
+if [ -x /etc/rc.d/rc.kadmind ]; then
+  sh /etc/rc.d/rc.kadmind start
+fi
+
+# Start the Kerberos V5 slave KDC update server. This runs on a slave
+# (secondary) KDC server. It allows the master Kerberos server to use
+# kprop(8) to propagate its database to the slave servers.
+if [ -x /etc/rc.d/rc.kpropd ]; then
+  sh /etc/rc.d/rc.kpropd start
+fi
+
+# If /etc/rc.d/rc.rpc is executable, run it to load rpc.portmap, rpc.lockd,
+# and rpc.statd. This is required to mount NFS partitions, unless you use
+# the "nolock" mount option. It is also required to run an NFS server.
+if [ -x /etc/rc.d/rc.rpc ]; then
+  sh /etc/rc.d/rc.rpc start
+fi
+
+# Mount remote (NFS) filesystems:
+if cat /etc/fstab | grep -v '^#' | grep -w nfs | grep -vwq noauto ; then
+  echo "Mounting remote (NFS) file systems:  /sbin/mount -a -t nfs"
+  # If we have a NETWORK_MOUNT_WAIT_COMMAND in /etc/default/nfs, run it to
+  # provide some delay for the network to become available before mounting.
+  # By default the command is "sleep 0" so we don't wait.
+  # If you use NetworkManager, an alternative approach is to edit
+  # /etc/default/networkmanager and uncomment WAIT_UNTIL_ONLINE=true.
+  if [ -r /etc/default/nfs ]; then
+    . /etc/default/nfs
+    [ ! -z "$NETWORK_MOUNT_WAIT_COMMAND" ] && $NETWORK_MOUNT_WAIT_COMMAND
+  fi
+  /sbin/mount -a -t nfs          # This may be our /usr runtime!
+  # Show the mounted volumes:
+  /sbin/mount -v -t nfs
+fi
+
+# Mount remote CIFS filesystems. Note that where possible, using CIFS is
+# preferred over SMBFS. SMBFS is no longer actively maintained.
+if cat /etc/fstab | grep -v '^#' | grep -w cifs | grep -vwq noauto ; then
+  echo "Mounting remote CIFS file systems:  /sbin/mount -a -t cifs"
+  # If we have a NETWORK_MOUNT_WAIT_COMMAND in /etc/default/nfs, run it to
+  # provide some delay for the network to become available before mounting.
+  # By default the command is "sleep 0" so we don't wait.
+  # If you use NetworkManager, an alternative approach is to edit
+  # /etc/default/networkmanager and uncomment WAIT_UNTIL_ONLINE=true.
+  if [ -r /etc/default/nfs ]; then
+    . /etc/default/nfs
+    [ ! -z "$NETWORK_MOUNT_WAIT_COMMAND" ] && $NETWORK_MOUNT_WAIT_COMMAND
+  fi
+  /sbin/mount -a -t cifs
+  # Show the mounted volumes:
+  /sbin/mount -v -t cifs
+fi
+
+# Mount remote SMB filesystems:
+if cat /etc/fstab | grep -v '^#' | grep -w smbfs | grep -vwq noauto ; then
+  echo "Mounting remote SMBFS file systems:  /sbin/mount -a -t smbfs"
+  # If we have a NETWORK_MOUNT_WAIT_COMMAND in /etc/default/nfs, run it to
+  # provide some delay for the network to become available before mounting.
+  # By default the command is "sleep 0" so we don't wait.
+  # If you use NetworkManager, an alternative approach is to edit
+  # /etc/default/networkmanager and uncomment WAIT_UNTIL_ONLINE=true.
+  if [ -r /etc/default/nfs ]; then
+    . /etc/default/nfs
+    [ ! -z "$NETWORK_MOUNT_WAIT_COMMAND" ] && $NETWORK_MOUNT_WAIT_COMMAND
+  fi
+  /sbin/mount -a -t smbfs
+  # Show the mounted volumes:
+  /sbin/mount -v -t smbfs
+fi
+
+# Start the system logger if it is not already running (maybe because /usr
+# is on a network partition). NOTE: Don't put /usr on a network partition,
+# or even a separate local partition. This is not supported and is likely to
+# cause some problems...
+if [ -x /etc/rc.d/rc.syslog -a -d /var/log -a ! -r /var/run/syslogd.pid ]; then
+  . /etc/rc.d/rc.syslog start
+fi
+
+# Start the inetd server:
+if [ -x /etc/rc.d/rc.inetd ]; then
+  /etc/rc.d/rc.inetd start
+fi
+
+# Start the OpenSSH SSH daemon:
+if [ -x /etc/rc.d/rc.sshd ]; then
+  echo "Starting OpenSSH SSH daemon:  /usr/sbin/sshd"
+  /etc/rc.d/rc.sshd start
+fi
+
+# Start the BIND name server daemon:
+if [ -x /etc/rc.d/rc.bind ]; then
+  /etc/rc.d/rc.bind start
+fi
+
+# Start NIS (the Network Information Service):
+if [ -x /etc/rc.d/rc.yp ]; then
+  /etc/rc.d/rc.yp start
+fi
+
+# Start OpenVPN:
+if [ -x /etc/rc.d/rc.openvpn ]; then
+  /etc/rc.d/rc.openvpn start
+fi
+
+# Start the NFS server:
+if [ -x /etc/rc.d/rc.nfsd ]; then
+  /etc/rc.d/rc.nfsd start
+fi
+
+# Stuff you won't need follows.  ;-)
+
+# # Start the network routing daemon:
+# if [ -x /usr/sbin/routed ]; then
+#   echo "Starting network routing daemon:  /usr/sbin/routed"
+#   /usr/sbin/routed -g -s
+# fi
+
+# # Start the system status server:
+# if [ -x /usr/sbin/rwhod ]; then
+#   echo "Starting system status server:  /usr/sbin/rwhod"
+#   /usr/sbin/rwhod
+# fi

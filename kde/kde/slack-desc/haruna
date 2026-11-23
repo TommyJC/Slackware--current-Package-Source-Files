@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|' on
+# the right side marks the last column you can put a character in. You must make
+# exactly 11 lines for the formatting to be correct. It's also customary to
+# leave one space after the ':'.
+
+      |-----handy-ruler------------------------------------------------------|
+haruna: haruna (Qt based media player)
+haruna:
+haruna: Haruna is an open source media player built with Qt/QML and libmpv.
+haruna:
+haruna: Homepage: https://haruna.kde.org
+haruna:
+haruna:
+haruna:
+haruna:
+haruna:
+haruna:

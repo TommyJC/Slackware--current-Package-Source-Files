@@ -1,0 +1,2 @@
+cat $CWD/patch/krita/krita.PyQt6-6.11.0.diff | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+cat $CWD/patch/krita/krita-6.0.4.1-qt-6.12.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }

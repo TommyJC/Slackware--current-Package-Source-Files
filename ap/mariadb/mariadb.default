@@ -1,0 +1,12 @@
+# Default options for starting mariadb:
+#
+# --skip-networking
+# This option rejects incoming network connections for increased security.
+# Remove this option if you require these connections.
+#
+# --skip-ssl
+# Disable SSL/TLS and automatic self-signed certificate generation.
+# Remove this option if you require SSL/TLS support.
+# You must also comment out the lines in /etc/my.cnf.d/skip-ssl.cnf.
+
+MARIADB_OPTIONS="--skip-networking --skip-ssl"

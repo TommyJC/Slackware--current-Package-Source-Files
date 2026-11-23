@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                         |-----handy-ruler------------------------------------------------------|
+python-pyproject_metadata: python-pyproject_metadata (PEP 621 metadata parsing)
+python-pyproject_metadata:
+python-pyproject_metadata: Dataclass for PEP 621 metadata with core metadata generation. This
+python-pyproject_metadata: project does not implement the parsing of pyproject.toml containing
+python-pyproject_metadata: PEP 621 metadata. Instead, given a Python data structure representing
+python-pyproject_metadata: PEP 621 metadata (already parsed), it will validate this input and
+python-pyproject_metadata: generate a PEP 643-compliant metadata file (e.g. PKG-INFO). 
+python-pyproject_metadata:
+python-pyproject_metadata: Homepage: https://github.com/pypa/pyproject-metadata
+python-pyproject_metadata:
+python-pyproject_metadata:

@@ -1,0 +1,63 @@
+#!/bin/sh
+# Copyright (C) 2002, 2005  Slackware Linux, Inc.
+# Copyright 2005, 2006, 2011, 2012, 2018, 2026  Patrick J. Volkerding, Sebeka, Minnesota, USA
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# Swap glibc on the fly.
+#
+# If we're on a running system we have to handle this _very_ carefully.  :-)
+# The tricks involved here get trickier every time...
+
+# Install the glibc libraries.
+# Try to protect with flock against another installpkg/removepkg running
+# ldconfig while we're doing the on-the-fly install:
+mkdir -p run/lock/pkgtools
+( flock 9 || exit 11
+  ( cd lib@@LIBDIRSUFFIX@@
+
+    # Everything's going files these days. Otherwise the well-loved Easy Anti
+    # Cheat thinks that we're tampering with the system. These have been
+    # symlinks since the beginning, but we better go along with the times. The
+    # first thing we'll do is make sure that if any of the incoming libraries
+    # are symlinks in /lib@@LIBDIRSUFFIX@@, make them into files.
+    for library in incoming/* ; do
+      if [ -L $(basename ${library}) ]; then
+        mv $(readlink $(basename ${library})) $(basename ${library})
+      fi
+    done
+
+    # OK, we've made sure all of those are files, not symlinks, and gotten rid
+    # of the most recent set of linked files (e.g. libc-2.42.so) that was in
+    # use. But, in case there were other old glibc versions installed in your
+    # /lib@@LIBDIRSUFFIX@@ for some reason, we'll remove them now to avoid warnings from ldconfig.
+    # If you really don't want to do this for some reason, create a file
+    # /etc/glibc-nowipe.
+    if [ ! -r ../etc/glibc-nowipe ]; then
+      for library in ld-linux libBrokenLocale libanl libc libc_malloc_debug libdl libm libmvec libnsl libnss_compat libnss_db libnss_dns libnss_files libnss_hesiod libpthread libresolv librt libthread_db libutil ; do
+        rm -f ${library}-*2.??.so
+      done
+    fi
+
+    # Since libcrypt remains symlinked, we do need to ensure there are no old
+    # versions that might try to take over the link:
+    rm -f libcrypt*-2.??.so
+
+    # Send them home:
+    mv incoming/* .
+
+    # Get rid of the incoming directory:
+    rmdir incoming
+
+  )
+
+) 9> run/lock/pkgtools/ldconfig.lock
+

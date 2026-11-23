@@ -1,0 +1,99 @@
+#!/bin/bash
+#
+# This selects your default screen font from among the ones in
+# /usr/share/kbd/consolefonts.
+#
+
+# Load defaults. See /etc/default/rc.font to set a custom font
+# or for other options.
+if [ -r /etc/default/rc.font ]; then
+  . /etc/default/rc.font
+fi
+
+# If FONT=none (or is unset), exit leaving the existing console font alone:
+[ "$FONT" = "none" -o -z "$FONT" ] && exit 0
+
+if [ "$FONT" = "auto" ]; then
+  # Try the candidate fonts on a spare VT that is never shown, so the
+  # visible console doesn't "zoom" through every size. Only the winner is
+  # loaded on the real console(s) below.
+  PROBETTY=${PROBETTY:-/dev/tty63}
+  probe() { setfont -C $PROBETTY "$@" 2> /dev/null; }
+  probecols() { stty -F $PROBETTY size 2> /dev/null | cut -f 2 -d " "; }
+  # Trim leading and trailing whitespace from the font list:
+  TRYFONTS="${TRYFONTS#"${TRYFONTS%%[![:space:]]*}"}"
+  TRYFONTS="${TRYFONTS%"${TRYFONTS##*[![:space:]]}"}"
+  # Exit if there's no font list:
+  [ -z "$TRYFONTS" ] && exit 1
+  # Select the first (smallest) font. We'll find the largest font in the list
+  # that provides enough columns.
+  font=$(echo $TRYFONTS | cut -f 1 -d " ")
+  # Shift the first font away. We only try it once.
+  if echo $TRYFONTS | grep -q " " ; then
+    TRYFONTS="$(echo $TRYFONTS | cut -f 2- -d " ")"
+  else
+    TRYFONTS=""
+  fi
+  # Save a copy of the font list in case we do a second pass.
+  TRYCOPY=$TRYFONTS
+  prevfont=$font
+  probe $font
+  # Leave if setfont can't load the first font.
+  if [ ! $? = 0 -o "$(probecols)" -lt "$MINCOLS" ]; then
+    exit 1
+  fi
+  prevcolumns=$(probecols)
+  for font in $TRYFONTS ; do
+    probe $font
+    # If the font didn't load, skip it:
+    [ ! $? = 0 ] && continue
+    if [ "$(probecols)" -lt "$MINCOLS" ]; then
+      # Too big, the previous font is the closest one:
+      break;
+    fi
+    prevfont=$font
+    prevcolumns=$(probecols)
+    prevdouble=""
+  done
+  # Restore the font list:
+  TRYFONTS=$TRYCOPY
+  # If we made it all the way through that list, let's try another pass using
+  # doubled fonts:
+  if [ "$prevfont" = "$(echo $TRYFONTS | rev | cut -f 1 -d " " | rev)" ]; then
+    for font in $TRYFONTS ; do
+      probe -d $font
+      # If the font didn't load, skip it:
+      [ ! $? = 0 ] && continue
+      if [ "$(probecols)" -lt "$MINCOLS" ]; then
+        # Too big, the previous font is the closest one:
+        break;
+      fi
+      prevfont=$font
+      prevcolumns=$(probecols)
+      prevdouble=" -d "
+    done
+  fi
+  # Release the probe VT:
+  deallocvt ${PROBETTY#/dev/tty} 2> /dev/null
+  # Load the font:
+  if [ "$APPLY_NEW_FONT_ON_ALL_CONSOLES" = "true" ]; then
+    for tty in /dev/tty[1-63] ; do
+      setfont -C $tty $prevdouble $prevfont 2> /dev/null
+    done
+  else
+    setfont $prevdouble $prevfont
+  fi
+  echo "Loading console font ($prevfont, $prevcolumns columns):"
+  setfont -v $prevdouble $prevfont 2>&1 | sed 's/^setfont: INFO [^ ]* [^ ]* //'
+else
+  # Set the font to the requested font, $FONT:
+  if [ "$APPLY_NEW_FONT_ON_ALL_CONSOLES" = "true" ]; then
+    for tty in /dev/tty[1-63] ; do
+      setfont -C $tty $FONTDOUBLE $FONT 2> /dev/null
+    done
+  else
+    setfont $FONTDOUBLE $FONT
+  fi
+  echo "Loading custom console font ($FONT, $(tput cols) columns):"
+  setfont -v $FONTDOUBLE $FONT 2>&1 | sed 's/^setfont: INFO [^ ]* [^ ]* //'
+fi

@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+      |-----handy-ruler------------------------------------------------------|
+blake3: blake3 (BLAKE3 cryptographic hash function)
+blake3:
+blake3: BLAKE3 is a cryptographic hash function that is:
+blake3: Much faster than MD5, SHA-1, SHA-2, SHA-3, and BLAKE2. Secure, unlike
+blake3: MD5 and SHA-1. And secure against length extension, unlike SHA-2.
+blake3: Highly parallelizable across any number of threads and SIMD lanes,
+blake3: because it's a Merkle tree on the inside. Capable of verified
+blake3: streaming and incremental updates. A PRF, MAC, KDF, and XOF, as well
+blake3: as a regular hash. One algorithm with no variants, which is fast on
+blake3: x86_64 and also on smaller architectures.
+blake3: Homepage: https://github.com/BLAKE3-team/BLAKE3
