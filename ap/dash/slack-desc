@@ -15,5 +15,5 @@ dash: most tasks. DASH is a direct descendant of the NetBSD version of ash
 dash: (Kenneth Almquist's Almquist shell), ported to Linux by Herbert Xu.
 dash:
 dash: Homepage: http://gondor.apana.org.au/~herbert/dash
-dash: Repository: https://git.kernel.org/?p=utils/dash/dash.git;a=summary
+dash: Repository: https://git.kernel.org/?p=utils/dash/dash.git
 dash:

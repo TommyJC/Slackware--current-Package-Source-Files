@@ -26,7 +26,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 PKGNAM=dracut
 SRCNAM=dracut
 VERSION=${VERSION:-$(echo $SRCNAM-*.tar.?z | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 
 # Automatically determine the architecture we're building on:
 if [ -z "$ARCH" ]; then
@@ -78,15 +78,14 @@ find . \
   \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
   -exec chmod 644 {} \+
 
-# configure accepts --libdir, but the scripts still need to be edited
-# or they won't work:
-sed -i "s|/usr/lib/dracut|/usr/lib$LIBDIRSUFFIX/dracut|g" *.sh
-
+# Don't use --libdir=/usr/lib${LIBDIRSUFFIX} because "/usr/lib/dracut"
+# is hardcoded all over the place and it just makes a mess of things for no
+# benefit.
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 ./configure \
   --prefix=/usr \
-  --libdir=/usr/lib${LIBDIRSUFFIX} \
+  --libdir=/usr/lib \
   --sysconfdir=/etc \
   --localstatedir=/var \
   --mandir=/usr/man \
@@ -106,9 +105,6 @@ cat $CWD/i18n_vars.conf > $PKG/etc/dracut.conf.d/i18n_vars.conf.new
 
 # Set hostonly_cmdline=yes, otherwise encrypted root will fail.
 echo "hostonly_cmdline=yes" > $PKG/etc/dracut.conf.d/hostonly_cmdline_yes.conf.new
-
-# Don't ship .la files:
-rm -f $PKG/{,usr/}lib${LIBDIRSUFFIX}/*.la
 
 # Strip binaries:
 find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null
