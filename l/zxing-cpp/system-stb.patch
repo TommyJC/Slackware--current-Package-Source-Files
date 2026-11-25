@@ -1,6 +1,6 @@
---- ./zxing.cmake.orig	2026-07-07 08:03:26.000000000 -0500
-+++ ./zxing.cmake	2026-07-07 16:14:49.841306907 -0500
-@@ -4,26 +4,8 @@
+--- ./zxing.cmake.orig	2026-11-24 07:18:44.000000000 -0600
++++ ./zxing.cmake	2026-11-24 15:42:49.468657360 -0600
+@@ -4,27 +4,8 @@
          add_library(stb::stb INTERFACE IMPORTED)
          target_include_directories(stb::stb INTERFACE ${STB_IMAGE_INCLUDE_DIR})
      else()
@@ -17,7 +17,8 @@
 -        if (NOT STB_FOUND)
 -            include(FetchContent)
 -            FetchContent_Declare (stb
--                GIT_REPOSITORY https://github.com/nothings/stb.git)
+-                GIT_REPOSITORY https://github.com/nothings/stb.git
+-            )
 -            FetchContent_MakeAvailable (stb)
 -            add_library(stb::stb INTERFACE IMPORTED)
 -            target_include_directories(stb::stb INTERFACE ${stb_SOURCE_DIR})
