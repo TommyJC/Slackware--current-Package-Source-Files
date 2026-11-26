@@ -29,6 +29,8 @@ latest_update="$(curl -r 0-28 -L 'http://ftp.slackware.com/pub/slackware/slackwa
 if [ -f "$last_update_file" ]; then
   last_update="$(cat -- "$last_update_file")"
 else
+  printf "Installing gitignore file just in case.\n"
+  "$(pwd -P)"/install_current_gitignore || exit
   printf "%s" "$latest_update" >"$last_update_file"
 fi
 
@@ -42,7 +44,5 @@ if [ "$last_update" != "$latest_update" ]; then
     --exclude='*.tar.zst' \
     --exclude='*.zip' \
     'rsync://ftp.slackware.com/slackware/slackware64-current/source/' \
-    "$(pwd -P)" &&
-
-  git commit -a -m "$last_update"
+    "$(pwd -P)"
 fi
