@@ -24,7 +24,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PKGNAM=autofs
 VERSION=${VERSION:-$(echo $PKGNAM-*.tar.xz | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 
 NUMJOBS=${NUMJOBS:-" -j$(expr $(nproc) + 1) "}
 
@@ -67,6 +67,8 @@ cd $TMP
 rm -rf $PKGNAM-$VERSION
 tar xf $CWD/$PKGNAM-$VERSION.tar.xz || exit 1
 cd $PKGNAM-$VERSION || exit 1
+
+cat $CWD/2-autofs-5.2.0-fix-map-type-check-when-reading-master-map.patch | patch -p1 --verbose || exit 1
 
 chown -R root:root .
 find . \
