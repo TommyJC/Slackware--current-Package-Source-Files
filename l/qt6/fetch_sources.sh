@@ -21,7 +21,7 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-BRANCH="6.12.0"
+BRANCH="6.12.1"
 
 git clone https://invent.kde.org/qt/qt/qt5.git || exit 1
 

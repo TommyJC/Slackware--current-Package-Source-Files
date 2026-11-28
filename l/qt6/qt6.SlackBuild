@@ -149,11 +149,6 @@ else
   TAG=${TAG:-""}
 fi
 
-# [PATCH] Fix teardown hang with QuickPixmapReader
-pushd qtdeclarative
-  cat $CWD/patches/7214a32.diff | patch -p1 --verbose || exit 1
-popd
-
 if [ "$ARCH" = "i686" ]; then
   # Adjustment needed for 32-bit qtwebengine:
   # 3) Qt qopenglext.h: Linux-branch GLintptr -> int
